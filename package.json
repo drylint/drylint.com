@@ -1,0 +1,37 @@
+{
+  "name": "vuepress-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev docs",
+    "serve": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drylint/vuepress-template.git"
+  },
+  "author": "drylint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drylint/vuepress-template/issues"
+  },
+  "homepage": "https://github.com/drylint/vuepress-template#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-better": "0.0.9",
+    "glob": "^7.1.6",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.19.0",
+    "vuepress": "^1.8.2"
+  }
+}
