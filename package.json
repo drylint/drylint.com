@@ -1,5 +1,5 @@
 {
-  "name": "vuepress-template",
+  "name": "drylint.com",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/drylint/vuepress-template.git"
+    "url": "git+https://github.com/drylint/drylint.com.git"
   },
   "author": "drylint",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/drylint/vuepress-template/issues"
+    "url": "https://github.com/drylint/drylint.com/issues"
   },
-  "homepage": "https://github.com/drylint/vuepress-template#readme",
+  "homepage": "https://github.com/drylint/drylint.com#readme",
   "devDependencies": {
     "eslint": "^7.23.0",
     "eslint-config-better": "0.0.9",
