@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+  <style>
+    .done {
+      text-decoration: line-through;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>待办列表</h1>
+    <div>
+      <input type="text" v-model="inputText">
+      <button @click="handleSubmit(inputText)">添加</button>
+    </div>
+    <h2>列表</h2>
+    <ul>
+      <li v-for="(item, i) in list" :key="i">
+        <span>{{i + 1 }}. </span>
+        <span v-if="i !== editWhich">
+          <span :class="item.done && 'done'">{{item.text}}</span>
+          <button @click="editWhich = i" v-show="!item.done">编辑</button>
+          <button @click="list.splice(i, 1)">删除</button>
+          <button @click="item.done = true" v-show="!item.done">完成</button>
+        </span>
+        <span v-else>
+          <input type="text" v-model="item.text">
+          <button @click="editWhich = null">确定</button>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          list: [
+            { text: '看书', done: false},
+            { text: '写字', done: true},
+            { text: '健身', done: false},
+          ],
+          editWhich: null,
+          inputText: ''
+        }
+      },
+      methods: {
+        handleSubmit: function (value) {
+          if (value === '') { return }
+          this.list.push({
+            text: value,
+            done: false
+          })
+          this.inputText = ''
+        }
+      }
+    })
+  </script>
+</body>
+</html>

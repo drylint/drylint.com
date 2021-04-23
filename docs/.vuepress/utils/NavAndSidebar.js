@@ -77,7 +77,8 @@ const getNormalSortedChildren = abPath => {
   // 对 children 进行排序，文件在前，目录在后
   // 这样，遍历生成的导航栏就是页面在前，下拉列表在后排列
   children = children.sort((a, b) => {
-    const isDirA = fs.statSync(`${abPath}/${a}`).isDirectory()
+    // 如果是 index.md 或 readme.md，需要排在最前面
+    const isDirA = isIndexMarkdown(a) ? -1 : fs.statSync(`${abPath}/${a}`).isDirectory()
     const isDirB = fs.statSync(`${abPath}/${b}`).isDirectory()
     return isDirA - isDirB
   })
