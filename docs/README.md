@@ -84,3 +84,9 @@
 - [pigcan](https://github.com/pigcan/blog)
 
 - [苍青浪](https://www.cnblogs.com/cangqinglang/)
+
+## 好文
+
+[如何写一个开源的 JavaScript 库-英文](https://egghead.io/courses/how-to-write-an-open-source-javascript-library)
+
+[开始为 JavaScript 开源贡献力量-英文](https://app.egghead.io/articles/get-started-contributing-to-javascript-open-source)
