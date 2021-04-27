@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sass 中的模块 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.6c11756b.css" as="style"><link rel="preload" href="/assets/js/app.526f7ecd.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/30.5cd75afc.js" as="script"><link rel="prefetch" href="/assets/js/10.88abc246.js"><link rel="prefetch" href="/assets/js/100.8996c602.js"><link rel="prefetch" href="/assets/js/101.37e0ddaf.js"><link rel="prefetch" href="/assets/js/102.25048208.js"><link rel="prefetch" href="/assets/js/103.e9a886dc.js"><link rel="prefetch" href="/assets/js/104.8d5a7ae8.js"><link rel="prefetch" href="/assets/js/105.459ba72f.js"><link rel="prefetch" href="/assets/js/106.1a3d477f.js"><link rel="prefetch" href="/assets/js/107.21bbbfa7.js"><link rel="prefetch" href="/assets/js/108.2ff8f3c0.js"><link rel="prefetch" href="/assets/js/109.8df196bc.js"><link rel="prefetch" href="/assets/js/11.5c9a3ba2.js"><link rel="prefetch" href="/assets/js/110.7295ebf0.js"><link rel="prefetch" href="/assets/js/111.680656e1.js"><link rel="prefetch" href="/assets/js/112.24d56b7f.js"><link rel="prefetch" href="/assets/js/113.1f35e468.js"><link rel="prefetch" href="/assets/js/114.802d5012.js"><link rel="prefetch" href="/assets/js/115.02565a65.js"><link rel="prefetch" href="/assets/js/116.61314df4.js"><link rel="prefetch" href="/assets/js/117.023ceceb.js"><link rel="prefetch" href="/assets/js/118.5e1dc010.js"><link rel="prefetch" href="/assets/js/119.c01a090d.js"><link rel="prefetch" href="/assets/js/12.e52d96a8.js"><link rel="prefetch" href="/assets/js/120.03141703.js"><link rel="prefetch" href="/assets/js/121.a4629320.js"><link rel="prefetch" href="/assets/js/122.fbe8ac5e.js"><link rel="prefetch" href="/assets/js/123.59fa139e.js"><link rel="prefetch" href="/assets/js/124.b91544a8.js"><link rel="prefetch" href="/assets/js/125.72c3a5b3.js"><link rel="prefetch" href="/assets/js/126.b75e6887.js"><link rel="prefetch" href="/assets/js/127.5300e8e8.js"><link rel="prefetch" href="/assets/js/128.f0433bac.js"><link rel="prefetch" href="/assets/js/129.d63223bf.js"><link rel="prefetch" href="/assets/js/13.5631668b.js"><link rel="prefetch" href="/assets/js/130.7a85150d.js"><link rel="prefetch" href="/assets/js/131.0cc92b12.js"><link rel="prefetch" href="/assets/js/132.690aeeec.js"><link rel="prefetch" href="/assets/js/133.7274395c.js"><link rel="prefetch" href="/assets/js/14.6c9b99fe.js"><link rel="prefetch" href="/assets/js/15.0cdcab4e.js"><link rel="prefetch" href="/assets/js/16.78288cdb.js"><link rel="prefetch" href="/assets/js/17.1393ad15.js"><link rel="prefetch" href="/assets/js/18.e4d67a48.js"><link rel="prefetch" href="/assets/js/19.e2c4bdd6.js"><link rel="prefetch" href="/assets/js/20.f08fc2f0.js"><link rel="prefetch" href="/assets/js/21.4e6f9fab.js"><link rel="prefetch" href="/assets/js/22.03d61c6c.js"><link rel="prefetch" href="/assets/js/23.27688e4e.js"><link rel="prefetch" href="/assets/js/24.d929e3a8.js"><link rel="prefetch" href="/assets/js/25.f39ec441.js"><link rel="prefetch" href="/assets/js/26.253b081e.js"><link rel="prefetch" href="/assets/js/27.78599ad8.js"><link rel="prefetch" href="/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/assets/js/29.56bec5bb.js"><link rel="prefetch" href="/assets/js/3.a4508226.js"><link rel="prefetch" href="/assets/js/31.a64d2cbc.js"><link rel="prefetch" href="/assets/js/32.8c4e784d.js"><link rel="prefetch" href="/assets/js/33.702be4c3.js"><link rel="prefetch" href="/assets/js/34.efd4470d.js"><link rel="prefetch" href="/assets/js/35.d33773f7.js"><link rel="prefetch" href="/assets/js/36.1698b20b.js"><link rel="prefetch" href="/assets/js/37.94cd78a5.js"><link rel="prefetch" href="/assets/js/38.c8a9985d.js"><link rel="prefetch" href="/assets/js/39.1d4cd1f1.js"><link rel="prefetch" href="/assets/js/4.1f9a1a77.js"><link rel="prefetch" href="/assets/js/40.0fd88e42.js"><link rel="prefetch" href="/assets/js/41.f320c988.js"><link rel="prefetch" href="/assets/js/42.8cae3e7d.js"><link rel="prefetch" href="/assets/js/43.5f542d68.js"><link rel="prefetch" href="/assets/js/44.8291a5cd.js"><link rel="prefetch" href="/assets/js/45.27f839fc.js"><link rel="prefetch" href="/assets/js/46.8645dc52.js"><link rel="prefetch" href="/assets/js/47.73c6fbc7.js"><link rel="prefetch" href="/assets/js/48.a762edc8.js"><link rel="prefetch" href="/assets/js/49.fd1b40bf.js"><link rel="prefetch" href="/assets/js/5.14e4d3ce.js"><link rel="prefetch" href="/assets/js/50.683c1b46.js"><link rel="prefetch" href="/assets/js/51.b8344a7a.js"><link rel="prefetch" href="/assets/js/52.5701f745.js"><link rel="prefetch" href="/assets/js/53.d86ba093.js"><link rel="prefetch" href="/assets/js/54.0ea9163c.js"><link rel="prefetch" href="/assets/js/55.26e38c77.js"><link rel="prefetch" href="/assets/js/56.56563dc8.js"><link rel="prefetch" href="/assets/js/57.1f4b2ccd.js"><link rel="prefetch" href="/assets/js/58.10ab03fd.js"><link rel="prefetch" href="/assets/js/59.a71842dd.js"><link rel="prefetch" href="/assets/js/6.3756d4ad.js"><link rel="prefetch" href="/assets/js/60.0f6ef465.js"><link rel="prefetch" href="/assets/js/61.49ae834f.js"><link rel="prefetch" href="/assets/js/62.ed64b58a.js"><link rel="prefetch" href="/assets/js/63.1f134b6a.js"><link rel="prefetch" href="/assets/js/64.f606bdbd.js"><link rel="prefetch" href="/assets/js/65.f35a3efc.js"><link rel="prefetch" href="/assets/js/66.5f3a4429.js"><link rel="prefetch" href="/assets/js/67.df14079a.js"><link rel="prefetch" href="/assets/js/68.711bb3a9.js"><link rel="prefetch" href="/assets/js/69.d3188ee6.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.3774cc0d.js"><link rel="prefetch" href="/assets/js/71.1889b6b7.js"><link rel="prefetch" href="/assets/js/72.cfa7a2a2.js"><link rel="prefetch" href="/assets/js/73.fe3bc9dd.js"><link rel="prefetch" href="/assets/js/74.79573021.js"><link rel="prefetch" href="/assets/js/75.9148b261.js"><link rel="prefetch" href="/assets/js/76.4ba921ad.js"><link rel="prefetch" href="/assets/js/77.7fbd7a1f.js"><link rel="prefetch" href="/assets/js/78.58f79f48.js"><link rel="prefetch" href="/assets/js/79.9ae1a0c8.js"><link rel="prefetch" href="/assets/js/8.485ba203.js"><link rel="prefetch" href="/assets/js/80.3c9c6132.js"><link rel="prefetch" href="/assets/js/81.6f237c54.js"><link rel="prefetch" href="/assets/js/82.5d3d2159.js"><link rel="prefetch" href="/assets/js/83.1602ea1e.js"><link rel="prefetch" href="/assets/js/84.b5f6fe9e.js"><link rel="prefetch" href="/assets/js/85.747dbf99.js"><link rel="prefetch" href="/assets/js/86.1bba7bfe.js"><link rel="prefetch" href="/assets/js/87.0f3ba4ac.js"><link rel="prefetch" href="/assets/js/88.7518886a.js"><link rel="prefetch" href="/assets/js/89.2ec5b0a3.js"><link rel="prefetch" href="/assets/js/9.dbacb5fe.js"><link rel="prefetch" href="/assets/js/90.c5a7e624.js"><link rel="prefetch" href="/assets/js/91.0fc2fb61.js"><link rel="prefetch" href="/assets/js/92.2750f1ed.js"><link rel="prefetch" href="/assets/js/93.9e72c37f.js"><link rel="prefetch" href="/assets/js/94.31c1c0d1.js"><link rel="prefetch" href="/assets/js/95.d6a1d492.js"><link rel="prefetch" href="/assets/js/96.93ec2911.js"><link rel="prefetch" href="/assets/js/97.0c5f3be8.js"><link rel="prefetch" href="/assets/js/98.f1e193c0.js"><link rel="prefetch" href="/assets/js/99.29b3fb2f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6c11756b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link router-link-active">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link router-link-active">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Sass-SCSS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/CSS/Sass-SCSS/" aria-current="page" class="sidebar-link">说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/#相关资源" class="sidebar-link">相关资源</a></li></ul></li><li><a href="/CSS/Sass-SCSS/01_基本介绍.html" class="sidebar-link">Sass 基本介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#注释-comments" class="sidebar-link">注释（Comments）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#单行注释-single-line-comments" class="sidebar-link">单行注释（Single-line comments）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#多行注释-multi-line-comments" class="sidebar-link">多行注释（Multi-line comments）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#sassdoc" class="sidebar-link">SassDoc</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#特殊的函数-special-functions" class="sidebar-link">特殊的函数（Special Functions）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#url" class="sidebar-link">url()</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#calc-和-element" class="sidebar-link">calc() 和 element()</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#progid-和-expression-弃用" class="sidebar-link">progid:...() 和 expression() 弃用</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#min-和-max" class="sidebar-link">min() 和 max()</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#变量" class="sidebar-link">变量</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#默认值" class="sidebar-link">默认值</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#插值-interpolation" class="sidebar-link">插值（Interpolation）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#语句-at-rules" class="sidebar-link">@语句（At-Rules）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#mixin-and-include" class="sidebar-link">@mixin and @include</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#at-root" class="sidebar-link">@at-root</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/02_Sass调试.html" class="sidebar-link">Sass 调试</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#error" class="sidebar-link">@error</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#warn" class="sidebar-link">@warn</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#debug" class="sidebar-link">@debug</a></li></ul></li><li><a href="/CSS/Sass-SCSS/03_数据类型.html" class="sidebar-link">Sass 中的数据类型（值类型）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#number" class="sidebar-link">Number</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#单位" class="sidebar-link">单位</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#精度-precision" class="sidebar-link">精度（Precision）</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#string" class="sidebar-link">String</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#转义-escapes" class="sidebar-link">转义（Escapes）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#带引号的-string" class="sidebar-link">带引号的 string</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#不带引号的字符串" class="sidebar-link">不带引号的字符串</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#字符串的索引" class="sidebar-link">字符串的索引</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#color" class="sidebar-link">Color</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#list" class="sidebar-link">List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#索引" class="sidebar-link">索引</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#访问某个元素" class="sidebar-link">访问某个元素</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#遍历列表" class="sidebar-link">遍历列表</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#追加元素" class="sidebar-link">追加元素</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#查找元素的索引" class="sidebar-link">查找元素的索引</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#列表的不可变性-immutability" class="sidebar-link">列表的不可变性（Immutability）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#参数列表" class="sidebar-link">参数列表</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#map" class="sidebar-link">Map</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#访问-map-的值" class="sidebar-link">访问 map 的值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#遍历-map" class="sidebar-link">遍历 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#修改-map" class="sidebar-link">修改 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#合并-map" class="sidebar-link">合并 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#不可变性" class="sidebar-link">不可变性</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#function" class="sidebar-link">Function</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#boolean" class="sidebar-link">Boolean</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#使用布尔值" class="sidebar-link">使用布尔值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#truthy-和-falsy" class="sidebar-link">Truthy 和 Falsy</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_数据类型.html#null" class="sidebar-link">null</a></li></ul></li><li><a href="/CSS/Sass-SCSS/04_运算操作符.html" class="sidebar-link">运算操作符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#操作符优先级" class="sidebar-link">操作符优先级</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#相等运算符" class="sidebar-link">相等运算符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#比较运算符" class="sidebar-link">比较运算符</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#数学运算符" class="sidebar-link">数学运算符</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#用于字符串" class="sidebar-link">+, -, / 用于字符串</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#boolean-操作符" class="sidebar-link">Boolean 操作符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_运算操作符.html#truthy-和-falsy" class="sidebar-link">Truthy 和 Falsy</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/05_流程控制.html" class="sidebar-link">流程控制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#if" class="sidebar-link">@if</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#for" class="sidebar-link">@for</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#each" class="sidebar-link">@each</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#遍历-map" class="sidebar-link">遍历 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#解构-list-中的-list" class="sidebar-link">解构 list 中的 list</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_流程控制.html#while" class="sidebar-link">@while</a></li></ul></li><li><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html" class="sidebar-link">Sass 中的函数 @function</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#默认参数" class="sidebar-link">默认参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#关键词参数" class="sidebar-link">关键词参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#接收任意参数" class="sidebar-link">接收任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#接收带关键词的任意参数" class="sidebar-link">接收带关键词的任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#传递任意参数" class="sidebar-link">传递任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass 中的函数.html#纯-css-函数" class="sidebar-link">纯 css 函数</a></li></ul></li><li><a href="/CSS/Sass-SCSS/07_样式规则.html" class="sidebar-link">样式规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#选择器" class="sidebar-link">选择器</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#父选择器-parent-selector" class="sidebar-link">父选择器 &amp; （Parent Selector）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#添加后缀" class="sidebar-link">添加后缀</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#in-sassscript" class="sidebar-link">In SassScript</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#占位符选择器-placeholder-selectors" class="sidebar-link">占位符选择器（Placeholder Selectors）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#样式属性" class="sidebar-link">样式属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_样式规则.html#自定义属性-custom-properties" class="sidebar-link">自定义属性（Custom Properties）</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/08_继承样式.html" class="sidebar-link">@extend</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_继承样式.html#仅用于被继承的占位选择器" class="sidebar-link">仅用于被继承的占位选择器</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_继承样式.html#可选继承" class="sidebar-link">可选继承</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_继承样式.html#extend-和-mixin" class="sidebar-link">@extend 和 @mixin</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_继承样式.html#extend-的限制" class="sidebar-link">@extend 的限制</a></li></ul></li><li><a href="/CSS/Sass-SCSS/09_CSS 的 @ 语句.html" class="sidebar-link">CSS 的 @ 语句</a></li><li><a href="/CSS/Sass-SCSS/10_模块.html" class="active sidebar-link">Sass 中的模块</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#use" class="sidebar-link">@use</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#使用成员" class="sidebar-link">使用成员</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#自定义命名空间名称" class="sidebar-link">自定义命名空间名称</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#去除命名空间" class="sidebar-link">去除命名空间</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#私有成员" class="sidebar-link">私有成员</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#引入时的配置" class="sidebar-link">引入时的配置</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#使用-mixin" class="sidebar-link">使用 mixin</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#查找模块" class="sidebar-link">查找模块</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#forward" class="sidebar-link">@forward</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#转发时添加前缀" class="sidebar-link">转发时添加前缀</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#控制成员可见性" class="sidebar-link">控制成员可见性</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#转发时配置模块的成员" class="sidebar-link">转发时配置模块的成员</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#import" class="sidebar-link">@import</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#嵌套的-import" class="sidebar-link">嵌套的 @import</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#在-sass-中导入-css-并编译" class="sidebar-link">在 sass 中导入 css 并编译</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#纯-css-导入语句-不编译" class="sidebar-link">纯 css 导入语句（不编译）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#import-中使用插值" class="sidebar-link">@import 中使用插值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#import-与模块" class="sidebar-link">@import 与模块</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#只供-import-使用的文件-import-only-files" class="sidebar-link">只供 @import 使用的文件（Import-Only Files）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_模块.html#使用-import-导入时配置模块成员" class="sidebar-link">使用 @import 导入时配置模块成员</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/11_Sass 编译及工程化使用.html" class="sidebar-link">Sass 编译及工程化使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass 编译及工程化使用.html#sass-命令行编译" class="sidebar-link">Sass 命令行编译</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass 编译及工程化使用.html#基本编译命令" class="sidebar-link">基本编译命令</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass 编译及工程化使用.html#命令行选项" class="sidebar-link">命令行选项</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="sass-中的模块"><a href="#sass-中的模块" class="header-anchor">#</a> Sass 中的模块</h1> <p></p><div class="table-of-contents"><ul><li><a href="#use">@use</a><ul><li><a href="#使用成员">使用成员</a></li><li><a href="#自定义命名空间名称">自定义命名空间名称</a></li><li><a href="#去除命名空间">去除命名空间</a></li><li><a href="#私有成员">私有成员</a></li><li><a href="#引入时的配置">引入时的配置</a></li><li><a href="#使用-mixin">使用 mixin</a></li><li><a href="#查找模块">查找模块</a></li></ul></li><li><a href="#forward">@forward</a><ul><li><a href="#转发时添加前缀">转发时添加前缀</a></li><li><a href="#控制成员可见性">控制成员可见性</a></li><li><a href="#转发时配置模块的成员">转发时配置模块的成员</a></li></ul></li><li><a href="#import">@import</a><ul><li><a href="#嵌套的-import">嵌套的 @import</a></li><li><a href="#在-sass-中导入-css-并编译">在 sass 中导入 css 并编译</a></li><li><a href="#纯-css-导入语句-不编译">纯 css 导入语句（不编译）</a></li><li><a href="#import-中使用插值">@import 中使用插值</a></li><li><a href="#import-与模块">@import 与模块</a></li><li><a href="#只供-import-使用的文件-import-only-files">只供 @import 使用的文件（Import-Only Files）</a></li><li><a href="#使用-import-导入时配置模块成员">使用 @import 导入时配置模块成员</a></li></ul></li></ul></div><p></p> <ul><li><p><code>@use</code> 从其他 sass 样式表中加载 mixins, functions, variables, 并将来自多个样式表的 CSS 组合在一起</p></li> <li><p><code>@forward</code> 当本样式表被其他样式表使用 <code>@use</code> 加载之前，先加载一个 Sass 样式表，并且使其 mixins, functions, variables 可用</p></li> <li><p><code>@import</code> 扩展自 css 的 <code>@import</code>，用来加载其他样式表的 styles, mixins, functions, variables</p></li></ul> <h2 id="use"><a href="#use" class="header-anchor">#</a> <code>@use</code></h2> <p>由 <code>@use</code> 加载的样式表被称为模块（modules）。Sass 一些内置模块，其中有很多实用的函数。</p> <p>通过 <code>@use</code> 加载的模块不管被引用了多少次，都只会在编译后输出一次到 css 中。但是使用 <code>@import</code> 多次引入同一模块，会反复输出到 css 中。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// module.scss</span>
+
+<span class="token selector">.module </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'./module.scss'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// b.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'./module.scss'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+<span class="token keyword">@use</span> <span class="token string">'./a.scss'</span><span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">'./b.scss'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.module</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>注意：<code>@use</code> 的前面只能出现 <code>@forward</code> 或 变量声明，其他的所有代码只能出现在 <code>@use</code> 之后。</p> <h3 id="使用成员"><a href="#使用成员" class="header-anchor">#</a> 使用成员</h3> <p><code>@use</code> 引入一个模块，默认会形成一个以模块文件名命名的命名空间，模块中的所有成员都通过这个命名空间来访问。</p> <p>可以使用 <code>&lt;namespace&gt;.&lt;variable&gt;</code>, <code>&lt;namespace&gt;.&lt;function&gt;()</code>, <code>@include &lt;namespace&gt;.&lt;mixin&gt;()</code> 来加载模块中的成员。</p> <p>用 <code>@use</code> 加载的模块成员只能在当前文件中访问。如果希望多文件共同访问，可以使用 <code>@forward</code> 规则通过一个共享文件转发所有成员。</p> <p>因为 <code>@use</code> 将命名空间添加到成员名中，所以在编写样式表时选择非常简单的名称，如 <code>$radius</code> 或 <code>$width</code> 是安全的。这与旧的 <code>@import</code> 规则不同，旧的 <code>@import</code> 规则鼓励用户编写像 <code>$mat-corner-radius</code>这样的长名称，以避免与其他库发生冲突，<code>@use</code> 有助于保持样式表的清晰和可读性!</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token keyword">@mixin</span> <span class="token selector">flex </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'./a.scss'</span><span class="token punctuation">;</span>
+
+<span class="token selector">.flex </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> a.flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.flex</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="自定义命名空间名称"><a href="#自定义命名空间名称" class="header-anchor">#</a> 自定义命名空间名称</h3> <p>使用 <code>@use ... as ...</code> 语法来自定义命名空间名称：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@use</span> <span class="token string">'./a.scss'</span> <span class="token module-modifier keyword">as</span> moduleA<span class="token punctuation">;</span>
+
+<span class="token selector">.flex </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> moduleA.flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="去除命名空间"><a href="#去除命名空间" class="header-anchor">#</a> 去除命名空间</h3> <p>使用 <code>@use ... as *</code> 语法来自定义命名空间名称：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@use</span> <span class="token string">'./a.scss'</span> <span class="token module-modifier keyword">as</span> *<span class="token punctuation">;</span>
+
+<span class="token selector">.flex </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>但不建议去除命名空间，因为这样容易导致命名冲突。</p> <h3 id="私有成员"><a href="#私有成员" class="header-anchor">#</a> 私有成员</h3> <p>如果不想将模块中的成员暴露给其他文件访问，将模块成员以 <code>-</code> 或 <code>_</code> 开头即可。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token keyword">@mixin</span> <span class="token selector">_flex </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'./a'</span><span class="token punctuation">;</span>
+
+<span class="token selector">.flex </span><span class="token punctuation">{</span>
+  <span class="token comment">// Error: Private members can't be accessed from outside their modules.</span>
+  <span class="token comment">// 报错：模块的私有成员无法在模块外部使用</span>
+  <span class="token keyword">@include</span> a._flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="引入时的配置"><a href="#引入时的配置" class="header-anchor">#</a> 引入时的配置</h3> <p>如果模块中的变量使用了 <code>!default</code> 标志使用了默认值，那么在使用 <code>@use</code> 引入时，可以去配置自己的值来覆盖默认值：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$size</span></span><span class="token punctuation">:</span> 16px <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$bg</span></span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+
+<span class="token keyword">@mixin</span> <span class="token selector">base </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token variable">$bg</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'./a.scss'</span> <span class="token module-modifier keyword">with</span><span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #a55<span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$size</span></span><span class="token punctuation">:</span> 14px
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token selector">.button </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> a.base<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.button</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #a55<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="使用-mixin"><a href="#使用-mixin" class="header-anchor">#</a> 使用 mixin</h3> <p>用 <code>@use ... with ...</code> 配置模块非常方便，特别是在使用最初为使用 <code>@import</code> 规则而编写的库时。但是它不是特别灵活，而且我们不推荐它用于更高级的用例。</p> <p>如果你发现自己想一次配置很多变量，传递一个 <code>map</code> 作为配置，或者在模块加载后更新配置，那么考虑写一个 mixin 来设置变量，再写另一个 mixin 来注入你的样式。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// _library.scss</span>
+
+<span class="token property"><span class="token variable">$-black</span></span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$-border-radius</span></span><span class="token punctuation">:</span> 0.25rem<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$-box-shadow</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token keyword">@function</span> <span class="token function">-box-shadow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@return</span> <span class="token variable">$-box-shadow</span> <span class="token operator">or</span> <span class="token punctuation">(</span>0 0.5rem 1rem <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token variable">$-black</span><span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@mixin</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$border-radius</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$box-shadow</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$black</span> </span><span class="token punctuation">{</span>
+    <span class="token property"><span class="token variable">$-black</span></span><span class="token punctuation">:</span> <span class="token variable">$black</span> !global<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$border-radius</span> </span><span class="token punctuation">{</span>
+    <span class="token property"><span class="token variable">$-border-radius</span></span><span class="token punctuation">:</span> <span class="token variable">$border-radius</span> !global<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$box-shadow</span> </span><span class="token punctuation">{</span>
+    <span class="token property"><span class="token variable">$-box-shadow</span></span><span class="token punctuation">:</span> <span class="token variable">$box-shadow</span> !global<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@mixin</span> <span class="token selector">styles </span><span class="token punctuation">{</span>
+  <span class="token selector">code </span><span class="token punctuation">{</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token variable">$-border-radius</span><span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token function">-box-shadow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'library'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">@include</span> library.<span class="token function">configure</span><span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #222<span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$border-radius</span></span><span class="token punctuation">:</span> 0.1rem
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">@include</span> library.styles<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="查找模块"><a href="#查找模块" class="header-anchor">#</a> 查找模块</h3> <p>通过 <code>@use &quot;module&quot;</code> 使用模块时，不需要写扩展名，程序会自动查找：</p> <ul><li><ol><li>查找 <code>./module.scss</code>，没有则进行下一步</li></ol></li> <li><ol start="2"><li>查找 <code>./module.sass</code>，没有则进行下一步</li></ol></li> <li><ol start="3"><li>查找 <code>./module.css</code>，没有则进行下一步</li></ol></li> <li><ol start="4"><li>查找 <code>node_modules/module/sass/module.scss</code></li></ol></li></ul> <p>在所有系统上，路径分隔符统一使用 <code>/</code> 而不是反斜线 <code>\</code>。当前目录模块不需要写 <code>./</code> 。</p> <p>如果 Sass文件只打算作为模块加载，而不是自己编译，文件名以 <code>_</code> 开头即可，这些被称为部分（partials），它们告诉 Sass 工具不要尝试自己编译这些文件。但是在导入这些模块时可以不用书写 <code>_</code> 符号。</p> <p>使用 <code>@use &quot;directory&quot;</code> 导入一个目录时，编译器会尝试自动查找 <code>_index.scss</code> 或 <code>_index.sass</code> 文件。</p> <p>加载一个<strong>纯CSS文件</strong>作为模块时，不允许任何特殊的 Sass 特性（如 variables, functions, mixins），为了避免作者一不小心把 Sass 写进 CSS 中，所有 Sass 的特性如果不是合法的 CSS 代码将会报错。否则，CSS将按原样呈现。它甚至可以被继承（extend）!</p> <h2 id="forward"><a href="#forward" class="header-anchor">#</a> <code>@forward</code></h2> <p>当使用 <code>@use</code> 加载一个文件时， 这个文件中可以使用 <code>@forward</code> 来使另一个文件中的 mixin、函数和变量可以暴露出去。通常用于跨多个文件组织 Sass 库。</p> <p><code>@forward</code> 和 <code>@use</code> 使用方式相同，但作用却完全不一样。</p> <p><code>@forward</code> 的作用是转发模块成员，而不是引入成员到当前文件使用，也就是说，通过 <code>@forward</code> 加载一个模块的成员，这些成员并不能在当前文件内访问，而仅仅是将这些成员当作自己的成员对外暴露出去。</p> <p>举个例子，<code>a.scss</code> 中定义了一个变量 <code>$red</code>，在 <code>b.scss</code> 中使用 <code>@forward &quot;a.scss&quot;</code>，但是在 <code>b</code> 中无法访问 <code>a.$red</code>，但是在另一个文件 <code>c.scss</code> 中使用 <code>@use &quot;b.scss&quot;</code> 后，可以通过 <code>b.$red</code> 访问到 <code>a</code> 中定义的变量。</p> <p>在上例中，如果想要在 <code>b.scss</code> 中使用变量，那么依然需要使用 <code>@use &quot;a.scss&quot;</code> 来引入变量，然后就可以访问 <code>a.$red</code> 了。</p> <p>当需要在上例的 <code>b.scss</code> 文件中同时使用 <code>@forward</code> 和 <code>@use</code> 时，建议先写 <code>@forward</code> 再写 <code>@use</code> ，因为这样，在 <code>c.scss</code> 中使用 <code>@use ... with()</code> 配置的变量值会先生效，这样 <code>b.scss</code> 中引用的变量也是配置后的变量。</p> <p><code>@forward</code> 虽然对变量，mixin，函数等只能起转发作用，但对其他样式代码和 <code>@use</code> 一样，也会引入并编译，所以在使用了 <code>@forward &quot;module&quot;</code> 的文件中，就算没有使用 <code>@use</code> ，也可以去继承 <code>module.scss</code> 的样式。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+
+<span class="token selector">.a </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// b.scss</span>
+
+<span class="token keyword">@forward</span> <span class="token string">'a.scss'</span><span class="token punctuation">;</span> <span class="token comment">// 转发 a 中的变量，并引入普通样式代码</span>
+
+<span class="token selector">.b </span><span class="token punctuation">{</span>
+  <span class="token comment">// 虽然没有使用 @use 不能访问模块 a.scss 的变量，但可以继承它的样式</span>
+  <span class="token keyword">@extend</span> .a<span class="token punctuation">;</span>
+  <span class="token comment">// 如果写 color: a.$red 会报错，因为没有使用 @use &quot;a.scss&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'b.scss'</span> <span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token keyword">@extend</span> .a<span class="token punctuation">;</span>
+
+  <span class="token property">background-color</span><span class="token punctuation">:</span> b.<span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.a,
+.b,
+.index</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.index</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="转发时添加前缀"><a href="#转发时添加前缀" class="header-anchor">#</a> 转发时添加前缀</h3> <p>如果一个文件转发多个文件中的成员，在使用时可能会存在多个文件中的成员同名，这样会导致编译出现错误，就算没有同名，也有可能在使用时不清楚到底是哪个模块的成员。</p> <p>通过 <code>@forward &quot;module&quot; as xxx-*</code> 可以给同一个模块中的成员统一添加前缀。</p> <p>假设有 <code>a.scss</code>， <code>b.scss</code>， <code>c.scss</code> 三个模块中都有一个名叫 <code>$red</code> 的变量：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// bus.scss</span>
+
+<span class="token keyword">@forward</span> <span class="token string">'a.scss'</span> <span class="token module-modifier keyword">as</span> a-*<span class="token punctuation">;</span>
+<span class="token keyword">@forward</span> <span class="token string">'b.scss'</span> <span class="token module-modifier keyword">as</span> b-*<span class="token punctuation">;</span>
+<span class="token keyword">@forward</span> <span class="token string">'c.scss'</span> <span class="token module-modifier keyword">as</span> c-*<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+<span class="token keyword">@use</span> <span class="token string">'bus.scss'</span><span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> bus.<span class="token variable">$a-red</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> bus.<span class="token variable">$b-red</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid bus.<span class="token variable">$c-red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="控制成员可见性"><a href="#控制成员可见性" class="header-anchor">#</a> 控制成员可见性</h3> <p>默认情况下，<code>@forward</code> 会将一个模块中所有成员都转发，如果只想转发某些成员，或不想转发某些成员，可以这样书写：</p> <ul><li><code>@forward &quot;module&quot; hide $var, mixinName, fnName</code> 禁止转发某些成员</li> <li><code>@forward &quot;module&quot; show $var, mixinName, fnName</code> 只转发某些成员</li></ul> <p>各个成员通过逗号 <code>,</code> 分隔开，如果成员是变量，不能省略 <code>$</code> 符号。</p> <h3 id="转发时配置模块的成员"><a href="#转发时配置模块的成员" class="header-anchor">#</a> 转发时配置模块的成员</h3> <p>在转发其他模块的成员时，可以对成员进行配置，修改默认值，或者指定一个确定的值均可。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #000 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$green</span></span><span class="token punctuation">:</span> #0f0 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// b.scss</span>
+
+<span class="token comment">// 转发成员时进行配置，修改默认值，或修改为固定的值</span>
+<span class="token keyword">@forward</span> <span class="token string">'a.scss'</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f55 <span class="token statement keyword">!default</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #333<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">'b.scss'</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f11<span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token selector">.div </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> b.<span class="token variable">$red</span><span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> b.<span class="token variable">$black</span><span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> b.<span class="token variable">$green</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f11<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #0f0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="import"><a href="#import" class="header-anchor">#</a> <code>@import</code></h2> <p>css 中本身就有 <code>@import</code>，sass 在其基础上进行扩展，可以用来导入模块中的变量，mixin，函数等，以及模块的样式。</p> <p>和 css 中的 <code>@import</code> 不同之处在于，css 中的 <code>@import</code> 可以是一个线上 url 地址，浏览器会在运行时下载这个文件，而 sass 中的 <code>@import</code> 只能在编译打包阶段运行，所以在 sass 中只能导入一个本地存在的 sass/scss/css 文件。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;a.scss&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;b.scss&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;c.scss&quot;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><code>@import</code> 在 sass 中的用法和在 css 中一样，只不过在 sass 中允许写一个 <code>@import</code> 导入多个文件，文件以逗号 <code>,</code> 分隔开即可，css 中必须每个文件写一个 <code>@import</code> 。</p> <p>Sass 团队不推荐继续使用 <code>@import</code>。Sass 将在未来几年内逐步淘汰它，并最终将其完全从语言中移除。建议使用 <code>@use</code> 来代替。</p> <p>使用 <code>@import</code> 存在的问题：</p> <ul><li><p><code>@import</code> 使所有变量、 mixins 和函数都可以全局访问。导致很难判断是在哪里定义的。</p></li> <li><p>因为所有东西都变成全局的，所以 sass 库必须在所有成员前加上前缀，以避免命名冲突。</p></li> <li><p><code>@extend</code> 也是全局的，这使得很难预测哪些样式将被继承。</p></li> <li><p>每个样式表都会被执行编译，每一个 <code>@import</code> 都会生成它的 CSS，这会增加编译时间并产生臃肿的代码输出。</p></li> <li><p>没有办法定义不想暴露出去的私有成员和占位符选择器。</p></li></ul> <p>使用 <code>@use</code> 则不会有以上的问题。</p> <p>当 <code>@import</code> 一个文件时，该文件的编译过程就像它的所有代码直接出现在 <code>@import</code> 的位置一样。导入的文件中的所有 mixin、函数和变量都是可用的，并且在写入 <code>@import</code> 的确切位置包含了导入的文件中的所有样式代码。并且，在 <code>@import</code> 之前定义的 mixin、函数或变量(包括来自其他 <code>@import</code> 的)甚至都可以在被导入的那个文件中去使用。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">;</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// b.scss</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;c&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.b </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// c.scss</span>
+
+<span class="token selector">.c </span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@import</span> <span class="token string">'a'</span><span class="token punctuation">;</span>
+
+<span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+
+<span class="token keyword">@import</span> <span class="token string">'b'</span><span class="token punctuation">;</span> <span class="token comment">// 问题：在 b.scss 中能够访问到 a.scss 的变量和之前声明的变量</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.c</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* stylelint-disable-next-line no-duplicate-selectors */</span>
+<span class="token selector">.c</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.b</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>上例编译结果可以看到，，同一文件多次被 <code>@import</code> 时，会重复编译多次。</p> <h3 id="嵌套的-import"><a href="#嵌套的-import" class="header-anchor">#</a> 嵌套的 <code>@import</code></h3> <p><code>@import</code> 通常是写在样式表的顶层，但其实它们也可以嵌套在样式块中或纯 CSS at-rules中。</p> <p>导入的 CSS 代码块将嵌套在该上下文中，这使得嵌套的 <code>@import</code> 对于将 CSS 块定位到特定元素或媒体查询非常有用。</p> <p>注意，在嵌套 <code>@import</code> 引入的文件中定义的顶级 mixins，函数，变量依然会被导入为全局的变量。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token selector">.a </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #a55<span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token keyword">@import</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.index .a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #a55<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>嵌套 <code>@import</code> 对于确定第三方样式表的作用域非常有用，但是如果您是要导入自己写的样式表，那么最好在 <code>@mixin</code> 中编写您的样式，然后使用 <code>@include</code> 来将 <code>@mixin</code> 包含在嵌套的上下文中。<code>@mixin</code> 可以以更灵活的方式使用，当查看导入的样式表时，它的用途会更清晰。</p> <h3 id="在-sass-中导入-css-并编译"><a href="#在-sass-中导入-css-并编译" class="header-anchor">#</a> 在 sass 中导入 css 并编译</h3> <p>在 sass 中导入 css 文件时，不要显示地写出扩展名 <code>.css</code> ，只写文件名即可。因为如果显示地写出扩展名 <code>.css</code> ，这用来表示是在导入纯 css 文件，编译器则不会去编译 <code>@import</code> 语句，而是原封不动地输出这条语句。</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token comment">/* a.css */</span>
+
+<span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// index.scss</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token keyword">@extend</span> .a<span class="token punctuation">;</span>
+
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.a,
+.index</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.index</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>如果将 <code>@import &quot;a&quot;;</code> 改为 <code>@import &quot;a.css&quot;;</code> ：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;a.css&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token comment">// 报错：The target selector was not found.</span>
+  <span class="token comment">// 目标选择器未找到</span>
+  <span class="token keyword">@extend</span> .a<span class="token punctuation">;</span>
+
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上面代码编译时会报错：目标选择器未找到，因为编译器遇到 <code>@import &quot;a.css&quot;;</code> 语句，它就会认为这是一条导入纯 css 文件的语句，不需要在编译阶段处理它，而是用于运行时的导入。所以要去继承这个文件中的选择器是无法找到目标选择器的。</p> <h3 id="纯-css-导入语句-不编译"><a href="#纯-css-导入语句-不编译" class="header-anchor">#</a> 纯 css 导入语句（不编译）</h3> <p>如果要让编译器原封不动地输出 <code>@import</code> 语句，而不是去编译后替换掉它，那么这里就有几种形式，满足其中任意一种即可。</p> <p>在 <code>@import</code> 语句中：</p> <ul><li>以 <code>.css</code> 结尾</li> <li>以 <code>http://</code> 或 <code>https://</code> 开头</li> <li>路径包含在 <code>url()</code> 之中。</li> <li>语句中有媒体查询</li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;xxx.css&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;http://xxx.css&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token url">url</span><span class="token punctuation">(</span>xxx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">&quot;landscape&quot;</span> screen <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="import-中使用插值"><a href="#import-中使用插值" class="header-anchor">#</a> <code>@import</code> 中使用插值</h3> <p>sass 中的 <code>@import</code> 语句是不支持使用插值的，因为这可能会让人不知道变量，函数，mixin 是从哪里来的。</p> <p>但是，对于纯css <code>@import</code> 语句却是可以的，可以用来动态生成纯 css 的 <code>@import</code> 语句。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@mixin</span> <span class="token function">get-font</span><span class="token punctuation">(</span><span class="token variable">$family</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@import</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">&quot;http://xxx.com/#{$family}.css&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@include</span> <span class="token function">get-font</span><span class="token punctuation">(</span><span class="token string">&quot;font-name&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@import</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">&quot;http://xxx.com/font-name.css&quot;</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="import-与模块"><a href="#import-与模块" class="header-anchor">#</a> <code>@import</code> 与模块</h3> <p>假设在 <code>index.scss</code> 中 <code>@import &quot;b.scss&quot;</code> ，而 <code>b.scss</code> 中使用了 <code>@use &quot;a.scss&quot;</code>，在 <code>index.scss</code> 中可以访问 <code>b.scss</code> 中的所有成员（包括私有成员），但无法直接访问 <code>a.scss</code> 中的成员，除非 <code>b.scss</code> 中使用了 <code>@forward &quot;a.scss&quot;</code>。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+
+<span class="token selector">.a </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// b.scss</span>
+
+<span class="token keyword">@use</span> <span class="token string">&quot;a.scss&quot;</span><span class="token punctuation">;</span>
+
+<span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+
+<span class="token selector">.b </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> a.<span class="token variable">$red</span><span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;b.scss&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.index </span><span class="token punctuation">{</span>
+  <span class="token comment">// color: $red; // 无法直接访问没有被转发的成员</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$black</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.b</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.index</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>上面例子可以看到，虽然 <code>index.scss</code> 无法访问到 <code>a.scss</code> 中没有被转发的成员，但是 <code>a.scss</code> 中的所有样式代码依然会被全部导入。</p> <h3 id="只供-import-使用的文件-import-only-files"><a href="#只供-import-使用的文件-import-only-files" class="header-anchor">#</a> 只供 <code>@import</code> 使用的文件（Import-Only Files）</h3> <p>一个模块暴露的成员有可能对 <code>@use</code> 方式的导入有效，但对 <code>@import</code> 方式的导入无效。</p> <p>比如，使用 <code>@use</code> 默认会为所有成员生成一个以文件名命名的命名空间，但 <code>@import</code> 不会，而是直接暴露到全局，这就需要为模块成员取更长的名字以免命名冲突。</p> <p>假设我们在维护一个 sass 库，如果我们改成新的模块系统（<code>@use</code>），我们会担心那些之前使用 <code>@import</code> 的用户会无法正常运行。</p> <p>为了解决这个问题，sass 支持一种文件叫做 “<code>@import</code> 专用文件” ，也就是这个文件只能通过 <code>@import</code> 导入，而无法通过 <code>@use</code> 来导入。</p> <p>给一个文件命名为 <code>&lt;name&gt;.import.scss</code> 即可，这样就能保持对 <code>@import</code> 的兼容，又能使用新的 <code>@use</code> 模块系统。</p> <p>创建两个文件模块，<code>a.scss</code> 用于 <code>@use</code> 导入，<code>a.import.scss</code> 用于 <code>@import</code> 导入：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+
+<span class="token selector">.a </span><span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.import.scss</span>
+
+<span class="token keyword">@forward</span> <span class="token string">'a'</span> <span class="token module-modifier keyword">as</span> a-*<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>用户在使用这个模块时，如果写 <code>@use &quot;a&quot;</code> 则会加载 <code>a.scss</code> 文件，如果写 <code>@import &quot;a&quot;</code> 则会加载 <code>a.import.scss</code> 文件。</p> <p>使用 <code>@use</code> 导入：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@use</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.user </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> a.<span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>使用 <code>@import</code> 导入：</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@import</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.user </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$a-red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>两种方式编译结果完全一样，编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.user</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="使用-import-导入时配置模块成员"><a href="#使用-import-导入时配置模块成员" class="header-anchor">#</a> 使用 <code>@import</code> 导入时配置模块成员</h3> <p>在模块被第一次 <code>@import</code> 的语句前面，定义一个全局变量即可配置变量值而不使用默认值。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> #f00 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+
+<span class="token selector">.a </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.import.scss</span>
+
+<span class="token keyword">@forward</span> <span class="token string">'a'</span> <span class="token module-modifier keyword">as</span> a-*<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// a.scss</span>
+
+<span class="token property"><span class="token variable">$a-red</span></span><span class="token punctuation">:</span> #f55<span class="token punctuation">;</span> <span class="token comment">// 在 @import 前定义全局变量，可配置模块成员</span>
+
+<span class="token keyword">@import</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">;</span>
+
+<span class="token selector">.user </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$a-red</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f55<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.user</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f55<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>模块只会被加载一次，所以就算在第一次 <code>@import</code> 模块后更改了配置(即使是间接的)，再次 <code>@import</code> 模块也不会使用修改的配置。</p> <p>如果通过 <code>@use</code> 或 <code>@forward</code> 去加载一个使用了 <code>@import</code> 的文件，将会加载到这个文件的所有公共成员及样式，以及它 <code>@import</code> 导入的所有成员和代码。相当于就是 <code>@import</code> 导入的文件的内容就像是直接写在 <code>@import</code> 语句的位置一样。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/CSS/Sass-SCSS/10_模块.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/CSS/Sass-SCSS/09_CSS 的 @ 语句.html" class="prev">
+        CSS 的 @ 语句
+      </a></span> <span class="next"><a href="/CSS/Sass-SCSS/11_Sass 编译及工程化使用.html">
+        Sass 编译及工程化使用
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.526f7ecd.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/30.5cd75afc.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SplitChunksPlugin | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.6c11756b.css" as="style"><link rel="preload" href="/assets/js/app.526f7ecd.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/113.1f35e468.js" as="script"><link rel="prefetch" href="/assets/js/10.88abc246.js"><link rel="prefetch" href="/assets/js/100.8996c602.js"><link rel="prefetch" href="/assets/js/101.37e0ddaf.js"><link rel="prefetch" href="/assets/js/102.25048208.js"><link rel="prefetch" href="/assets/js/103.e9a886dc.js"><link rel="prefetch" href="/assets/js/104.8d5a7ae8.js"><link rel="prefetch" href="/assets/js/105.459ba72f.js"><link rel="prefetch" href="/assets/js/106.1a3d477f.js"><link rel="prefetch" href="/assets/js/107.21bbbfa7.js"><link rel="prefetch" href="/assets/js/108.2ff8f3c0.js"><link rel="prefetch" href="/assets/js/109.8df196bc.js"><link rel="prefetch" href="/assets/js/11.5c9a3ba2.js"><link rel="prefetch" href="/assets/js/110.7295ebf0.js"><link rel="prefetch" href="/assets/js/111.680656e1.js"><link rel="prefetch" href="/assets/js/112.24d56b7f.js"><link rel="prefetch" href="/assets/js/114.802d5012.js"><link rel="prefetch" href="/assets/js/115.02565a65.js"><link rel="prefetch" href="/assets/js/116.61314df4.js"><link rel="prefetch" href="/assets/js/117.023ceceb.js"><link rel="prefetch" href="/assets/js/118.5e1dc010.js"><link rel="prefetch" href="/assets/js/119.c01a090d.js"><link rel="prefetch" href="/assets/js/12.e52d96a8.js"><link rel="prefetch" href="/assets/js/120.03141703.js"><link rel="prefetch" href="/assets/js/121.a4629320.js"><link rel="prefetch" href="/assets/js/122.fbe8ac5e.js"><link rel="prefetch" href="/assets/js/123.59fa139e.js"><link rel="prefetch" href="/assets/js/124.b91544a8.js"><link rel="prefetch" href="/assets/js/125.72c3a5b3.js"><link rel="prefetch" href="/assets/js/126.b75e6887.js"><link rel="prefetch" href="/assets/js/127.5300e8e8.js"><link rel="prefetch" href="/assets/js/128.f0433bac.js"><link rel="prefetch" href="/assets/js/129.d63223bf.js"><link rel="prefetch" href="/assets/js/13.5631668b.js"><link rel="prefetch" href="/assets/js/130.7a85150d.js"><link rel="prefetch" href="/assets/js/131.0cc92b12.js"><link rel="prefetch" href="/assets/js/132.690aeeec.js"><link rel="prefetch" href="/assets/js/133.7274395c.js"><link rel="prefetch" href="/assets/js/14.6c9b99fe.js"><link rel="prefetch" href="/assets/js/15.0cdcab4e.js"><link rel="prefetch" href="/assets/js/16.78288cdb.js"><link rel="prefetch" href="/assets/js/17.1393ad15.js"><link rel="prefetch" href="/assets/js/18.e4d67a48.js"><link rel="prefetch" href="/assets/js/19.e2c4bdd6.js"><link rel="prefetch" href="/assets/js/20.f08fc2f0.js"><link rel="prefetch" href="/assets/js/21.4e6f9fab.js"><link rel="prefetch" href="/assets/js/22.03d61c6c.js"><link rel="prefetch" href="/assets/js/23.27688e4e.js"><link rel="prefetch" href="/assets/js/24.d929e3a8.js"><link rel="prefetch" href="/assets/js/25.f39ec441.js"><link rel="prefetch" href="/assets/js/26.253b081e.js"><link rel="prefetch" href="/assets/js/27.78599ad8.js"><link rel="prefetch" href="/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/assets/js/29.56bec5bb.js"><link rel="prefetch" href="/assets/js/3.a4508226.js"><link rel="prefetch" href="/assets/js/30.5cd75afc.js"><link rel="prefetch" href="/assets/js/31.a64d2cbc.js"><link rel="prefetch" href="/assets/js/32.8c4e784d.js"><link rel="prefetch" href="/assets/js/33.702be4c3.js"><link rel="prefetch" href="/assets/js/34.efd4470d.js"><link rel="prefetch" href="/assets/js/35.d33773f7.js"><link rel="prefetch" href="/assets/js/36.1698b20b.js"><link rel="prefetch" href="/assets/js/37.94cd78a5.js"><link rel="prefetch" href="/assets/js/38.c8a9985d.js"><link rel="prefetch" href="/assets/js/39.1d4cd1f1.js"><link rel="prefetch" href="/assets/js/4.1f9a1a77.js"><link rel="prefetch" href="/assets/js/40.0fd88e42.js"><link rel="prefetch" href="/assets/js/41.f320c988.js"><link rel="prefetch" href="/assets/js/42.8cae3e7d.js"><link rel="prefetch" href="/assets/js/43.5f542d68.js"><link rel="prefetch" href="/assets/js/44.8291a5cd.js"><link rel="prefetch" href="/assets/js/45.27f839fc.js"><link rel="prefetch" href="/assets/js/46.8645dc52.js"><link rel="prefetch" href="/assets/js/47.73c6fbc7.js"><link rel="prefetch" href="/assets/js/48.a762edc8.js"><link rel="prefetch" href="/assets/js/49.fd1b40bf.js"><link rel="prefetch" href="/assets/js/5.14e4d3ce.js"><link rel="prefetch" href="/assets/js/50.683c1b46.js"><link rel="prefetch" href="/assets/js/51.b8344a7a.js"><link rel="prefetch" href="/assets/js/52.5701f745.js"><link rel="prefetch" href="/assets/js/53.d86ba093.js"><link rel="prefetch" href="/assets/js/54.0ea9163c.js"><link rel="prefetch" href="/assets/js/55.26e38c77.js"><link rel="prefetch" href="/assets/js/56.56563dc8.js"><link rel="prefetch" href="/assets/js/57.1f4b2ccd.js"><link rel="prefetch" href="/assets/js/58.10ab03fd.js"><link rel="prefetch" href="/assets/js/59.a71842dd.js"><link rel="prefetch" href="/assets/js/6.3756d4ad.js"><link rel="prefetch" href="/assets/js/60.0f6ef465.js"><link rel="prefetch" href="/assets/js/61.49ae834f.js"><link rel="prefetch" href="/assets/js/62.ed64b58a.js"><link rel="prefetch" href="/assets/js/63.1f134b6a.js"><link rel="prefetch" href="/assets/js/64.f606bdbd.js"><link rel="prefetch" href="/assets/js/65.f35a3efc.js"><link rel="prefetch" href="/assets/js/66.5f3a4429.js"><link rel="prefetch" href="/assets/js/67.df14079a.js"><link rel="prefetch" href="/assets/js/68.711bb3a9.js"><link rel="prefetch" href="/assets/js/69.d3188ee6.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.3774cc0d.js"><link rel="prefetch" href="/assets/js/71.1889b6b7.js"><link rel="prefetch" href="/assets/js/72.cfa7a2a2.js"><link rel="prefetch" href="/assets/js/73.fe3bc9dd.js"><link rel="prefetch" href="/assets/js/74.79573021.js"><link rel="prefetch" href="/assets/js/75.9148b261.js"><link rel="prefetch" href="/assets/js/76.4ba921ad.js"><link rel="prefetch" href="/assets/js/77.7fbd7a1f.js"><link rel="prefetch" href="/assets/js/78.58f79f48.js"><link rel="prefetch" href="/assets/js/79.9ae1a0c8.js"><link rel="prefetch" href="/assets/js/8.485ba203.js"><link rel="prefetch" href="/assets/js/80.3c9c6132.js"><link rel="prefetch" href="/assets/js/81.6f237c54.js"><link rel="prefetch" href="/assets/js/82.5d3d2159.js"><link rel="prefetch" href="/assets/js/83.1602ea1e.js"><link rel="prefetch" href="/assets/js/84.b5f6fe9e.js"><link rel="prefetch" href="/assets/js/85.747dbf99.js"><link rel="prefetch" href="/assets/js/86.1bba7bfe.js"><link rel="prefetch" href="/assets/js/87.0f3ba4ac.js"><link rel="prefetch" href="/assets/js/88.7518886a.js"><link rel="prefetch" href="/assets/js/89.2ec5b0a3.js"><link rel="prefetch" href="/assets/js/9.dbacb5fe.js"><link rel="prefetch" href="/assets/js/90.c5a7e624.js"><link rel="prefetch" href="/assets/js/91.0fc2fb61.js"><link rel="prefetch" href="/assets/js/92.2750f1ed.js"><link rel="prefetch" href="/assets/js/93.9e72c37f.js"><link rel="prefetch" href="/assets/js/94.31c1c0d1.js"><link rel="prefetch" href="/assets/js/95.d6a1d492.js"><link rel="prefetch" href="/assets/js/96.93ec2911.js"><link rel="prefetch" href="/assets/js/97.0c5f3be8.js"><link rel="prefetch" href="/assets/js/98.f1e193c0.js"><link rel="prefetch" href="/assets/js/99.29b3fb2f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6c11756b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>SplitChunksPlugin</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Webpack/SplitChunksPlugin.html#默认情况" class="sidebar-link">默认情况</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Webpack/SplitChunksPlugin.html#optimization-splitchunks-配置对象-传给插件的配置" class="sidebar-link">optimization.splitChunks 配置对象，传给插件的配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#automaticnamedelimiter-生成的文件名的连接符号-默认" class="sidebar-link">automaticNameDelimiter 生成的文件名的连接符号，默认 ~</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#automaticnamemaxlength-v5-弃用-生成代码块名的最大长度-默认-109" class="sidebar-link">automaticNameMaxLength (v5 弃用)生成代码块名的最大长度，默认 109</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#chunks-指定要分割的-chunk-引入类型-默认-async" class="sidebar-link">chunks 指定要分割的 chunk 引入类型，默认 'async'</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#maxasyncrequests-按需加载时所允许的最大并行请求数。默认-30" class="sidebar-link">maxAsyncRequests 按需加载时所允许的最大并行请求数。默认 30</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#maxinitialrequests-入口所允许的最大并行请求数。默认为-30" class="sidebar-link">maxInitialRequests 入口所允许的最大并行请求数。默认为 30</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#minchunks-最小被引用次数-超过才进行分割。默认-1" class="sidebar-link">minChunks 最小被引用次数，超过才进行分割。默认 1</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#minsize-最小尺寸-超过才进行分割-默认-20000" class="sidebar-link">minSize 最小尺寸，超过才进行分割，默认 20000</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#enforcesizethreshold-见-cachegroup-enforcesizethreshold" class="sidebar-link">enforceSizeThreshold 见 {cacheGroup}.enforceSizeThreshold</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#minremainingsize-见-cachegroup-minremainingsize" class="sidebar-link">minRemainingSize 见 {cacheGroup}.minRemainingSize</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#maxsize-模块最大尺寸-超出进行分割-默认-0" class="sidebar-link">maxSize 模块最大尺寸，超出进行分割，默认 0</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#maxasyncsize-最大的按需加载的尺寸" class="sidebar-link">maxAsyncSize 最大的按需加载的尺寸</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#maxinitialsize-最大的初始加载的尺寸" class="sidebar-link">maxInitialSize 最大的初始加载的尺寸</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#name-分割出来的代码块的名称" class="sidebar-link">name 分割出来的代码块的名称</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#automaticnameprefix-自动设置名称前缀-默认" class="sidebar-link">automaticNamePrefix 自动设置名称前缀，默认 ''</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#cachegroups-缓存组对象" class="sidebar-link">cacheGroups 缓存组对象</a></li></ul></li><li><a href="/Webpack/SplitChunksPlugin.html#示例" class="sidebar-link">示例</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#默认情况的示例-1" class="sidebar-link">默认情况的示例 1</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#默认情况的示例-2" class="sidebar-link">默认情况的示例 2</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#配置代码分离示例-1" class="sidebar-link">配置代码分离示例 1</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#配置代码分离示例-2" class="sidebar-link">配置代码分离示例 2</a></li><li class="sidebar-sub-header"><a href="/Webpack/SplitChunksPlugin.html#配置代码分离示例-3" class="sidebar-link">配置代码分离示例 3</a></li></ul></li><li><a href="/Webpack/SplitChunksPlugin.html#vue-cli-默认配置" class="sidebar-link">vue-cli 默认配置</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="splitchunksplugin"><a href="#splitchunksplugin" class="header-anchor">#</a> SplitChunksPlugin</h1> <p></p><div class="table-of-contents"><ul><li><a href="#默认情况">默认情况</a></li><li><a href="#optimization-splitchunks-配置对象-传给插件的配置">optimization.splitChunks 配置对象，传给插件的配置</a><ul><li><a href="#automaticnamedelimiter-生成的文件名的连接符号-默认">automaticNameDelimiter 生成的文件名的连接符号，默认 ~</a></li><li><a href="#automaticnamemaxlength-v5-弃用-生成代码块名的最大长度-默认-109">automaticNameMaxLength (v5 弃用)生成代码块名的最大长度，默认 109</a></li><li><a href="#chunks-指定要分割的-chunk-引入类型-默认-async">chunks 指定要分割的 chunk 引入类型，默认 'async'</a></li><li><a href="#maxasyncrequests-按需加载时所允许的最大并行请求数。默认-30">maxAsyncRequests 按需加载时所允许的最大并行请求数。默认 30</a></li><li><a href="#maxinitialrequests-入口所允许的最大并行请求数。默认为-30">maxInitialRequests 入口所允许的最大并行请求数。默认为 30</a></li><li><a href="#minchunks-最小被引用次数-超过才进行分割。默认-1">minChunks 最小被引用次数，超过才进行分割。默认 1</a></li><li><a href="#minsize-最小尺寸-超过才进行分割-默认-20000">minSize 最小尺寸，超过才进行分割，默认 20000</a></li><li><a href="#enforcesizethreshold-见-cachegroup-enforcesizethreshold">enforceSizeThreshold 见 {cacheGroup}.enforceSizeThreshold</a></li><li><a href="#minremainingsize-见-cachegroup-minremainingsize">minRemainingSize 见 {cacheGroup}.minRemainingSize</a></li><li><a href="#maxsize-模块最大尺寸-超出进行分割-默认-0">maxSize 模块最大尺寸，超出进行分割，默认 0</a></li><li><a href="#maxasyncsize-最大的按需加载的尺寸">maxAsyncSize 最大的按需加载的尺寸</a></li><li><a href="#maxinitialsize-最大的初始加载的尺寸">maxInitialSize 最大的初始加载的尺寸</a></li><li><a href="#name-分割出来的代码块的名称">name 分割出来的代码块的名称</a></li><li><a href="#automaticnameprefix-自动设置名称前缀-默认">automaticNamePrefix 自动设置名称前缀，默认 ''</a></li><li><a href="#cachegroups-缓存组对象">cacheGroups 缓存组对象</a><ul><li><a href="#default-是否使用默认配置-默认-true">default 是否使用默认配置，默认 true</a></li><li><a href="#test-见-cachegroup-test">test 见 {cacheGroup}.test</a></li><li><a href="#cachegroup-自定义-cachegroup-名称以及配置对象">{cacheGroup} 自定义 cacheGroup 名称以及配置对象</a><ul><li><a href="#priority-cachegroup-优先级-默认-0">priority cacheGroup 优先级，默认 0</a></li><li><a href="#reuseexistingchunk-是否复用已存在的-chunk">reuseExistingChunk 是否复用已存在的 chunk</a></li><li><a href="#type-按-module-类型将-module-分配给缓存组">type 按 module 类型将 module 分配给缓存组</a></li><li><a href="#test-匹配要分配到该-cachegroup-的-module">test 匹配要分配到该 cacheGroup 的 module</a></li><li><a href="#filename-文件名">filename 文件名</a></li><li><a href="#enforce-是否强制为该-cachegroup-生成分离的-chunk">enforce 是否强制为该 cacheGroup 生成分离的 chunk</a></li><li><a href="#idhint-设置-chunk-id-的提示信息">idHint 设置 chunk id 的提示信息</a></li><li><a href="#enforcesizethreshold-强制分割阈值大小-默认-50000">enforceSizeThreshold 强制分割阈值大小，默认 50000</a></li><li><a href="#minremainingsize-默认-0">minRemainingSize 默认 0</a></li></ul></li></ul></li></ul></li><li><a href="#示例">示例</a><ul><li><a href="#默认情况的示例-1">默认情况的示例 1</a></li><li><a href="#默认情况的示例-2">默认情况的示例 2</a></li><li><a href="#配置代码分离示例-1">配置代码分离示例 1</a></li><li><a href="#配置代码分离示例-2">配置代码分离示例 2</a></li><li><a href="#配置代码分离示例-3">配置代码分离示例 3</a></li></ul></li><li><a href="#vue-cli-默认配置">vue-cli 默认配置</a></li></ul></div><p></p> <p>从 <code>webpack@4</code> 开始，<code>CommonsChunkPlugin</code> 被移除，以支持 <code>optimization.splitChunks</code></p> <h2 id="默认情况"><a href="#默认情况" class="header-anchor">#</a> 默认情况</h2> <p>默认情况下，它只影响按需加载（on-demand）的代码块，因为改变初始代码块（initial chunks）会影响运行项目时 HTML 文件包含的 <code>&lt;script /&gt;</code> 标签。</p> <p>webpack 会基于如下原则自动分割代码：</p> <ul><li><p>可以被共享的代码块，或来自 <code>node_modules</code> 文件夹的模块。</p></li> <li><p>打包出来的代码块大小超过 <code>20k</code>（在 min + gz 之前）。</p></li> <li><p>当按需加载块时，并行请求的最大数量希望小于或等于 <code>30</code> 的时候。</p></li> <li><p>在页面初始加载时并行请求的最大数量希望小于或等于 <code>30</code> 的时候。</p></li></ul> <p>当试图完成后两项时，总会生成较大体积的代码块。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// chunks可以为三种值：async,initial,all；决定代码满足条件后是否进行拆分。</span>
+      <span class="token comment">// initial表示只考虑非import()异步导入代码进行拆分，async表示只拆分异步代码块，而all表示同异步都加入拆分范畴。</span>
+      chunks<span class="token operator">:</span> <span class="token string">'async'</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 满足尺寸才发生拆分</span>
+      <span class="token comment">// 例如导入10kb的依赖包小于30kb便不会拆分代码块</span>
+      minSize<span class="token operator">:</span> <span class="token number">30000</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 当bundle达到maxSize，必须进行拆分</span>
+      <span class="token comment">// 例如jquery与lodash合并成了140kb，maxSize定位80kb，便会拆分两个依赖</span>
+      maxSize<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 最少被引用的chunk个数</span>
+      <span class="token comment">// 例如一个入口块和一个异步块都引用了lodash，minChunks大于2时就不会添加新chunk来装lodash</span>
+      minChunks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 异步代码块最多可拆分次数</span>
+      <span class="token comment">// 假设某个import()模块有2MB，maxSize设定为500kb，如果此属性为1，模块最多就只能拆分一个bundle出去。</span>
+      maxAsyncRequests<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 这属性和maxAsyncRequests道理一致，不过是作用与initial模块的</span>
+      maxInitialRequests<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// bundle自动命名使用的连接字符</span>
+      automaticNameDelimiter<span class="token operator">:</span> <span class="token string">'~'</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// bundle自动命名时名称长度限制</span>
+      automaticNameMaxLength<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 可为bool、string类型，true是会使用默认命名，否则使用序号命名；string指定文件名称</span>
+      name<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 自定义拆分组</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 每个属性就是一个分组</span>
+        vendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+          <span class="token comment">// 导入路径的正则匹配，这为所有node_modules引用的模块代码</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+
+          <span class="token comment">// 优先级默认为0，如果两个组引用了同一个模块，优先级高的组可以获得此模块</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">10</span>
+
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>
+
+          <span class="token comment">// 是否复用其他chunk内已拥有的模块</span>
+          <span class="token comment">// 默认为false，关闭表示拆分出复用部分的模块，给双方引用</span>
+          reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h2 id="optimization-splitchunks-配置对象-传给插件的配置"><a href="#optimization-splitchunks-配置对象-传给插件的配置" class="header-anchor">#</a> <code>optimization.splitChunks</code> 配置对象，传给插件的配置</h2> <p>默认配置的值之所以是这样的，是为了适应 web 性能最佳实践，但是您项目的最佳策略可能有所不同。如果您正在更改配置，您应该度量更改的影响，以确保有真正的好处。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      chunks<span class="token operator">:</span> <span class="token string">'async'</span><span class="token punctuation">,</span>
+      minSize<span class="token operator">:</span> <span class="token number">20000</span><span class="token punctuation">,</span>
+      minRemainingSize<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      maxSize<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      minChunks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      maxAsyncRequests<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+      maxInitialRequests<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+      automaticNameDelimiter<span class="token operator">:</span> <span class="token string">'~'</span><span class="token punctuation">,</span>
+      enforceSizeThreshold<span class="token operator">:</span> <span class="token number">50000</span><span class="token punctuation">,</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">u</span></span><span class="token punctuation">,</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>
+          reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 传递给 SplitChunksPlugin 插件的配置对象
+     */</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">/**
+       * 指定要进行代码分割的 chunk 类型
+       * 'async' 默认值，只对异步导入的 chunk 进行分割，也就是 import() 导入
+       * 'initial' 只对原始导入的 chunk 进行分割，也就是 import x from 'x' 导入
+       * 'all' 以上两者均包括
+       */</span>
+      chunks<span class="token operator">:</span> <span class="token string">'async'</span><span class="token punctuation">,</span>
+
+      <span class="token comment">/**
+       * 进行代码分割的最小尺寸
+       */</span>
+      minSize<span class="token operator">:</span> <span class="token number">20000</span><span class="token punctuation">,</span>
+      minRemainingSize<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      maxSize<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      minChunks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      maxAsyncRequests<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+      maxInitialRequests<span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+      automaticNameDelimiter<span class="token operator">:</span> <span class="token string">'~'</span><span class="token punctuation">,</span>
+      enforceSizeThreshold<span class="token operator">:</span> <span class="token number">50000</span><span class="token punctuation">,</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">u</span></span><span class="token punctuation">,</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>
+          reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><blockquote><p>注意：使用 webpack 处理文件路径时， 目录分隔符始终应包含 Unix 系统的 <code>/</code> 和 Windows 系统的 <code>\</code> 。 这就是为什么 <code>{cacheGroup}.test</code> 字段的值中，需要使用 <code>[\\/]</code> 来表示路径分隔符。只使用 <code>/</code> 或 <code>\</code> 时，跨平台运行会导致意外的出现。</p> <p>从 webpack 5 开始, 传递 entry name 给 <code>{cacheGroup}.test</code> 字段，以及对 <code>{cacheGroup}.name</code> 使用一个已经存在的 chunk name 都将不再允许。</p></blockquote> <h3 id="automaticnamedelimiter-生成的文件名的连接符号-默认"><a href="#automaticnamedelimiter-生成的文件名的连接符号-默认" class="header-anchor">#</a> <code>automaticNameDelimiter</code> 生成的文件名的连接符号，默认 <code>~</code></h3> <p><code>type: string</code></p> <p><code>default: '~'</code></p> <p>webpack 默认会使用 chunk 的来源，加上连接符 <code>~</code> ，再加上 chunk 的名称来命名新生成的代码块（例如：<code>vendor~main.js</code>）。该配置项可以让你来自定义代码块名称连接符。</p> <h3 id="automaticnamemaxlength-v5-弃用-生成代码块名的最大长度-默认-109"><a href="#automaticnamemaxlength-v5-弃用-生成代码块名的最大长度-默认-109" class="header-anchor">#</a> <code>automaticNameMaxLength</code> (v5 弃用)生成代码块名的最大长度，默认 <code>109</code></h3> <p><code>type: number</code></p> <p><code>default: 109</code></p> <h3 id="chunks-指定要分割的-chunk-引入类型-默认-async"><a href="#chunks-指定要分割的-chunk-引入类型-默认-async" class="header-anchor">#</a> <code>chunks</code> 指定要分割的 chunk 引入类型，默认 <code>'async'</code></h3> <p><code>type: function (chunk) | 'async' | 'initial' | 'all'</code></p> <p><code>default: 'async'</code></p> <p>该项指定了那种类型的 chunk 将被分割。</p> <ul><li><p><code>initial</code> 如果两个入口一个是同步引入，一个是异步引入，那么会分开打包</p></li> <li><p><code>async</code> 只分割异步引入（<code>import()</code>）。同步引入会被插件忽略，直接打包到入口文件中。</p></li> <li><p><code>all</code> 包括以上两者，也就是全部都会进行分割。</p></li></ul> <p>也可以传入一个函数来控制，通过返回值来决定是否应该包含每一个模块。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">chunks</span> <span class="token punctuation">(</span><span class="token parameter">chunk</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// exclude `my-excluded-chunk`</span>
+        <span class="token keyword">return</span> chunk<span class="token punctuation">.</span>name <span class="token operator">!==</span> <span class="token string">'my-excluded-chunk'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>可以结合 <code>html-webpack-plugin</code> 使用此配置项，它将为你添加所有新生成的代码块。</p> <h3 id="maxasyncrequests-按需加载时所允许的最大并行请求数。默认-30"><a href="#maxasyncrequests-按需加载时所允许的最大并行请求数。默认-30" class="header-anchor">#</a> <code>maxAsyncRequests</code> 按需加载时所允许的最大并行请求数。默认 <code>30</code></h3> <p><code>type: number</code></p> <p><code>default: 30</code></p> <h3 id="maxinitialrequests-入口所允许的最大并行请求数。默认为-30"><a href="#maxinitialrequests-入口所允许的最大并行请求数。默认为-30" class="header-anchor">#</a> <code>maxInitialRequests</code> 入口所允许的最大并行请求数。默认为 <code>30</code></h3> <p><code>type: number</code></p> <p><code>default: 30</code></p> <h3 id="minchunks-最小被引用次数-超过才进行分割。默认-1"><a href="#minchunks-最小被引用次数-超过才进行分割。默认-1" class="header-anchor">#</a> <code>minChunks</code> 最小被引用次数，超过才进行分割。默认 <code>1</code></h3> <p><code>type: number</code></p> <p><code>default: 1</code></p> <p>最少被多少个代码块公共使用才进行拆分。</p> <h3 id="minsize-最小尺寸-超过才进行分割-默认-20000"><a href="#minsize-最小尺寸-超过才进行分割-默认-20000" class="header-anchor">#</a> <code>minSize</code> 最小尺寸，超过才进行分割，默认 <code>20000</code></h3> <p><code>type: number</code></p> <p><code>default: 20000</code></p> <p>最少达到多少 bytes 的大小才进行拆分。</p> <p>该值为压缩前的，也就是先分包，再压缩。</p> <h3 id="enforcesizethreshold-见-cachegroup-enforcesizethreshold"><a href="#enforcesizethreshold-见-cachegroup-enforcesizethreshold" class="header-anchor">#</a> <code>enforceSizeThreshold</code> 见 <code>{cacheGroup}.enforceSizeThreshold</code></h3> <p>详见 <code>splitChunks.cacheGroups.{cacheGroup}.enforceSizeThreshold</code></p> <h3 id="minremainingsize-见-cachegroup-minremainingsize"><a href="#minremainingsize-见-cachegroup-minremainingsize" class="header-anchor">#</a> <code>minRemainingSize</code> 见 <code>{cacheGroup}.minRemainingSize</code></h3> <p>详见 <code>splitChunks.cacheGroups.{cacheGroup}.minRemainingSize</code></p> <h3 id="maxsize-模块最大尺寸-超出进行分割-默认-0"><a href="#maxsize-模块最大尺寸-超出进行分割-默认-0" class="header-anchor">#</a> <code>maxSize</code> 模块最大尺寸，超出进行分割，默认 <code>0</code></h3> <p><code>type: number</code></p> <p><code>default: 0</code></p> <p>使用 <code>maxSize</code> 选项，无论是全局值 <code>optimization.splitChunks.maxSize</code>，还是每一个缓存组值 <code>optimization.splitChunks.cacheGroups[x].maxSize</code>，还是回调缓存组值 <code>optimization.splitChunks.fallbackCacheGroup.maxSize</code>，都将会通知 webpack 尝试将体积大于设定的 <code>maxSize</code> 值的代码块分割成更小的代码块。</p> <p>分割出的块大小将至少为 <code>minSize</code> 值（最大为 <code>maxSize</code> 值）。</p> <p>该算法是确定的，对模块的更改只会产生局部影响，因此，它在使用长期缓存时是可用的，不需要记录。</p> <p><code>maxSize</code> 只是一个提示，当模块大于 <code>maxSize</code>， 或分割会小于 <code>minSize</code> 时，是可以不遵守此配置的。</p> <p>一旦一个块已经有了名称，每个其他部分都会以之为衍生获得一个名称，这个名称取决于 <code>optimization.splitChunks.hidePathInfo</code> 的值，并且添加一个从起始块派生来的键名或哈希值。</p> <p><code>maxSize</code> 是打算用于配合 HTTP/2 和长效缓存使用的。它增加了请求数以求更好的缓存，它也可以用于快速重构即减小文件体积。</p> <blockquote><p><code>maxSize</code> 的优先级高于 <code>maxInitialRequest/maxAsyncRequests</code>，事实上优先级关系为如下：</p> <p><code>maxInitialRequest/maxAsyncRequests &lt; maxSize &lt; minSize</code>.</p> <p>设置 <code>maxSize</code> 值会同时设置 <code>maxAsyncSize</code> 和 <code>maxInitialSize</code>的值。</p></blockquote> <h3 id="maxasyncsize-最大的按需加载的尺寸"><a href="#maxasyncsize-最大的按需加载的尺寸" class="header-anchor">#</a> <code>maxAsyncSize</code> 最大的按需加载的尺寸</h3> <p><code>type: number</code></p> <p><code>default: -</code></p> <p>和 <code>maxSize</code> 一样，<code>maxAsyncSize</code> 也可以通过以下几种方式来配置：</p> <ul><li><code>splitChunks.maxAsyncSize</code></li> <li><code>splitChunks.cacheGroups.{cacheGroup}.maxAsyncSize</code></li> <li><code>splitChunks.fallbackCacheGroup.maxAsyncSize</code></li></ul> <p><code>maxAsyncSize</code> 和 <code>maxSize</code> 的区别在于，<code>maxAsyncSize</code> 只影响按需加载的 chunks 。</p> <h3 id="maxinitialsize-最大的初始加载的尺寸"><a href="#maxinitialsize-最大的初始加载的尺寸" class="header-anchor">#</a> <code>maxInitialSize</code> 最大的初始加载的尺寸</h3> <p><code>type: number</code></p> <p><code>default: -</code></p> <p>和 <code>maxSize</code> 一样，<code>maxInitialSize</code> 也可以通过以下几种方式来配置：</p> <ul><li><code>splitChunks.maxInitialSize</code></li> <li><code>splitChunks.cacheGroups.{cacheGroup}.maxInitialSize</code></li> <li><code>splitChunks.fallbackCacheGroup.maxInitialSize</code></li></ul> <p><code>maxInitialSize</code> 和 <code>maxSize</code> 的区别在于，<code>maxInitialSize</code> 只影响原始加载的 chunks 。</p> <h3 id="name-分割出来的代码块的名称"><a href="#name-分割出来的代码块的名称" class="header-anchor">#</a> <code>name</code> 分割出来的代码块的名称</h3> <p><code>type: boolean | string | function (module, chunks, cacheGroupKey) =&gt; string</code></p> <p><code>default: true</code></p> <p>同时会对 <code>splitChunks.cacheGroups.{cacheGroup}.name</code> 生效</p> <p>传入 <code>true</code> 则会根据 模块 和 cacheGroup 的 key 自动生成 模块名</p> <p>提供字符串或函数将可以使用自定义名称。</p> <p>注意，提供的字符串或函数如果始终会返回一个相同字符串的话，将把所有 common 模块和 vendors 模块合并为一整个块。这可能会导致更大的初始下载，降低页面加载速度。</p> <p>指定一个函数时，函数会被传入 <code>module, chunks, cacheGroupKey</code> 这三个参数，其中的第二个参数为 chunk 数组，数组元素为 chunk 对象，包括 <code>chunk.name</code> 和 <code>chunk.hash</code> 属性，这对使用函数返回一个自定义的且各不相同的模块名非常有用。</p> <p>如果 <code>splitChunks.name</code> 匹配一个入口名称，这个入口将被删除。</p> <p>对于生产版本，建议将 <code>splitChunks.name</code> 设置为 <code>false</code> ，这样它就不会不必要地更改名称。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// main.js</span>
+
+<span class="token keyword">import</span> _ <span class="token keyword">from</span> <span class="token string">'lodash'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>_<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token string">'webpack'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        commons<span class="token operator">:</span> <span class="token punctuation">{</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+          <span class="token comment">// cacheGroupKey 在这里是 cacheGroup 的 key，也就是 `commons`</span>
+          <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter">module<span class="token punctuation">,</span> chunks<span class="token punctuation">,</span> cacheGroupKey</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> moduleFileName <span class="token operator">=</span> module<span class="token punctuation">.</span><span class="token function">identifier</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduceRight</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> allChunksNames <span class="token operator">=</span> chunks<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> item<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'~'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>cacheGroupKey<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>allChunksNames<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>moduleFileName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          chunks<span class="token operator">:</span> <span class="token string">'all'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>使用此配置运行 webpack 还会输出一个带有 common 组名称的 chunk：</p> <div class="language-files line-numbers-mode"><pre class="language-text"><code>commons-main-lodash.js.e7519d2bb8777058fa27.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p>当为不同的分割块分配了相同的名称时，所有的 vendor 模块都将被放在一个共享块中，所以不推荐这样做，因为这样会导致更多的代码下载。</p></blockquote> <h3 id="automaticnameprefix-自动设置名称前缀-默认"><a href="#automaticnameprefix-自动设置名称前缀-默认" class="header-anchor">#</a> <code>automaticNamePrefix</code> 自动设置名称前缀，默认 <code>''</code></h3> <p><code>type: string</code></p> <p><code>default: ''</code></p> <p>当需要对生成的模块添加前缀时设置。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      automaticNamePrefix<span class="token operator">:</span> <span class="token string">'general-prefix'</span><span class="token punctuation">,</span> <span class="token comment">// 通用前缀</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        react<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...</span>
+          automaticNamePrefix<span class="token operator">:</span> <span class="token string">'react-chunks-prefix'</span><span class="token punctuation">,</span> <span class="token comment">// react 的前缀</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="cachegroups-缓存组对象"><a href="#cachegroups-缓存组对象" class="header-anchor">#</a> <code>cacheGroups</code> 缓存组对象</h3> <p><code>type: object</code></p> <p><code>default: -</code></p> <h4 id="default-是否使用默认配置-默认-true"><a href="#default-是否使用默认配置-默认-true" class="header-anchor">#</a> <code>default</code> 是否使用默认配置，默认 <code>true</code></h4> <p><code>type: boolean</code></p> <p><code>default: true</code></p> <h4 id="test-见-cachegroup-test"><a href="#test-见-cachegroup-test" class="header-anchor">#</a> <code>test</code> 见 <code>{cacheGroup}.test</code></h4> <p>详见 <code>{cacheGroup}.test</code></p> <h4 id="cachegroup-自定义-cachegroup-名称以及配置对象"><a href="#cachegroup-自定义-cachegroup-名称以及配置对象" class="header-anchor">#</a> <code>{cacheGroup}</code> 自定义 cacheGroup 名称以及配置对象</h4> <p><code>cacheGroups</code> 由多个 <code>cacheGroup</code> 组成，每一个 <code>cacheGroup</code> 的 key 就是缓存组的名称，value 是一个配置对象，此对象和 <code>splitChunks</code> 的选项有很多相同项。</p> <p>但是 <code>test</code>, <code>priorty</code> 和 <code>reuseExistingChunk</code> 这几个字段只能在 <code>cacheGroup</code> 内设置。</p> <p>除此之外，所有 <code>splitChunks</code> 中的配置项都可以用在 <code>cacheGroup</code> 里，包括：<code>chunks, minSize, minChunks, maxAsyncRequests, maxInitialRequests, name</code> 等。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// ...总的配置</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        cacheGroup1<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...自动继承总的配置，也可覆盖为自己的配置</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]dir[\\/]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">u</span></span><span class="token punctuation">,</span>
+          priorty<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        cacheGroup2<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        cacheGroup3<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>每一个 <code>cacheGroup</code> 对象会继承 <code>splitChunks</code> 的配置，也可以设置自己的配置来覆盖继承的配置。</p> <p>如果 <code>cacheGroups</code> 下的 <code>cacheGroup</code> 完全不想使用默认的配置，向 <code>cacheGroups</code> 对象中添加 <code>default: false</code> 属性值即可：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token keyword">default</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        cacheGroup1<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>默认配置好的 <code>cacheGroup</code> 的 <code>priotity</code> （优先级）属性默认是负数，而自定义 <code>cacheGroup</code> 的 <code>priotity</code> 属性默认值是 <code>0</code>，因此所有自定义 <code>cacheGroup</code> 都可以有比它更高的优先级，更高优先级的缓存组可以优先打包所选择的模块。</p> <h5 id="priority-cachegroup-优先级-默认-0"><a href="#priority-cachegroup-优先级-默认-0" class="header-anchor">#</a> <code>priority</code> cacheGroup 优先级，默认 <code>0</code></h5> <p><code>type: number</code></p> <p><code>default: 0</code></p> <p>一个 module 有可能会属于多个 cacheGroup 。优化时将根据优先级决定将 module 打包到哪一个 cacheGroup 中。</p> <p>默认的 cacheGroup 的优先级为负值，以便为自定义 cacheGroup 提供相对较高的优先级，自定义cacheGroup 的优先级默认为 <code>0</code></p> <h5 id="reuseexistingchunk-是否复用已存在的-chunk"><a href="#reuseexistingchunk-是否复用已存在的-chunk" class="header-anchor">#</a> <code>reuseExistingChunk</code> 是否复用已存在的 chunk</h5> <p><code>type: boolean</code></p> <p><code>default: false</code></p> <p>如果当前 chunk 中有包含的 module 已经从 main bundle 中分割出来，那么将复用这些 module 而不会生成新的。这将可能会影响生成结果的 chunk 的名称。</p> <h5 id="type-按-module-类型将-module-分配给缓存组"><a href="#type-按-module-类型将-module-分配给缓存组" class="header-anchor">#</a> <code>type</code> 按 module 类型将 module 分配给缓存组</h5> <p>type: <code>function | RegExp | string</code></p> <p><code>default: -</code></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  json<span class="token operator">:</span> <span class="token punctuation">{</span>
+    type<span class="token operator">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token comment">// 将所有 .json 文件分配到 json 缓存组</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="test-匹配要分配到该-cachegroup-的-module"><a href="#test-匹配要分配到该-cachegroup-的-module" class="header-anchor">#</a> <code>test</code> 匹配要分配到该 cacheGroup 的 module</h5> <p><code>type: RegExp | string | function (module, chunk) =&gt; boolean</code></p> <p><code>default: -</code></p> <p>控制此缓存组选择哪些 module 。省略它将选择所有 module。它可以匹配 module 的绝对路径或 chunk 名称。当匹配 chunk 名称时，将选择 chunk 中的所有 module 。</p> <p>当 webpack 处理文件时，目录分隔符将会是 <code>/</code> (Unix) 或 <code>\</code> (Windows). 所以 <code>test</code> 接收正则时，需要使用 <code>[\\/]</code> 来正确匹配跨平台时的目录分隔符。</p> <p>从 webpack 5 开始, 传递 entry name 给 <code>{cacheGroup}.test</code> 字段，以及对 <code>{cacheGroup}.name</code> 使用一个已经存在的 chunk name 都将不再允许。</p> <p>将 <code>test</code> 设为一个函数：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  svgGroup<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">test</span> <span class="token punctuation">(</span><span class="token parameter">module<span class="token punctuation">,</span> chunks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// `module.resource` 表示文件在硬盘上的绝对路径</span>
+      <span class="token comment">// 分隔符：windows(\)，unix(/)</span>
+      <span class="token comment">// 跨平台使用，需要使用 `path.sep` 变量来代替 `/` 和 `\` 目录分隔符</span>
+      <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> module<span class="token punctuation">.</span>resource
+        <span class="token operator">&amp;&amp;</span> module<span class="token punctuation">.</span>resource<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'.svg'</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;&amp;</span> module<span class="token punctuation">.</span>resource<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token punctuation">.</span>sep<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">cacheable_svgs</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token punctuation">.</span>sep<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  byModuleTypeGroup<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">test</span> <span class="token punctuation">(</span><span class="token parameter">module<span class="token punctuation">,</span> chunks</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> module<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'javascript/auto'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>将 <code>test</code> 设为一个正则表达式：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 记得使用 `[\\/]` 作为路径分隔符以兼容跨平台使用</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]|vendor[\\/]analytics_provider|vendor[\\/]other_lib</span><span class="token regex-delimiter">/</span><span class="token regex-flags">u</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h5 id="filename-文件名"><a href="#filename-文件名" class="header-anchor">#</a> <code>filename</code> 文件名</h5> <p><code>type: string | function (pathData, assetInfo) =&gt; string</code></p> <p><code>default: -</code></p> <p>当且仅当它是 initial chunk 时，允许重写文件名，所有在 <code>output.filename</code> 中可用的占位符均可用在此处。</p> <p>这个选项也可以全局设置在 <code>splitChunks.filename</code> 字段上。但不建议这样全局设置，因为如果当 <code>splitChunks.chunks</code> 的值不是 <code>initial</code> 的时候，它将发生错误。</p> <p>设置为一个字符串值，可用占位符：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">'[name].bundle.js'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>设置为一个方法：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">filename</span> <span class="token punctuation">(</span><span class="token parameter">pathData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 使用 pathData 对象根据需求生成文件名字符串</span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>pathData<span class="token punctuation">.</span>chunk<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-bundle.js</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>提供带有路径前缀的文件名可以创建一个文件夹结构</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">'js/[name]/bundle.js'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="enforce-是否强制为该-cachegroup-生成分离的-chunk"><a href="#enforce-是否强制为该-cachegroup-生成分离的-chunk" class="header-anchor">#</a> <code>enforce</code> 是否强制为该 cacheGroup 生成分离的 chunk</h5> <p><code>type: boolean</code></p> <p><code>default: false</code></p> <p>忽略 <code>splitChunks.minSize</code>, <code>splitChunks.minChunks</code>, <code>splitChunks.maxAsyncRequests</code>, <code>splitChunks.maxInitialRequests</code> 配置项，强制为该 cacheGroup 创建 chunk 。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    enforce<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="idhint-设置-chunk-id-的提示信息"><a href="#idhint-设置-chunk-id-的提示信息" class="header-anchor">#</a> <code>idHint</code> 设置 chunk id 的提示信息</h5> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>设置 chunk id 的提示。它将被添加到 chunk 的文件名中。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+  defaultVendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+    idHint<span class="token operator">:</span> <span class="token string">'vendors'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="enforcesizethreshold-强制分割阈值大小-默认-50000"><a href="#enforcesizethreshold-强制分割阈值大小-默认-50000" class="header-anchor">#</a> <code>enforceSizeThreshold</code> 强制分割阈值大小，默认 <code>50000</code></h5> <p>type: <code>number</code></p> <p>default: <code>50000</code></p> <p>当文件大小超过指定值时，强制执行分割代码，忽略 <code>minRemainingSize</code>, <code>maxAsyncRequests</code>, <code>maxInitialRequests</code> 配置。</p> <h5 id="minremainingsize-默认-0"><a href="#minremainingsize-默认-0" class="header-anchor">#</a> <code>minRemainingSize</code> 默认 <code>0</code></h5> <p><code>splitChunks.minRemainingSize</code> 选项是在 webpack 5 中引入的，通过此选项确保代码分割后，剩下的块的尺寸不能小于多少，以此避免一个 0 大小的模块。</p> <p>开发模式下默认为 <code>0</code>，其他情况下，他它的值默认为 <code>splitChunks.minSize</code> 的值。所以它不需要手动指定，除非在少数情况下需要深度控制。</p> <h2 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h2> <h3 id="默认情况的示例-1"><a href="#默认情况的示例-1" class="header-anchor">#</a> 默认情况的示例 1</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// index.js</span>
+
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// dynamic import</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// a.js</span>
+
+<span class="token keyword">import</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token comment">//...</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>结果：一个单独分割出的包含 <code>react</code> 的 chunk 将会被创建， 当 import 调用时，这个 chunk 会和原始包含 <code>./a</code> 的 chunk 并行加载</p> <p>原因：</p> <ul><li>这个chunk 包含来自 <code>node_modules</code> 的 module</li> <li><code>react</code> 大小超过 <code>30kb</code></li> <li>import 调用的并行请求数量是 <code>2</code></li> <li>不影响初始页面加载时的请求</li></ul> <p>这背后的原因是什么? <code>react</code> 可能不会像应用程序代码那样经常变化。通过将它移到一个单独的 chunk 中，这个 chunk 可以与你的应用程序代码分开缓存(假设你使用 chunkhash, records, Cache-Control 或其他长期缓存方法)。</p> <h3 id="默认情况的示例-2"><a href="#默认情况的示例-2" class="header-anchor">#</a> 默认情况的示例 2</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// entry.js</span>
+
+<span class="token comment">// dynamic imports</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// a.js</span>
+<span class="token keyword">import</span> <span class="token string">'./helpers'</span><span class="token punctuation">;</span> <span class="token comment">// helpers is 40kb in size</span>
+
+<span class="token comment">//...</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// b.js</span>
+<span class="token keyword">import</span> <span class="token string">'./helpers'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'./more-helpers'</span><span class="token punctuation">;</span> <span class="token comment">// more-helpers is also 40kb in size</span>
+
+<span class="token comment">//...</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>结果：一个包含 <code>./helpers</code> 和它的所有依赖的单独的 chunk 将会被创建，import 调用时，这个 chunk 会和原始 chunk 并行加载。</p> <p>原因：</p> <ul><li>这个 chunk 被两个 import 共享</li> <li><code>helpers</code> 大小超过 30kb</li> <li>import 调用的并行请求数量是 <code>2</code></li> <li>不影响初始页面加载时的请求</li></ul> <p>将 <code>helpers</code> 的内容内置到每一个 chunk 中去的话，将会导致 <code>helpers</code> 的代码被下载两次，通过使用一个分离的 chunk 则只会下载一次。 当然，这会导致多了一次额外的资源请求，这可以看作一种权衡，这也是为什么有一个配置是分离的最小尺寸(minSize)是 <code>30Kb</code> 。</p> <h3 id="配置代码分离示例-1"><a href="#配置代码分离示例-1" class="header-anchor">#</a> 配置代码分离示例 1</h3> <p>创建一个 chunk 叫做 <code>commons</code>，其中包括入口之间共享的所有代码。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        commons<span class="token operator">:</span> <span class="token punctuation">{</span>
+          name<span class="token operator">:</span> <span class="token string">'commons'</span><span class="token punctuation">,</span>
+          chunks<span class="token operator">:</span> <span class="token string">'initial'</span><span class="token punctuation">,</span>
+          minChunks<span class="token operator">:</span> <span class="token number">2</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>此配置将会增大 initial bundle 的大小，当一个 module 不需要立即使用时，建议使用动态导入 <code>import()</code>。</p> <h3 id="配置代码分离示例-2"><a href="#配置代码分离示例-2" class="header-anchor">#</a> 配置代码分离示例 2</h3> <p>创建一个 chunk 叫做 <code>vendors</code>，其中包括整个应用中所有来自 <code>node_modules</code> 的代码。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        commons<span class="token operator">:</span> <span class="token punctuation">{</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">'vendors'</span><span class="token punctuation">,</span>
+          chunks<span class="token operator">:</span> <span class="token string">'all'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>这可能会导致一个包含所有外部包(external packages)的大 chunk。建议只包含核心框架和实用程序，并动态加载其余的依赖项。</p> <h3 id="配置代码分离示例-3"><a href="#配置代码分离示例-3" class="header-anchor">#</a> 配置代码分离示例 3</h3> <p>创建一个自定义的 vendor chunk，其中包含给定的正则表达式匹配的来自 <code>node_modules</code> 的 package 。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// webpack.config.js</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
+    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+      cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        vendor<span class="token operator">:</span> <span class="token punctuation">{</span>
+          test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/](react|react-dom)[\\/]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">u</span></span><span class="token punctuation">,</span>
+          name<span class="token operator">:</span> <span class="token string">'vendor'</span><span class="token punctuation">,</span>
+          chunks<span class="token operator">:</span> <span class="token string">'all'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>这将导致 <code>react</code> 和 <code>react-dom</code> 一起被分离到一个单独的 chunk 中。如果您不确定一个 chunk 中包含了哪些 package ，可以参考 Bundle Analysis 一节了解详细信息。</p> <h2 id="vue-cli-默认配置"><a href="#vue-cli-默认配置" class="header-anchor">#</a> vue-cli 默认配置</h2> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// config.optimization.splitChunks</span>
+
+<span class="token punctuation">{</span>
+  cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+    vendors<span class="token operator">:</span> <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'chunk-vendors'</span><span class="token punctuation">,</span>
+      test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+      priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span>
+      chunks<span class="token operator">:</span> <span class="token string">'initial'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    common<span class="token operator">:</span> <span class="token punctuation">{</span>
+      name<span class="token operator">:</span> <span class="token string">'chunk-common'</span><span class="token punctuation">,</span>
+      minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      priority<span class="token operator">:</span> <span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">,</span>
+      chunks<span class="token operator">:</span> <span class="token string">'initial'</span><span class="token punctuation">,</span>
+      reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/Webpack/SplitChunksPlugin.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.526f7ecd.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/113.1f35e468.js" defer></script>
+  </body>
+</html>

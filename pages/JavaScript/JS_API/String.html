@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.6c11756b.css" as="style"><link rel="preload" href="/assets/js/app.526f7ecd.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/81.6f237c54.js" as="script"><link rel="prefetch" href="/assets/js/10.88abc246.js"><link rel="prefetch" href="/assets/js/100.8996c602.js"><link rel="prefetch" href="/assets/js/101.37e0ddaf.js"><link rel="prefetch" href="/assets/js/102.25048208.js"><link rel="prefetch" href="/assets/js/103.e9a886dc.js"><link rel="prefetch" href="/assets/js/104.8d5a7ae8.js"><link rel="prefetch" href="/assets/js/105.459ba72f.js"><link rel="prefetch" href="/assets/js/106.1a3d477f.js"><link rel="prefetch" href="/assets/js/107.21bbbfa7.js"><link rel="prefetch" href="/assets/js/108.2ff8f3c0.js"><link rel="prefetch" href="/assets/js/109.8df196bc.js"><link rel="prefetch" href="/assets/js/11.5c9a3ba2.js"><link rel="prefetch" href="/assets/js/110.7295ebf0.js"><link rel="prefetch" href="/assets/js/111.680656e1.js"><link rel="prefetch" href="/assets/js/112.24d56b7f.js"><link rel="prefetch" href="/assets/js/113.1f35e468.js"><link rel="prefetch" href="/assets/js/114.802d5012.js"><link rel="prefetch" href="/assets/js/115.02565a65.js"><link rel="prefetch" href="/assets/js/116.61314df4.js"><link rel="prefetch" href="/assets/js/117.023ceceb.js"><link rel="prefetch" href="/assets/js/118.5e1dc010.js"><link rel="prefetch" href="/assets/js/119.c01a090d.js"><link rel="prefetch" href="/assets/js/12.e52d96a8.js"><link rel="prefetch" href="/assets/js/120.03141703.js"><link rel="prefetch" href="/assets/js/121.a4629320.js"><link rel="prefetch" href="/assets/js/122.fbe8ac5e.js"><link rel="prefetch" href="/assets/js/123.59fa139e.js"><link rel="prefetch" href="/assets/js/124.b91544a8.js"><link rel="prefetch" href="/assets/js/125.72c3a5b3.js"><link rel="prefetch" href="/assets/js/126.b75e6887.js"><link rel="prefetch" href="/assets/js/127.5300e8e8.js"><link rel="prefetch" href="/assets/js/128.f0433bac.js"><link rel="prefetch" href="/assets/js/129.d63223bf.js"><link rel="prefetch" href="/assets/js/13.5631668b.js"><link rel="prefetch" href="/assets/js/130.7a85150d.js"><link rel="prefetch" href="/assets/js/131.0cc92b12.js"><link rel="prefetch" href="/assets/js/132.690aeeec.js"><link rel="prefetch" href="/assets/js/133.7274395c.js"><link rel="prefetch" href="/assets/js/14.6c9b99fe.js"><link rel="prefetch" href="/assets/js/15.0cdcab4e.js"><link rel="prefetch" href="/assets/js/16.78288cdb.js"><link rel="prefetch" href="/assets/js/17.1393ad15.js"><link rel="prefetch" href="/assets/js/18.e4d67a48.js"><link rel="prefetch" href="/assets/js/19.e2c4bdd6.js"><link rel="prefetch" href="/assets/js/20.f08fc2f0.js"><link rel="prefetch" href="/assets/js/21.4e6f9fab.js"><link rel="prefetch" href="/assets/js/22.03d61c6c.js"><link rel="prefetch" href="/assets/js/23.27688e4e.js"><link rel="prefetch" href="/assets/js/24.d929e3a8.js"><link rel="prefetch" href="/assets/js/25.f39ec441.js"><link rel="prefetch" href="/assets/js/26.253b081e.js"><link rel="prefetch" href="/assets/js/27.78599ad8.js"><link rel="prefetch" href="/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/assets/js/29.56bec5bb.js"><link rel="prefetch" href="/assets/js/3.a4508226.js"><link rel="prefetch" href="/assets/js/30.5cd75afc.js"><link rel="prefetch" href="/assets/js/31.a64d2cbc.js"><link rel="prefetch" href="/assets/js/32.8c4e784d.js"><link rel="prefetch" href="/assets/js/33.702be4c3.js"><link rel="prefetch" href="/assets/js/34.efd4470d.js"><link rel="prefetch" href="/assets/js/35.d33773f7.js"><link rel="prefetch" href="/assets/js/36.1698b20b.js"><link rel="prefetch" href="/assets/js/37.94cd78a5.js"><link rel="prefetch" href="/assets/js/38.c8a9985d.js"><link rel="prefetch" href="/assets/js/39.1d4cd1f1.js"><link rel="prefetch" href="/assets/js/4.1f9a1a77.js"><link rel="prefetch" href="/assets/js/40.0fd88e42.js"><link rel="prefetch" href="/assets/js/41.f320c988.js"><link rel="prefetch" href="/assets/js/42.8cae3e7d.js"><link rel="prefetch" href="/assets/js/43.5f542d68.js"><link rel="prefetch" href="/assets/js/44.8291a5cd.js"><link rel="prefetch" href="/assets/js/45.27f839fc.js"><link rel="prefetch" href="/assets/js/46.8645dc52.js"><link rel="prefetch" href="/assets/js/47.73c6fbc7.js"><link rel="prefetch" href="/assets/js/48.a762edc8.js"><link rel="prefetch" href="/assets/js/49.fd1b40bf.js"><link rel="prefetch" href="/assets/js/5.14e4d3ce.js"><link rel="prefetch" href="/assets/js/50.683c1b46.js"><link rel="prefetch" href="/assets/js/51.b8344a7a.js"><link rel="prefetch" href="/assets/js/52.5701f745.js"><link rel="prefetch" href="/assets/js/53.d86ba093.js"><link rel="prefetch" href="/assets/js/54.0ea9163c.js"><link rel="prefetch" href="/assets/js/55.26e38c77.js"><link rel="prefetch" href="/assets/js/56.56563dc8.js"><link rel="prefetch" href="/assets/js/57.1f4b2ccd.js"><link rel="prefetch" href="/assets/js/58.10ab03fd.js"><link rel="prefetch" href="/assets/js/59.a71842dd.js"><link rel="prefetch" href="/assets/js/6.3756d4ad.js"><link rel="prefetch" href="/assets/js/60.0f6ef465.js"><link rel="prefetch" href="/assets/js/61.49ae834f.js"><link rel="prefetch" href="/assets/js/62.ed64b58a.js"><link rel="prefetch" href="/assets/js/63.1f134b6a.js"><link rel="prefetch" href="/assets/js/64.f606bdbd.js"><link rel="prefetch" href="/assets/js/65.f35a3efc.js"><link rel="prefetch" href="/assets/js/66.5f3a4429.js"><link rel="prefetch" href="/assets/js/67.df14079a.js"><link rel="prefetch" href="/assets/js/68.711bb3a9.js"><link rel="prefetch" href="/assets/js/69.d3188ee6.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.3774cc0d.js"><link rel="prefetch" href="/assets/js/71.1889b6b7.js"><link rel="prefetch" href="/assets/js/72.cfa7a2a2.js"><link rel="prefetch" href="/assets/js/73.fe3bc9dd.js"><link rel="prefetch" href="/assets/js/74.79573021.js"><link rel="prefetch" href="/assets/js/75.9148b261.js"><link rel="prefetch" href="/assets/js/76.4ba921ad.js"><link rel="prefetch" href="/assets/js/77.7fbd7a1f.js"><link rel="prefetch" href="/assets/js/78.58f79f48.js"><link rel="prefetch" href="/assets/js/79.9ae1a0c8.js"><link rel="prefetch" href="/assets/js/8.485ba203.js"><link rel="prefetch" href="/assets/js/80.3c9c6132.js"><link rel="prefetch" href="/assets/js/82.5d3d2159.js"><link rel="prefetch" href="/assets/js/83.1602ea1e.js"><link rel="prefetch" href="/assets/js/84.b5f6fe9e.js"><link rel="prefetch" href="/assets/js/85.747dbf99.js"><link rel="prefetch" href="/assets/js/86.1bba7bfe.js"><link rel="prefetch" href="/assets/js/87.0f3ba4ac.js"><link rel="prefetch" href="/assets/js/88.7518886a.js"><link rel="prefetch" href="/assets/js/89.2ec5b0a3.js"><link rel="prefetch" href="/assets/js/9.dbacb5fe.js"><link rel="prefetch" href="/assets/js/90.c5a7e624.js"><link rel="prefetch" href="/assets/js/91.0fc2fb61.js"><link rel="prefetch" href="/assets/js/92.2750f1ed.js"><link rel="prefetch" href="/assets/js/93.9e72c37f.js"><link rel="prefetch" href="/assets/js/94.31c1c0d1.js"><link rel="prefetch" href="/assets/js/95.d6a1d492.js"><link rel="prefetch" href="/assets/js/96.93ec2911.js"><link rel="prefetch" href="/assets/js/97.0c5f3be8.js"><link rel="prefetch" href="/assets/js/98.f1e193c0.js"><link rel="prefetch" href="/assets/js/99.29b3fb2f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6c11756b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link router-link-active">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link router-link-active">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>JS_API</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaScript/JS_API/" aria-current="page" class="sidebar-link">说明</a></li><li><a href="/JavaScript/JS_API/Array.html" class="sidebar-link">/JavaScript/JS_API/Array.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#静态属性" class="sidebar-link">静态属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#静态方法" class="sidebar-link">静态方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#array-from-arraylike-mapfn-thisarg" class="sidebar-link">Array.from(arrayLike, mapFn?, thisArg?)</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#array-isarray-value" class="sidebar-link">Array.isArray(value)</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#array-of-ele1-ele2-elen" class="sidebar-link">Array.of(ele1, ele2, ..., eleN)</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#实例属性" class="sidebar-link">实例属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#实例方法" class="sidebar-link">实例方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Array.html#改变原数组" class="sidebar-link">改变原数组</a></li></ul></li></ul></li><li><a href="/JavaScript/JS_API/Date.html" class="sidebar-link">/JavaScript/JS_API/Date.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Date.html#静态方法" class="sidebar-link">静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Date.html#实例方法" class="sidebar-link">实例方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Date.html#实例方法之-getters" class="sidebar-link">实例方法之 getters</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Date.html#实例方法之-setters" class="sidebar-link">实例方法之 setters</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Date.html#其他-2" class="sidebar-link">其他</a></li></ul></li></ul></li><li><a href="/JavaScript/JS_API/Date_examples.html" class="sidebar-link">new Date() 差异</a></li><li><a href="/JavaScript/JS_API/Math.html" class="sidebar-link">/JavaScript/JS_API/Math.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Math.html#_1-静态属性" class="sidebar-link">1. 静态属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Math.html#_2-实例属性" class="sidebar-link">2. 实例属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Math.html#_1-静态方法" class="sidebar-link">1. 静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Math.html#_2-实例方法" class="sidebar-link">2. 实例方法</a></li></ul></li><li><a href="/JavaScript/JS_API/Number.html" class="sidebar-link">Number</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#一、属性" class="sidebar-link">一、属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#_1-静态属性" class="sidebar-link">1. 静态属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#_2-实例属性" class="sidebar-link">2. 实例属性</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#二、方法" class="sidebar-link">二、方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#_1-静态方法" class="sidebar-link">1. 静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#_2-实例方法" class="sidebar-link">2. 实例方法</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Number.html#tofixed-问题" class="sidebar-link">toFixed 问题</a></li></ul></li><li><a href="/JavaScript/JS_API/Object.html" class="sidebar-link">/JavaScript/JS_API/Object.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Object.html#一、属性" class="sidebar-link">一、属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Object.html#_1-object-prototype" class="sidebar-link">1. Object.prototype</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Object.html#二、方法" class="sidebar-link">二、方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Object.html#_1-静态方法" class="sidebar-link">1. 静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/Object.html#_2-实例方法" class="sidebar-link">2. 实例方法</a></li></ul></li></ul></li><li><a href="/JavaScript/JS_API/RegExp.html" class="sidebar-link">/JavaScript/JS_API/RegExp.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#一、语法" class="sidebar-link">一、语法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#regexp-属性" class="sidebar-link">RegExp 属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#_1-静态属性" class="sidebar-link">1. 静态属性</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#_2-实例属性" class="sidebar-link">2. 实例属性</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#regexp-方法" class="sidebar-link">RegExp 方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#_1-静态方法" class="sidebar-link">1. 静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/RegExp.html#_2-实例方法" class="sidebar-link">2. 实例方法</a></li></ul></li></ul></li><li><a href="/JavaScript/JS_API/String.html" aria-current="page" class="active sidebar-link">/JavaScript/JS_API/String.html</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#一、属性" class="sidebar-link">一、属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#_1-string-prototype" class="sidebar-link">1.String.prototype</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#_2-实例属性" class="sidebar-link">2. 实例属性</a></li></ul></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#二、方法" class="sidebar-link">二、方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#_1-静态方法" class="sidebar-link">1. 静态方法</a></li><li class="sidebar-sub-header"><a href="/JavaScript/JS_API/String.html#_2-实例方法" class="sidebar-link">2. 实例方法</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p></p><div class="table-of-contents"><ul><li><a href="#一、属性">一、属性</a><ul><li><a href="#_1-string-prototype">1.String.prototype</a><ul><li><a href="#string-prototype-属性的属性特性">String.prototype 属性的属性特性</a></li><li><a href="#string-length">String.length</a></li></ul></li><li><a href="#_2-实例属性">2. 实例属性</a><ul><li><a href="#string-prototype-constructor">String.prototype.constructor</a></li><li><a href="#string-prototype-length">String.prototype.length</a></li><li><a href="#n">N</a></li></ul></li></ul></li><li><a href="#二、方法">二、方法</a><ul><li><a href="#_1-静态方法">1. 静态方法</a><ul><li><a href="#string-fromcharcode-num1-numn">String.fromCharCode(num1[, ...[, numN]])</a></li><li><a href="#string-fromcodepoint-num1-numn">String.fromCodePoint(num1[, ...[, numN]])</a></li><li><a href="#string-raw-callsite-substitutions-string-raw-templatestring">String.raw(callSite, ...substitutions) / String.raw `templateString`</a></li></ul></li><li><a href="#_2-实例方法">2. 实例方法</a></li></ul></li></ul></div><p></p> <h1 id="string"><a href="#string" class="header-anchor">#</a> String</h1> <h2 id="一、属性"><a href="#一、属性" class="header-anchor">#</a> 一、属性</h2> <h3 id="_1-string-prototype"><a href="#_1-string-prototype" class="header-anchor">#</a> 1.String.prototype</h3> <p>String的原型对象。</p> <h4 id="string-prototype-属性的属性特性"><a href="#string-prototype-属性的属性特性" class="header-anchor">#</a> String.prototype 属性的属性特性</h4> <ul><li>writable false</li> <li>enumerable false</li> <li>configurable false</li></ul> <h4 id="string-length"><a href="#string-length" class="header-anchor">#</a> String.length</h4> <h3 id="_2-实例属性"><a href="#_2-实例属性" class="header-anchor">#</a> 2. 实例属性</h3> <h4 id="string-prototype-constructor"><a href="#string-prototype-constructor" class="header-anchor">#</a> String.prototype.constructor</h4> <p>用于创造对象的原型对象的特定的函数。</p> <h4 id="string-prototype-length"><a href="#string-prototype-length" class="header-anchor">#</a> String.prototype.length</h4> <p>返回了字符串的长度。</p> <h4 id="n"><a href="#n" class="header-anchor">#</a> N</h4> <p>用于访问第N个位置的字符，其中N是小于 length 和 0之间的正整数。这些属性都是“只读”性质，不能编辑。</p> <h2 id="二、方法"><a href="#二、方法" class="header-anchor">#</a> 二、方法</h2> <h3 id="_1-静态方法"><a href="#_1-静态方法" class="header-anchor">#</a> 1. 静态方法</h3> <h4 id="string-fromcharcode-num1-numn"><a href="#string-fromcharcode-num1-numn" class="header-anchor">#</a> String.fromCharCode(num1[, ...[, numN]])</h4> <p>返回由指定的UTF-16代码单元序列创建的字符串。<br>
+一系列UTF-16代码单元的数字。 范围介于0到65535（0xFFFF）之间。 大于0xFFFF的数字将被截断。 不进行有效性检查。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">0x4e00</span><span class="token punctuation">,</span> <span class="token number">0x9fa5</span><span class="token punctuation">)</span> <span class="token comment">// '一龥' 中文范围</span>
+String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">19968</span><span class="token punctuation">,</span> <span class="token number">40869</span><span class="token punctuation">)</span> <span class="token comment">// '一龥' 中文范围</span>
+String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">65</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">67</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// returns &quot;ABC&quot;</span>
+String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">0x2014</span><span class="token punctuation">)</span>       <span class="token comment">// returns &quot;—&quot;</span>
+String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">0x12014</span><span class="token punctuation">)</span>      <span class="token comment">// also returns &quot;—&quot;; the digit 1 is truncated and ignored</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="string-fromcodepoint-num1-numn"><a href="#string-fromcodepoint-num1-numn" class="header-anchor">#</a> String.fromCodePoint(num1[, ...[, numN]])</h4> <p>返回使用指定的代码点序列创建的字符串。</p> <ul><li><code>String.fromCharCode()</code> 最大支持16位(65535/0xffff)的数字，而且ES中很早就开始支持，兼容性好。</li> <li><code>String.fromCodePoint()</code> 可以多达21位(2097151/0x1fffff)数字，是ES6新加入的方法，是为了能够处理所有合法的Unicode( in order to deal with ALL legal Unicode values )，因为String.fromCharCode()并不够用。</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCodePoint</span><span class="token punctuation">(</span><span class="token number">0x1D306</span><span class="token punctuation">,</span> <span class="token number">0x61</span><span class="token punctuation">,</span> <span class="token number">0x1D307</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//𝌆a𝌇</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span><span class="token number">0x1D306</span><span class="token punctuation">,</span> <span class="token number">0x61</span><span class="token punctuation">,</span> <span class="token number">0x1D307</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//팆a팇</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>可以看到两者能处理的最大位数是不一样的，String.fromCharCode()并不能正确处理，出现乱码。</p> <blockquote><p><code>fromCodePoint()</code> 兼容 <code>fromCharCode()</code>，只要是在es6环境就可直接用 <code>fromCodePoint</code></p></blockquote> <h4 id="string-raw-callsite-substitutions-string-raw-templatestring"><a href="#string-raw-callsite-substitutions-string-raw-templatestring" class="header-anchor">#</a> String.raw(callSite, ...substitutions) / String.raw `templateString`</h4> <p>用来获取一个模板字符串的原始字符串的，比如说，占位符（例如 ${foo}）会被处理为它所代表的其他字符串，而转义字符（例如 \n）不会。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 想要 \n 作为正常字符输出，而不是转译字符</span>
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">3</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span> <span class="token comment">// 'Hi↵5!'，不可以</span>
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">3</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span> <span class="token comment">// 'Hi\n5!' ,可以</span>
+String<span class="token punctuation">.</span>raw <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">3</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span> <span class="token comment">// 'Hi\n5!' ,可以</span>
+String<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  raw<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'Hi'</span><span class="token punctuation">,</span> <span class="token string">'5!'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'\\n'</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;Hi\n5!&quot; 相当于交替拼接 raw 中的元素和对象后的参数，以数组元素结尾，对象后多的参数(此处为 '?')舍弃</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="_2-实例方法"><a href="#_2-实例方法" class="header-anchor">#</a> 2. 实例方法</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">// 返回字符串中 下标i 对应的字符， 默认为 0,</span>
+<span class="token string">'hello'</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// 'e', 'hello'[1] 也可输出 'e'</span>
+<span class="token string">'hello'</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">// '', 'hello'[5] 则返回 undefined</span>
+
+<span class="token comment">// 在 Unicode 编码单元表示一个单一的 UTF-16 编码单元的情况下(0~65535)，正常返回。</span>
+<span class="token comment">// 在 Unicode 编码单元无法只用一个单一的 UTF-16 编码单元表示的情况下(&gt;65535)，此时为2个单元组成的代理对，只能返回代理对中的第一个单元。</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">// 返回字符串中 下标i 对应字符的Unicode，0~65535，i &gt; length 返回 NaN</span>
+
+<span class="token comment">// Surrogate Pair 是 UTF-16 中用于扩展字符而使用的编码方式，是一种采用四个字节(两个 UTF-16 编码)来表示一个字符，称作代理对。</span>
+<span class="token comment">// 如果在索引处开始没有 UTF-16 代理对，将直接返回在那个索引处的编码单元。</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">codePointAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">// 返回 一个 Unicode 编码点值的非负整数。i &gt; length 返回 NaN</span>
+<span class="token string">'\uD800\uDC00'</span><span class="token punctuation">.</span><span class="token function">codePointAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// 65536，正常返回代理对所代表的 Unicode</span>
+<span class="token string">'\uD800\uDC00'</span><span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// 55296， 第 1 个编码单元 \uD800 -&gt; 55296, 第 2 个编码单元 \uDC00 -&gt; 55296</span>
+
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>string2<span class="token punctuation">,</span> string3<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> stringN<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 字符串拼接，通常用 + += 代替</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span><span class="token punctuation">,</span> length<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 是否是以子字符串(str)“结尾”,大小写敏感, length默认为原字符串长度</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 是否包含 str 字符串，从下标 i 开始搜索，i 默认为 0, 大小写敏感</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 从下标 i 开始查找第一次出现 str 的下标，找不到返回 -1</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 从下标 i 往 下标 0 查找第一次出现 str 的下标，找不到返回 -1</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">localeCompare</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">padEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">padStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toLocaleLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">trimRight</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">trimLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>@@iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">anchor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">big</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">blink</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">bold</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">fixed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">fontcolor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">fontsize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">italics</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">link</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">quote</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">small</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">strike</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">sub</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">sup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 废弃</span>
+<span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 非标准</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/JavaScript/JS_API/String.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/JavaScript/JS_API/RegExp.html" class="prev">
+        /JavaScript/JS_API/RegExp.html
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.526f7ecd.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/81.6f237c54.js" defer></script>
+  </body>
+</html>
