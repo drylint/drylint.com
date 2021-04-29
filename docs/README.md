@@ -49,6 +49,7 @@
 ### React
 
 - [React 官方文档-中文](https://zh-hans.reactjs.org/docs/getting-started.html)
+- [React 学习之道-中文](https://leanpub.com/the-road-to-learn-react-chinese/read_full) [The Road to React](The Road to React)
 - [reactrouter-英文](https://reactrouter.com/web/guides/quick-start)
 - [react-typescript-cheatsheet -英文](https://react-typescript-cheatsheet.netlify.app/docs/basic/setup)
 
@@ -93,3 +94,7 @@
 [如何写一个开源的 JavaScript 库-英文](https://egghead.io/courses/how-to-write-an-open-source-javascript-library)
 
 [开始为 JavaScript 开源贡献力量-英文](https://app.egghead.io/articles/get-started-contributing-to-javascript-open-source)
+
+## 工具
+
+[pdf 转 Markdown](https://pdf2md.morethan.io/)
