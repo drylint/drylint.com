@@ -6,12 +6,14 @@
 - useEffect,
 - useRef,
 - useReducer,
-- useCallback,
+- useCallback, 每当依赖的数组改变时，就会创建一个 memoized 函数
 - useImperativeHandle,
 - useContext,
 - useDebugValue,
 - useLayoutEffect,
 - useMemo,
+
+`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)` ，主要区别是 `useMemo` 将调用 fn 函数并返回其结果，而 `React.useCallback` 将返回 fn 函数本身。
 
 ## `useState()` 数据管理
 
