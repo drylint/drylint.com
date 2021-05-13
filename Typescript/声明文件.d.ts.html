@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>声明文件 *.d.ts | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/drylint.com/assets/css/0.styles.23b89859.css" as="style"><link rel="preload" href="/drylint.com/assets/js/app.05b1f6be.js" as="script"><link rel="preload" href="/drylint.com/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/drylint.com/assets/js/110.862aa293.js" as="script"><link rel="prefetch" href="/drylint.com/assets/js/10.88abc246.js"><link rel="prefetch" href="/drylint.com/assets/js/100.efc91c35.js"><link rel="prefetch" href="/drylint.com/assets/js/101.3b5f4501.js"><link rel="prefetch" href="/drylint.com/assets/js/102.9f628049.js"><link rel="prefetch" href="/drylint.com/assets/js/103.2120b981.js"><link rel="prefetch" href="/drylint.com/assets/js/104.8d5a7ae8.js"><link rel="prefetch" href="/drylint.com/assets/js/105.e8f2fa5e.js"><link rel="prefetch" href="/drylint.com/assets/js/106.ad6f186a.js"><link rel="prefetch" href="/drylint.com/assets/js/107.b1c74075.js"><link rel="prefetch" href="/drylint.com/assets/js/108.37c51031.js"><link rel="prefetch" href="/drylint.com/assets/js/109.7a598358.js"><link rel="prefetch" href="/drylint.com/assets/js/11.88c688a0.js"><link rel="prefetch" href="/drylint.com/assets/js/111.393e202e.js"><link rel="prefetch" href="/drylint.com/assets/js/112.d63a4161.js"><link rel="prefetch" href="/drylint.com/assets/js/113.3af63e9a.js"><link rel="prefetch" href="/drylint.com/assets/js/114.6597c3e5.js"><link rel="prefetch" href="/drylint.com/assets/js/115.02565a65.js"><link rel="prefetch" href="/drylint.com/assets/js/116.6b92ffec.js"><link rel="prefetch" href="/drylint.com/assets/js/117.271d29d8.js"><link rel="prefetch" href="/drylint.com/assets/js/118.d4dd11df.js"><link rel="prefetch" href="/drylint.com/assets/js/119.1b6f9591.js"><link rel="prefetch" href="/drylint.com/assets/js/12.f40a49b3.js"><link rel="prefetch" href="/drylint.com/assets/js/120.03141703.js"><link rel="prefetch" href="/drylint.com/assets/js/121.a9c69952.js"><link rel="prefetch" href="/drylint.com/assets/js/122.8d97073b.js"><link rel="prefetch" href="/drylint.com/assets/js/123.b20cec43.js"><link rel="prefetch" href="/drylint.com/assets/js/124.108af5d2.js"><link rel="prefetch" href="/drylint.com/assets/js/125.dd2d24c7.js"><link rel="prefetch" href="/drylint.com/assets/js/126.4c6c7fde.js"><link rel="prefetch" href="/drylint.com/assets/js/127.3dd948f0.js"><link rel="prefetch" href="/drylint.com/assets/js/128.20deb34f.js"><link rel="prefetch" href="/drylint.com/assets/js/129.52d3ab9e.js"><link rel="prefetch" href="/drylint.com/assets/js/13.cdcc7323.js"><link rel="prefetch" href="/drylint.com/assets/js/130.268f8498.js"><link rel="prefetch" href="/drylint.com/assets/js/131.35b81e20.js"><link rel="prefetch" href="/drylint.com/assets/js/132.690aeeec.js"><link rel="prefetch" href="/drylint.com/assets/js/133.ca052462.js"><link rel="prefetch" href="/drylint.com/assets/js/14.0fb6b5fa.js"><link rel="prefetch" href="/drylint.com/assets/js/15.b7413dc2.js"><link rel="prefetch" href="/drylint.com/assets/js/16.3579547f.js"><link rel="prefetch" href="/drylint.com/assets/js/17.213079a5.js"><link rel="prefetch" href="/drylint.com/assets/js/18.e4d0fbc8.js"><link rel="prefetch" href="/drylint.com/assets/js/19.21933de0.js"><link rel="prefetch" href="/drylint.com/assets/js/20.c352719c.js"><link rel="prefetch" href="/drylint.com/assets/js/21.9461061f.js"><link rel="prefetch" href="/drylint.com/assets/js/22.3cdf1f9c.js"><link rel="prefetch" href="/drylint.com/assets/js/23.36b718c2.js"><link rel="prefetch" href="/drylint.com/assets/js/24.6c9cfa11.js"><link rel="prefetch" href="/drylint.com/assets/js/25.2b8494e9.js"><link rel="prefetch" href="/drylint.com/assets/js/26.253b081e.js"><link rel="prefetch" href="/drylint.com/assets/js/27.dc3c845b.js"><link rel="prefetch" href="/drylint.com/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/drylint.com/assets/js/29.b28d916b.js"><link rel="prefetch" href="/drylint.com/assets/js/3.cd561f9a.js"><link rel="prefetch" href="/drylint.com/assets/js/30.1c1ac125.js"><link rel="prefetch" href="/drylint.com/assets/js/31.c4ba9c76.js"><link rel="prefetch" href="/drylint.com/assets/js/32.597545c4.js"><link rel="prefetch" href="/drylint.com/assets/js/33.2d7cdb77.js"><link rel="prefetch" href="/drylint.com/assets/js/34.efd4470d.js"><link rel="prefetch" href="/drylint.com/assets/js/35.96b34ded.js"><link rel="prefetch" href="/drylint.com/assets/js/36.aad0da4f.js"><link rel="prefetch" href="/drylint.com/assets/js/37.e9c9c5a6.js"><link rel="prefetch" href="/drylint.com/assets/js/38.de2553af.js"><link rel="prefetch" href="/drylint.com/assets/js/39.5dba36a7.js"><link rel="prefetch" href="/drylint.com/assets/js/4.1f9a1a77.js"><link rel="prefetch" href="/drylint.com/assets/js/40.f2a52b23.js"><link rel="prefetch" href="/drylint.com/assets/js/41.77d2e604.js"><link rel="prefetch" href="/drylint.com/assets/js/42.8bf68675.js"><link rel="prefetch" href="/drylint.com/assets/js/43.5d463f74.js"><link rel="prefetch" href="/drylint.com/assets/js/44.cb85d861.js"><link rel="prefetch" href="/drylint.com/assets/js/45.099c220a.js"><link rel="prefetch" href="/drylint.com/assets/js/46.4ccd659f.js"><link rel="prefetch" href="/drylint.com/assets/js/47.41eec315.js"><link rel="prefetch" href="/drylint.com/assets/js/48.a762edc8.js"><link rel="prefetch" href="/drylint.com/assets/js/49.d343139c.js"><link rel="prefetch" href="/drylint.com/assets/js/5.14e4d3ce.js"><link rel="prefetch" href="/drylint.com/assets/js/50.8f6a7d05.js"><link rel="prefetch" href="/drylint.com/assets/js/51.ce8c723f.js"><link rel="prefetch" href="/drylint.com/assets/js/52.0a49c174.js"><link rel="prefetch" href="/drylint.com/assets/js/53.1698fac9.js"><link rel="prefetch" href="/drylint.com/assets/js/54.feba6f29.js"><link rel="prefetch" href="/drylint.com/assets/js/55.443d30a7.js"><link rel="prefetch" href="/drylint.com/assets/js/56.1694d97d.js"><link rel="prefetch" href="/drylint.com/assets/js/57.07acbf7c.js"><link rel="prefetch" href="/drylint.com/assets/js/58.ddb62804.js"><link rel="prefetch" href="/drylint.com/assets/js/59.94e15731.js"><link rel="prefetch" href="/drylint.com/assets/js/6.3756d4ad.js"><link rel="prefetch" href="/drylint.com/assets/js/60.f49e53d0.js"><link rel="prefetch" href="/drylint.com/assets/js/61.229c8284.js"><link rel="prefetch" href="/drylint.com/assets/js/62.8624352b.js"><link rel="prefetch" href="/drylint.com/assets/js/63.9c3f5605.js"><link rel="prefetch" href="/drylint.com/assets/js/64.9b7a4232.js"><link rel="prefetch" href="/drylint.com/assets/js/65.13d839d6.js"><link rel="prefetch" href="/drylint.com/assets/js/66.abc44631.js"><link rel="prefetch" href="/drylint.com/assets/js/67.a2e449a8.js"><link rel="prefetch" href="/drylint.com/assets/js/68.711bb3a9.js"><link rel="prefetch" href="/drylint.com/assets/js/69.844e2051.js"><link rel="prefetch" href="/drylint.com/assets/js/7.272c1b30.js"><link rel="prefetch" href="/drylint.com/assets/js/70.e5c006bd.js"><link rel="prefetch" href="/drylint.com/assets/js/71.644e77f7.js"><link rel="prefetch" href="/drylint.com/assets/js/72.2b98d760.js"><link rel="prefetch" href="/drylint.com/assets/js/73.ac3be90f.js"><link rel="prefetch" href="/drylint.com/assets/js/74.83de1aae.js"><link rel="prefetch" href="/drylint.com/assets/js/75.f8818fd6.js"><link rel="prefetch" href="/drylint.com/assets/js/76.a1f9e1c2.js"><link rel="prefetch" href="/drylint.com/assets/js/77.3c6112a0.js"><link rel="prefetch" href="/drylint.com/assets/js/78.a8065e45.js"><link rel="prefetch" href="/drylint.com/assets/js/79.883f64e4.js"><link rel="prefetch" href="/drylint.com/assets/js/8.e36afbc7.js"><link rel="prefetch" href="/drylint.com/assets/js/80.066ca147.js"><link rel="prefetch" href="/drylint.com/assets/js/81.f7737762.js"><link rel="prefetch" href="/drylint.com/assets/js/82.db965e09.js"><link rel="prefetch" href="/drylint.com/assets/js/83.1ce2c182.js"><link rel="prefetch" href="/drylint.com/assets/js/84.7201815d.js"><link rel="prefetch" href="/drylint.com/assets/js/85.a7b19e02.js"><link rel="prefetch" href="/drylint.com/assets/js/86.c0b7479c.js"><link rel="prefetch" href="/drylint.com/assets/js/87.268d79f8.js"><link rel="prefetch" href="/drylint.com/assets/js/88.f00855ae.js"><link rel="prefetch" href="/drylint.com/assets/js/89.cbd67fd8.js"><link rel="prefetch" href="/drylint.com/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/drylint.com/assets/js/90.4834e505.js"><link rel="prefetch" href="/drylint.com/assets/js/91.2487fb22.js"><link rel="prefetch" href="/drylint.com/assets/js/92.a8c7703f.js"><link rel="prefetch" href="/drylint.com/assets/js/93.8ecac2d4.js"><link rel="prefetch" href="/drylint.com/assets/js/94.3e5a5e90.js"><link rel="prefetch" href="/drylint.com/assets/js/95.98dcfcf5.js"><link rel="prefetch" href="/drylint.com/assets/js/96.b61ebdf9.js"><link rel="prefetch" href="/drylint.com/assets/js/97.378dbc4b.js"><link rel="prefetch" href="/drylint.com/assets/js/98.3b1fcc54.js"><link rel="prefetch" href="/drylint.com/assets/js/99.3a5dda55.js">
+    <link rel="stylesheet" href="/drylint.com/assets/css/0.styles.23b89859.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/drylint.com/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/drylint.com/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/drylint.com/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>声明文件 *.d.ts</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#语法列表" class="sidebar-link">语法列表</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#声明文件是什么" class="sidebar-link">声明文件是什么</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#声明文件的使用" class="sidebar-link">声明文件的使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#声明文件和源码放在一起" class="sidebar-link">声明文件和源码放在一起</a></li></ul></li><li><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#编写声明文件" class="sidebar-link">编写声明文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#声明全局变量" class="sidebar-link">声明全局变量</a></li><li class="sidebar-sub-header"><a href="/drylint.com/Typescript/%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6.d.ts.html#声明文件中的依赖" class="sidebar-link">声明文件中的依赖</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="声明文件-d-ts"><a href="#声明文件-d-ts" class="header-anchor">#</a> 声明文件 <code>*.d.ts</code></h1> <p></p><div class="table-of-contents"><ul><li><a href="#语法列表">语法列表</a></li><li><a href="#声明文件是什么">声明文件是什么</a></li><li><a href="#声明文件的使用">声明文件的使用</a><ul><li><a href="#声明文件和源码放在一起">声明文件和源码放在一起</a><ul><li><a href="#设置-package-json-的-types-或-typings-字段">设置 package.json 的 types 或 typings 字段</a></li></ul></li></ul></li><li><a href="#编写声明文件">编写声明文件</a><ul><li><a href="#声明全局变量">声明全局变量</a><ul><li><a href="#declare-var-let-const-声明全局变量或常量">declare var/let/const 声明全局变量或常量</a></li><li><a href="#declare-function-声明全局函数">declare function 声明全局函数</a></li><li><a href="#declare-class-声明全局-class-类">declare class 声明全局 class 类</a></li><li><a href="#declare-enum-声明全局枚举">declare enum 声明全局枚举</a></li><li><a href="#declare-namespace-声明全局对象">declare namespace 声明全局对象</a></li><li><a href="#interface-type-声明全局接口和类型别名">interface | type 声明全局接口和类型别名</a></li><li><a href="#防止命名冲突">防止命名冲突</a></li><li><a href="#声明合并">声明合并</a></li></ul></li><li><a href="#声明文件中的依赖">声明文件中的依赖</a><ul><li><a href="#import">import</a></li><li><a href="#三斜线指令-reference">三斜线指令（/// <reference></reference>）</a><ul><li><a href="#拆分声明文件">拆分声明文件</a></li></ul></li></ul></li></ul></li></ul></div><p></p> <h2 id="语法列表"><a href="#语法列表" class="header-anchor">#</a> 语法列表</h2> <ul><li><code>declare var/let/const</code>  声明全局变量/常量</li> <li><code>declare function</code> 声明全局函数</li> <li><code>declare class</code> 声明全局类</li> <li><code>declare enum</code> 声明全局枚举类型</li> <li><code>declare namespace</code> 声明全局对象</li> <li><code>interface</code> 声明全局接口</li> <li><code>type</code> 声明全局类型别名</li> <li><code>export</code> 导出变量</li> <li><code>export namespace</code> 导出（含有子属性的）对象</li> <li><code>export default</code> ES6 默认导出</li> <li><code>export =</code> commonjs 导出模块</li> <li><code>export as namespace</code> UMD 库声明全局变量</li> <li><code>declare global</code> 扩展全局变量</li> <li><code>declare module</code> 扩展模块</li> <li><code>/// &lt;reference /&gt;</code> 三斜线指令</li></ul> <h2 id="声明文件是什么"><a href="#声明文件是什么" class="header-anchor">#</a> 声明文件是什么</h2> <p>引入第三方库时，如果该库没有提供类型声明，TypeScript 则不知道该库是什么类型，有什么东西？</p> <ul><li>声明文件必需以 <code>.d.ts</code> 为后缀扩展名，比如： <code>jQuery.d.ts</code>。</li> <li>声明文件仅仅会用于编译时的检查，在编译结果中会被删除，完全消失。</li> <li>第三方库如果不是用 TypeScript 编写，则它的声明通常发布到由 DefinitelyTyped 统一管理的 <code>@types</code> 中。</li></ul> <p>安装第三方库声明文件：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> @types/jquery --save-dev
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>搜索第三方库声明文件： <code>https://www.typescriptlang.org/dt/search?search=</code></p> <p>当一个第三方库没有提供声明文件时，就需要自己书写声明文件了。</p> <h2 id="声明文件的使用"><a href="#声明文件的使用" class="header-anchor">#</a> 声明文件的使用</h2> <p>声明文件有两种使用方法：</p> <ul><li>将声明文件和源码放在一起</li> <li>将声明文件发布到 <code>@types</code> 下</li></ul> <h3 id="声明文件和源码放在一起"><a href="#声明文件和源码放在一起" class="header-anchor">#</a> 声明文件和源码放在一起</h3> <p>如果声明文件是通过 tsc 自动生成的，那么无需做任何其他配置，只需要把编译好的文件也发布到 npm 上，使用方就可以获取到类型提示了。</p> <p>如果是手动写的声明文件，那么需要满足以下任一一项条件，才能被正确的识别：</p> <ul><li>给 package.json 中的 <code>types</code> 或 <code>typings</code> 字段指定类型声明文件的路径。</li> <li>声明文件放在项目根目录下，命名为 <code>index.d.ts</code></li> <li>与入口文件（package.json 中的 main 字段指定的入口文件）一起，编写一个同名 <code>.d.ts</code> 文件</li></ul> <p>TypeScript 查找声明文件顺序：</p> <ul><li>先查找 package.json 的 <code>types</code> 或 <code>typings</code> 字段，如果没有</li> <li>再查找项目根目录下的 <code>index.d.ts</code> 文件，如果没有</li> <li>再查找入口文件的同名 <code>.d.ts</code> 文件，如果没有</li> <li>TypeScript 则认为没有提供声明文件。</li></ul> <h4 id="设置-package-json-的-types-或-typings-字段"><a href="#设置-package-json-的-types-或-typings-字段" class="header-anchor">#</a> 设置 package.json 的 <code>types</code> 或 <code>typings</code> 字段</h4> <p><code>typings</code> 与 <code>types</code> 一样，只是不同的两种写法，任选一个即可。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;foo&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;main&quot;</span><span class="token operator">:</span> <span class="token string">&quot;src/index.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;types&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@types/index.d.ts&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="编写声明文件"><a href="#编写声明文件" class="header-anchor">#</a> 编写声明文件</h2> <p>声明语句中只能定义类型，禁止在声明语句中定义具体的实现。</p> <p>在不同的场景下，声明文件的内容和使用方式会有所区别。</p> <p>库的使用场景主要有以下几种：</p> <ul><li>全局变量：通过 <code>&lt;script&gt;</code> 标签引入第三方库，注入全局变量</li> <li>npm 包：通过 <code>import foo from 'foo'</code> 导入，符合 ES6 模块规范</li> <li>UMD 库：既可以通过 <code>&lt;script&gt;</code> 标签引入，又可以通过 import 导入</li> <li>直接扩展全局变量：通过 <code>&lt;script&gt;</code> 标签引入后，改变一个全局变量的结构</li> <li>在 npm 包或 UMD 库中扩展全局变量：引用 npm 包或 UMD 库后，改变一个全局变量的结构</li> <li>模块插件：通过 <code>&lt;script&gt;</code> 或 import 导入后，改变另一个模块的结构</li></ul> <h3 id="声明全局变量"><a href="#声明全局变量" class="header-anchor">#</a> 声明全局变量</h3> <p>场景：假如使用 <code>&lt;script&gt;</code> 引入了一个库，这个库会暴露一个全局变量出来，在项目应用代码中就需要直接使用这个变量，但是 TypeScript 不知道这是一个全局变量，根本不知道它是否存在，也不知道它是什么东西，直接使用它就会报错。这时候就需要我们声明一个全局变量来告诉 TypeScript 这是一个在全局存在的变量，它是什么类型。</p> <p>声明全局变量时，应确保在运行时会有这个全局变量存在，否则项目中使用了此全局变量，编译阶段因为有声明全局变量而不会报错，但运行时没有此变量存在时，会报错导致程序停止运行。</p> <p>可以使用的全局声明语法：</p> <ul><li><code>declare var/let/const</code>  声明全局变量/常量</li> <li><code>declare function</code> 声明全局函数</li> <li><code>declare class</code> 声明全局类</li> <li><code>declare enum</code> 声明全局枚举类型</li> <li><code>declare namespace</code> 声明全局对象</li> <li><code>interface</code> 声明全局接口</li> <li><code>type</code> 声明全局类型别名</li></ul> <h4 id="declare-var-let-const-声明全局变量或常量"><a href="#declare-var-let-const-声明全局变量或常量" class="header-anchor">#</a> <code>declare var/let/const</code> 声明全局变量或常量</h4> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">var</span> a<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token keyword">declare</span> <span class="token keyword">let</span> b<span class="token operator">:</span> <span class="token builtin">boolean</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> c<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> <span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">string</span>
+<span class="token comment">// 在声明文件中定义具体的实现会报错</span>
+<span class="token comment">// 编译报错 Initializers are not allowed in ambient contexts.</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> d<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>不同于应用中的代码，使用 <code>declare var</code> 和 <code>declare let</code> 在声明文件中没有区别，都是声明一个全局变量。</p> <p>使用 <code>declare const</code> 则表示声明一个全局常量，不可被更改。</p> <p>一般来说，全局变量都是禁止修改的常量，所以大部分情况都应该使用 <code>const</code> 而不是 <code>var</code> 或 <code>let</code>。</p> <h4 id="declare-function-声明全局函数"><a href="#declare-function-声明全局函数" class="header-anchor">#</a> <code>declare function</code> 声明全局函数</h4> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+<span class="token comment">// 函数重载</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>和应用代码一样，可以用函数声明或者函数表达式：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 函数声明</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+
+<span class="token comment">// 函数表达式</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> <span class="token function-variable function">fn</span><span class="token operator">:</span> <span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">string</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="declare-class-声明全局-class-类"><a href="#declare-class-声明全局-class-类" class="header-anchor">#</a> <code>declare class</code> 声明全局 class 类</h4> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+  <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>错误示范：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 错误示范</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token comment">// 编译报错：此处 public 实际还包含一种具体的实现（赋值），声明中禁止实现</span>
+  <span class="token comment">// A parameter property is only allowed in a constructor implementation.</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token keyword">public</span> name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+  <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="declare-enum-声明全局枚举"><a href="#declare-enum-声明全局枚举" class="header-anchor">#</a> <code>declare enum</code> 声明全局枚举</h4> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">enum</span> Directions <span class="token punctuation">{</span>
+  Up<span class="token punctuation">,</span>
+  Down<span class="token punctuation">,</span>
+  Left<span class="token punctuation">,</span>
+  Right
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="declare-namespace-声明全局对象"><a href="#declare-namespace-声明全局对象" class="header-anchor">#</a> <code>declare namespace</code> 声明全局对象</h4> <p><code>namespace</code> 是 ts 早期时为了解决应用代码中的模块化而创造的关键字，中文称为命名空间。</p> <p>由于历史遗留原因，在早期还没有 ES6 的时候，ts 提供了一种模块化方案，使用 <code>module</code> 关键字表示内部模块。但由于后来 ES6 也使用了 <code>module</code> 关键字，ts 为了兼容 ES6，使用 <code>namespace</code> 替代了自己的 <code>module</code>，更名为命名空间。</p> <p>随着 ES6 的广泛应用，现在已经不建议再在普通应用代码中使用 ts 中的 <code>namespace</code>，而推荐使用 ES6 的模块化方案了，故我们不再需要学习 namespace 在应用代码中的使用了。</p> <p>但是，在声明文件中，<code>declare namespace</code> 还是比较常用的，它用来表示全局变量是一个对象，包含很多子属性。</p> <p><code>declare namespace</code> 语句内部，不需要再使用 <code>declare</code> 来声明属性或方法，而是直接声明，可以在其中使用所有的声明方式，包括嵌套 <code>namespace</code> 来表示更深的对象：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">const</span> age<span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token keyword">function</span> <span class="token function">intro</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">namespace</span> son <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+    <span class="token keyword">function</span> <span class="token function">intro</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>以上代码表示，在全局有一个对象名字要做 <code>person</code>，对象中有 <code>string</code> 类型的 <code>name</code> 属性和 <code>number</code> 类型的 <code>age</code> 属性，还有一个方法 <code>intro</code>，不接受参数，运行后返回一个字符串。</p> <p>以上代码中的子对象也可以不使用嵌套声明：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">const</span> age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person<span class="token punctuation">.</span>son <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">function</span> <span class="token function">intro</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>错误示范：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 错误示范</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+  <span class="token comment">// 编译报错：此处，已经处于一个 declare 环境上下文中，不应再使用 declare</span>
+  <span class="token comment">// A 'declare' modifier cannot be used in an already ambient context.</span>
+  <span class="token keyword">declare</span> <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="interface-type-声明全局接口和类型别名"><a href="#interface-type-声明全局接口和类型别名" class="header-anchor">#</a> <code>interface | type</code> 声明全局接口和类型别名</h4> <p>除了可以暴露声明的全局变量，还可以暴露声明的接口(interface)和类型(type)到全局中。</p> <p>在类型声明文件中，可以直接使用 <code>interface</code> 或 <code>type</code> 来声明一个全局的接口或类型，将它暴露到全局去使用。</p> <p><code>type</code> 使用方式和 <code>interface</code> 一样，以下以 <code>interface</code> 举例：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">student</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  intro<span class="token operator">?</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">const</span> tom<span class="token operator">:</span> student
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上面这个声明文件中，声明了一个 <code>interface</code> 给全局变量 <code>tom</code> 使用，同时 <code>student</code> 接口会暴露到全局中去，全局任何地方都可以使用它。</p> <p>在某个应用代码文件中使用这个接口：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// xxx.ts</span>
+
+<span class="token keyword">const</span> jerry<span class="token operator">:</span> student <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'tom'</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="防止命名冲突"><a href="#防止命名冲突" class="header-anchor">#</a> 防止命名冲突</h4> <p>像之前那个声明文件中那样直接暴露 <code>interface</code> 或 <code>type</code> 到全局中，一旦项目变大一点，很容易产生命名冲突的问题。</p> <p>应该尽可能的减少全局变量或全局类型的数量。故最好将他们放到 <code>namespace</code> 下</p> <p>声明文件：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token comment">// 声明一个全局命名空间</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+
+  <span class="token comment">// 接口放在命名空间下</span>
+  <span class="token keyword">interface</span> <span class="token class-name">student</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+    intro<span class="token operator">?</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 在命名空间下使用接口</span>
+  <span class="token keyword">const</span> jerry<span class="token operator">:</span> student
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 在命名空间外部使用命名空间内的接口</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> tom<span class="token operator">:</span> person<span class="token punctuation">.</span>student
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>在应用代码中复用：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// xxx.ts</span>
+
+<span class="token comment">// 在应用代码中使用时，则需要从命名空间下去取这个接口</span>
+<span class="token keyword">const</span> bob<span class="token operator">:</span> person<span class="token punctuation">.</span>student <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'bob'</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="声明合并"><a href="#声明合并" class="header-anchor">#</a> 声明合并</h4> <p>比如一个变量既是函数，又是一个对象，则可以多次声明，它们会被自动合并。</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>之前讲到的函数重载其实就是一种声明合并：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 函数重载，这也是一种声明合并</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>函数，命名空间，类，接口可以同时出现相同的名字：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code>
+<span class="token comment">// 声明一个叫做 person 的 函数</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+<span class="token comment">// 声明一个叫做 person 的 命名空间</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 声明一个叫做 person 的 类</span>
+<span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 声明一个叫做 person 的 接口</span>
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p><code>class</code> 和 <code>interface</code> 被合并后，<code>class</code> 创建的实例就是 <code>interface</code> 的类型。</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// index.ts</span>
+<span class="token keyword">const</span> tom<span class="token operator">:</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">person</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><code>function</code>, <code>interface</code>, <code>namespace</code> 重复声明一个变量，都可以被合并，但同时声明两个同名 class 不会被合并，会报错：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 重复声明 interface ，会被合并</span>
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 重复声明 namespace ，会被合并</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person1 <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> person1 <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 报错：Duplicate identifier 'person2'.</span>
+<span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">person2</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">person2</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>合并的同名属性类型必须是保持一致，否则会报错：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code>
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">declare</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 编译报错：要合并的属性类型不一致</span>
+  <span class="token comment">// Subsequent property declarations must have the same type.</span>
+  <span class="token comment">// Property 'name' must be of type 'string', but here has type 'number'.</span>
+  name<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>声明合并还可以扩展已存在的类型：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token comment">// 扩展 String 类型，在应用代码中访问时 TypeScript 才不会在编译阶段报错。</span>
+<span class="token keyword">interface</span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+  <span class="token function">myFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// indes.ts</span>
+
+<span class="token string">'hello'</span><span class="token punctuation">.</span><span class="token function">myFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>注意：声明文件中只是告诉 TypeScript 在 String 类的原型上还有一个 <code>myFunc</code> 方法，但实际上还需要自己或是第三方库去添加一个真正可被调用的方法到 <code>String</code> 的原型上，否则在运行时会因为没有这个方法而报错。</p> <h3 id="声明文件中的依赖"><a href="#声明文件中的依赖" class="header-anchor">#</a> 声明文件中的依赖</h3> <p>一个声明文件有时会依赖另一个声明文件中的类型，所以需要引入另一个文件。</p> <p>在声明文件中引入其它声明文件有两种方式：</p> <ul><li><code>import</code> 通过 <code>import</code> 语法引入</li> <li><code>/// &lt;reference /&gt;</code> 通过三斜线指令引入</li></ul> <h4 id="import"><a href="#import" class="header-anchor">#</a> import</h4> <p><code>import</code> 用于在模块声明文件中引入另一个模块声明文件：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// moduleA.d.ts</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">aFunc</span> <span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// moduleB.d.ts</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> person <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./a'</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">bFunc</span><span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>注意，引用和被引用的都应该是 <strong>模块</strong> 声明文件，<code>import</code> 方式无法用于全局声明文件之中，无论是引用还是被引用。</p> <p>因为在全局声明文件中不能出现 <code>import</code>,<code>export</code> 等关键字，一旦出现，这个文件就会被视为模块，而不再是全局声明。</p> <p>所以上面的 <code>moduleA.d.ts</code> 和 <code>moduleB.d.ts</code> 都会被视为模块声明文件，这两个文件中声明的变量都无法在全局直接访问：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.ts</span>
+
+<span class="token function">aFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 编译报错：Cannot find name 'aFunc'.</span>
+<span class="token function">bFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 编译报错：Cannot find name 'bFunc'.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>如果要在一个全局声明文件中引用另一个声明文件，则需要用到三斜线指令（<code>/// &lt;reference /&gt;</code>）：</p> <h4 id="三斜线指令-reference"><a href="#三斜线指令-reference" class="header-anchor">#</a> 三斜线指令（/// <code>&lt;reference /&gt;</code>）</h4> <p>三斜线指令必须放在文件的最顶端，前面只允许出现注释。</p> <p><code>&lt;reference /&gt;</code> 支持两种引入属性：<code>types</code> 和 <code>path</code></p> <ul><li><code>types</code> 引入一个类型库，比如依赖 <code>@types/foo</code> 时： <code>&lt;reference types=&quot;foo&quot;/&gt;</code></li> <li><code>path</code> 引入一个文件，比如： <code>&lt;reference path=&quot;./moduleA.d.ts&quot;/&gt;</code></li></ul> <p>当且仅当在书写一个全局变量的声明文件，且需要依赖一个全局变量的声明文件或库时，才需要用到 <code>&lt;reference /&gt;</code> 来替代 <code>import</code>，其它情况使用 <code>import</code> 即可。</p> <p>错误用法：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// moduleA.d.ts</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">person2</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">aFunc</span> <span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token comment">/// &lt;reference path=&quot;./moduleA.d.ts&quot; /&gt;</span>
+
+<span class="token comment">// 编译报错，访问不了模块声明中的 person</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">indexFunc</span> <span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token comment">// 编译报错，访问不了模块声明中的 person2</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> indexFunc2<span class="token operator">:</span> person2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>上例的 <code>moduleA.d.ts</code> 中使用了 <code>export</code> 关键字，所以 <code>moduleA.d.ts</code>被视为了一个模块声明文件，所以在 <code>index.d.ts</code> 中通过 <code>&lt;reference /&gt;</code> 引用 <code>moduleA.d.ts</code> 无法访问其中的任何一条声明，不管这条声明有没有使用 <code>export</code>。</p> <p>正确用法：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// moduleB.d.ts</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">bFunc</span> <span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">/// &lt;reference path=&quot;./moduleB.d.ts&quot; /&gt;</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">indexFunc</span> <span class="token punctuation">(</span>person<span class="token operator">:</span> person<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>总结：</p> <ul><li><p>使用 <code>export</code> 导出的文件只能使用 <code>import</code> 引入，无法通过 <code>&lt;reference /&gt;</code> 引入。</p></li> <li><p>普通全局声明文件只能使用 <code>&lt;reference /&gt;</code> 引入，无法通过 <code>import</code> 引入。</p></li></ul> <h5 id="拆分声明文件"><a href="#拆分声明文件" class="header-anchor">#</a> 拆分声明文件</h5> <p>当全局变量的声明文件太大时，可以通过拆分为多个文件，然后在一个入口文件中将它们一一引入，来提高代码的可维护性。</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// index.d.ts</span>
+
+<span class="token comment">/// &lt;reference path=&quot;moduleA.d.ts&quot; /&gt;</span>
+<span class="token comment">/// &lt;reference path=&quot;moduleB.d.ts&quot; /&gt;</span>
+<span class="token comment">/// &lt;reference path=&quot;moduleC.d.ts&quot; /&gt;</span>
+<span class="token comment">/// &lt;reference path=&quot;moduleD.d.ts&quot; /&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/Typescript/声明文件.d.ts.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/drylint.com/assets/js/app.05b1f6be.js" defer></script><script src="/drylint.com/assets/js/2.fbdcd9f4.js" defer></script><script src="/drylint.com/assets/js/110.862aa293.js" defer></script>
+  </body>
+</html>
