@@ -77,7 +77,7 @@ git subtree pull  --prefix=utils utils master --squash
 ```bash
 # 将主仓库中对子仓库的修改内容推送到子仓库 utils 中
 # git subtree push --prefix=<子仓库目录路径> <子仓库地址/别名> <子仓库分支> --squash
-git subtree push  --prefix=utils utils master --squash
+git subtree push --prefix=utils utils master --squash
 ```
 
 至此，将两个毫不相关的仓库作为父子仓库的操作已经完成。

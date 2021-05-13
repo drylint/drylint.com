@@ -9,3 +9,8 @@
 git remote set-url --add origin https://e.coding.net/drylint/vuepress-template/vuepress-template.git
 git remote set-url --add origin https://gitee.com/drylint/vuepress-template.git
 ```
+
+```bash
+git subtree add --prefix=pages origin gh-pages --squash
+git subtree push --prefix=pages origin gh-pages --squash
+```
