@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>markdownlint | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/drylint.com/assets/css/0.styles.23b89859.css" as="style"><link rel="preload" href="/drylint.com/assets/js/app.05b1f6be.js" as="script"><link rel="preload" href="/drylint.com/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/drylint.com/assets/js/129.52d3ab9e.js" as="script"><link rel="prefetch" href="/drylint.com/assets/js/10.88abc246.js"><link rel="prefetch" href="/drylint.com/assets/js/100.efc91c35.js"><link rel="prefetch" href="/drylint.com/assets/js/101.3b5f4501.js"><link rel="prefetch" href="/drylint.com/assets/js/102.9f628049.js"><link rel="prefetch" href="/drylint.com/assets/js/103.2120b981.js"><link rel="prefetch" href="/drylint.com/assets/js/104.8d5a7ae8.js"><link rel="prefetch" href="/drylint.com/assets/js/105.e8f2fa5e.js"><link rel="prefetch" href="/drylint.com/assets/js/106.ad6f186a.js"><link rel="prefetch" href="/drylint.com/assets/js/107.b1c74075.js"><link rel="prefetch" href="/drylint.com/assets/js/108.37c51031.js"><link rel="prefetch" href="/drylint.com/assets/js/109.7a598358.js"><link rel="prefetch" href="/drylint.com/assets/js/11.88c688a0.js"><link rel="prefetch" href="/drylint.com/assets/js/110.862aa293.js"><link rel="prefetch" href="/drylint.com/assets/js/111.393e202e.js"><link rel="prefetch" href="/drylint.com/assets/js/112.d63a4161.js"><link rel="prefetch" href="/drylint.com/assets/js/113.3af63e9a.js"><link rel="prefetch" href="/drylint.com/assets/js/114.6597c3e5.js"><link rel="prefetch" href="/drylint.com/assets/js/115.02565a65.js"><link rel="prefetch" href="/drylint.com/assets/js/116.6b92ffec.js"><link rel="prefetch" href="/drylint.com/assets/js/117.271d29d8.js"><link rel="prefetch" href="/drylint.com/assets/js/118.d4dd11df.js"><link rel="prefetch" href="/drylint.com/assets/js/119.1b6f9591.js"><link rel="prefetch" href="/drylint.com/assets/js/12.f40a49b3.js"><link rel="prefetch" href="/drylint.com/assets/js/120.03141703.js"><link rel="prefetch" href="/drylint.com/assets/js/121.a9c69952.js"><link rel="prefetch" href="/drylint.com/assets/js/122.8d97073b.js"><link rel="prefetch" href="/drylint.com/assets/js/123.b20cec43.js"><link rel="prefetch" href="/drylint.com/assets/js/124.108af5d2.js"><link rel="prefetch" href="/drylint.com/assets/js/125.dd2d24c7.js"><link rel="prefetch" href="/drylint.com/assets/js/126.4c6c7fde.js"><link rel="prefetch" href="/drylint.com/assets/js/127.3dd948f0.js"><link rel="prefetch" href="/drylint.com/assets/js/128.20deb34f.js"><link rel="prefetch" href="/drylint.com/assets/js/13.cdcc7323.js"><link rel="prefetch" href="/drylint.com/assets/js/130.268f8498.js"><link rel="prefetch" href="/drylint.com/assets/js/131.35b81e20.js"><link rel="prefetch" href="/drylint.com/assets/js/132.690aeeec.js"><link rel="prefetch" href="/drylint.com/assets/js/133.ca052462.js"><link rel="prefetch" href="/drylint.com/assets/js/14.0fb6b5fa.js"><link rel="prefetch" href="/drylint.com/assets/js/15.b7413dc2.js"><link rel="prefetch" href="/drylint.com/assets/js/16.3579547f.js"><link rel="prefetch" href="/drylint.com/assets/js/17.213079a5.js"><link rel="prefetch" href="/drylint.com/assets/js/18.e4d0fbc8.js"><link rel="prefetch" href="/drylint.com/assets/js/19.21933de0.js"><link rel="prefetch" href="/drylint.com/assets/js/20.c352719c.js"><link rel="prefetch" href="/drylint.com/assets/js/21.9461061f.js"><link rel="prefetch" href="/drylint.com/assets/js/22.3cdf1f9c.js"><link rel="prefetch" href="/drylint.com/assets/js/23.36b718c2.js"><link rel="prefetch" href="/drylint.com/assets/js/24.6c9cfa11.js"><link rel="prefetch" href="/drylint.com/assets/js/25.2b8494e9.js"><link rel="prefetch" href="/drylint.com/assets/js/26.253b081e.js"><link rel="prefetch" href="/drylint.com/assets/js/27.dc3c845b.js"><link rel="prefetch" href="/drylint.com/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/drylint.com/assets/js/29.b28d916b.js"><link rel="prefetch" href="/drylint.com/assets/js/3.cd561f9a.js"><link rel="prefetch" href="/drylint.com/assets/js/30.1c1ac125.js"><link rel="prefetch" href="/drylint.com/assets/js/31.c4ba9c76.js"><link rel="prefetch" href="/drylint.com/assets/js/32.597545c4.js"><link rel="prefetch" href="/drylint.com/assets/js/33.2d7cdb77.js"><link rel="prefetch" href="/drylint.com/assets/js/34.efd4470d.js"><link rel="prefetch" href="/drylint.com/assets/js/35.96b34ded.js"><link rel="prefetch" href="/drylint.com/assets/js/36.aad0da4f.js"><link rel="prefetch" href="/drylint.com/assets/js/37.e9c9c5a6.js"><link rel="prefetch" href="/drylint.com/assets/js/38.de2553af.js"><link rel="prefetch" href="/drylint.com/assets/js/39.5dba36a7.js"><link rel="prefetch" href="/drylint.com/assets/js/4.1f9a1a77.js"><link rel="prefetch" href="/drylint.com/assets/js/40.f2a52b23.js"><link rel="prefetch" href="/drylint.com/assets/js/41.77d2e604.js"><link rel="prefetch" href="/drylint.com/assets/js/42.8bf68675.js"><link rel="prefetch" href="/drylint.com/assets/js/43.5d463f74.js"><link rel="prefetch" href="/drylint.com/assets/js/44.cb85d861.js"><link rel="prefetch" href="/drylint.com/assets/js/45.099c220a.js"><link rel="prefetch" href="/drylint.com/assets/js/46.4ccd659f.js"><link rel="prefetch" href="/drylint.com/assets/js/47.41eec315.js"><link rel="prefetch" href="/drylint.com/assets/js/48.a762edc8.js"><link rel="prefetch" href="/drylint.com/assets/js/49.d343139c.js"><link rel="prefetch" href="/drylint.com/assets/js/5.14e4d3ce.js"><link rel="prefetch" href="/drylint.com/assets/js/50.8f6a7d05.js"><link rel="prefetch" href="/drylint.com/assets/js/51.ce8c723f.js"><link rel="prefetch" href="/drylint.com/assets/js/52.0a49c174.js"><link rel="prefetch" href="/drylint.com/assets/js/53.1698fac9.js"><link rel="prefetch" href="/drylint.com/assets/js/54.feba6f29.js"><link rel="prefetch" href="/drylint.com/assets/js/55.443d30a7.js"><link rel="prefetch" href="/drylint.com/assets/js/56.1694d97d.js"><link rel="prefetch" href="/drylint.com/assets/js/57.07acbf7c.js"><link rel="prefetch" href="/drylint.com/assets/js/58.ddb62804.js"><link rel="prefetch" href="/drylint.com/assets/js/59.94e15731.js"><link rel="prefetch" href="/drylint.com/assets/js/6.3756d4ad.js"><link rel="prefetch" href="/drylint.com/assets/js/60.f49e53d0.js"><link rel="prefetch" href="/drylint.com/assets/js/61.229c8284.js"><link rel="prefetch" href="/drylint.com/assets/js/62.8624352b.js"><link rel="prefetch" href="/drylint.com/assets/js/63.9c3f5605.js"><link rel="prefetch" href="/drylint.com/assets/js/64.9b7a4232.js"><link rel="prefetch" href="/drylint.com/assets/js/65.13d839d6.js"><link rel="prefetch" href="/drylint.com/assets/js/66.abc44631.js"><link rel="prefetch" href="/drylint.com/assets/js/67.a2e449a8.js"><link rel="prefetch" href="/drylint.com/assets/js/68.711bb3a9.js"><link rel="prefetch" href="/drylint.com/assets/js/69.844e2051.js"><link rel="prefetch" href="/drylint.com/assets/js/7.272c1b30.js"><link rel="prefetch" href="/drylint.com/assets/js/70.e5c006bd.js"><link rel="prefetch" href="/drylint.com/assets/js/71.644e77f7.js"><link rel="prefetch" href="/drylint.com/assets/js/72.2b98d760.js"><link rel="prefetch" href="/drylint.com/assets/js/73.ac3be90f.js"><link rel="prefetch" href="/drylint.com/assets/js/74.83de1aae.js"><link rel="prefetch" href="/drylint.com/assets/js/75.f8818fd6.js"><link rel="prefetch" href="/drylint.com/assets/js/76.a1f9e1c2.js"><link rel="prefetch" href="/drylint.com/assets/js/77.3c6112a0.js"><link rel="prefetch" href="/drylint.com/assets/js/78.a8065e45.js"><link rel="prefetch" href="/drylint.com/assets/js/79.883f64e4.js"><link rel="prefetch" href="/drylint.com/assets/js/8.e36afbc7.js"><link rel="prefetch" href="/drylint.com/assets/js/80.066ca147.js"><link rel="prefetch" href="/drylint.com/assets/js/81.f7737762.js"><link rel="prefetch" href="/drylint.com/assets/js/82.db965e09.js"><link rel="prefetch" href="/drylint.com/assets/js/83.1ce2c182.js"><link rel="prefetch" href="/drylint.com/assets/js/84.7201815d.js"><link rel="prefetch" href="/drylint.com/assets/js/85.a7b19e02.js"><link rel="prefetch" href="/drylint.com/assets/js/86.c0b7479c.js"><link rel="prefetch" href="/drylint.com/assets/js/87.268d79f8.js"><link rel="prefetch" href="/drylint.com/assets/js/88.f00855ae.js"><link rel="prefetch" href="/drylint.com/assets/js/89.cbd67fd8.js"><link rel="prefetch" href="/drylint.com/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/drylint.com/assets/js/90.4834e505.js"><link rel="prefetch" href="/drylint.com/assets/js/91.2487fb22.js"><link rel="prefetch" href="/drylint.com/assets/js/92.a8c7703f.js"><link rel="prefetch" href="/drylint.com/assets/js/93.8ecac2d4.js"><link rel="prefetch" href="/drylint.com/assets/js/94.3e5a5e90.js"><link rel="prefetch" href="/drylint.com/assets/js/95.98dcfcf5.js"><link rel="prefetch" href="/drylint.com/assets/js/96.b61ebdf9.js"><link rel="prefetch" href="/drylint.com/assets/js/97.378dbc4b.js"><link rel="prefetch" href="/drylint.com/assets/js/98.3b1fcc54.js"><link rel="prefetch" href="/drylint.com/assets/js/99.3a5dda55.js">
+    <link rel="stylesheet" href="/drylint.com/assets/css/0.styles.23b89859.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/drylint.com/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/drylint.com/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/drylint.com/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/drylint.com/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/drylint.com/其他/markdown/" class="nav-link">
+  markdown
+</a></li></ul></div></div><div class="nav-item"><a href="/drylint.com/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/drylint.com/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>markdown</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/" aria-current="page" class="sidebar-link">Markdown 全部语法手册</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#文章段落标题" class="sidebar-link">文章段落标题</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#文章目录-table-of-contents" class="sidebar-link">文章目录（Table Of Contents）</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#段落" class="sidebar-link">段落</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#无序列表" class="sidebar-link">无序列表</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#有序列表" class="sidebar-link">有序列表</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#超链接" class="sidebar-link">超链接</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#直接将地址作为链接文本" class="sidebar-link">直接将地址作为链接文本</a></li></ul></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#引用" class="sidebar-link">引用</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#代码" class="sidebar-link">代码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#行内代码" class="sidebar-link">行内代码</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#代码块" class="sidebar-link">代码块</a></li></ul></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#图片" class="sidebar-link">图片</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#表格" class="sidebar-link">表格</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#脚注" class="sidebar-link">脚注</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#待办任务列表" class="sidebar-link">待办任务列表</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#水平线" class="sidebar-link">水平线</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#删除线" class="sidebar-link">删除线</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#加粗" class="sidebar-link">加粗</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#斜体" class="sidebar-link">斜体</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#粗体-斜体" class="sidebar-link">粗体 + 斜体</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#转义字符" class="sidebar-link">转义字符</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#上标" class="sidebar-link">上标</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#下标" class="sidebar-link">下标</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#公式" class="sidebar-link">公式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#行内公式" class="sidebar-link">行内公式</a></li><li class="sidebar-sub-header"><a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/#块级公式" class="sidebar-link">块级公式</a></li></ul></li></ul></li><li><a href="/drylint.com/其他/markdown/markdownlint.html" class="active sidebar-link">markdownlint</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/drylint.com/其他/markdown/markdownlint.html#配置文件" class="sidebar-link">配置文件</a></li><li class="sidebar-sub-header"><a href="/drylint.com/其他/markdown/markdownlint.html#rules" class="sidebar-link">rules</a></li></ul></li><li><a href="/drylint.com/其他/markdown/markdownlint的JSON协议.html" class="sidebar-link">json_schme</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="markdownlint"><a href="#markdownlint" class="header-anchor">#</a> markdownlint</h1> <p><a href="https://github.com/DavidAnson/markdownlint" target="_blank" rel="noopener noreferrer">https://github.com/DavidAnson/markdownlint<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="配置文件"><a href="#配置文件" class="header-anchor">#</a> 配置文件</h2> <p>配置文件优先级从高到低依次为：</p> <ul><li>.markdownlint{.json,.yaml,.yml,rc} file in the same directory</li> <li>.markdownlint{.json,.yaml,.yml,rc} file in a parent directory</li> <li>.markdownlint{.json,.yaml,.yml,rc} file in the root of the project</li> <li>Visual Studio Code user/workspace settings</li> <li>Default configuration (see above)</li></ul> <h2 id="rules"><a href="#rules" class="header-anchor">#</a> rules</h2> <p><a href="https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md" target="_blank" rel="noopener noreferrer">https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>MD001 - Heading levels should only increment by one level at a <span class="token function">time</span>
+标题级数每次只能扩大1, 也就是不能隔级创建标题（从1级到6级的顺序）
+
+MD002 - First heading should be a <span class="token function">top</span> level heading
+文档的第一个标题必须是最高级的标题（标题等级1级到6级逐渐降低）
+
+参数：
+<span class="token string">&quot;level&quot;</span>：指定最高级标题的级数，默认是1
+
+MD003 - Heading style
+整篇文档要采用一致的标题格式
+
+参数：
+<span class="token string">&quot;style&quot;</span>：字符串，指定文档标题的格式，有<span class="token punctuation">(</span><span class="token string">&quot;consistent&quot;</span>, <span class="token string">&quot;atx&quot;</span>, <span class="token string">&quot;atx_closed&quot;</span>, <span class="token string">&quot;setext&quot;</span>, <span class="token string">&quot;setext_with_atx&quot;</span>, <span class="token string">&quot;setext_with_atx_closed&quot;</span><span class="token punctuation">)</span>五种，默认是<span class="token string">&quot;consistent&quot;</span>，也就是整篇文档一致
+
+标题格式必须统一，一般不能混用，但<span class="token string">&quot;setext_with_atx&quot;</span>, <span class="token string">&quot;setext_with_atx_closed&quot;</span>格式可以在<span class="token string">&quot;setext&quot;</span>格式二级标题后接着使用<span class="token string">&quot;atx&quot;</span>或<span class="token string">&quot;atx_closed&quot;</span>格式的标题
+
+MD004 - Unordered list style
+整篇文档定义无序列表的格式要一致
+
+参数：
+<span class="token string">&quot;style&quot;</span>：字符串，指定无序列表的定义格式，有<span class="token punctuation">(</span><span class="token string">&quot;consistent&quot;</span>, <span class="token string">&quot;asterisk&quot;</span>, <span class="token string">&quot;plus&quot;</span>, <span class="token string">&quot;dash&quot;</span>, <span class="token string">&quot;sublist&quot;</span><span class="token punctuation">)</span>五种，分别表示“定义时符号前后一致”，“用星号定义”，“用加号定义”，“用减号定义”，“定义多重列表时用不同的符号定义”，默认是<span class="token string">&quot;consistent&quot;</span>
+
+MD005 - Inconsistent indentation <span class="token keyword">for</span> list items at the same level
+同一级的列表缩进必须一致
+在有序列表中，前面的数字序号可以左对齐，也可以右对齐
+
+MD006 - Consider starting bulleted lists at the beginning of the line
+<span class="token number">1</span>级列表不能缩进
+
+MD007 - Unordered list indentation
+无序列表嵌套缩进时默认采用两个空格
+
+参数：
+<span class="token string">&quot;ident&quot;</span>：指定无序列表嵌套时缩进的空格数，默认是2
+
+MD009 - Trailing spaces
+行尾最多可以添加两个空格，超过会给出警告，两个空格正好可以用于换行
+
+参数：
+<span class="token string">&quot;br_spaces&quot;</span>：指定在行尾可以添加的空格数目，空格数目建议大于等于2，如果小于2，会默认为0，也就是不允许任何行尾的空格
+<span class="token string">&quot;list_item_empty_lines&quot;</span>：字符串，指定在列表中是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>用默认的空格数缩进空行，有的解释器会要求列表中的空行要缩进
+
+MD010 - Hard tabs
+不能使用tab键缩进，要使用空格
+
+参数：
+<span class="token string">&quot;code_blocks&quot;</span>：指定本条规则在代码块里是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>生效
+
+MD011 - Reversed <span class="token function">link</span> syntax
+检查内联形式的链接的创建方式是否错误，中括号和圆括号是否用对
+
+MD012 - Multiple consecutive blank lines
+文档中不能有连续的空行，在代码块中此规则不会生效
+
+参数：
+<span class="token string">&quot;maximum&quot;</span>：指定文档中可以连续的最多空行数，默认值是1
+
+MD013 - Line length
+默认行的最大长度是80，此规则对代码块、表格、标题也生效
+
+参数：
+<span class="token string">&quot;line_length&quot;</span>：指定行的最大长度，默认是80
+<span class="token string">&quot;heading_line_length&quot;</span>：指定标题行的最大长度，默认是80
+<span class="token string">&quot;code_blocks&quot;</span>：指定规则是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>对代码块生效，默认true
+<span class="token string">&quot;tables&quot;</span>：指定规则是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>对表格生效，默认true
+<span class="token string">&quot;hesdings&quot;</span>：指定规则是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>对标题生效，默认true
+
+MD014 - Dollar signs used before commands without showing output
+在代码块中，终端命令前不需要有美元符号<span class="token punctuation">(</span>$<span class="token punctuation">)</span>
+如果代码块中既有终端命令，也有命令的输出，则终端命令前可以有美元符号<span class="token punctuation">(</span>$<span class="token punctuation">)</span>，如：
+
+在<span class="token string">&quot;atx&quot;</span>格式的标题中，<span class="token comment">#号和文字间需用一个空格隔开</span>
+
+MD019 - Multiple spaces after <span class="token builtin class-name">hash</span> on atx style heading
+在<span class="token string">&quot;atx&quot;</span>格式的标题中，<span class="token comment">#号和文字间只能用一个空格隔开，不能有多余的空格</span>
+
+MD020 - No space inside hashes on closed atx style heading
+在<span class="token string">&quot;closed_atx&quot;</span>格式的标题中，文字和前后的<span class="token comment">#号之间需用一个空格隔开</span>
+
+MD021 - Multiple spaces inside hashes on closed atx style heading
+在<span class="token string">&quot;closed_atx&quot;</span>格式的标题中，文字和前后的<span class="token comment">#号之间只能用一个空格隔开，不能有多余的空格</span>
+
+MD022 - Headings should be surrounded by blank lines
+标题行的上下行必须都是空行
+
+参数：
+<span class="token string">&quot;lines_above&quot;</span>：指定标题行上方的空行数，默认为1，可以设为更大或0
+<span class="token string">&quot;lines_below&quot;</span>：指定标题行下方的空行数，默认为1，可以设为更大或0
+
+注意当此处的空行设为比1大的数时，规则MD012的设置也要改
+
+MD023 - Headings must start at the beginning of the line
+标题行不能缩进
+
+MD024 - Multiple headings with the same content
+文档不能有内容重复的标题
+
+参数：
+<span class="token string">&quot;siblings_only&quot;</span>：默认为false，设为true时，不同标题下的子标题内容可以重复
+
+MD025 - Multiple <span class="token function">top</span> level headings <span class="token keyword">in</span> the same document
+同一文档只能有一个最高级的标题，默认是只能有一个1级标题
+
+参数：
+<span class="token string">&quot;level&quot;</span>：指定文档最高级的标题，默认是1
+<span class="token string">&quot;front_matter_title&quot;</span>：字符串，指定在文档开头处的front matter中的标题，这个标题将作为整篇文档的最高级标题，如果文档中再次出现最高级标题，将会给出警告，另外，如果不想在front matter中指定标题，就把本参数的值设置为<span class="token string">&quot;&quot;</span>
+
+MD026 - Trailing punctuation <span class="token keyword">in</span> heading
+标题行末尾不能有以下标点符号：<span class="token string">&quot;.,;:!?&quot;</span>
+
+参数：
+<span class="token string">&quot;punctuation&quot;</span>：字符串，指定标题行尾不能有的标点符号，默认是<span class="token string">&quot;.,;:!?&quot;</span>
+
+此规则默认的是英文的标点符号，中文标点符号不在规则之内
+
+MD027 - Multiple spaces after blockquote symbol
+创建引用区块时，右尖括号 <span class="token punctuation">(</span> <span class="token operator">&gt;</span> <span class="token punctuation">)</span> 和文字之间有且只能有一个空格
+
+MD028 - Blank line inside blockquote
+两个引用区块间不能仅用一个空行隔开或者同一引用区块中不能有空行，如果一行中没有内容，则这一行要用<span class="token operator">&gt;</span>开头
+
+MD029 - Ordered list item prefix
+有序列表的前缀序号格式必须只用1或者从1开始的加1递增数字<span class="token punctuation">(</span><span class="token string">&quot;one_or_ordered&quot;</span><span class="token punctuation">)</span>
+
+参数：
+<span class="token string">&quot;style&quot;</span>：字符串，指定前缀序号的格式，<span class="token punctuation">(</span><span class="token string">&quot;one&quot;</span>,<span class="token string">&quot;ordered&quot;</span>,<span class="token string">&quot;one_or_ordered&quot;</span>,<span class="token string">&quot;zero&quot;</span><span class="token punctuation">)</span>，分别表示只用1做前缀，用从1开始的加1递增数字做前缀，只用1或者从1开始的加1递增数字做前缀，只用0做前缀，默认值是<span class="token string">&quot;one_or_ordered&quot;</span>
+
+本条规则支持在前缀序号中补0，以实现对齐，如：
+
+MD030 - Spaces after list markers
+列表（有序、无序）的前缀符号和文字之间用1个空格隔开
+在列表嵌套或者同一列表项中有多个段落时，无序列表缩进两个空格，有序列表缩进3个空格
+
+参数：
+<span class="token string">&quot;ul_single&quot;</span>,<span class="token string">&quot;ol_single&quot;</span>,<span class="token string">&quot;ul_multi&quot;</span>,<span class="token string">&quot;ol_multi&quot;</span>：分别规定无序列表单个段落，有序列表单个段落，无序列表多个段落，有序列表多个段落的前缀符号和文字之间的空格数，默认是1
+
+MD031 - Fenced code blocks should be surrounded by blank lines
+单独的代码块前后需要用空行隔开（除非是在文档开头或末尾），否则有些解释器不会解释为代码块
+
+MD032 - Lists should be surrounded by blank lines
+列表（有序、无序）前后需要用空行隔开，否则有些解释器不会解释为列表
+列表的缩进必须一致，否则会警告
+
+MD033 - Inline HTML
+文档中不允许使用HTML语句
+
+参数：
+<span class="token string">&quot;allowed_elements&quot;</span>：自定义允许的元素，是一个字符串数组，默认是空<span class="token punctuation">(</span>empty<span class="token punctuation">)</span>
+
+MD034 - Bare URL used
+单纯的链接地址需要用尖括号 <span class="token punctuation">(</span><span class="token operator">&lt;&gt;</span><span class="token punctuation">)</span> 包裹，否则有些解释器不会解释为链接
+
+MD035 - Horizontal rule style
+创建水平线时整篇文档要统一<span class="token punctuation">(</span>consistent<span class="token punctuation">)</span>，要和文档中第一次创建水平线使用的符号一致
+
+参数：
+<span class="token string">&quot;style&quot;</span>：字符串，指定创建水平线的方式，值有：<span class="token punctuation">(</span><span class="token string">&quot;consistent&quot;</span>,<span class="token string">&quot;***&quot;</span>,<span class="token string">&quot;---&quot;</span>,<span class="token string">&quot;___&quot;</span><span class="token punctuation">)</span>，默认是<span class="token string">&quot;consistent&quot;</span>
+
+MD036 - Emphasis used instead of a heading
+不能用强调代替标题
+
+参数：
+<span class="token string">&quot;punctuation&quot;</span>：字符串，指定用于结尾的标点符号，以此符号结尾的强调不会被视为以强调代替标题，默认值是<span class="token string">&quot;.,;:!?&quot;</span>
+
+此规则会检查只包含强调的单行段落，如果这种段落不是以指定的标点符号结尾，则会被视为以强调代替标题，会给出警告
+
+MD037 - Spaces inside emphasis markers
+用于创建强调的符号和强调的的文字之间不能有空格
+
+MD038 - Spaces inside code span elements
+当用单反引号创建代码段的时候，单反引号和它们之间的代码不能有空格
+如果要把单反引号嵌入到代码段的首尾，创建代码段的单反引号和嵌入的单反引号间要有一个空格隔开
+
+MD039 - Spaces inside <span class="token function">link</span> text
+链接名和包围它的中括号之间不能有空格，但链接名中间可以有空格，如：
+
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<span class="token punctuation">[</span>百 度<span class="token punctuation">]</span><span class="token punctuation">(</span>http://www.baidu.com <span class="token string">&quot;百 度&quot;</span><span class="token punctuation">)</span>
+
+MD040 - Fenced code blocks should have a language specified
+单独的代码块（此处是指上下用三个反引号包围的代码块）应该指定代码块的编程语言，这一点有助于解释器对代码进行代码高亮
+
+MD041 - First line <span class="token keyword">in</span> <span class="token function">file</span> should be a <span class="token function">top</span> level heading
+文档的第一个非空行应该是文档最高级的标题，默认是1级标题
+
+参数：
+<span class="token string">&quot;level&quot;</span>：指定文档最高级的标题，默认是1
+<span class="token string">&quot;front_matter_title&quot;</span>：字符串，指定在文档开头处的front matter中的标题，这个标题将作为整篇文档的最高级标题，另外，如果不想在front matter中指定标题，就把本参数的值设置为<span class="token string">&quot;&quot;</span>
+
+MD042 - No empty links
+链接的地址不能为空
+
+MD043 - Required heading structure
+要求标题遵循一定的结构，默认是没有规定的结构<span class="token punctuation">(</span><span class="token string">&quot;null&quot;</span><span class="token punctuation">)</span>
+
+参数：
+<span class="token string">&quot;headings&quot;</span>：字符串数组，指定标题需要遵循的结构，默认是<span class="token string">&quot;null&quot;</span>，可以自行指定结构，如；
+
+星号<span class="token punctuation">(</span>*<span class="token punctuation">)</span>表示对应的标题是可选的，没有强制要求，本条具体可以参照MD043
+
+MD044 - Proper names should have the correct capitalization
+指定一些名称，会检查它是否有正确的大写
+
+参数：
+<span class="token string">&quot;names&quot;</span>：字符串数组，指定要检查需要大写的名称，默认是空<span class="token punctuation">(</span><span class="token string">&quot;null&quot;</span><span class="token punctuation">)</span>
+<span class="token string">&quot;code_blocks&quot;</span>：指定本规则是否<span class="token punctuation">(</span>true or <span class="token boolean">false</span><span class="token punctuation">)</span>对代码块生效，默认是true
+一些经常使用的名称可以使用本规则防止其拼写错误，比如JavaScript中字母J和S需要大写，就可以写到参数<span class="token string">&quot;names&quot;</span>中，防止写错
+
+MD045 - Images should have alternate text <span class="token punctuation">(</span>alt text<span class="token punctuation">)</span>
+图片链接必须包含描述文本（alt text）
+
+MD046 - Code block style
+整篇文档采用一致的代码格式
+
+参数：
+<span class="token string">&quot;style&quot;</span><span class="token builtin class-name">:</span> 字符串，指定代码块定义格式，有（<span class="token string">&quot;consistent&quot;</span>,<span class="token string">&quot;fenced&quot;</span>,<span class="token string">&quot;indented&quot;</span>）三种，分别代表：文档上下文一致，使用三个反引号隔开，使用缩进，默认是上下文一致
+
+MD047 - Files should end with a single newline character
+文档需用一个空行结尾
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/其他/markdown/markdownlint.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/drylint.com/%E5%85%B6%E4%BB%96/markdown/" class="prev router-link-active">
+        Markdown 全部语法手册
+      </a></span> <span class="next"><a href="/drylint.com/其他/markdown/markdownlint的JSON协议.html">
+        json_schme
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/drylint.com/assets/js/app.05b1f6be.js" defer></script><script src="/drylint.com/assets/js/2.fbdcd9f4.js" defer></script><script src="/drylint.com/assets/js/129.52d3ab9e.js" defer></script>
+  </body>
+</html>
