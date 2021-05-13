@@ -3,7 +3,7 @@ module.exports = {
   title: '代码干燥计划',
   description: '分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。',
   // 默认 '/' ， 如果要发到 user.github.io/blog ，则 base 需要设为 /blog/
-  base: '/drylint.com/',
+  base: '/',
   // 打包文件存放路径，默认 .vuepress/dist
   dest: 'pages',
   evergreen: true, // 目标客户端为常青树浏览器，即禁止 ESNext 转为 ES5
