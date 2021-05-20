@@ -102,3 +102,17 @@
 [阿里云DataV - GeoJson 数据获取](http://datav.aliyun.com/tools/atlas/#&lat=31.769817845138974&lng=106.72278672066881&zoom=3.5)
 
 [GeoJson 官网](https://geojson.org/)
+
+### 浏览器端
+
+[axios](https://github.com/axios/axios), 异步请求
+
+[nprogress](https://github.com/rstacruz/nprogress), 加载中进度条
+
+[compressorjs](https://github.com/fengyuanchen/compressorjs), 前端运行时图片压缩工具
+
+[cropperjs](https://github.com/fengyuanchen/cropperjs), 图片裁剪工具
+
+[dayjs](https://github.com/iamkun/dayjs), 日期时间解析，验证，操作，格式化工具库，`moment` 的替代品，
+
+[moment](https://github.com/moment/moment), 日期时间解析，验证，操作，格式化工具库
