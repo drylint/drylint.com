@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ESLint Configuration | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.10eff469.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/151.a66e8e54.js" as="script"><link rel="prefetch" href="/assets/js/10.88abc246.js"><link rel="prefetch" href="/assets/js/100.5efad50f.js"><link rel="prefetch" href="/assets/js/101.b8103b1e.js"><link rel="prefetch" href="/assets/js/102.7dbd72d8.js"><link rel="prefetch" href="/assets/js/103.57d21c17.js"><link rel="prefetch" href="/assets/js/104.cf88f901.js"><link rel="prefetch" href="/assets/js/105.0c696d8c.js"><link rel="prefetch" href="/assets/js/106.c66b4cdb.js"><link rel="prefetch" href="/assets/js/107.d3cece79.js"><link rel="prefetch" href="/assets/js/108.c693c382.js"><link rel="prefetch" href="/assets/js/109.761c7068.js"><link rel="prefetch" href="/assets/js/11.5c9a3ba2.js"><link rel="prefetch" href="/assets/js/110.f6b64833.js"><link rel="prefetch" href="/assets/js/111.7658ff67.js"><link rel="prefetch" href="/assets/js/112.702ebc58.js"><link rel="prefetch" href="/assets/js/113.01be9797.js"><link rel="prefetch" href="/assets/js/114.993b2eeb.js"><link rel="prefetch" href="/assets/js/115.da6fe2d3.js"><link rel="prefetch" href="/assets/js/116.21d8fd4a.js"><link rel="prefetch" href="/assets/js/117.4d8ec50e.js"><link rel="prefetch" href="/assets/js/118.299e6995.js"><link rel="prefetch" href="/assets/js/119.078e95e8.js"><link rel="prefetch" href="/assets/js/12.e52d96a8.js"><link rel="prefetch" href="/assets/js/120.033781ed.js"><link rel="prefetch" href="/assets/js/121.d6bd2aed.js"><link rel="prefetch" href="/assets/js/122.c2a65f95.js"><link rel="prefetch" href="/assets/js/123.47cab965.js"><link rel="prefetch" href="/assets/js/124.72253999.js"><link rel="prefetch" href="/assets/js/125.e25dfc9c.js"><link rel="prefetch" href="/assets/js/126.8140260b.js"><link rel="prefetch" href="/assets/js/127.652962db.js"><link rel="prefetch" href="/assets/js/128.44e4c9ed.js"><link rel="prefetch" href="/assets/js/129.df45ab57.js"><link rel="prefetch" href="/assets/js/13.5631668b.js"><link rel="prefetch" href="/assets/js/130.2203198a.js"><link rel="prefetch" href="/assets/js/131.41b81abb.js"><link rel="prefetch" href="/assets/js/132.f3b86105.js"><link rel="prefetch" href="/assets/js/133.7f929f5e.js"><link rel="prefetch" href="/assets/js/134.85f5d8eb.js"><link rel="prefetch" href="/assets/js/135.8468b074.js"><link rel="prefetch" href="/assets/js/136.0cab583a.js"><link rel="prefetch" href="/assets/js/137.a081ac57.js"><link rel="prefetch" href="/assets/js/138.80873e49.js"><link rel="prefetch" href="/assets/js/139.03d7fa39.js"><link rel="prefetch" href="/assets/js/14.6c9b99fe.js"><link rel="prefetch" href="/assets/js/140.6a4e8128.js"><link rel="prefetch" href="/assets/js/141.28c518fd.js"><link rel="prefetch" href="/assets/js/142.c8164e04.js"><link rel="prefetch" href="/assets/js/143.586d0cfa.js"><link rel="prefetch" href="/assets/js/144.c51866dd.js"><link rel="prefetch" href="/assets/js/145.f8bf3863.js"><link rel="prefetch" href="/assets/js/146.a0cd8e2a.js"><link rel="prefetch" href="/assets/js/147.fe778dcb.js"><link rel="prefetch" href="/assets/js/148.3279b7bd.js"><link rel="prefetch" href="/assets/js/149.c5f8652d.js"><link rel="prefetch" href="/assets/js/15.0cdcab4e.js"><link rel="prefetch" href="/assets/js/150.3acb7cb4.js"><link rel="prefetch" href="/assets/js/152.000fcf9e.js"><link rel="prefetch" href="/assets/js/153.a9b084c3.js"><link rel="prefetch" href="/assets/js/154.784508d3.js"><link rel="prefetch" href="/assets/js/155.4513c545.js"><link rel="prefetch" href="/assets/js/156.d76e577b.js"><link rel="prefetch" href="/assets/js/157.3783efa8.js"><link rel="prefetch" href="/assets/js/158.2c4ad6e0.js"><link rel="prefetch" href="/assets/js/159.7b7177e8.js"><link rel="prefetch" href="/assets/js/16.78288cdb.js"><link rel="prefetch" href="/assets/js/160.6582b4ac.js"><link rel="prefetch" href="/assets/js/161.b486cc21.js"><link rel="prefetch" href="/assets/js/162.fbb76c37.js"><link rel="prefetch" href="/assets/js/163.45d172af.js"><link rel="prefetch" href="/assets/js/164.6076ccc6.js"><link rel="prefetch" href="/assets/js/17.1393ad15.js"><link rel="prefetch" href="/assets/js/18.e4d67a48.js"><link rel="prefetch" href="/assets/js/19.e2c4bdd6.js"><link rel="prefetch" href="/assets/js/20.f08fc2f0.js"><link rel="prefetch" href="/assets/js/21.4e6f9fab.js"><link rel="prefetch" href="/assets/js/22.03d61c6c.js"><link rel="prefetch" href="/assets/js/23.27688e4e.js"><link rel="prefetch" href="/assets/js/24.d929e3a8.js"><link rel="prefetch" href="/assets/js/25.f39ec441.js"><link rel="prefetch" href="/assets/js/26.253b081e.js"><link rel="prefetch" href="/assets/js/27.78599ad8.js"><link rel="prefetch" href="/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/assets/js/29.56bec5bb.js"><link rel="prefetch" href="/assets/js/3.f3aa63d2.js"><link rel="prefetch" href="/assets/js/30.5cd75afc.js"><link rel="prefetch" href="/assets/js/31.a64d2cbc.js"><link rel="prefetch" href="/assets/js/32.8c4e784d.js"><link rel="prefetch" href="/assets/js/33.702be4c3.js"><link rel="prefetch" href="/assets/js/34.efd4470d.js"><link rel="prefetch" href="/assets/js/35.d33773f7.js"><link rel="prefetch" href="/assets/js/36.1698b20b.js"><link rel="prefetch" href="/assets/js/37.9c61e728.js"><link rel="prefetch" href="/assets/js/38.2d796de8.js"><link rel="prefetch" href="/assets/js/39.992e0728.js"><link rel="prefetch" href="/assets/js/4.664d718d.js"><link rel="prefetch" href="/assets/js/40.a3ce498b.js"><link rel="prefetch" href="/assets/js/41.afd063d0.js"><link rel="prefetch" href="/assets/js/42.ef1dbc14.js"><link rel="prefetch" href="/assets/js/43.97838f91.js"><link rel="prefetch" href="/assets/js/44.7dc85662.js"><link rel="prefetch" href="/assets/js/45.44db8f5e.js"><link rel="prefetch" href="/assets/js/46.35511e63.js"><link rel="prefetch" href="/assets/js/47.f34b2220.js"><link rel="prefetch" href="/assets/js/48.74efec8b.js"><link rel="prefetch" href="/assets/js/49.3ee121fc.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.e9d9f1fd.js"><link rel="prefetch" href="/assets/js/51.a8fdbf75.js"><link rel="prefetch" href="/assets/js/52.b0bfcbeb.js"><link rel="prefetch" href="/assets/js/53.a43f815f.js"><link rel="prefetch" href="/assets/js/54.65d8d0d1.js"><link rel="prefetch" href="/assets/js/55.c5c181b3.js"><link rel="prefetch" href="/assets/js/56.9e04f6db.js"><link rel="prefetch" href="/assets/js/57.a8a4fed7.js"><link rel="prefetch" href="/assets/js/58.a8629c3d.js"><link rel="prefetch" href="/assets/js/59.b0d41dd6.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.10ebf772.js"><link rel="prefetch" href="/assets/js/61.48891aa7.js"><link rel="prefetch" href="/assets/js/62.08332e7c.js"><link rel="prefetch" href="/assets/js/63.5fbb3de3.js"><link rel="prefetch" href="/assets/js/64.4f26709c.js"><link rel="prefetch" href="/assets/js/65.72ba77d1.js"><link rel="prefetch" href="/assets/js/66.0ddda330.js"><link rel="prefetch" href="/assets/js/67.82cafe21.js"><link rel="prefetch" href="/assets/js/68.92dfa7a9.js"><link rel="prefetch" href="/assets/js/69.4019057d.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.7bbf4398.js"><link rel="prefetch" href="/assets/js/71.586a35aa.js"><link rel="prefetch" href="/assets/js/72.b25d39fc.js"><link rel="prefetch" href="/assets/js/73.2b24a656.js"><link rel="prefetch" href="/assets/js/74.497a2a9f.js"><link rel="prefetch" href="/assets/js/75.f6a7e945.js"><link rel="prefetch" href="/assets/js/76.b564cde9.js"><link rel="prefetch" href="/assets/js/77.d84c7f0f.js"><link rel="prefetch" href="/assets/js/78.cebd4eeb.js"><link rel="prefetch" href="/assets/js/79.2b1ba658.js"><link rel="prefetch" href="/assets/js/8.9a295d9e.js"><link rel="prefetch" href="/assets/js/80.02c0787e.js"><link rel="prefetch" href="/assets/js/81.080f216a.js"><link rel="prefetch" href="/assets/js/82.2fd6bdc6.js"><link rel="prefetch" href="/assets/js/83.d7746482.js"><link rel="prefetch" href="/assets/js/84.3438b012.js"><link rel="prefetch" href="/assets/js/85.34aac049.js"><link rel="prefetch" href="/assets/js/86.9e17d110.js"><link rel="prefetch" href="/assets/js/87.508e0ffd.js"><link rel="prefetch" href="/assets/js/88.95531acb.js"><link rel="prefetch" href="/assets/js/89.b4d3ad36.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.10dc3d87.js"><link rel="prefetch" href="/assets/js/91.70477f8d.js"><link rel="prefetch" href="/assets/js/92.059f868c.js"><link rel="prefetch" href="/assets/js/93.3c951d44.js"><link rel="prefetch" href="/assets/js/94.d914015b.js"><link rel="prefetch" href="/assets/js/95.219a71b9.js"><link rel="prefetch" href="/assets/js/96.14f892c8.js"><link rel="prefetch" href="/assets/js/97.0e70e154.js"><link rel="prefetch" href="/assets/js/98.c2e701b6.js"><link rel="prefetch" href="/assets/js/99.973e39b1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backEnd" class="dropdown-title"><span class="title">backEnd</span> <span class="arrow down"></span></button> <button type="button" aria-label="backEnd" class="mobile-dropdown-title"><span class="title">backEnd</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backEnd/node.html" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/backEnd/sql/" class="nav-link">
+  sql
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backEnd" class="dropdown-title"><span class="title">backEnd</span> <span class="arrow down"></span></button> <button type="button" aria-label="backEnd" class="mobile-dropdown-title"><span class="title">backEnd</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backEnd/node.html" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/backEnd/sql/" class="nav-link">
+  sql
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>eslint</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/projectConfig/eslint/" aria-current="page" class="active sidebar-link">ESLint Configuration</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#开始配置" class="sidebar-link">开始配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#configuration-comments-通过注释配置" class="sidebar-link">Configuration Comments 通过注释配置</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#configuration-files-通过配置文件配置" class="sidebar-link">Configuration Files 通过配置文件配置</a></li></ul></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#root-当前配置是否是根配置" class="sidebar-link">root 当前配置是否是根配置</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#parseroptions-解析器配置项" class="sidebar-link">parserOptions 解析器配置项</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#ecmaversion-指定-ecmascript-版本-默认-5" class="sidebar-link">ecmaVersion 指定 ECMAScript 版本，默认 5</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#sourcetype-指定源码类型是-script-默认-还是-module-类型" class="sidebar-link">sourceType 指定源码类型是 script (默认) 还是 module 类型</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#ecmafeatures-指定使用的额外的语言特性-所有选项默认-false" class="sidebar-link">ecmaFeatures 指定使用的额外的语言特性，所有选项默认 false</a></li></ul></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#parser-指定解析器-默认-espree" class="sidebar-link">parser 指定解析器，默认 Espree</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#processor-配置插件提供的处理器" class="sidebar-link">processor 配置插件提供的处理器</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#env-代码环境-以便于检查是否有预定义的全局变量" class="sidebar-link">env 代码环境，以便于检查是否有预定义的全局变量</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#globals-指定将会用到的全局变量" class="sidebar-link">globals 指定将会用到的全局变量</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#plugins-指定要使用的插件" class="sidebar-link">plugins 指定要使用的插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#使用插件时的名称约定-naming-convention" class="sidebar-link">使用插件时的名称约定 (Naming Convention)</a></li></ul></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#rules-检查代码使用规则" class="sidebar-link">rules 检查代码使用规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#通过内联注释禁用规则" class="sidebar-link">通过内联注释禁用规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#临时在一段代码中禁用-eslint-插件" class="sidebar-link">临时在一段代码中禁用 eslint 插件</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#临时在一段代码中禁用指定的规则" class="sidebar-link">临时在一段代码中禁用指定的规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#当前文件禁用-eslint" class="sidebar-link">当前文件禁用 eslint</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#当前文件禁用指定的规则" class="sidebar-link">当前文件禁用指定的规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#针对某一行禁用-eslint" class="sidebar-link">针对某一行禁用 eslint</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#针对某一行禁用一项指定的规则" class="sidebar-link">针对某一行禁用一项指定的规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#针对某一行禁用多项指定的规则" class="sidebar-link">针对某一行禁用多项指定的规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#通过配置文件-overrides-配置项-对一组文件禁用规则" class="sidebar-link">通过配置文件 overrides 配置项，对一组文件禁用规则</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#配置内联注释的行为" class="sidebar-link">配置内联注释的行为</a></li></ul></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-扩展配置文件" class="sidebar-link">extends 扩展配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-共享配置-eslint-recommended" class="sidebar-link">extends 共享配置 eslint:recommended</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-一个可共享配置包" class="sidebar-link">extends 一个可共享配置包</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-插件-plugin-提供的配置文件" class="sidebar-link">extends 插件（plugin ）提供的配置文件</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-另一个配置文件" class="sidebar-link">extends 另一个配置文件</a></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#extends-共享配置-eslint-all" class="sidebar-link">extends 共享配置 eslint:all</a></li></ul></li><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#glob-模式配置" class="sidebar-link">Glob 模式配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/projectConfig/eslint/#忽略文件和目录" class="sidebar-link">忽略文件和目录</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="eslint-configuration"><a href="#eslint-configuration" class="header-anchor">#</a> ESLint Configuration</h1> <p></p><div class="table-of-contents"><ul><li><a href="#开始配置">开始配置</a><ul><li><a href="#configuration-comments-通过注释配置">Configuration Comments 通过注释配置</a></li><li><a href="#configuration-files-通过配置文件配置">Configuration Files 通过配置文件配置</a><ul><li><a href="#configuration-file-formats-配置文件格式">Configuration File Formats 配置文件格式</a></li><li><a href="#configuration-cascading-and-hierarchy-配置级联和层次结构">Configuration Cascading and Hierarchy 配置级联和层次结构</a></li></ul></li></ul></li><li><a href="#root-当前配置是否是根配置">root 当前配置是否是根配置</a></li><li><a href="#parseroptions-解析器配置项">parserOptions 解析器配置项</a><ul><li><a href="#ecmaversion-指定-ecmascript-版本-默认-5">ecmaVersion 指定 ECMAScript 版本，默认 5</a></li><li><a href="#sourcetype-指定源码类型是-script-默认-还是-module-类型">sourceType 指定源码类型是 script (默认) 还是 module 类型</a></li><li><a href="#ecmafeatures-指定使用的额外的语言特性-所有选项默认-false">ecmaFeatures 指定使用的额外的语言特性，所有选项默认 false</a><ul><li><a href="#globalreturn-是否允许在全局作用域下使用-return-语句-默认-false">globalReturn 是否允许在全局作用域下使用 return 语句，默认 false</a></li><li><a href="#impliedstrict-当-parseroptions-ecmaversion-5-时-是否启用全局-strict-mode">impliedStrict 当 parserOptions.ecmaVersion &gt;= 5 时，是否启用全局 strict mode</a></li><li><a href="#jsx-是否启用-jsx">jsx 是否启用 JSX</a></li><li><a href="#experimentalobjectrestspread-已弃用-是否支持对象-rest-spread">experimentalObjectRestSpread 已弃用，是否支持对象 rest/spread</a></li></ul></li></ul></li><li><a href="#parser-指定解析器-默认-espree">parser 指定解析器，默认 Espree</a></li><li><a href="#processor-配置插件提供的处理器">processor 配置插件提供的处理器</a></li><li><a href="#env-代码环境-以便于检查是否有预定义的全局变量">env 代码环境，以便于检查是否有预定义的全局变量</a></li><li><a href="#globals-指定将会用到的全局变量">globals 指定将会用到的全局变量</a></li><li><a href="#plugins-指定要使用的插件">plugins 指定要使用的插件</a><ul><li><a href="#使用插件时的名称约定-naming-convention">使用插件时的名称约定 (Naming Convention)</a><ul><li><a href="#直接包含插件时">直接包含插件时</a></li><li><a href="#使用插件提供的-rules-env-extends-选项时">使用插件提供的 rules/env/extends 选项时</a></li></ul></li></ul></li><li><a href="#rules-检查代码使用规则">rules 检查代码使用规则</a></li><li><a href="#通过内联注释禁用规则">通过内联注释禁用规则</a><ul><li><a href="#临时在一段代码中禁用-eslint-插件">临时在一段代码中禁用 eslint 插件</a></li><li><a href="#临时在一段代码中禁用指定的规则">临时在一段代码中禁用指定的规则</a></li><li><a href="#当前文件禁用-eslint">当前文件禁用 eslint</a></li><li><a href="#当前文件禁用指定的规则">当前文件禁用指定的规则</a></li><li><a href="#针对某一行禁用-eslint">针对某一行禁用 eslint</a></li><li><a href="#针对某一行禁用一项指定的规则">针对某一行禁用一项指定的规则</a></li><li><a href="#针对某一行禁用多项指定的规则">针对某一行禁用多项指定的规则</a></li><li><a href="#通过配置文件-overrides-配置项-对一组文件禁用规则">通过配置文件 overrides 配置项，对一组文件禁用规则</a></li><li><a href="#配置内联注释的行为">配置内联注释的行为</a><ul><li><a href="#禁用内联注释">禁用内联注释</a></li><li><a href="#报告未使用的-eslint-disable-注释">报告未使用的 eslint-disable 注释</a></li><li><a href="#adding-shared-settings">Adding Shared Settings</a></li></ul></li></ul></li><li><a href="#extends-扩展配置文件">extends 扩展配置文件</a><ul><li><a href="#extends-共享配置-eslint-recommended">extends 共享配置 eslint:recommended</a></li><li><a href="#extends-一个可共享配置包">extends 一个可共享配置包</a></li><li><a href="#extends-插件-plugin-提供的配置文件">extends 插件（plugin ）提供的配置文件</a></li><li><a href="#extends-另一个配置文件">extends 另一个配置文件</a></li><li><a href="#extends-共享配置-eslint-all">extends 共享配置 eslint:all</a></li></ul></li><li><a href="#glob-模式配置">Glob 模式配置</a><ul><li><a href="#忽略文件和目录">忽略文件和目录</a><ul><li><a href="#通过-ignorepatterns-配置项忽略文件和目录">通过 ignorePatterns 配置项忽略文件和目录</a></li><li><a href="#通过-eslintignore-文件忽略文件和目录">通过 .eslintignore 文件忽略文件和目录</a></li><li><a href="#通过-package-json-添加根属性-eslintignore">通过 package.json 添加根属性 eslintIgnore</a></li></ul></li></ul></li></ul></div><p></p> <h2 id="开始配置"><a href="#开始配置" class="header-anchor">#</a> 开始配置</h2> <h3 id="configuration-comments-通过注释配置"><a href="#configuration-comments-通过注释配置" class="header-anchor">#</a> Configuration Comments 通过注释配置</h3> <p>使用注释把配置信息直接嵌入到一个代码源文件中</p> <h3 id="configuration-files-通过配置文件配置"><a href="#configuration-files-通过配置文件配置" class="header-anchor">#</a> Configuration Files 通过配置文件配置</h3> <h4 id="configuration-file-formats-配置文件格式"><a href="#configuration-file-formats-配置文件格式" class="header-anchor">#</a> Configuration File Formats 配置文件格式</h4> <p>ESLint 支持几种格式的配置文件：</p> <ul><li>JavaScript - 使用 <code>.eslintrc.js</code> 然后输出一个配置对象。</li> <li>JavaScript (ESM) 在 JavaScript 包中运行 ESLint 时使用 <code>.eslinrc .cjs</code>，这些包中指定了 <code>'type':'module'</code>。注意，目前 ESLint 不支持 ESM 配置。</li> <li>YAML - 使用 <code>.eslintrc.yaml</code> 或 <code>.eslintrc.yml</code> 去定义配置的结构。</li> <li>JSON - 使用 <code>.eslintrc.json</code> 去定义配置的结构，ESLint 的 JSON 文件允许 JavaScript 风格的注释。</li> <li>(弃用) - 使用 <code>.eslintrc</code>，可以是 JSON 也可以是 YAML。</li> <li>package.json - 在 <code>package.json</code> 里创建一个根属性 <code>eslintConfig</code> ，在那里定义你的配置，ESLint 插件会自动查找并读取此属性的值作为配置。</li></ul> <p>当同级目录存在多种配置文件时，仅优先级高的生效，优先级低的忽略，优先级如下：</p> <ol><li><code>.eslintrc.js</code></li> <li><code>.eslintrc.cjs</code></li> <li><code>.eslintrc.yaml</code></li> <li><code>.eslintrc.yml</code></li> <li><code>.eslintrc.json</code></li> <li><code>.eslintrc</code></li> <li><code>package.json</code></li></ol> <h4 id="configuration-cascading-and-hierarchy-配置级联和层次结构"><a href="#configuration-cascading-and-hierarchy-配置级联和层次结构" class="header-anchor">#</a> Configuration Cascading and Hierarchy 配置级联和层次结构</h4> <p>当一个项目下，除了根目录有配置文件，有些子目录中也有配置文件时，对一个文件的检测会优先使用最近的配置文件。</p> <p>子目录中有配置文件时，会合并使用子目录的配置文件，以及依次往上查找到的优先级最高的配置文件，当配置属性有冲突时，最近的配置文件优先级最高。所以，一个项目中可以有项目级配置和目录级配置。</p> <p>当项目根目录同时拥有 <code>.eslintrc.*</code> 配置文件和 <code>package.json</code> 的 <code>eslintConfig</code> 属性时， 将只会使用 <code>.eslintrc.*</code> 配置文件， <code>package.json</code> 的 <code>eslintConfig</code> 属性不会被读取。</p> <p>例一：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>project
+├── .eslintrc
+├── lib
+│ └── source.js
+└─┬ tests
+  ├── .eslintrc
+  └── test.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li><code>project/lib/source.js</code> 将会使用 <code>project/.eslintrc</code> 配置</li> <li><code>project/tests/test.js</code> 将会使用 <code>project/tests/.eslintrc</code> + <code>project/.eslintrc</code> 配置，并且在有冲突时以 <code>project/tests/.eslintrc</code> 为准。</li></ul> <p>例二：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>project
+├── package.json <span class="token comment"># 文件内包含 eslintConfig 属性</span>
+├── lib
+│ └── source.js
+└─┬ tests
+  ├── .eslintrc
+  └── test.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li><code>project/lib/source.js</code> 将会使用 <code>project/package.json</code> 的 <code>eslintConfig</code> 属性配置</li> <li><code>project/tests/test.js</code> 将会使用 <code>project/tests/.eslintrc</code> + <code>project/package.json</code> 配置，并且在有冲突时以 <code>project/tests/.eslintrc</code> 为准。</li></ul> <p>例三：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>project
+├── .eslintrc
+├── package.json <span class="token comment"># 文件内包含 eslintConfig 属性</span>
+├── lib
+│ └── source.js
+└─┬ tests
+  ├── .eslintrc
+  └── test.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>项目根目录同时拥有 <code>.eslintrc.*</code> 配置文件和 <code>package.json</code> 的 <code>eslintConfig</code> 属性，只会使用优先级高的 <code>.eslintrc.*</code> 配置</li> <li><code>project/lib/source.js</code> 将会使用 <code>project/.eslintrc</code> 配置</li> <li><code>project/tests/test.js</code> 将会使用 <code>project/tests/.eslintrc</code> + <code>project/.eslintrc</code> 配置，并且在有冲突时以 <code>project/tests/.eslintrc</code> 为准。</li></ul> <p>默认情况下，ESLint 会一直往祖先目录查找配置文件，并使用所有高优先级配置文件的配置，但有时不希望有这种情况，可以使用根属性 <code>root</code> 来告诉 ESLint 当前是否是根配置，不要再往上级目录查找了。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  root<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="root-当前配置是否是根配置"><a href="#root-当前配置是否是根配置" class="header-anchor">#</a> <code>root</code> 当前配置是否是根配置</h2> <p><code>type: boolean</code></p> <p><code>default: false</code></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  root<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>告诉 ESLint 不要再往上级目录查找，利用此属性配置，项目级和目录级的配置都可以不受上级目录以及祖先目录的配置影响。通常项目根目录应该设置为 <code>true</code>。</p> <p>完整的配置层次结构，从最高优先级到最低优先级如下:</p> <ul><li>行内配置（最高）：
+<ul><li><code>/*eslint-disable*/</code> and <code>/*eslint-enable*/</code></li> <li><code>/*global*/</code></li> <li><code>/*eslint*/</code></li> <li><code>/*eslint-env*/</code></li></ul></li> <li>命令行配置（其次）:
+<ul><li><code>--global</code></li> <li><code>--rule</code></li> <li><code>--env</code></li> <li><code>-c</code>, <code>--config</code></li></ul></li> <li>项目级配置（最低）:
+<ul><li>同目录下的 <code>.eslintrc.*</code> 或 <code>package.json</code></li> <li>继续往上往祖先目录查找，直到找到系统根目录或拥有 <code>root === true</code> 的配置文件</li></ul></li></ul> <h2 id="parseroptions-解析器配置项"><a href="#parseroptions-解析器配置项" class="header-anchor">#</a> <code>parserOptions</code> 解析器配置项</h2> <p><code>type: object</code></p> <p><code>default: 见各属性默认值</code></p> <h3 id="ecmaversion-指定-ecmascript-版本-默认-5"><a href="#ecmaversion-指定-ecmascript-版本-默认-5" class="header-anchor">#</a> <code>ecmaVersion</code> 指定 ECMAScript 版本，默认 <code>5</code></h3> <p><code>type: number</code></p> <p><code>default: 5</code></p> <p>可以设置为版本数字或版本年份，比如 <code>6 | 7 | 2017 | 2020</code>。</p> <p>请注意支持 ES6 语法也不代表 ESlint 能识别 ES6 中新的全局变量，比如 <code>Set</code>。</p> <p>也就是说，设置了 <code>parserOptions.ecmaVersion === 6</code> 仅表示支持 ES6 语法，若要支持 ES6 的全局变量还需要设置 <code>env.es6 === true</code> ，当然，设置了 <code>env['es6'] === true</code> 之后其实也自动启用了 ES6 语法。</p> <h3 id="sourcetype-指定源码类型是-script-默认-还是-module-类型"><a href="#sourcetype-指定源码类型是-script-默认-还是-module-类型" class="header-anchor">#</a> <code>sourceType</code> 指定源码类型是 script (默认) 还是 module 类型</h3> <p><code>type: string</code></p> <p><code>default: 'script'</code></p> <p>如果代码使用的是 ES 模块(ECMAScript Module)， 则设置为 <code>'module'</code>。</p> <h3 id="ecmafeatures-指定使用的额外的语言特性-所有选项默认-false"><a href="#ecmafeatures-指定使用的额外的语言特性-所有选项默认-false" class="header-anchor">#</a> <code>ecmaFeatures</code> 指定使用的额外的语言特性，所有选项默认 <code>false</code></h3> <h4 id="globalreturn-是否允许在全局作用域下使用-return-语句-默认-false"><a href="#globalreturn-是否允许在全局作用域下使用-return-语句-默认-false" class="header-anchor">#</a> <code>globalReturn</code> 是否允许在全局作用域下使用 return 语句，默认 <code>false</code></h4> <h4 id="impliedstrict-当-parseroptions-ecmaversion-5-时-是否启用全局-strict-mode"><a href="#impliedstrict-当-parseroptions-ecmaversion-5-时-是否启用全局-strict-mode" class="header-anchor">#</a> <code>impliedStrict</code> 当 <code>parserOptions.ecmaVersion &gt;= 5</code> 时，是否启用全局 strict mode</h4> <h4 id="jsx-是否启用-jsx"><a href="#jsx-是否启用-jsx" class="header-anchor">#</a> <code>jsx</code> 是否启用 JSX</h4> <p>请注意，支持 JSX 语法不代表支持 React 。 React 对 JSX 应用了特定的语义以至于 ESLint 无法识别。</p> <p>如果您正在使用 React 并且希望 ESLint 识别 React 语义，我们建议使用 <code>eslint-plugin-react</code>。</p> <h4 id="experimentalobjectrestspread-已弃用-是否支持对象-rest-spread"><a href="#experimentalobjectrestspread-已弃用-是否支持对象-rest-spread" class="header-anchor">#</a> <code>experimentalObjectRestSpread</code> 已弃用，是否支持对象 <code>rest/spread</code></h4> <p>ECMAScript 标准已包括，所以该属性已弃用，通过 <code>ecmaVersion</code> 控制</p> <h2 id="parser-指定解析器-默认-espree"><a href="#parser-指定解析器-默认-espree" class="header-anchor">#</a> <code>parser</code> 指定解析器，默认 <code>Espree</code></h2> <p><code>type: string</code></p> <p><code>default: 'Espree'</code></p> <p>ESLint 默认使用 <code>Espree</code> 作为解析器，可以任意指定解析器，只要满足以下要求：</p> <ul><li><p>必须是一个可以从当前配置文件加载的 Node 模块。也就是 npm 安装的解析器包。</p></li> <li><p>必须符合解析器接口 (<a href="https://eslint.org/docs/developer-guide/working-with-custom-parsers" target="_blank" rel="noopener noreferrer">parser interface<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)</p></li></ul> <p>注意，即使满足这些条件，也不能保证外部解析器能够正确使用 ESLint ，而且 ESLint 不会修复与其他解析器不兼容的 bug。</p> <p>将 npm 包名作为 <code>parser</code> 属性的值即可。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  parser<span class="token operator">:</span> <span class="token string">'esprima'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>与  ESLint 兼容的解析器有：</p> <ul><li><code>Esprima</code></li> <li><code>Babel-ESLint</code> 一个对 Babel parser 的包装，使其与  ESLint 兼容</li> <li><code>@typescript-eslint/parser</code> 一个将 TypeScript 转换为 ESTree 兼容形式的解析器，所以能够用在 ESLint 中。</li></ul> <p>注意：使用自定义的解析器时，也需要配置 <code>parserOptions</code> 属性，以便于 ESLint 能够正常使用那些默认设置的 ES5 没有的特性，插件会传递 <code>parserOptions</code> 给任意解析器，它们可能会或不会使用这些配置来决定开启相应特性。</p> <h2 id="processor-配置插件提供的处理器"><a href="#processor-配置插件提供的处理器" class="header-anchor">#</a> <code>processor</code> 配置插件提供的处理器</h2> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>有些插件会提供处理器，处理器可以从一些不是 <code>.js</code> 的文件中提取 JavaScript 代码然后再交给 ESLint 来检测。或者处理器可以在预处理中转换 JavaScript 代码以达到某些目的。</p> <p>属性值为 <code>插件名/处理器名</code>，比如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'a-plugin'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  processor<span class="token operator">:</span> <span class="token string">'a-plugin/a-processor'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>以上配置启用了插件 <code>a-plugin</code> 以及插件提供的处理器 <code>a-processor</code> 。</p> <p>也可以仅为指定的某类文件启用处理器：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'a-plugin'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  overrides<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'*.md'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      processor<span class="token operator">:</span> <span class="token string">'a-plugin/markdown'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上例中，仅对 <code>*.md</code> 文件使用 <code>a-plugin</code> 插件提供的处理器 <code>markdown</code> 。</p> <p>处理器可以将那些从非 <code>.js</code> 文件中提取出来的 JavaScript 代码生成命名代码块，比如 <code>0.js</code>, <code>1.js</code> 。 ESLint 会将这些文件当作原始文件的子文件处理，所以可以为这部分提取出来的 JavaScript 指定单独的配置，像这样：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'a-plugin'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 使用插件 a-plugin</span>
+  overrides<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'*.md'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 匹配所有 .md 文件</span>
+      processor<span class="token operator">:</span> <span class="token string">'a-plugin/markdown'</span><span class="token punctuation">,</span> <span class="token comment">// 用插件的 markdown 处理器处理匹配的文件</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'**/*.md/*.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 匹配所有 .md 文件下的 .js 子文件</span>
+      rules<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 对匹配的子文件应用额外的 rules 代码规则</span>
+        <span class="token string">'strict'</span><span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>上例中，针对从 <code>.md</code> 文件中提取出来的 JavaScript 代码块，使用了额外的 <code>rules</code> 选项来检查这部分代码是否符合规范。</p> <p>ESLint 检查指定的代码块路径（上例中是 <code>'**/*.md/*.js'</code>）是否有匹配项，并忽略那些不匹配的代码块路径，所以如果想要使用 ESLint 来检测那些从非 <code>.js</code> 文件中提取出的代码块，一定要给出正确的路径。</p> <h2 id="env-代码环境-以便于检查是否有预定义的全局变量"><a href="#env-代码环境-以便于检查是否有预定义的全局变量" class="header-anchor">#</a> <code>env</code> 代码环境，以便于检查是否有预定义的全局变量</h2> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>指定源代码所处的环境，以便于 ESLint 知道所使用的全局变量是在这些环境下存在。</p> <p>比如 browser 下的变量， Node 中不一定有， 反之 Node 中的变量 browser 中也不一定有。还有比如 ECMAScript 新版中有可能增加了一些全局变量，如果不指定，直接在代码中使用，那么 ESLint 就会认为使用了未定义的变量。</p> <p>所有环境都没有互斥的，所以可以一次定义多个环境。</p> <p>以下代码配置源代码的环境同时包括浏览器，Node，以及 es2020：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  env<span class="token operator">:</span> <span class="token punctuation">{</span>
+    browser<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    node<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    es2020<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>这样，在源代码中使用了这三种环境中的任意全局变量都不会被 ESLint 报错了。</p> <p>也可以在某文件中以注释来指定当前文件环境：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint-env browser, node, es2020 */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>环境列表：</p> <ul><li><code>browser</code> 浏览器环境全局变量</li> <li><code>node</code> Node.js 全局变量及作用域</li> <li><code>commonjs</code> CommonJS 全局变量及作用域 (用于 Browserify/WebPack 打包的仅在浏览器运行的代码)</li> <li><code>shared-node-browser</code> Node.js 和 Browser 通用全局变量。</li> <li><code>es6</code> 包含 modules 以外的所有 ES6 特性(将会自动设置 <code>parserOptions.ecmaVersion = 6</code>)。</li> <li><code>es2017</code> 包含所有 ES2017 特性并自动设置 <code>parserOptions.ecmaVersion = 8</code></li> <li><code>es2020</code> 包含所有 ES2020 特性并自动设置 <code>parserOptions.ecmaVersion = 11</code></li> <li><code>worker</code> web workers 全局变量</li> <li><code>amd</code> - defines require() and define() as global variables as per the amd spec.</li> <li><code>mocha</code> 包含所有 Mocha 的全局变量</li> <li><code>jasmine</code> 包含所有 Jasmine(1.3 &amp; 2.0) 的全局变量</li> <li><code>jest</code> Jest 全局变量</li> <li><code>phantomjs</code> - PhantomJS 全局变量</li> <li><code>protractor</code> - Protractor 全局变量</li> <li><code>qunit</code> - QUnit 全局变量</li> <li><code>jquery</code> - jQuery 全局变量</li> <li><code>prototypejs</code> - Prototype.js 全局变量</li> <li><code>shelljs</code> - ShellJS 全局变量</li> <li><code>meteor</code> - Meteor 全局变量</li> <li><code>mongo</code> - MongoDB 全局变量</li> <li><code>applescript</code> - AppleScript 全局变量</li> <li><code>nashorn</code> - Java 8 Nashorn 全局变量</li> <li><code>serviceworker</code> - Service Worker 全局变量</li> <li><code>atomtest</code> - Atom test helper 全局变量</li> <li><code>embertest</code> - Ember test helper 全局变量</li> <li><code>webextensions</code> - WebExtensions 全局变量</li> <li><code>greasemonkey</code> - GreaseMonkey 全局变量</li></ul> <p>如果想使用来自插件的环境，必须在 <code>plugins</code> 数组中指定插件名称，然后使用 <code>无前缀的插件名称/环境名称</code> 。</p> <p>比如，使用 <code>eslint-plugin-example</code> 插件提供的自定义环境：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'example'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  env<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'example/custom'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="globals-指定将会用到的全局变量"><a href="#globals-指定将会用到的全局变量" class="header-anchor">#</a> <code>globals</code> 指定将会用到的全局变量</h2> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>如果在一个文件中访问当前文件未定义的变量，配置项 <code>rules['no-undef']</code> 将警告使用了未定义的变量。如果访问的变量是自定义的全局变量，但又不存在于在指定的 <code>env</code> 环境中，那就需要手动告诉 ESLint 哪些是全局变量，以便于 ESLint 不会报错。</p> <p>配置项 <code>globals</code> 对象的 key 表示全局变量名，value 设置为可写 <code>'writable'</code> 或只读 <code>'readonly'</code> 。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  globals<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'var1'</span><span class="token operator">:</span> <span class="token string">'writable'</span><span class="token punctuation">,</span>
+    <span class="token string">'var2'</span><span class="token operator">:</span> <span class="token string">'readonly'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>以注释的方式指定全局变量</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* global var1: writable, var2: readonly */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>还可以通过 <code>globals</code> 配置项指定要禁用的全局变量，比如指定了 <code>env.es6 === true</code> 但是要禁用 <code>Promise</code> 时，可以这样设置：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  globals<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'Promise'</span><span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>历史版本中，值可以设置为 <code>false</code> 或 <code>readable</code> 表示只读，等同于 <code>'readonly'</code> 。同样地，<code>true</code> 或 <code>writeable</code> 表示可写，等同于 <code>'writable'</code>。但旧值已被遗弃，不应该再被使用。</p> <h2 id="plugins-指定要使用的插件"><a href="#plugins-指定要使用的插件" class="header-anchor">#</a> <code>plugins</code> 指定要使用的插件</h2> <p><code>type: Array&lt;string&gt;</code></p> <p><code>default: []</code></p> <p>ESLint 支持第三方插件，使用 npm 安装即可在配置中调用。</p> <p>ESLint 插件名都是以 <code>eslint-plugin-*</code> 开头的，但是在 plugins 中配置时可以省略前缀。</p> <p>比如，要使用 <code>eslint-plugin-plugin1</code> 和 <code>eslint-plugin-plugin2</code> 插件：</p> <p>安装插件：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> i -D eslint-plugin-plugin1 eslint-plugin-plugin2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>在配置文件中使用：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'plugin1'</span><span class="token punctuation">,</span>
+    <span class="token string">'eslint-plugin-plugin2'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>注意：</p> <ul><li><p>插件路径是相对于配置文件所在路径进行解析的。也就是说，ESLint 会像用户在配置文件中运行 <code>require('eslint-plugin-name')</code> 那样加载插件。</p></li> <li><p>通过配置项 <code>extends</code> 加载的基本配置文件中有使用 <code>plugins</code> 时，加载这些 <code>plugins</code> 并不是相对于基本配置文件的，而是相对于 ESLint 进程的工作目录。比如：</p> <ol><li>从 <code>project/.eslintrc.js</code> 中配置了 <code>extends: ['eslint-config-foo']</code></li> <li>在 <code>eslint-config-foo</code> 中配置了 <code>plugins: ['eslint-plugin-bar']</code></li> <li>ESLint 会从 <code>project/node_modules/</code> 中或祖先目录中去查找 <code>eslint-plugin-bar</code>，而不会从 <code>project/node_modules/eslint-config-foo/node_modules/</code> 去查找。因此，配置文件和基本配置中的每个插件都是唯一的。</li></ol></li></ul> <h3 id="使用插件时的名称约定-naming-convention"><a href="#使用插件时的名称约定-naming-convention" class="header-anchor">#</a> 使用插件时的名称约定 (Naming Convention)</h3> <p>对于有或没有作用域的包，都可以省略 <code>eslint-plugin-</code> 前缀</p> <h4 id="直接包含插件时"><a href="#直接包含插件时" class="header-anchor">#</a> 直接包含插件时</h4> <p>无作用域的包：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'jquery'</span><span class="token punctuation">,</span> <span class="token comment">// 表示 eslint-plugin-jquery</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>有作用域的包：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'@jquery/jquery'</span><span class="token punctuation">,</span> <span class="token comment">// 表示 @jquery/eslint-plugin-jquery</span>
+    <span class="token string">'@foobar'</span><span class="token punctuation">,</span> <span class="token comment">// 表示 @foobar/eslint-plugin</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="使用插件提供的-rules-env-extends-选项时"><a href="#使用插件提供的-rules-env-extends-选项时" class="header-anchor">#</a> 使用插件提供的 <code>rules/env/extends</code> 选项时</h4> <ul><li><code>eslint-plugin-foo</code> → <code>foo/a-rule</code></li> <li><code>@foo/eslint-plugin</code> → <code>@foo/a-config</code></li> <li><code>@foo/eslint-plugin-bar</code> → <code>@foo/bar/a-environment</code></li></ul> <p>比如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'jquery'</span><span class="token punctuation">,</span> <span class="token comment">// eslint-plugin-jquery</span>
+    <span class="token string">'@foo/foo'</span><span class="token punctuation">,</span> <span class="token comment">// @foo/eslint-plugin-foo</span>
+    <span class="token string">'@bar'</span><span class="token punctuation">,</span> <span class="token comment">// @bar/eslint-plugin</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'plugin:@foo/foo/recommended'</span><span class="token punctuation">,</span>
+    <span class="token string">'plugin:@bar/recommended'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'jquery/a-rule'</span><span class="token operator">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+    <span class="token string">'@foo/foo/some-rule'</span><span class="token operator">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+    <span class="token string">'@bar/another-rule'</span><span class="token operator">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  env<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'jquery/jquery'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">'@foo/foo/env-foo'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">'@bar/env-bar'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="rules-检查代码使用规则"><a href="#rules-检查代码使用规则" class="header-anchor">#</a> <code>rules</code> 检查代码使用规则</h2> <p>rules 包含大量规则，每条规则都可以配置为如下等级：</p> <ul><li><code>'off'</code> 或 <code>0</code> 关闭此规则的报告</li> <li><code>'warn'</code> 或 <code>1</code> 报告为警告提醒信息，不会改变 exit code</li> <li><code>'error'</code> 或 <code>2</code> 报告为错误信息，报错触发时 exit code 变为 <code>1</code></li></ul> <p>可以通过注释或者配置文件添加 rules 。比如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint eqeqeq: 'off', curly: 'error' */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>上例配置了 <code>rules['eqeqeq']</code> 关闭， <code>rules['curly']</code> 报告为错误信息，下例是完全等效的写法：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint eqeqeq: 0, curly: 2 */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当一个规则接收额外的配置项时，可以写成数组的形式，数组第一个元素永远都表示规则警告等级（数字或字符串），额外配置从第二个参数开始配置：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint quotes: [2, 'single'], curly: 2 */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>上例配置了 <code>rules['quotes']</code> 警告等级为 <code>2</code> ，并传入额外配置项 <code>'single'</code></p> <p>配置后还可以加入配置规则的备注描述信息，方便告诉其他人看到为什么要配置这些规则。</p> <p>通过连续两个或以上的 <code>-</code> 符号分隔开：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint quotes: [2, 'single'], curly: 2 -- Why add this rule? */</span>
+
+<span class="token comment">/* eslint quotes: [2, 'single'], curly: 2
+--------
+Why add this rule?
+*/</span>
+
+<span class="token comment">/* eslint quotes: [2, 'single'], curly: 2
+ * --------
+ * Why add this rule?
+ */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>通过配置文件写入配置项：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'strict'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'safe'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'no-var'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'no-duplicate-imports'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      includeExports<span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>如果要配置在插件中定义的规则，写为 <code>插件名/规则ID</code> ，比如:</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'plugin1'</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'strict'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'safe'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">'plugin1/custom-rule'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>同样地，在注释中也可以使用插件提供的规则</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint 'plugin1/custom-rule': [2] */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="通过内联注释禁用规则"><a href="#通过内联注释禁用规则" class="header-anchor">#</a> 通过内联注释禁用规则</h2> <h3 id="临时在一段代码中禁用-eslint-插件"><a href="#临时在一段代码中禁用-eslint-插件" class="header-anchor">#</a> 临时在一段代码中禁用 eslint 插件</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint-disable */</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+
+<span class="token comment">/* eslint-enable */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="临时在一段代码中禁用指定的规则"><a href="#临时在一段代码中禁用指定的规则" class="header-anchor">#</a> 临时在一段代码中禁用指定的规则</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint-disable no-alert, no-console */</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span>
+
+<span class="token comment">/* eslint-enable no-alert, no-console */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="当前文件禁用-eslint"><a href="#当前文件禁用-eslint" class="header-anchor">#</a> 当前文件禁用 eslint</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint-disable */</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="当前文件禁用指定的规则"><a href="#当前文件禁用指定的规则" class="header-anchor">#</a> 当前文件禁用指定的规则</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/* eslint-disable no-alert */</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="针对某一行禁用-eslint"><a href="#针对某一行禁用-eslint" class="header-anchor">#</a> 针对某一行禁用 eslint</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eslint-disable-line</span>
+
+<span class="token comment">// eslint-disable-next-line</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* eslint-disable-next-line */</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* eslint-disable-line */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="针对某一行禁用一项指定的规则"><a href="#针对某一行禁用一项指定的规则" class="header-anchor">#</a> 针对某一行禁用一项指定的规则</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eslint-disable-line no-alert</span>
+
+<span class="token comment">// eslint-disable-next-line no-alert</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* eslint-disable-line no-alert */</span>
+
+<span class="token comment">/* eslint-disable-next-line no-alert */</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="针对某一行禁用多项指定的规则"><a href="#针对某一行禁用多项指定的规则" class="header-anchor">#</a> 针对某一行禁用多项指定的规则</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eslint-disable-line no-alert, quotes, semi</span>
+
+<span class="token comment">// eslint-disable-next-line no-alert, quotes, semi</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* eslint-disable-line no-alert, quotes, semi */</span>
+
+<span class="token comment">/* eslint-disable-next-line no-alert, quotes, semi */</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>以上的所有方法对插件提供的规则同样有效，同样是 <code>插件名/规则ID</code>，比如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// eslint-disable-line example/rule-name</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* eslint-disable-line example/rule-name */</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>和注释启用规则时添加备注信息一样，注释禁用规则也可以添加备注信息，告诉其他人为什么这里要禁用规则，以免其他人不明白。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// eslint-disable-next-line no-console -- Why disable this rules?</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>注意：在文件中使用注释禁用警告时，只是告诉 ESLint 不要报告这一部分代码违规了，然而，ESLint 仍然会解析整个文件所有代码，因此即便是禁用了警告的那一段代码，仍然需要是语法有效的 JavaScript 代码。</p> <h3 id="通过配置文件-overrides-配置项-对一组文件禁用规则"><a href="#通过配置文件-overrides-配置项-对一组文件禁用规则" class="header-anchor">#</a> 通过配置文件 overrides 配置项，对一组文件禁用规则</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'no-var'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  overrides<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'*-test.js'</span><span class="token punctuation">,</span> <span class="token string">'*.spec.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'no-var'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>上例中，匹配所有文件名结尾为 <code>-test.js</code> 和 <code>*.spec.js</code> 的文件，对它们单独配置了 <code>rules</code> 规则，将 <code>rules['no-var']</code> 设置为禁用警告。</p> <h3 id="配置内联注释的行为"><a href="#配置内联注释的行为" class="header-anchor">#</a> 配置内联注释的行为</h3> <h4 id="禁用内联注释"><a href="#禁用内联注释" class="header-anchor">#</a> 禁用内联注释</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  noInlineConfig<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 禁用所有内联注释</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="报告未使用的-eslint-disable-注释"><a href="#报告未使用的-eslint-disable-注释" class="header-anchor">#</a> 报告未使用的 <code>eslint-disable</code> 注释</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  reportUnusedDisableDirectives<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 报告未使用的 ESLint 禁用注释</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="adding-shared-settings"><a href="#adding-shared-settings" class="header-anchor">#</a> Adding Shared Settings</h4> <p>ESLint 支持在配置文件中添加共享设置。您可以将 <code>settings</code> 对象添加到 ESLint 配置文件中，它将被提供给每个将要执行的规则。如果您正在添加自定义规则，并希望它们能够访问相同的信息，并且易于配置，那么这可能非常有用。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  settings<span class="token operator">:</span> <span class="token punctuation">{</span>
+    sharedData<span class="token operator">:</span> <span class="token string">'Hello'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="extends-扩展配置文件"><a href="#extends-扩展配置文件" class="header-anchor">#</a> <code>extends</code> 扩展配置文件</h2> <p><code>type: string | string[]</code></p> <p><code>default: -</code></p> <p>一个配置文件可以扩展另一个配置文件，<code>extends</code> 属性值可以是:</p> <ul><li>字符串，指定配置文件的路径（比如 <code>'./configs/eslint/index.js'</code>），或可共享配置的名称（比如 <code>'eslint: recommendation'</code>，或<code>'eslint:all'</code>）</li> <li>数组，包括多个字符串配置文件或可共享配置名称，数组指定的每一个配置文件扩展它前面的配置。</li></ul> <p>ESLint 会递归地扩展配置，因此基本配置（被 <code>extends</code> 的配置）依然可以有一个 <code>extends</code> 属性。但是，不管是哪里出现的 <code>extends</code> 属性，相对路径和可共享配置名都是从配置文件出现的位置（通常是项目根目录）解析的。</p> <p><code>rules</code> 属性可以执行以下任何操作来扩展或覆盖 <code>rules</code>:</p> <ul><li><p>添加额外的规则</p></li> <li><p>只改变规则的警告严重级别但不改变配置选项，比如：</p> <ul><li>基础配置: <code>'eqeqeq': ['error', 'allow-null']</code></li> <li>派生配置: <code>'eqeqeq': 'warn'</code></li> <li>实际应用: <code>'eqeqeq': ['warn', 'allow-null']</code></li></ul></li> <li><p>完全覆盖继承的规则:</p> <ul><li>基础配置: <code>'quotes': ['error', 'single', 'avoid-escape']</code></li> <li>派生配置: <code>'quotes': ['error', 'single']</code></li> <li>实际应用: <code>'quotes': ['error', 'single']</code></li></ul></li></ul> <h3 id="extends-共享配置-eslint-recommended"><a href="#extends-共享配置-eslint-recommended" class="header-anchor">#</a> <code>extends</code> 共享配置 <code>eslint:recommended</code></h3> <p>共享配置 <code>eslint:recommended</code> 是一组包括了常见问题的核心规则，它包含了 <code>https://eslint.org/docs/rules/</code> 这个页面的所有打勾的规则，这个推荐的规则集只会在 ESLint 的主要版本中更改。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token string">'eslint:recommended'</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改或新增其他规则配置</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="extends-一个可共享配置包"><a href="#extends-一个可共享配置包" class="header-anchor">#</a> <code>extends</code> 一个可共享配置包</h3> <p>可共享配置包（sharable configuration）也就是一个 npm 包，这些包命名都是 <code>eslint-config-*</code> 这样的，但是在 <code>extends</code> 中使用时可以省略 <code>eslint-config-</code> 前缀。</p> <p>比如，使用 <code>eslint-config-standard</code> 作为基础配置：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -D eslint-config-standard
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token string">'standard'</span><span class="token punctuation">,</span> <span class="token comment">// 或者写全称：eslint-config-standard</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改或新增其他规则配置</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="extends-插件-plugin-提供的配置文件"><a href="#extends-插件-plugin-提供的配置文件" class="header-anchor">#</a> <code>extends</code> 插件（plugin ）提供的配置文件</h3> <p>plugin 也是 npm 包，命名则是 <code>eslint-plugin-*</code> 这样的，同样地，在使用的时候也可以省略 <code>eslint-plugin-</code> 前缀。</p> <p><code>extends</code> 属性值可以包括：</p> <ul><li><code>plugin:</code></li> <li>npm 包名，比如 <code>react</code></li> <li><code>/</code></li> <li>配置名，比如 <code>recommended</code></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">]</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'eslint:recommended'</span><span class="token punctuation">,</span>
+    <span class="token string">'plugin:react/recommended'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'react/no-set-state'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="extends-另一个配置文件"><a href="#extends-另一个配置文件" class="header-anchor">#</a> <code>extends</code> 另一个配置文件</h3> <p>配置文件也可以 <code>extends</code> 另一个配置文件，可以是绝对或相对的基础配置文件路径，ESLint 会从加载的配置文件开始解析加载相对路径的配置文件</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'./configs/eslint/PossibleErrors.js'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改或新增其他规则配置</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="extends-共享配置-eslint-all"><a href="#extends-共享配置-eslint-all" class="header-anchor">#</a> <code>extends</code> 共享配置 <code>eslint:all</code></h3> <p><code>extends</code> 属性值可以是 <code>'eslint:all'</code> ，以启用当前安装的 ESLint 版本中的所有核心规则。核心规则集会在 ESLint 的任何大小版本中修改，所以也不建议用在生产环境中。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token string">'eslint:all'</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 修改或新增其他规则配置</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="glob-模式配置"><a href="#glob-模式配置" class="header-anchor">#</a> Glob 模式配置</h2> <h3 id="忽略文件和目录"><a href="#忽略文件和目录" class="header-anchor">#</a> 忽略文件和目录</h3> <h4 id="通过-ignorepatterns-配置项忽略文件和目录"><a href="#通过-ignorepatterns-配置项忽略文件和目录" class="header-anchor">#</a> 通过 <code>ignorePatterns</code> 配置项忽略文件和目录</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  ignorePatterns<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'temp.js'</span><span class="token punctuation">,</span> <span class="token string">'**/vendor/*.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="通过-eslintignore-文件忽略文件和目录"><a href="#通过-eslintignore-文件忽略文件和目录" class="header-anchor">#</a> 通过 <code>.eslintignore</code> 文件忽略文件和目录</h4> <p>可以在项目根目录创建一个 <code>.eslintignore</code> 文件告诉 ESLint 去忽略指定的文件和目录。 <code>.eslintignore</code> 文件是一个纯文本文件，其中的每一行都是一个 glob 模式表明哪些路径应该忽略检测。例如，以下将忽略所有的 JavaScript 文件：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>**/*.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当 ESLint 运行时，在确定哪些文件要检测之前，它会在当前工作目录中查找 <code>.eslintignore</code> 文件。如果发现了这个文件，当遍历目录时，将会忽略指定的文件和目录。一次只有一个 <code>.eslintignore</code> 文件会被使用，所以，不是当前工作目录下的 <code>.eslintignore</code> 文件将不会被用到。</p> <p>Globs 匹配使用 node-ignore，所以大量可用的特性有：</p> <ul><li>以 <code>#</code> 开头的行被视为注释，不会有任何影响</li> <li>路径相对于当前工作目录为准</li> <li>以 <code>!</code> 开头的行为取反模式，但它将会包含前面的行中已忽略的 pattern</li> <li>忽略模式依照 <code>.gitignore</code> 规范</li></ul> <p>路径必须使用正斜杠（<code>/</code>），而不能使用反斜杠（<code>\</code>）</p> <p>插件默认拥有的隐式忽略规则：</p> <ul><li><code>node_modules/</code></li> <li>点文件/目录（<code>.eslintrc.*</code>除外），以点 <code>.</code> 开头的文件或目录</li></ul> <h4 id="通过-package-json-添加根属性-eslintignore"><a href="#通过-package-json-添加根属性-eslintignore" class="header-anchor">#</a> 通过 <code>package.json</code> 添加根属性 <code>eslintIgnore</code></h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token string">&quot;eslintIgnore&quot;</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;hello.js&quot;</span>, <span class="token string">&quot;world.js&quot;</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/projectConfig/eslint/README.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.10eff469.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/151.a66e8e54.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>package.json | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.10eff469.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/102.7dbd72d8.js" as="script"><link rel="prefetch" href="/assets/js/10.88abc246.js"><link rel="prefetch" href="/assets/js/100.5efad50f.js"><link rel="prefetch" href="/assets/js/101.b8103b1e.js"><link rel="prefetch" href="/assets/js/103.57d21c17.js"><link rel="prefetch" href="/assets/js/104.cf88f901.js"><link rel="prefetch" href="/assets/js/105.0c696d8c.js"><link rel="prefetch" href="/assets/js/106.c66b4cdb.js"><link rel="prefetch" href="/assets/js/107.d3cece79.js"><link rel="prefetch" href="/assets/js/108.c693c382.js"><link rel="prefetch" href="/assets/js/109.761c7068.js"><link rel="prefetch" href="/assets/js/11.5c9a3ba2.js"><link rel="prefetch" href="/assets/js/110.f6b64833.js"><link rel="prefetch" href="/assets/js/111.7658ff67.js"><link rel="prefetch" href="/assets/js/112.702ebc58.js"><link rel="prefetch" href="/assets/js/113.01be9797.js"><link rel="prefetch" href="/assets/js/114.993b2eeb.js"><link rel="prefetch" href="/assets/js/115.da6fe2d3.js"><link rel="prefetch" href="/assets/js/116.21d8fd4a.js"><link rel="prefetch" href="/assets/js/117.4d8ec50e.js"><link rel="prefetch" href="/assets/js/118.299e6995.js"><link rel="prefetch" href="/assets/js/119.078e95e8.js"><link rel="prefetch" href="/assets/js/12.e52d96a8.js"><link rel="prefetch" href="/assets/js/120.033781ed.js"><link rel="prefetch" href="/assets/js/121.d6bd2aed.js"><link rel="prefetch" href="/assets/js/122.c2a65f95.js"><link rel="prefetch" href="/assets/js/123.47cab965.js"><link rel="prefetch" href="/assets/js/124.72253999.js"><link rel="prefetch" href="/assets/js/125.e25dfc9c.js"><link rel="prefetch" href="/assets/js/126.8140260b.js"><link rel="prefetch" href="/assets/js/127.652962db.js"><link rel="prefetch" href="/assets/js/128.44e4c9ed.js"><link rel="prefetch" href="/assets/js/129.df45ab57.js"><link rel="prefetch" href="/assets/js/13.5631668b.js"><link rel="prefetch" href="/assets/js/130.2203198a.js"><link rel="prefetch" href="/assets/js/131.41b81abb.js"><link rel="prefetch" href="/assets/js/132.f3b86105.js"><link rel="prefetch" href="/assets/js/133.7f929f5e.js"><link rel="prefetch" href="/assets/js/134.85f5d8eb.js"><link rel="prefetch" href="/assets/js/135.8468b074.js"><link rel="prefetch" href="/assets/js/136.0cab583a.js"><link rel="prefetch" href="/assets/js/137.a081ac57.js"><link rel="prefetch" href="/assets/js/138.80873e49.js"><link rel="prefetch" href="/assets/js/139.03d7fa39.js"><link rel="prefetch" href="/assets/js/14.6c9b99fe.js"><link rel="prefetch" href="/assets/js/140.6a4e8128.js"><link rel="prefetch" href="/assets/js/141.28c518fd.js"><link rel="prefetch" href="/assets/js/142.c8164e04.js"><link rel="prefetch" href="/assets/js/143.586d0cfa.js"><link rel="prefetch" href="/assets/js/144.c51866dd.js"><link rel="prefetch" href="/assets/js/145.f8bf3863.js"><link rel="prefetch" href="/assets/js/146.a0cd8e2a.js"><link rel="prefetch" href="/assets/js/147.fe778dcb.js"><link rel="prefetch" href="/assets/js/148.3279b7bd.js"><link rel="prefetch" href="/assets/js/149.c5f8652d.js"><link rel="prefetch" href="/assets/js/15.0cdcab4e.js"><link rel="prefetch" href="/assets/js/150.3acb7cb4.js"><link rel="prefetch" href="/assets/js/151.a66e8e54.js"><link rel="prefetch" href="/assets/js/152.000fcf9e.js"><link rel="prefetch" href="/assets/js/153.a9b084c3.js"><link rel="prefetch" href="/assets/js/154.784508d3.js"><link rel="prefetch" href="/assets/js/155.4513c545.js"><link rel="prefetch" href="/assets/js/156.d76e577b.js"><link rel="prefetch" href="/assets/js/157.3783efa8.js"><link rel="prefetch" href="/assets/js/158.2c4ad6e0.js"><link rel="prefetch" href="/assets/js/159.7b7177e8.js"><link rel="prefetch" href="/assets/js/16.78288cdb.js"><link rel="prefetch" href="/assets/js/160.6582b4ac.js"><link rel="prefetch" href="/assets/js/161.b486cc21.js"><link rel="prefetch" href="/assets/js/162.fbb76c37.js"><link rel="prefetch" href="/assets/js/163.45d172af.js"><link rel="prefetch" href="/assets/js/164.6076ccc6.js"><link rel="prefetch" href="/assets/js/17.1393ad15.js"><link rel="prefetch" href="/assets/js/18.e4d67a48.js"><link rel="prefetch" href="/assets/js/19.e2c4bdd6.js"><link rel="prefetch" href="/assets/js/20.f08fc2f0.js"><link rel="prefetch" href="/assets/js/21.4e6f9fab.js"><link rel="prefetch" href="/assets/js/22.03d61c6c.js"><link rel="prefetch" href="/assets/js/23.27688e4e.js"><link rel="prefetch" href="/assets/js/24.d929e3a8.js"><link rel="prefetch" href="/assets/js/25.f39ec441.js"><link rel="prefetch" href="/assets/js/26.253b081e.js"><link rel="prefetch" href="/assets/js/27.78599ad8.js"><link rel="prefetch" href="/assets/js/28.2f5ff939.js"><link rel="prefetch" href="/assets/js/29.56bec5bb.js"><link rel="prefetch" href="/assets/js/3.f3aa63d2.js"><link rel="prefetch" href="/assets/js/30.5cd75afc.js"><link rel="prefetch" href="/assets/js/31.a64d2cbc.js"><link rel="prefetch" href="/assets/js/32.8c4e784d.js"><link rel="prefetch" href="/assets/js/33.702be4c3.js"><link rel="prefetch" href="/assets/js/34.efd4470d.js"><link rel="prefetch" href="/assets/js/35.d33773f7.js"><link rel="prefetch" href="/assets/js/36.1698b20b.js"><link rel="prefetch" href="/assets/js/37.9c61e728.js"><link rel="prefetch" href="/assets/js/38.2d796de8.js"><link rel="prefetch" href="/assets/js/39.992e0728.js"><link rel="prefetch" href="/assets/js/4.664d718d.js"><link rel="prefetch" href="/assets/js/40.a3ce498b.js"><link rel="prefetch" href="/assets/js/41.afd063d0.js"><link rel="prefetch" href="/assets/js/42.ef1dbc14.js"><link rel="prefetch" href="/assets/js/43.97838f91.js"><link rel="prefetch" href="/assets/js/44.7dc85662.js"><link rel="prefetch" href="/assets/js/45.44db8f5e.js"><link rel="prefetch" href="/assets/js/46.35511e63.js"><link rel="prefetch" href="/assets/js/47.f34b2220.js"><link rel="prefetch" href="/assets/js/48.74efec8b.js"><link rel="prefetch" href="/assets/js/49.3ee121fc.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.e9d9f1fd.js"><link rel="prefetch" href="/assets/js/51.a8fdbf75.js"><link rel="prefetch" href="/assets/js/52.b0bfcbeb.js"><link rel="prefetch" href="/assets/js/53.a43f815f.js"><link rel="prefetch" href="/assets/js/54.65d8d0d1.js"><link rel="prefetch" href="/assets/js/55.c5c181b3.js"><link rel="prefetch" href="/assets/js/56.9e04f6db.js"><link rel="prefetch" href="/assets/js/57.a8a4fed7.js"><link rel="prefetch" href="/assets/js/58.a8629c3d.js"><link rel="prefetch" href="/assets/js/59.b0d41dd6.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.10ebf772.js"><link rel="prefetch" href="/assets/js/61.48891aa7.js"><link rel="prefetch" href="/assets/js/62.08332e7c.js"><link rel="prefetch" href="/assets/js/63.5fbb3de3.js"><link rel="prefetch" href="/assets/js/64.4f26709c.js"><link rel="prefetch" href="/assets/js/65.72ba77d1.js"><link rel="prefetch" href="/assets/js/66.0ddda330.js"><link rel="prefetch" href="/assets/js/67.82cafe21.js"><link rel="prefetch" href="/assets/js/68.92dfa7a9.js"><link rel="prefetch" href="/assets/js/69.4019057d.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.7bbf4398.js"><link rel="prefetch" href="/assets/js/71.586a35aa.js"><link rel="prefetch" href="/assets/js/72.b25d39fc.js"><link rel="prefetch" href="/assets/js/73.2b24a656.js"><link rel="prefetch" href="/assets/js/74.497a2a9f.js"><link rel="prefetch" href="/assets/js/75.f6a7e945.js"><link rel="prefetch" href="/assets/js/76.b564cde9.js"><link rel="prefetch" href="/assets/js/77.d84c7f0f.js"><link rel="prefetch" href="/assets/js/78.cebd4eeb.js"><link rel="prefetch" href="/assets/js/79.2b1ba658.js"><link rel="prefetch" href="/assets/js/8.9a295d9e.js"><link rel="prefetch" href="/assets/js/80.02c0787e.js"><link rel="prefetch" href="/assets/js/81.080f216a.js"><link rel="prefetch" href="/assets/js/82.2fd6bdc6.js"><link rel="prefetch" href="/assets/js/83.d7746482.js"><link rel="prefetch" href="/assets/js/84.3438b012.js"><link rel="prefetch" href="/assets/js/85.34aac049.js"><link rel="prefetch" href="/assets/js/86.9e17d110.js"><link rel="prefetch" href="/assets/js/87.508e0ffd.js"><link rel="prefetch" href="/assets/js/88.95531acb.js"><link rel="prefetch" href="/assets/js/89.b4d3ad36.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.10dc3d87.js"><link rel="prefetch" href="/assets/js/91.70477f8d.js"><link rel="prefetch" href="/assets/js/92.059f868c.js"><link rel="prefetch" href="/assets/js/93.3c951d44.js"><link rel="prefetch" href="/assets/js/94.d914015b.js"><link rel="prefetch" href="/assets/js/95.219a71b9.js"><link rel="prefetch" href="/assets/js/96.14f892c8.js"><link rel="prefetch" href="/assets/js/97.0e70e154.js"><link rel="prefetch" href="/assets/js/98.c2e701b6.js"><link rel="prefetch" href="/assets/js/99.973e39b1.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backEnd" class="dropdown-title"><span class="title">backEnd</span> <span class="arrow down"></span></button> <button type="button" aria-label="backEnd" class="mobile-dropdown-title"><span class="title">backEnd</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backEnd/node.html" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/backEnd/sql/" class="nav-link">
+  sql
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link router-link-active">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="backEnd" class="dropdown-title"><span class="title">backEnd</span> <span class="arrow down"></span></button> <button type="button" aria-label="backEnd" class="mobile-dropdown-title"><span class="title">backEnd</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/backEnd/node.html" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/backEnd/sql/" class="nav-link">
+  sql
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link router-link-active">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微信小程序" class="dropdown-title"><span class="title">微信小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="微信小程序" class="mobile-dropdown-title"><span class="title">微信小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/微信小程序/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Node</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Node/" aria-current="page" class="sidebar-link">Node 相关</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/#实用包" class="sidebar-link">实用包</a></li></ul></li><li><a href="/Node/npm 与 cnpm 的镜像源切换.html" class="sidebar-link">npm 镜像</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/npm 与 cnpm 的镜像源切换.html#方式一" class="sidebar-link">方式一</a></li><li class="sidebar-sub-header"><a href="/Node/npm 与 cnpm 的镜像源切换.html#方式二-执行结果等同于方式一" class="sidebar-link">方式二（执行结果等同于方式一）</a></li><li class="sidebar-sub-header"><a href="/Node/npm 与 cnpm 的镜像源切换.html#替换-disturl" class="sidebar-link">替换 disturl</a></li><li class="sidebar-sub-header"><a href="/Node/npm 与 cnpm 的镜像源切换.html#查看当前使用的镜像源" class="sidebar-link">查看当前使用的镜像源</a></li></ul></li><li><a href="/Node/package.json.html" aria-current="page" class="active sidebar-link">package.json</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/package.json.html#options" class="sidebar-link">Options</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/package.json.html#必备属性" class="sidebar-link">----- 必备属性 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#name-模块名称-包名称" class="sidebar-link">name 模块名称（包名称）</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#version" class="sidebar-link">version</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#描述信息" class="sidebar-link">----- 描述信息 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#description-描述信息" class="sidebar-link">description 描述信息</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#keywords-关键字" class="sidebar-link">keywords 关键字</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#author-包的主要作者-一个人" class="sidebar-link">author 包的主要作者，一个人</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#contributors-包的贡献者-多个人" class="sidebar-link">contributors 包的贡献者，多个人</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#homepage-该模块的主页" class="sidebar-link">homepage 该模块的主页</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#repository-代码仓库地址" class="sidebar-link">repository 代码仓库地址</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#bugs-提出-bug-的途径" class="sidebar-link">bugs 提出 bug 的途径</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#协议" class="sidebar-link">----- 协议 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#license-指定软件的开源协议" class="sidebar-link">license 指定软件的开源协议</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#目录、文件相关" class="sidebar-link">----- 目录、文件相关 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#main-入口-默认-index-js" class="sidebar-link">main 入口，默认 &quot;index.js&quot;</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#bin-命令行工具入口" class="sidebar-link">bin 命令行工具入口</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#files-需要发布到-npm-的文件列表" class="sidebar-link">files 需要发布到 npm 的文件列表</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#man-略" class="sidebar-link">man 略</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#脚本配置" class="sidebar-link">--- 脚本配置 ---</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#scripts-脚本命令的缩写" class="sidebar-link">scripts 脚本命令的缩写</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#config-暴露一些配置变量" class="sidebar-link">config 暴露一些配置变量</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#依赖包相关属性" class="sidebar-link">----- 依赖包相关属性 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#dependencies-生产环境依赖包" class="sidebar-link">dependencies 生产环境依赖包</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#devdependencies-开发环境依赖包" class="sidebar-link">devDependencies 开发环境依赖包</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#peerdependencies-指定所依赖的包的最低版本" class="sidebar-link">peerDependencies 指定所依赖的包的最低版本</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#optionaldependencies-可选依赖-同-dependencies" class="sidebar-link">optionalDependencies 可选依赖， 同 dependencies</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#bundleddependencies" class="sidebar-link">bundledDependencies</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#发布配置" class="sidebar-link">----- 发布配置 -----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#preferglobal-是否建议用户全局安装" class="sidebar-link">preferGlobal 是否建议用户全局安装</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#private-是否是私有包" class="sidebar-link">private 是否是私有包</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#publishconfig" class="sidebar-link">publishConfig</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#os-指定包可在哪些系统中运行" class="sidebar-link">os 指定包可在哪些系统中运行</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#cpu-指定模块适用的-cpu-架构" class="sidebar-link">cpu 指定模块适用的 cpu 架构</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#engines-指定引擎-node-npm-版本" class="sidebar-link">engines 指定引擎(node/npm)版本</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#" class="sidebar-link">-----</a></li><li class="sidebar-sub-header"><a href="/Node/package.json.html#proxy-解决开发环境跨域问题" class="sidebar-link">proxy 解决开发环境跨域问题</a></li></ul></li></ul></li><li><a href="/Node/process.html" class="sidebar-link">process</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/process.html#process-argv-与-process-env-npm-config-argv" class="sidebar-link">process.argv 与 process.env.npmconfigargv</a></li></ul></li><li><a href="/Node/发布 npm 包.html" class="sidebar-link">发布 npm 包</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/发布 npm 包.html#注册" class="sidebar-link">注册</a></li><li class="sidebar-sub-header"><a href="/Node/发布 npm 包.html#项目" class="sidebar-link">项目</a></li></ul></li><li><a href="/Node/自动化构建插件.html" class="sidebar-link">自动化构建插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#json-templater-字符串插值替换" class="sidebar-link">json-templater 字符串插值替换</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#json-templater-string-字符串插值-key-替换" class="sidebar-link">json-templater/string 字符串插值{{key}}替换</a></li><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#json-templater-object-json-对象中遍历字符串插值替换" class="sidebar-link">json-templater/object json 对象中遍历字符串插值替换</a></li></ul></li><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#uppercamelcase" class="sidebar-link">uppercamelcase</a></li><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#file-save-文件读取并写入" class="sidebar-link">file-save 文件读取并写入</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Node/自动化构建插件.html#链式方法调用" class="sidebar-link">链式方法调用</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="package-json"><a href="#package-json" class="header-anchor">#</a> package.json</h1> <p></p><div class="table-of-contents"><ul><li><a href="#options">Options</a><ul><li><a href="#必备属性">----- 必备属性 -----</a></li><li><a href="#name-模块名称-包名称">name 模块名称（包名称）</a></li><li><a href="#version">version</a></li><li><a href="#描述信息">----- 描述信息 -----</a></li><li><a href="#description-描述信息">description 描述信息</a></li><li><a href="#keywords-关键字">keywords 关键字</a></li><li><a href="#author-包的主要作者-一个人">author 包的主要作者，一个人</a></li><li><a href="#contributors-包的贡献者-多个人">contributors 包的贡献者，多个人</a></li><li><a href="#homepage-该模块的主页">homepage 该模块的主页</a></li><li><a href="#repository-代码仓库地址">repository 代码仓库地址</a></li><li><a href="#bugs-提出-bug-的途径">bugs 提出 bug 的途径</a></li><li><a href="#协议">----- 协议 -----</a></li><li><a href="#license-指定软件的开源协议">license 指定软件的开源协议</a></li><li><a href="#目录、文件相关">----- 目录、文件相关 -----</a></li><li><a href="#main-入口-默认-index-js">main 入口，默认 &quot;index.js&quot;</a></li><li><a href="#bin-命令行工具入口">bin 命令行工具入口</a><ul><li><a href="#实例-vue-cli-service">实例：@vue/cli-service</a></li></ul></li><li><a href="#files-需要发布到-npm-的文件列表">files 需要发布到 npm 的文件列表</a></li><li><a href="#man-略">man 略</a></li><li><a href="#脚本配置">--- 脚本配置 ---</a></li><li><a href="#scripts-脚本命令的缩写">scripts 脚本命令的缩写</a><ul><li><a href="#npm-脚本的原理">npm 脚本的原理</a></li><li><a href="#通配符">通配符</a></li><li><a href="#脚本执行顺序">脚本执行顺序</a></li><li><a href="#默认值">默认值</a></li><li><a href="#钩子">钩子</a></li><li><a href="#简写形式">简写形式</a></li><li><a href="#项目中获取-package-json-的变量">项目中获取 package.json 的变量</a></li><li><a href="#跨平台地设置及使用环境变量">跨平台地设置及使用环境变量</a></li></ul></li><li><a href="#config-暴露一些配置变量">config 暴露一些配置变量</a></li><li><a href="#依赖包相关属性">----- 依赖包相关属性 -----</a></li><li><a href="#dependencies-生产环境依赖包">dependencies 生产环境依赖包</a></li><li><a href="#devdependencies-开发环境依赖包">devDependencies 开发环境依赖包</a></li><li><a href="#peerdependencies-指定所依赖的包的最低版本">peerDependencies 指定所依赖的包的最低版本</a></li><li><a href="#optionaldependencies-可选依赖-同-dependencies">optionalDependencies 可选依赖， 同 dependencies</a></li><li><a href="#bundleddependencies">bundledDependencies</a></li><li><a href="#发布配置">----- 发布配置 -----</a></li><li><a href="#preferglobal-是否建议用户全局安装">preferGlobal 是否建议用户全局安装</a></li><li><a href="#private-是否是私有包">private 是否是私有包</a></li><li><a href="#publishconfig">publishConfig</a></li><li><a href="#os-指定包可在哪些系统中运行">os 指定包可在哪些系统中运行</a></li><li><a href="#cpu-指定模块适用的-cpu-架构">cpu 指定模块适用的 cpu 架构</a></li><li><a href="#engines-指定引擎-node-npm-版本">engines 指定引擎(node/npm)版本</a></li><li><a href="#">-----</a></li><li><a href="#proxy-解决开发环境跨域问题">proxy 解决开发环境跨域问题</a></li></ul></li></ul></div><p></p> <p>创建：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> init <span class="token comment"># 自定义创建</span>
+
+<span class="token function">npm</span> init -y <span class="token comment"># 快速创建当前 npm 配置的默认模版</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>修改快速创建的默认信息：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token builtin class-name">set</span> init.author.email <span class="token string">&quot;example-user@example.com&quot;</span>
+<span class="token function">npm</span> <span class="token builtin class-name">set</span> init.author.name <span class="token string">&quot;example_user&quot;</span>
+<span class="token function">npm</span> <span class="token builtin class-name">set</span> init.license <span class="token string">&quot;MIT&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>package.json</code> 文件的内容是一个 JSON 对象，对象的每一个成员属性就是当前项目的一项配置。</p> <p>其中 <code>name</code> 和 <code>version</code> 是必备属性，它们是组成一个 npm 包的唯一标识。</p> <p>发布（publish）包时必须包含此文件。</p> <p><code>package.json</code> 文件的作用：</p> <ul><li>列出项目所依赖的包</li> <li>使用语义版本化规则指定项目能够使用的 package 的版本</li> <li>使您的构建具有可重复性，因此更容易与其他开发人员共享</li></ul> <h2 id="options"><a href="#options" class="header-anchor">#</a> Options</h2> <h3 id="必备属性"><a href="#必备属性" class="header-anchor">#</a> ----- 必备属性 -----</h3> <h3 id="name-模块名称-包名称"><a href="#name-模块名称-包名称" class="header-anchor">#</a> <code>name</code> 模块名称（包名称）</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <ul><li>只能包含小写字母，</li> <li>可以包含 <code>数字</code>, <code>-</code>, <code>_</code>, <code>@</code>, <code>/</code>, <code>.</code> 等符号</li> <li>包名不能包含任何非URL安全字符(因为名称最终是URL的一部分)</li> <li>不能以 <code>.</code> 或 <code>_</code> 开头</li> <li>不能包含空格</li> <li>不能包含 <code>~</code> <code>)</code> <code>(</code> <code>'</code> <code>!</code> <code>*</code> 中任一字符</li> <li>不能是 Node.js 或 io.js 的核心模块名，不能是保留名字或黑名单列表中的名字，如 <code>http</code>, <code>stream</code>, <code>node_modules</code>, <code>favicon.ico</code> 等</li> <li>长度不能超过214</li> <li>若名称中存在一些符号，将符号去除后不得与现有的包名重复，例如：由于 <code>react-router-dom</code> 已经存在，<code>react.router.dom</code>、<code>reactrouterdom</code> 都不可以再创建。</li></ul> <p>以下为合法名称示范：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>some-package
+
+example.com
+
+under_score
+
+123numeric
+
+@npm/thingy
+
+@jane/foo.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>查看包名是否已经存在：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> view <span class="token operator">&lt;</span>packageName<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果此包存在，会显示基本信息，如果不存在，则会抛出 <code>404</code> 错误。</p> <p>也可以直接到 <code>https://www.npmjs.com/</code> 上搜索包名是否存在。</p> <h3 id="version"><a href="#version" class="header-anchor">#</a> <code>version</code></h3> <p><code>type: string</code></p> <p><code>default: &quot;1.0.0&quot;</code></p> <p>必须是 <code>x.y.z</code> 这样的格式，遵循 <a href="https://docs.npmjs.com/about-semantic-versioning" target="_blank" rel="noopener noreferrer"><code>semantic versioning guidelines</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 规范</p> <ul><li><code>x</code> 是主版本号(major)：修改了不兼容的 API</li> <li><code>y</code> 是次版本号(minor)：新增了向下兼容的功能</li> <li><code>z</code> 为修订号(patch)：修正了向下兼容的 bug</li></ul> <p>版本号推荐以 <code>1.0.0</code> 开始并遵循以下：</p> <table><thead><tr><th>Code status</th> <th>Stage</th> <th>Rule</th> <th>Example version</th></tr></thead> <tbody><tr><td>First release</td> <td>New product</td> <td>Start with 1.0.0</td> <td>1.0.0</td></tr> <tr><td>Backward compatible bug fixes</td> <td>Patch release</td> <td>Increment the third digit</td> <td>1.0.1</td></tr> <tr><td>Backward compatible new features</td> <td>Minor release</td> <td>Increment the middle digit and reset last digit to zero</td> <td>1.1.0</td></tr> <tr><td>Changes that break backward compatibility</td> <td>Major release</td> <td>Increment the first digit and reset middle and last digits to zero</td> <td>2.0.0</td></tr></tbody></table> <p>指定依赖包接受的更新的类型，例如，要指定依赖包可接受的版本更新范围，可以使用以下语法:</p> <ul><li>Patch releases (只接受补丁更新): <code>1.0</code> or <code>1.0.x</code> or <code>~1.0.4</code></li> <li>Minor releases (只接受小版本和补丁更新): <code>1</code> or <code>1.x</code> or <code>^1.0.4</code></li> <li>Major releases (接受主要版本、小版本、补丁更新等所有更新): <code>*</code> or <code>x</code></li></ul> <p>当某个版本改动比较大、并非稳定而且可能无法满足预期的兼容性需求时，我们可能要先发布一个先行版本。</p> <p>先行版本号可以加到 <code>major.minor.patch</code> 版本号的后面，通过 <code>-</code> 号连接一连串以句点分隔的标识符和版本编译信息：</p> <ul><li><code>alpha</code> 内部版本</li> <li><code>beta</code> 公测版本</li> <li><code>Release candiate</code> 正式版本的候选版本 <code>rc</code></li></ul> <p>查看一个包的版本：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> view vue version <span class="token comment"># 查看 vue 的当前版本</span>
+
+<span class="token function">npm</span> view vue versions <span class="token comment"># 查看 vue 的历史版本信息，数组显示</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>运行 <code>npm view vue versions</code> 可以看到</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># npm view vue version</span>
+<span class="token number">2.6</span>.11
+
+<span class="token comment"># npm view vue versions</span>
+<span class="token punctuation">[</span>
+  <span class="token string">'0.0.0'</span>,          <span class="token string">'0.6.0'</span>,                <span class="token string">'0.7.0'</span>,
+  <span class="token string">'0.7.1'</span>,          <span class="token string">'0.7.3'</span>,                <span class="token string">'0.7.4'</span>,
+  <span class="token string">'0.7.5'</span>,          <span class="token string">'0.7.6'</span>,                <span class="token string">'0.8.0'</span>,
+  <span class="token string">'0.8.1'</span>,          <span class="token string">'0.8.2'</span>,                <span class="token string">'0.8.3'</span>,
+  <span class="token string">'0.8.4'</span>,          <span class="token string">'0.8.6'</span>,                <span class="token string">'0.8.7'</span>,
+  <span class="token string">'0.8.8'</span>,          <span class="token string">'0.9.0'</span>,                <span class="token string">'0.9.1'</span>,
+  <span class="token string">'0.9.2'</span>,          <span class="token string">'0.9.3'</span>,                <span class="token string">'0.10.0'</span>,
+  <span class="token string">'0.10.1'</span>,         <span class="token string">'0.10.2'</span>,               <span class="token string">'0.10.3'</span>,
+  <span class="token string">'0.10.4'</span>,         <span class="token string">'0.10.5'</span>,               <span class="token string">'0.10.6'</span>,
+  <span class="token string">'0.11.0-rc'</span>,      <span class="token string">'0.11.0-rc2'</span>,           <span class="token string">'0.11.0-rc3'</span>,
+  <span class="token string">'0.11.0'</span>,         <span class="token string">'0.11.1'</span>,               <span class="token string">'0.11.2'</span>,
+  <span class="token string">'0.11.3'</span>,         <span class="token string">'0.11.4'</span>,               <span class="token string">'0.11.5'</span>,
+  <span class="token string">'0.11.6'</span>,         <span class="token string">'0.11.7'</span>,               <span class="token string">'0.11.8'</span>,
+  <span class="token string">'0.11.9'</span>,         <span class="token string">'0.11.10'</span>,              <span class="token string">'0.12.0-beta1'</span>,
+  <span class="token string">'0.12.0-beta2'</span>,   <span class="token string">'0.12.0-beta3'</span>,         <span class="token string">'0.12.0-beta4'</span>,
+  <span class="token string">'0.12.0-beta5'</span>,   <span class="token string">'0.12.0-csp'</span>,           <span class="token string">'0.12.0-rc'</span>,
+  <span class="token string">'0.12.0-rc2'</span>,     <span class="token string">'0.12.0'</span>,               <span class="token string">'0.12.1-csp'</span>,
+  <span class="token string">'0.12.1-csp.1'</span>,   <span class="token string">'0.12.1-csp.2'</span>,         <span class="token string">'0.12.1'</span>,
+  <span class="token string">'0.12.2'</span>,         <span class="token string">'0.12.3'</span>,               <span class="token string">'0.12.4'</span>,
+  <span class="token string">'0.12.5-csp'</span>,     <span class="token string">'0.12.5'</span>,               <span class="token string">'0.12.6-csp'</span>,
+  <span class="token string">'0.12.6'</span>,         <span class="token string">'0.12.7-csp'</span>,           <span class="token string">'0.12.7'</span>,
+  <span class="token string">'0.12.8-csp'</span>,     <span class="token string">'0.12.8'</span>,               <span class="token string">'0.12.9-csp'</span>,
+  <span class="token string">'0.12.9'</span>,         <span class="token string">'0.12.10-csp'</span>,          <span class="token string">'0.12.10'</span>,
+  <span class="token string">'0.12.11-csp'</span>,    <span class="token string">'0.12.11'</span>,              <span class="token string">'0.12.12-csp'</span>,
+  <span class="token string">'0.12.12'</span>,        <span class="token string">'0.12.13-csp'</span>,          <span class="token string">'0.12.13'</span>,
+  <span class="token string">'0.12.14-csp'</span>,    <span class="token string">'0.12.14'</span>,              <span class="token string">'0.12.15-csp'</span>,
+  <span class="token string">'0.12.15'</span>,        <span class="token string">'0.12.16-csp'</span>,          <span class="token string">'0.12.16'</span>,
+  <span class="token string">'1.0.0-alpha.1'</span>,  <span class="token string">'1.0.0-alpha.2'</span>,        <span class="token string">'1.0.0-alpha.3'</span>,
+  <span class="token string">'1.0.0-alpha.4'</span>,  <span class="token string">'1.0.0-alpha.5'</span>,        <span class="token string">'1.0.0-alpha.6'</span>,
+  <span class="token string">'1.0.0-alpha.7'</span>,  <span class="token string">'1.0.0-alpha.8'</span>,        <span class="token string">'1.0.0-beta.1'</span>,
+  <span class="token string">'1.0.0-beta.2'</span>,   <span class="token string">'1.0.0-beta.3'</span>,         <span class="token string">'1.0.0-beta.4'</span>,
+  <span class="token string">'1.0.0-csp'</span>,      <span class="token string">'1.0.0-migration'</span>,      <span class="token string">'1.0.0-rc.1'</span>,
+  <span class="token string">'1.0.0-rc.2'</span>,     <span class="token string">'1.0.0-rc.2-migration'</span>, <span class="token string">'1.0.0'</span>,
+  <span class="token string">'1.0.1'</span>,          <span class="token string">'1.0.2'</span>,                <span class="token string">'1.0.3'</span>,
+  <span class="token string">'1.0.4'</span>,          <span class="token string">'1.0.5'</span>,                <span class="token string">'1.0.6'</span>,
+  <span class="token string">'1.0.7'</span>,          <span class="token string">'1.0.8'</span>,                <span class="token string">'1.0.9'</span>,
+  <span class="token string">'1.0.10-csp'</span>,     <span class="token string">'1.0.10'</span>,               <span class="token string">'1.0.11-csp'</span>,
+  <span class="token string">'1.0.11'</span>,         <span class="token string">'1.0.12-csp'</span>,           <span class="token string">'1.0.12-csp-1'</span>,
+  <span class="token string">'1.0.12'</span>,         <span class="token string">'1.0.13-csp'</span>,           <span class="token string">'1.0.13'</span>,
+  <span class="token string">'1.0.14-csp'</span>,     <span class="token string">'1.0.14'</span>,               <span class="token string">'1.0.15-csp'</span>,
+  <span class="token string">'1.0.15'</span>,         <span class="token string">'1.0.16-csp'</span>,           <span class="token string">'1.0.16'</span>,
+  <span class="token string">'1.0.17-csp'</span>,     <span class="token string">'1.0.17'</span>,               <span class="token string">'1.0.18-csp'</span>,
+  <span class="token string">'1.0.18'</span>,         <span class="token string">'1.0.19-csp'</span>,           <span class="token string">'1.0.19'</span>,
+  <span class="token string">'1.0.20-csp'</span>,     <span class="token string">'1.0.20'</span>,               <span class="token string">'1.0.21-csp'</span>,
+  <span class="token string">'1.0.21'</span>,         <span class="token string">'1.0.22-csp'</span>,           <span class="token string">'1.0.22'</span>,
+  <span class="token string">'1.0.23-csp'</span>,     <span class="token string">'1.0.23'</span>,               <span class="token string">'1.0.24-csp'</span>,
+  <span class="token string">'1.0.24'</span>,         <span class="token string">'1.0.25-csp'</span>,           <span class="token string">'1.0.25'</span>,
+  <span class="token string">'1.0.26-csp'</span>,     <span class="token string">'1.0.26'</span>,               <span class="token string">'1.0.27-csp'</span>,
+  <span class="token string">'1.0.27'</span>,         <span class="token string">'1.0.28-csp'</span>,           <span class="token string">'1.0.28'</span>,
+  <span class="token string">'2.0.0-alpha.1'</span>,  <span class="token string">'2.0.0-alpha.2'</span>,        <span class="token string">'2.0.0-alpha.3'</span>,
+  <span class="token string">'2.0.0-alpha.4'</span>,  <span class="token string">'2.0.0-alpha.5'</span>,        <span class="token string">'2.0.0-alpha.6'</span>,
+  <span class="token string">'2.0.0-alpha.7'</span>,  <span class="token string">'2.0.0-alpha.8'</span>,        <span class="token string">'2.0.0-beta.1'</span>,
+  <span class="token string">'2.0.0-beta.2'</span>,   <span class="token string">'2.0.0-beta.3'</span>,         <span class="token string">'2.0.0-beta.4'</span>,
+  <span class="token string">'2.0.0-beta.5'</span>,   <span class="token string">'2.0.0-beta.6'</span>,         <span class="token string">'2.0.0-beta.7'</span>,
+  <span class="token string">'2.0.0-beta.8'</span>,   <span class="token string">'2.0.0-rc.1'</span>,           <span class="token string">'2.0.0-rc.2'</span>,
+  <span class="token string">'2.0.0-rc.3'</span>,     <span class="token string">'2.0.0-rc.4'</span>,           <span class="token string">'2.0.0-rc.5'</span>,
+  <span class="token string">'2.0.0-rc.6'</span>,     <span class="token string">'2.0.0-rc.7'</span>,           <span class="token string">'2.0.0-rc.8'</span>,
+  <span class="token string">'2.0.0'</span>,          <span class="token string">'2.0.1'</span>,                <span class="token string">'2.0.2'</span>,
+  <span class="token string">'2.0.3'</span>,          <span class="token string">'2.0.4'</span>,                <span class="token string">'2.0.5'</span>,
+  <span class="token string">'2.0.6'</span>,          <span class="token string">'2.0.7'</span>,                <span class="token string">'2.0.8'</span>,
+  <span class="token string">'2.1.0'</span>,          <span class="token string">'2.1.1'</span>,                <span class="token string">'2.1.2'</span>,
+  <span class="token string">'2.1.3'</span>,          <span class="token string">'2.1.4'</span>,                <span class="token string">'2.1.5'</span>,
+  <span class="token string">'2.1.6'</span>,          <span class="token string">'2.1.7'</span>,                <span class="token string">'2.1.8'</span>,
+  <span class="token string">'2.1.9'</span>,          <span class="token string">'2.1.10'</span>,               <span class="token string">'2.2.0-beta.1'</span>,
+  <span class="token string">'2.2.0-beta.2'</span>,   <span class="token string">'2.2.0'</span>,                <span class="token string">'2.2.1'</span>,
+  <span class="token string">'2.2.2'</span>,          <span class="token string">'2.2.3'</span>,                <span class="token string">'2.2.4'</span>,
+  <span class="token string">'2.2.5'</span>,          <span class="token string">'2.2.6'</span>,                <span class="token string">'2.3.0-beta.1'</span>,
+  <span class="token string">'2.3.0'</span>,          <span class="token string">'2.3.1'</span>,                <span class="token string">'2.3.2'</span>,
+  <span class="token string">'2.3.3'</span>,          <span class="token string">'2.3.4'</span>,                <span class="token string">'2.4.0'</span>,
+  <span class="token string">'2.4.1'</span>,          <span class="token string">'2.4.2'</span>,                <span class="token string">'2.4.3'</span>,
+  <span class="token string">'2.4.4'</span>,          <span class="token string">'2.5.0'</span>,                <span class="token string">'2.5.1'</span>,
+  <span class="token string">'2.5.2'</span>,          <span class="token string">'2.5.3'</span>,                <span class="token string">'2.5.4'</span>,
+  <span class="token string">'2.5.5'</span>,          <span class="token string">'2.5.6'</span>,                <span class="token string">'2.5.7'</span>,
+  <span class="token string">'2.5.8'</span>,          <span class="token string">'2.5.9'</span>,                <span class="token string">'2.5.10'</span>,
+  <span class="token string">'2.5.11'</span>,         <span class="token string">'2.5.12'</span>,               <span class="token string">'2.5.13'</span>,
+  <span class="token string">'2.5.14'</span>,         <span class="token string">'2.5.15'</span>,               <span class="token string">'2.5.16'</span>,
+  <span class="token string">'2.5.17-beta.0'</span>,  <span class="token string">'2.5.17'</span>,               <span class="token string">'2.5.18-beta.0'</span>,
+  <span class="token string">'2.5.18'</span>,         <span class="token string">'2.5.19'</span>,               <span class="token string">'2.5.20'</span>,
+  <span class="token string">'2.5.21'</span>,         <span class="token string">'2.5.22'</span>,               <span class="token string">'2.6.0-beta.1'</span>,
+  <span class="token string">'2.6.0-beta.2'</span>,   <span class="token string">'2.6.0-beta.3'</span>,         <span class="token string">'2.6.0'</span>,
+  <span class="token string">'2.6.1'</span>,          <span class="token string">'2.6.2'</span>,                <span class="token string">'2.6.3'</span>,
+  <span class="token string">'2.6.4'</span>,          <span class="token string">'2.6.5'</span>,                <span class="token string">'2.6.6'</span>,
+  <span class="token string">'2.6.7'</span>,          <span class="token string">'2.6.8'</span>,                <span class="token string">'2.6.9'</span>,
+  <span class="token string">'2.6.10'</span>,         <span class="token string">'2.6.11'</span>,               <span class="token string">'3.0.0-alpha.0'</span>,
+  <span class="token string">'3.0.0-alpha.1'</span>,  <span class="token string">'3.0.0-alpha.2'</span>,        <span class="token string">'3.0.0-alpha.3'</span>,
+  <span class="token string">'3.0.0-alpha.4'</span>,  <span class="token string">'3.0.0-alpha.5'</span>,        <span class="token string">'3.0.0-alpha.6'</span>,
+  <span class="token string">'3.0.0-alpha.7'</span>,  <span class="token string">'3.0.0-alpha.8'</span>,        <span class="token string">'3.0.0-alpha.9'</span>,
+  <span class="token string">'3.0.0-alpha.10'</span>, <span class="token string">'3.0.0-alpha.11'</span>,       <span class="token string">'3.0.0-alpha.12'</span>,
+  <span class="token string">'3.0.0-alpha.13'</span>, <span class="token string">'3.0.0-beta.1'</span>,         <span class="token string">'3.0.0-beta.2'</span>,
+  <span class="token string">'3.0.0-beta.3'</span>,   <span class="token string">'3.0.0-beta.4'</span>,         <span class="token string">'3.0.0-beta.5'</span>,
+  <span class="token string">'3.0.0-beta.6'</span>,   <span class="token string">'3.0.0-beta.7'</span>,         <span class="token string">'3.0.0-beta.8'</span>,
+  <span class="token string">'3.0.0-beta.9'</span>,   <span class="token string">'3.0.0-beta.10'</span>,        <span class="token string">'3.0.0-beta.11'</span>,
+  <span class="token string">'3.0.0-beta.12'</span>,  <span class="token string">'3.0.0-beta.13'</span>,        <span class="token string">'3.0.0-beta.14'</span>,
+  <span class="token string">'3.0.0-beta.15'</span>,  <span class="token string">'3.0.0-beta.16'</span>,        <span class="token string">'3.0.0-beta.17'</span>,
+  <span class="token string">'3.0.0-beta.18'</span>,  <span class="token string">'3.0.0-beta.19'</span>,        <span class="token string">'3.0.0-beta.20'</span>,
+  <span class="token string">'3.0.0-beta.21'</span>,  <span class="token string">'3.0.0-beta.22'</span>,        <span class="token string">'3.0.0-beta.23'</span>,
+  <span class="token string">'3.0.0-beta.24'</span>,  <span class="token string">'3.0.0-rc.1'</span>,           <span class="token string">'3.0.0-rc.2'</span>,
+  <span class="token string">'3.0.0-rc.3'</span>,     <span class="token string">'3.0.0-rc.4'</span>
+<span class="token punctuation">]</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br></div></div><h3 id="描述信息"><a href="#描述信息" class="header-anchor">#</a> ----- 描述信息 -----</h3> <h3 id="description-描述信息"><a href="#description-描述信息" class="header-anchor">#</a> <code>description</code> 描述信息</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>添加包的描述信息，便于用户了解，以及增加搜索时的匹配曝光机会。</p> <h3 id="keywords-关键字"><a href="#keywords-关键字" class="header-anchor">#</a> <code>keywords</code> 关键字</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>给包添加关键字，增加搜索时的匹配曝光机会。</p> <h3 id="author-包的主要作者-一个人"><a href="#author-包的主要作者-一个人" class="header-anchor">#</a> <code>author</code> 包的主要作者，一个人</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <h3 id="contributors-包的贡献者-多个人"><a href="#contributors-包的贡献者-多个人" class="header-anchor">#</a> <code>contributors</code> 包的贡献者，多个人</h3> <p><code>type: Array&lt;string&gt; | Array&lt;{ &quot;name&quot;: &quot;&quot;, &quot;email&quot;: &quot;&quot;, &quot;url&quot;: &quot;&quot; }&gt;</code></p> <p><code>default: -</code></p> <p>比如：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;contributors&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;waantony&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;wanganantony@gmail.com&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/waantony&quot;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;waantony1&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;wanganantony1@gmail.com&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/waantony1&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="homepage-该模块的主页"><a href="#homepage-该模块的主页" class="header-anchor">#</a> <code>homepage</code> 该模块的主页</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>模块官网地址或仓库地址。</p> <p>比如 <code>vue</code> 的：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;homepage&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/vuejs/vue#readme&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="repository-代码仓库地址"><a href="#repository-代码仓库地址" class="header-anchor">#</a> <code>repository</code> 代码仓库地址</h3> <p><code>type: object</code></p> <p><code>default: -</code></p> <p>设置该包的源码仓库地址，会在 npm 包的页面显示。</p> <p>比如 <code>vue</code> 的：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;repository&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;git&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;git+https://github.com/vuejs/vue.git&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="bugs-提出-bug-的途径"><a href="#bugs-提出-bug-的途径" class="header-anchor">#</a> <code>bugs</code> 提出 bug 的途径</h3> <p><code>type: object</code></p> <p><code>default: -</code></p> <p>一个地址或者一个邮箱，对你的模块存在疑问的人可以到这里提出问题。</p> <p>比如 <code>vue</code> 的：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;bugs&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://github.com/vuejs/vue/issues&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="协议"><a href="#协议" class="header-anchor">#</a> ----- 协议 -----</h3> <h3 id="license-指定软件的开源协议"><a href="#license-指定软件的开源协议" class="header-anchor">#</a> <code>license</code> 指定软件的开源协议</h3> <p><code>type: string</code></p> <p><code>default: ISC</code></p> <p>开源协议里面详尽表述了其他人获得你代码后拥有的权利，可以对你的的代码进行何种操作，何种操作又是被禁止的。同一款协议有很多变种，协议太宽松会导致作者丧失对作品的很多权利，太严格又不便于使用者使用及作品的传播，所以开源作者要考虑自己对作品想保留哪些权利，放开哪些限制。</p> <p>软件协议可分为开源和商业两类，对于商业协议，或者叫法律声明、许可协议，每个软件会有自己的一套行文，由软件作者或专门律师撰写，对于大多数人来说不必自己花时间和精力去写繁长的许可协议，选择一份广为流传的开源协议就是个不错的选择。</p> <ul><li><p><code>MIT</code>：只要用户在项目副本中包含了版权声明和许可声明，他们就可以拿你的代码做任何想做的事情，你也无需承担任何责任。</p></li> <li><p><code>Apache</code>：类似于 MIT，同时还包含了贡献者向用户提供专利授权相关的条款。</p></li> <li><p><code>GPL</code>：修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。</p></li></ul> <p>如果你对开源协议有更详细的要求，可以到 <code>https://choosealicense.com/</code> 获取更详细的开源协议说明。</p> <h3 id="目录、文件相关"><a href="#目录、文件相关" class="header-anchor">#</a> ----- 目录、文件相关 -----</h3> <h3 id="main-入口-默认-index-js"><a href="#main-入口-默认-index-js" class="header-anchor">#</a> <code>main</code> 入口，默认 <code>&quot;index.js&quot;</code></h3> <p><code>type: string</code></p> <p><code>default: &quot;index.js&quot;</code></p> <p>一种元数据功能，它可以用来指定加载的入口文件。</p> <p>在项目中 <code>require('package')</code> 时，实际上就会去查找加载这个 <code>package</code> 中 <code>package.json</code> 的 <code>main</code> 字段指定的入口文件。</p> <h3 id="bin-命令行工具入口"><a href="#bin-命令行工具入口" class="header-anchor">#</a> <code>bin</code> 命令行工具入口</h3> <p><code>type: object</code></p> <p><code>default: -</code></p> <p>当 package.json 提供了 <code>bin</code> 字段后，即相当于做了一个命令名和本地文件名的映射。</p> <p>当用户安装配置了 <code>bin</code> 字段的包时：</p> <ul><li>如果是全局安装，以 windows 为例，npm 会将 bin 字段对应的目录下的可执行文件文件链接到 <code>C:\Users\xxx\AppData\Roaming\npm</code>，这个目录已经被添加到用户变量的 <code>Path</code> 变量中。</li> <li>如果是项目内安装，会链接到 <code>./node_modules/.bin/</code> 目录中，但在运行 <code>npm run xxx</code> 时会临时将项目下的 <code>./node_modules/.bin/</code> 的所有命令添加到全局，执行后又恢复原样。</li></ul> <p>通俗点理解就是，如果全局安装， 就可以在任何目录的命令行中执行这个文件，项目本地安装，则仅可以在当前工程目录的命令行中执行该文件。</p> <p>比如，自己想写一个脚手架工具，包名叫做 <code>my-app-cli</code>，希望让用户安装这个包后，使用 <code>mac</code> 作为命令。</p> <p>在开发这个脚手架工具的时候，首先创建 <code>bin</code> 目录，在其中创建一个 <code>cli.js</code> 编写一系列操作，然后，配置一下 <code>package.json</code> 的 <code>bin</code> 字段：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;bin&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;mac&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bin/cli.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>上例表示，运行 <code>mac</code> 命令，则会自动运行 <code>bin/cli.js</code>。</p> <p>因此，当用户在项目中安装 <code>my-app-cli</code> 包后，就可以在项目终端运行：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>node node_modules/.bin/mac
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这就相当于运行：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>node node_modules/my-app-cli/.bin/cli.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>因为 <code>my-app-cli</code> 包的 <code>package.json</code> 中配置了 <code>bin</code> 字段，用户安装包后，程序自动将这个包中的  <code>package.json</code>  中的 <code>bin</code> 对象中配置的所有属性当作命令放到了 <code>project/node_modules/.bin/</code> 目录中，运行时会自动去执行命令所对应真实路径的文件。</p> <p>同时，用户还可以将上面的命令写入自己项目的 <code>package.json</code> 的 <code>scripts</code> 命令中，简化每次执行的输入：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node node_modules/.bin/mac&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>这样，用户在自己的项目终端中执行 <code>npm run start</code> 或 <code>npm start</code> 即可。</p> <p>但是，这看起来和 <code>vue create</code> / <code>create-react-app</code> 之类的命令不太像？ 原因如下：</p> <p>当需要 node 环境时，就需要加上 node 前缀， 加上 node 前缀后，就需要指定 <code>mac</code> 的路径 (<code>node_modules/.bin</code>) ，否则如果直接执行 <code>node mac</code> 会去查找当前终端同级目录下的 <code>mac.js</code>，不会主动去执行 <code>node_modules/.bin</code> 中的 <code>mac</code> ，这样肯定是不对。</p> <p>若要实现像 <code>vue create</code> / <code>create-react-app</code> 之类的命令一样简便的方式，可以在前面提到的开发 <code>my-app-cli</code> 包时，在 <code>bin/cli.js</code> 文件中的第一行写入以下命令：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>#<span class="token operator">!</span><span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>env node
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这行命令的作用是告诉系统用 node 来解析，这样命令就可以简写成 <code>mac</code> 了。</p> <h4 id="实例-vue-cli-service"><a href="#实例-vue-cli-service" class="header-anchor">#</a> 实例：@vue/cli-service</h4> <ul><li><p><code>@vue/cli-service/bin</code> 目录中编写了 <code>vue-cli-service.js</code></p></li> <li><p><code>@vue/cli-service/package.json</code> 中配置了</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;bin&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;vue-cli-service&quot;</span><span class="token operator">:</span> <span class="token string">&quot;bin/vue-cli-service.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li> <li><p>用户通过 <code>vue create myproject</code> 创建项目后，自动将 <code>@vue/cli-service</code> 包安装到了项目下。<code>myproject/package.json</code> 中 <code>devDependencies</code> 字段可以看到：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;devDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;@vue/cli-service&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^4.4.6&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div></li> <li><p>在 <code>myproject/node_modules/.bin</code> 目录中可以看到有 <code>vue-cli-service.cmd</code> 文件。</p></li> <li><p>在 <code>myproject/package.json</code> 中可以看到：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;serve&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vue-cli-service serve&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vue-cli-service build&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;lint&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vue-cli-service lint&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li> <li><p>所以用户可以在项目终端执行 <code>npm run serve</code> 或 <code>npm run build</code> 或 <code>npm run lint</code>，实际上都会去执行 <code>node myproject/node_modules/@vue/cli-service/bin/vue-cli-service.js</code></p></li></ul> <p>未完待续，整理</p> <p><a href="https://mp.weixin.qq.com/s/ksTl7cnjRIUQU532eq-W8g" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/ksTl7cnjRIUQU532eq-W8g<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s/OMMJHFXXxWmBO2d5UEV4gw" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/OMMJHFXXxWmBO2d5UEV4gw<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://mp.weixin.qq.com/s/CrbNmNnu0EiA7RcDgJbPJA" target="_blank" rel="noopener noreferrer">https://mp.weixin.qq.com/s/CrbNmNnu0EiA7RcDgJbPJA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="files-需要发布到-npm-的文件列表"><a href="#files-需要发布到-npm-的文件列表" class="header-anchor">#</a> <code>files</code> 需要发布到 npm 的文件列表</h3> <p><code>type: Array&lt;string&gt;</code></p> <p><code>default: 项目所有文件</code></p> <p>指定当使用 <code>npm publish</code> 命令时，需要推送到 npm 服务器的文件或文件夹列表</p> <p>比如，查看 <code>vue</code> 的 <code>package.json</code> 中的 <code>files</code> 字段</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;files&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token string">&quot;src&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;dist/*.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;types/*.d.ts&quot;</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>还可以在项目根目录创建一个 <code>.npmignore</code> 文件来指定发布时忽略文件。规则上和 <code>.gitignore</code> 是一样的</p> <h3 id="man-略"><a href="#man-略" class="header-anchor">#</a> <code>man</code> 略</h3> <h3 id="脚本配置"><a href="#脚本配置" class="header-anchor">#</a> --- 脚本配置 ---</h3> <h3 id="scripts-脚本命令的缩写"><a href="#scripts-脚本命令的缩写" class="header-anchor">#</a> <code>scripts</code> 脚本命令的缩写</h3> <p><code>type: object</code></p> <p><code>default: { &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot; }</code></p> <p><code>scripts</code> 是 <code>package.json</code> 中的一种元数据功能，<code>scripts</code> 是一个对象，对象的 key 是自定义的，用于执行 <code>npm run key</code> 的， 对应的 value 则为 <code>npm run key</code> 后实际要运行的终端命令，比如：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node dev.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node prod.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node start.js&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> run dev
+<span class="token function">npm</span> run build
+<span class="token function">npm</span> run start <span class="token comment"># start 可以不用 run , 执行 npm start 完全等效</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>这样，当实际运行的命令很长时，就可以不用每次输入太长的命令。</p> <p>各个脚本可以互相组合使用：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;test&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jest --config .jest.js --no-cache&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;dist&quot;</span><span class="token operator">:</span> <span class="token string">&quot;antd-tools run dist&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;compile&quot;</span><span class="token operator">:</span> <span class="token string">&quot;antd-tools run compile&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;npm run compile &amp;&amp; npm run dist&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h4 id="npm-脚本的原理"><a href="#npm-脚本的原理" class="header-anchor">#</a> npm 脚本的原理</h4> <p>每当执行 <code>npm run xxx</code>，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。</p> <p>比较特别的是，<code>npm run xxx</code> 新建的这个 Shell，会将当前项目目录下的 <code>node_modules/.bin</code> 子目录临时加入用户 <code>Path</code> 变量，执行结束后，再将 <code>Path</code> 变量恢复原样。</p> <p>所以，直接在项目终端运行 <code>vue-cli-service serve</code> 会报错 <code>无法将“vue-cli-service”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。</code></p> <p>但是在 <code>scripts</code> 中设置了 <code>&quot;serve&quot;: &quot;vue-cli-service serve&quot;</code> 后运行 <code>npm run serve</code> 虽然同样是执行 <code>vue-cli-service serve</code> 命令，但此时 <code>npm run xxx</code> 命令已经将项目下的 <code>node_modules/.bin</code> 子目录加入用户 <code>Path</code> 变量，也就是 <code>node_modules/.bin</code> 下的 <code>vue-cli-service</code> 被临时加入了用户 <code>Path</code> 变量，使用后又恢复原样。</p> <h4 id="通配符"><a href="#通配符" class="header-anchor">#</a> 通配符</h4> <p><code>*</code> 表示任意文件名，<code>**</code> 表示任意一层子目录。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node *.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node **/*.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>上例中 <code>*.js</code> 表示匹配当前目录下所有的 <code>.js</code> 文件， <code>**/*.js</code> 表示匹配所有目录下的 <code>.js</code> 文件。</p> <p>如果传入 <code>*</code> 号不想用作通配符，需要用反斜线转义，写为 <code>\*</code></p> <h4 id="脚本执行顺序"><a href="#脚本执行顺序" class="header-anchor">#</a> 脚本执行顺序</h4> <ul><li><code>&amp;</code> 并行执行，同时开始执行 <code>&amp;</code> 前后的命令</li> <li><code>&amp;&amp;</code> 顺序执行，前一个任务成功才执行后一个</li></ul> <h4 id="默认值"><a href="#默认值" class="header-anchor">#</a> 默认值</h4> <p>一般来说，npm 脚本由用户提供。但是，npm 对两个脚本提供了默认值。也就是说，这两个脚本不用定义，就可以直接使用。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node server.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;install&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node-gyp rebuild&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>上面代码中，<code>npm run start</code> 的默认值是 <code>node server.js</code>，前提是项目根目录下有 <code>server.js</code> 这个脚本；<code>npm run install</code> 的默认值是 <code>node-gyp rebuild</code>， 前提是项目根目录下有 <code>binding.gyp</code> 文件。</p> <h4 id="钩子"><a href="#钩子" class="header-anchor">#</a> 钩子</h4> <p>npm 脚本有 pre 和 post 两个钩子， 可以在这两个钩子里面，完成一些准备工作和清理工作。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;go&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node index.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;prego&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node pre.js&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;postgo&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node post.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>如上例，执行 <code>npm run go</code> 时，会先自动执行 <code>npm run prego</code>，然后执行 <code>npm run go</code>， 然后执行 <code>npm run postgo</code></p> <p>npm 默认提供下面这些钩子:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>prepublish postpublish
+preinstall postinstall
+preuninstall postuninstall
+preversion postversion
+pretest posttest
+prestop poststop
+prestart poststart
+prerestart postrestart
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>可以通过 <code>process.env.npm_lifecycle_event</code> 获取运行的脚本名称</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token constant">TARGET</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_lifecycle_event<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">TARGET</span> <span class="token operator">===</span> <span class="token string">'test'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Running the test task!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">TARGET</span> <span class="token operator">===</span> <span class="token string">'pretest'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Running the pretest task!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">TARGET</span> <span class="token operator">===</span> <span class="token string">'posttest'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Running the posttest task!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h4 id="简写形式"><a href="#简写形式" class="header-anchor">#</a> 简写形式</h4> <p>四个常用的 npm 脚本有简写形式。</p> <ul><li><code>npm start</code> 是 <code>npm run start</code> 的简写</li> <li><code>npm stop</code> 是 <code>npm run stop</code> 的简写</li> <li><code>npm test</code> 是 <code>npm run test</code> 的简写</li> <li><code>npm restart</code> 是 <code>npm run stop &amp;&amp; npm run restart &amp;&amp; npm run start</code> 的简写</li></ul> <p><code>npm start</code>、<code>npm stop</code> 和 <code>npm restart</code> 都比较好理解，而 <code>npm restart</code> 是一个复合命令，实际上会执行三个脚本命令：stop、restart、start。具体的执行顺序如下。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>prerestart
+prestop
+stop
+poststop
+restart
+prestart
+start
+poststart
+postrestart
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="项目中获取-package-json-的变量"><a href="#项目中获取-package-json-的变量" class="header-anchor">#</a> 项目中获取 <code>package.json</code> 的变量</h4> <p>通过 <code>process.env</code> 可以获取所有 <code>package.json</code> 中的配置，所有对象属性都会以 <code>_</code> 拼接为变量名，比如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_name<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_version<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_author_name<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_scripts_dev<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_main<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_devDependencies_eslint<span class="token punctuation">)</span>
+concols<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>npm_package_devDependencies_eslint_plugin_standard<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="跨平台地设置及使用环境变量"><a href="#跨平台地设置及使用环境变量" class="header-anchor">#</a> 跨平台地设置及使用环境变量</h4> <p>通过第三方模块 <code>cross-env</code> 可以实现跨平台设置及使用环境变量，</p> <p>安装：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save-dev cross-env
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>使用：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;go&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env NODE_ENV=production title=hello msg=\&quot;hello world\&quot; node index.js&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// index.js</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span><span class="token punctuation">)</span> <span class="token comment">// 'production'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>title<span class="token punctuation">)</span> <span class="token comment">// 'hello'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>msg<span class="token punctuation">)</span> <span class="token comment">// 'hello world'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="config-暴露一些配置变量"><a href="#config-暴露一些配置变量" class="header-anchor">#</a> <code>config</code> 暴露一些配置变量</h3> <p>config 字段用于配置脚本中使用的环境变量，例如下面的配置，可以在脚本中使用<code>process.env.npm_package_config_port</code> 进行获取。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;config&quot;</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;port&quot;</span> <span class="token operator">:</span> <span class="token string">&quot;8080&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="依赖包相关属性"><a href="#依赖包相关属性" class="header-anchor">#</a> ----- 依赖包相关属性 -----</h3> <p>在介绍几种依赖配置之前，首先我们来看一下依赖的配置规则，你看到的依赖包配置可能是下面这样的：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;dependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;antd&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ant-design/ant-design#4.0.0-alpha.8&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;axios&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.2.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;test-js&quot;</span><span class="token operator">:</span> <span class="token string">&quot;file:../test&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;test2-js&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://cdn.com/test2-js.tar.gz&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;core-js&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1.5&quot;</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>依赖配置遵循下面几种配置规则：</p> <ul><li><p><code>&lt;packageName&gt;:VERSION</code></p> <p><code>VERSION</code> 是一个遵循 <code>SemVer</code> 规范的版本号配置， <code>npm install</code> 时将到 npm 服务器下载符合指定版本范围的包。</p></li> <li><p><code>依赖包名称:DWONLOAD_URL</code></p> <p><code>DWONLOAD_URL</code> 是一个可下载的 <code>tarball</code> 压缩包地址，模块安装时会将这个 <code>.tar</code> 下载并安装到本地。</p></li> <li><p><code>依赖包名称:LOCAL_PATH</code></p> <p><code>LOCAL_PATH</code> 是一个本地的依赖包路径，例如 <code>file:../pacakges/pkgName</code>。适用于你在本地测试一个 <code>npm</code> 包，不应该将这种方法应用于线上。</p></li> <li><p><code>依赖包名称:GITHUB_URL</code></p> <p><code>GITHUB_URL</code> 即 github 的 <code>username/modulename</code> 的写法，例如：<code>ant-design/ant-design</code>，你还可以在后面指定 <code>tag</code> 和 <code>commit id</code>。</p></li> <li><p><code>依赖包名称:GIT_URL</code></p> <p><code>GIT_URL</code> 即我们平时 <code>clone</code> 代码库的 <code>git url</code>，其遵循以下形式：</p></li></ul> <div class="language-http line-numbers-mode"><pre class="language-http"><code>&lt;protocol&gt;://[&lt;user&gt;[:&lt;password&gt;]@]&lt;hostname&gt;[:&lt;port&gt;][:][/]&lt;path&gt;[#&lt;commit-ish&gt; | #semver:&lt;semver&gt;]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>其中 <code>protocal</code> 可以是以下几种形式：</p> <ul><li><p><code>git://github.com/user/project.git#commit-ish</code></p></li> <li><p><code>git+ssh://user@hostname:project.git#commit-ish</code></p></li> <li><p><code>git+ssh://user@hostname/project.git#commit-ish</code></p></li> <li><p><code>git+http://user@hostname/project/blah.git#commit-ish</code></p></li> <li><p><code>git+https://user@hostname/project/blah.git#commit-ish</code></p></li></ul> <h3 id="dependencies-生产环境依赖包"><a href="#dependencies-生产环境依赖包" class="header-anchor">#</a> <code>dependencies</code> 生产环境依赖包</h3> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>项目运行所依赖的模块，也就是编译时需要一起打包的资源。</p> <p>增加生产环境依赖包：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save <span class="token operator">&lt;</span>package<span class="token operator">&gt;</span>
+
+<span class="token comment"># 简写</span>
+<span class="token function">npm</span> i <span class="token operator">&lt;</span>package<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="devdependencies-开发环境依赖包"><a href="#devdependencies-开发环境依赖包" class="header-anchor">#</a> <code>devDependencies</code> 开发环境依赖包</h3> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>项目开发时所依赖的模块，通常仅打包时帮助编译，编译完成后则不需要了，不会一起随项目打包。</p> <p>增加开发环境依赖包：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save-dev <span class="token operator">&lt;</span>package<span class="token operator">&gt;</span>
+
+<span class="token comment"># 简写</span>
+<span class="token function">npm</span> i -D <span class="token operator">&lt;</span>package<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>执行 <code>npm install</code> 会自动安装 <code>dependencies</code> 和 <code>devDependencies</code> 中的所有包。</p> <h3 id="peerdependencies-指定所依赖的包的最低版本"><a href="#peerdependencies-指定所依赖的包的最低版本" class="header-anchor">#</a> <code>peerDependencies</code> 指定所依赖的包的最低版本</h3> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>用于指定你正在开发的模块所依赖的其他模块的版本以及用户安装的依赖包版本的兼容性。</p> <p>比如 <code>antd</code> 的：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;peerDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&gt;=16.0.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&gt;=16.0.0&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>上例中， antd 说明了它所依赖的一些包的最低版本。</p> <h3 id="optionaldependencies-可选依赖-同-dependencies"><a href="#optionaldependencies-可选依赖-同-dependencies" class="header-anchor">#</a> <code>optionalDependencies</code> 可选依赖， 同 <code>dependencies</code></h3> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>某些场景下，依赖包可能不是强依赖的，这个依赖包的功能可有可无，当这个依赖包无法被获取到时，你希望 <code>npm install</code> 继续运行，而不会导致失败，你可以将这个依赖放到 <code>optionalDependencies</code> 中。</p> <p>注意 <code>optionalDependencies</code> 中的配置将会覆盖掉 <code>dependencies</code> 所以只需在一个地方进行配置。</p> <p>当然，引用 <code>optionalDependencies</code> 中安装的依赖时，一定要做好异常处理，否则在模块获取不到时会导致报错。</p> <h3 id="bundleddependencies"><a href="#bundleddependencies" class="header-anchor">#</a> <code>bundledDependencies</code></h3> <p><code>type: object</code></p> <p><code>default: {}</code></p> <p>和另外几个不同，<code>bundledDependencies</code> 的值是一个数组，数组里可以指定一些模块，这些模块将在这个包发布时被一起打包。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;bundledDependencies&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;package1&quot;</span> <span class="token punctuation">,</span> <span class="token string">&quot;package2&quot;</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="发布配置"><a href="#发布配置" class="header-anchor">#</a> ----- 发布配置 -----</h3> <h3 id="preferglobal-是否建议用户全局安装"><a href="#preferglobal-是否建议用户全局安装" class="header-anchor">#</a> <code>preferGlobal</code> 是否建议用户全局安装</h3> <p>如果你的 node.js 模块主要用于安装到全局的命令行工具，那么该值设置为 true ，当用户将该模块安装到本地时，将得到一个警告。这个配置并不会阻止用户安装，而是会提示用户防止错误使用而引发一些问题。</p> <h3 id="private-是否是私有包"><a href="#private-是否是私有包" class="header-anchor">#</a> <code>private</code> 是否是私有包</h3> <p><code>type: boolean</code></p> <p><code>default: false</code></p> <p>非开源项目可以设置 <code>private</code> 的值为 <code>true</code>，设置为 <code>true</code> 后，npm 将拒绝发布它，这是为了防止一个私有模块被无意间发布出去。</p> <h3 id="publishconfig"><a href="#publishconfig" class="header-anchor">#</a> <code>publishConfig</code></h3> <p>发布模块时更详细的配置，例如你可以配置只发布某个 tag、配置发布到的私有 npm 源。更详细的配置可以参考 <code>npm-config</code></p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;publishConfig&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">&quot;registry&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://registry.npmjs.org/&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="os-指定包可在哪些系统中运行"><a href="#os-指定包可在哪些系统中运行" class="header-anchor">#</a> <code>os</code> 指定包可在哪些系统中运行</h3> <p><code>type: Array&lt;string&gt;</code></p> <p><code>default: -</code></p> <p>该属性可以指定模块适用的系统：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token string">&quot;os&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;linux&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 指定适用的系统</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>也可以指定不适用的系统：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token string">&quot;os&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;!linux&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 指定不适用的系统</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>当在不适用系统中安装则会报错。</p> <h3 id="cpu-指定模块适用的-cpu-架构"><a href="#cpu-指定模块适用的-cpu-架构" class="header-anchor">#</a> <code>cpu</code> 指定模块适用的 cpu 架构</h3> <p><code>type: Array&lt;string&gt;</code></p> <p><code>default: -</code></p> <p>指定模块适用的 cpu 架构：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token string">&quot;cpu&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;x64&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 指定适用的 cpu 架构</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>指定不适用的 cpu 架构：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token string">&quot;cpu&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token string">&quot;!x64&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 指定不适用的 cpu 架构</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="engines-指定引擎-node-npm-版本"><a href="#engines-指定引擎-node-npm-版本" class="header-anchor">#</a> <code>engines</code> 指定引擎(node/npm)版本</h3> <p><code>type: object</code></p> <p><code>default: -</code></p> <p>指定一系列引擎的版本，但只是作为提示信息，不会阻止不符合的用户安装。</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token property">&quot;engines&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+   <span class="token property">&quot;node&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&gt;= 8.16.0&quot;</span><span class="token punctuation">,</span>
+   <span class="token property">&quot;npm&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&gt;= 6.9.0&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id=""><a href="#" class="header-anchor">#</a> -----</h3> <h3 id="proxy-解决开发环境跨域问题"><a href="#proxy-解决开发环境跨域问题" class="header-anchor">#</a> <code>proxy</code> 解决开发环境跨域问题</h3> <p><code>type: string</code></p> <p><code>default: -</code></p> <p>开发环境中，可以通过配置 <code>package.json</code> 中的 <code>proxy</code> 来解决跨域问题：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;proxy&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://localhost:4000&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>项目中通常使用模块 <code>http-proxy-middleware</code> 来解决跨域问题。 <code>webpack-dev-server</code> 也是用的它。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/Node/package.json.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Node/npm 与 cnpm 的镜像源切换.html" class="prev">
+        npm 镜像
+      </a></span> <span class="next"><a href="/Node/process.html">
+        process
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.10eff469.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/102.7dbd72d8.js" defer></script>
+  </body>
+</html>
