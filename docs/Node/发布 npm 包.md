@@ -10,5 +10,5 @@ https://www.npmjs.com/
 
 - 创建项目，编写内容
 - `npm init` 初始化
-- `npm adduser` 登录帐号，如果指向了 其他镜像比如淘宝镜像，需要用 `npm adduser --registry http://registry.npmjs.org`
+- `npm adduser` 登录帐号，如果指向了 其他镜像比如淘宝镜像，需要用 `npm adduser --registry http://registry.npmjs.org` 将地址指回 npm 官方地址
 - `npm publish`，同样，指向了其他镜像需要用 `npm publish --registry http://registry.npmjs.org`
