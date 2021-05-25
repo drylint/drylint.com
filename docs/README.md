@@ -111,6 +111,8 @@
 
 [compressorjs](https://github.com/fengyuanchen/compressorjs), 前端运行时图片压缩工具
 
+[exif-js](https://github.com/exif-js/exif-js), 前端运行时图片旋转信息处理工具
+
 [cropperjs](https://github.com/fengyuanchen/cropperjs), 图片裁剪工具
 
 [dayjs](https://github.com/iamkun/dayjs), 日期时间解析，验证，操作，格式化工具库，`moment` 的替代品，
