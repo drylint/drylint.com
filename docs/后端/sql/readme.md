@@ -1,5 +1,7 @@
 # 1
 
+[toc]
+
 ## 数据类型
 
 对于一个关系表，除了定义每一列的名称外，还需要定义每一列的数据类型。关系数据库支持的标准数据类型包括数值、字符串、时间等：
@@ -49,33 +51,209 @@ DQL允许用户查询数据，这也是通常最频繁的数据库日常操作�
 
 ## 开始
 
-## 安装
+安装完 MySQL 后，除了 MySQL Server，即真正的 MySQL 服务器外，还附带一个 MySQL Client 程序。
 
-## 添加到环境变量
+可以通过 MySQL Client 登录 MySQL，然后，输入 SQL 语句并执行。
 
-复制 mysql 安装目录下 bin 目录完整路径，添加到环境变量 path 中
+## 连接数据库
 
-## 连接
+输入 `mysql -u root -p` ，按下 Enter 确定后，输入密码，如果正确，将会连接成功。
 
-输入 `mysql -u root -p` 确定，输入密码，连接成功。
+连接成功后，提示符变为 `mysql>` (MariaDB 提示为 `MariaDB [(none)]>`) 。
 
-`mysql -h xx.xx.xx.xx -P 3306 -u root -p`
+输入 `exit` 会断开与 MySQL Server 的连接并返回到命令提示符。
 
-`-h`: host, 地址
+MySQL Client 的可执行程序是 `mysql` ，MySQL Server 的可执行程序是 `mysqld` 。所以上面使用的连接语句以 `mysql` 开头，就是在使用客户端的可执行程序。
 
-`-P`: 需大写，port, 端口
+如果安装完后，没有将 MySQL Client 的可执行程序添加到环境变量中，可以手动添加：复制 mysql 安装目录下 bin 目录完整路径，添加到环境变量 path 中
 
-`-u`: user, 用户名
+MySQL Client 和 MySQL Server 的关系如下：
 
-`-p`: password, 密码，确定后再单独输入密码
+```bash
+┌──────────────┐  SQL   ┌──────────────┐
+│ MySQL Client │───────>│ MySQL Server │
+└──────────────┘  TCP   └──────────────┘
+```
 
-## 常用命令
+在 MySQL Client 中输入的 SQL 语句通过 TCP 连接发送到 MySQL Server。默认端口号是 `3306` ，即如果发送到本机 MySQL Server，地址就是 `127.0.0.1:3306` 。
 
-- `quit;` 退出数据库 ( `exit;` )
-- `show databases;` 列出数据库列表
-- `use datebaseName;` 使用（进入）某个数据库
-- `show tables;` 列出当前数据库中所有的表
-- `desc tableName;` 描述表中都有哪些字段(表头)
+也可以只安装 MySQL Client，然后连接到远程 MySQL Server。假设远程 MySQL Server的IP地址是 `10.0.1.99` ，那么就使用 `-h` 指定IP或域名：
+
+```sql
+mysql -h 10.0.1.99 -u root -p
+```
+
+完整的连接命令：
+
+```sql
+mysql -h xx.xx.xx.xx -P 3306 -u root -p
+```
+
+`-h` : host, 地址
+
+`-P` : 需大写，port, 端口
+
+`-u` : user, 用户名
+
+`-p` : password, 密码，确定后再单独输入密码
+
+### 操作库
+
+#### 退出数据库连接 `exit;`
+
+`quit;` 同样可以退出连接。
+
+注意，这个操作仅仅是断开了客户端和服务器的连接，MySQL 服务器仍然继续运行。
+
+#### 查看所有数据库 `show databases;`
+
+其中，`information_schema` 、 `mysql` 、 `performance_schema` 和 `sys` 是系统库，不要去改动它们。其他的是用户创建的数据库。
+
+#### 创建一个新数据库 `CREATE DATABASE <databaseName>;`
+
+#### 删除一个数据库 `DROP DATABASE <databaseName>;`
+
+注意：删除一个数据库将导致该数据库的所有表全部被删除。
+
+#### 进入(使用)某个数据库 `use <databaseName>;`
+
+对一个数据库进行操作时，必须先进入这个数据库。
+
+### 操作表
+
+以下操作，必须是先使用 `use <databaseName>;` 进入某个数据库之后。
+
+#### 查看所有表 `SHOW TABLES;`
+
+#### 创建一张表 `CREATE TABLE ...`
+
+#### 删除一张表 `DROP TABLE <tableName>;`
+
+#### 修改一张表 `ALTER TABLE ...`
+
+如果要给 `students` 表新增一列 `birth` ，使用：
+
+```sql
+ALTER TABLE students ADD COLUMN birth VARCHAR(10) NOT NULL;
+```
+
+要修改 `birth` 列，例如把列名改为 `birthday` ，类型改为 `VARCHAR(20)` ：
+
+```sql
+ALTER TABLE students CHANGE COLUMN birth birthday VARCHAR(20) NOT NULL;
+```
+
+要删除列，使用：
+
+```sql
+ALTER TABLE students DROP COLUMN birthday;
+```
+
+#### 查看一张表的结构 `DESC <tableName>;`
+
+#### 查看一张表的创建语句 `SHOW CREATE TABLE <tableName>;`
+
+输出创建这个表使用的 SQL 语句。
+
+```sql
+students | CREATE TABLE `students` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `class_id` bigint(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` varchar(1) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
+```
+
+## 关系模型
+
+### 主键
+
+在关系数据库中，一张表中的每一行数据被称为一条记录，能够通过某个字段唯一区分出不同的记录，这个字段被称为 **主键**。
+
+基本原则：不使用任何业务相关的字段作为主键，比如名称，电话，身份证号，邮箱地址等。
+
+通常，一般都会将命名为 `id` 的字段当作主键，常见 `id` 类型：
+
+1. 自增整数类型：数据库会在插入数据时自动为每一条记录分配一个自增整数，这样我们就完全不用担心主键重复，也不用自己预先生成主键；
+
+2. 全局唯一 GUID 类型：使用一种全局唯一的字符串作为主键，类似`8f55d96b-8acc-4636-8cb8-76bf8abc2f57` 。GUID 算法通过网卡 MAC 地址、时间戳和随机数保证任意计算机在任意时间生成的字符串都是不同的，大部分编程语言都内置了 GUID 算法，可以自己预算出主键。
+
+对于大部分应用来说，通常自增类型的主键就能满足需求。如果使用 `INT` 自增类型，那么当一张表的记录数超过 2147483647 （约21亿）时，会达到上限而出错。使用 `BIGINT` 自增类型则可以最多约 922 亿亿条记录。
+
+关系数据库实际上还允许通过多个字段唯一标识记录，即两个或更多的字段都设置为主键，这种主键被称为联合主键，但通常不建议使用。
+
+### 外键
+
+在一张表中，通过某个字段，可以把数据与另一张表关联起来，这种列称为**外键**。
+
+外键并不是通过列名实现的，而是通过定义外键约束实现的：
+
+```sql
+ALTER TABLE students
+ADD CONSTRAINT fk_class_id
+FOREIGN KEY (class_id)
+REFERENCES classes (id);
+```
+
+其中，外键约束的名称fk_class_id可以任意，FOREIGN KEY (class_id)指定了class_id作为外键，REFERENCES classes (id)指定了这个外键将关联到classes表的id列（即classes表的主键）。
+
+通过定义外键约束，关系数据库可以保证无法插入无效的数据。即如果classes表不存在id=99的记录，students表就无法插入class_id=99的记录。
+
+由于外键约束会降低数据库的性能，大部分互联网应用程序为了追求速度，并不设置外键约束，而是仅靠应用程序自身来保证逻辑的正确性。
+
+删除一个外键约束，也是通过 `ALTER TABLE` 实现的：
+
+```sql
+ALTER TABLE students
+DROP FOREIGN KEY fk_class_id;
+```
+
+#### 多对多
+
+多对多关系实际上是通过两个一对多关系实现的，即通过一个中间表，关联两个一对多关系，就形成了多对多关系。
+
+#### 一对一
+
+一对一关系是指，一个表的记录对应到另一个表的唯一一个记录。
+
+用于将一个大表拆分成两个小表，目的是把经常读取和不经常读取的字段分开，以获得更高的性能。
+
+### 索引
+
+在关系数据库中，如果有上万甚至上亿条记录，在查找记录的时候，想要获得非常快的速度，就需要使用索引。
+
+索引是关系数据库中对某一列或多个列的值进行预排序的数据结构。通过使用索引，可以让数据库系统不必扫描整个表，而是直接定位到符合条件的记录，这样就大大加快了查询速度。
+
+```sql
+ALTER TABLE <tableName>
+ADD INDEX <indexName> (<column1>[, <column2>, ...<columnN>]);
+```
+
+索引的效率取决于索引列的值是否散列，即该列的值如果越互不相同，那么索引效率越高。反过来，如果记录的列存在大量相同的值，例如gender列，大约一半的记录值是M，另一半是F，因此，对该列创建索引就没有意义。
+
+可以对一张表创建多个索引。索引的优点是提高了查询效率，缺点是在插入、更新和删除记录时，需要同时修改索引，因此，索引越多，插入、更新和删除记录的速度就越慢。
+
+对于主键，关系数据库会自动对其创建主键索引。使用主键索引的效率是最高的，因为主键会保证绝对唯一。
+
+#### 唯一索引
+
+在设计关系数据表的时候，看上去唯一的列，例如身份证号、邮箱地址等，因为他们具有业务含义，因此不宜作为主键。
+
+但是，这些列根据业务要求，又具有唯一性约束：即不能出现两条记录存储了同一个身份证号。这个时候，就可以给该列添加一个唯一索引。
+
+```sql
+ALTER TABLE <tableName>
+ADD UNIQUE INDEX <indexName> (<columnName>);
+```
+
+也可以只对某一列添加一个唯一约束而不创建唯一索引：
+
+```sql
+ALTER TABLE <tableName>
+ADD CONSTRAINT <indexName> UNIQUE (<columnName>);
+```
 
 ## SQL 语句两种执行方式
 
@@ -94,12 +272,370 @@ mysql -u root -p > ./demo.sql
 
 ## 语句
 
-- 每条语句可跨越多行(USE命令除外)，见到分号认为语句结束，所以每条语句都应该以分号(`;`)结尾
+- 每条语句可跨越多行( `USE` 命令除外)，见到分号认为语句结束，所以每条语句都应该以分号 `;` 结尾
 - SQL语句不区分大小写，习惯上，关键字用大写，非关键字用小写
 - 单行注释以 `#` 开头
 - 多行注释 `/*...*/`
 
-### 常用语句
+### 查询数据的语句
+
+#### 基本查询
+
+```sql
+SELECT * FROM <表名>
+```
+
+`SELECT` 是关键字，表示将要执行一个查询， `*` 表示“所有列”， `FROM` 表示将要从哪个表查询。
+
+`SELECT` 语句其实并不要求一定要有 `FROM` 子句，比如执行 `SELECT 100+200;` 会执行计算，并作为查询结果。
+
+虽然 `SELECT` 可以用作计算，但它并不是 SQL 的强项。但是，不带 `FROM` 子句的 `SELECT` 语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条 `SELECT 1;` 来测试数据库连接。
+
+#### 查询条件
+
+```sql
+SELECT * FROM <表名> WHERE <条件表达式>
+```
+
+条件表达式可以用 `AND`, `OR`, `NOT` 来分别表示 和，或，非
+
+要组合三个或者更多的条件，就需要用小括号 `()` 表示如何进行条件运算。
+
+如果不加括号，条件运算按照 `NOT`, `AND`, `OR` 的优先级进行，即 `NOT` 优先级最高，其次是 `AND` ，最后是 `OR` 。加上括号可以改变优先级。
+
+条件 | 表达式举例1 | 表达式举例2 | 说明
+-- | -- | -- | -- | --
+`=` 相等 | `score = 80` | `name = 'abc'` | 字符串需要用单引号括起来
+`>` 大于 | `score > 80` | `name > 'abc'` | 字符串比较根据 ASCII 码，中文字符比较根据数据库设置
+`>=` 大于或相等 | `score >= 80` | name >= 'abc'
+`<` 小于 | `score < 80` | `name <= 'abc'`
+`<=` 小于或相等 | `score <= 80` | `name <= 'abc'`
+`<>` 不相等 | `score <> 80` | `name <> 'abc'`
+`LIKE` 相似 | `name LIKE 'ab%'` | `name LIKE '%bc%'` | `%` 表示任意字符，例如 `'ab%'` 将匹配 `'ab'` ， `'abc'` ， `'abcd'`
+
+#### 投影查询
+
+使用 `SELECT * FROM <表名> WHERE <条件>` 可以选出表中的若干条记录，每一条记录都包含所有列的数据，如果只希望查询某些列的数据，可以使用 `SELECT 列1, 列2, 列3 FROM ...` ，让结果集仅包含指定列。这种操作称为投影查询。
+
+```sql
+SELECT 列1, 列2, 列3 FROM <表名> WHERE <条件>;
+```
+
+给列起别名：
+
+```sql
+SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM <表名> WHERE <条件>;
+```
+
+#### 排序
+
+通常，查询结果是按照主键排序的，如果要根据某列进行排序，可以使用 `ORDER BY ...` 子句。列名接上关键字 `ASC` 或 `DESC` 表示正序或倒序排列。
+
+```sql
+# 正序，如果有 WHERE 子句，ORDER BY 语句要放在 WHERE 之后
+SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <colName>;
+
+# 等同于以下语句，因为默认为 ASC，所以 ASC 可以省略
+SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <colName> ASC;
+
+# 倒序
+SELECT * FROM <表名> ORDER BY <colName> DESC;
+
+# 先按 colName1 倒序排列，如果 colName1 值相同，再按 colName2 正序排列
+SELECT * FROM <表名> ORDER BY <colName1> DESC, <colName2>;
+```
+
+#### 分页
+
+通过 `LIMIT <M> OFFSET <N>` 子句实现分页查询，表示本次最多查询 M 条记录，跳过前 N 条纪录（相当于从 N + 1 开始）。
+
+```sql
+SELECT *
+FROM <表名>
+WHERE <条件表达式>
+ORDER BY <colName>
+LIMIT M OFFSET N;
+```
+
+比如，每一页查 10 条数据，第一页为 `LIMIT 10 OFFSET 0` ，第二页为 `LIMIT 10 OFFSET 10` ，第三页为 `LIMIT 10 OFFSET 20`，最后一页不足 10 条时，则返回实际剩余的条数。
+
+分页查询的关键在于，首先要确定每页需要显示的结果数量 `pageSize` ，然后根据当前页的索引 `pageIndex` （从1开始），确定 `LIMIT` 和 `OFFSET` 应该设定的值：
+
+- `LIMIT` 总是设定为 `pageSize`；
+- `OFFSET` 计算公式为 `pageSize * (pageIndex - 1)` 。
+
+`OFFSET` 超过了数据表的最大数量并不会报错，而是得到一个空的结果集。
+
+`OFFSET` 是可选的，如果只写 `LIMIT 15` ，那么相当于 `LIMIT 15 OFFSET 0` 。
+
+在MySQL中，`LIMIT 15 OFFSET 30` 还可以简写成 `LIMIT 30, 15` 。
+
+使用 `LIMIT <M> OFFSET <N>` 分页时，随着 `N` 越来越大，查询效率也会越来越低。
+
+#### 聚合查询
+
+对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
+
+`COUNT()` 用于统计一张表的数据量：
+
+```sql
+SELECT COUNT(*) FROM <表名>;
+```
+
+`COUNT(*)` 表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是 `COUNT(*)` 。
+
+给 `COUNT(*)` 设置一个别名，便于处理结果：
+
+```sql
+# 给 COUNT(*) 设置一个别名叫做 num
+SELECT COUNT(*) num FROM <表名>;
+```
+
+`COUNT(*)` 和 `COUNT(id)` 实际上是一样的效果。
+
+另外注意，聚合查询同样可以使用 `WHERE` 条件：
+
+```bash
+SELECT COUNT(*) num FROM <表名> WHERE <条件表达式>;
+```
+
+除了 `COUNT()` 函数外，SQL还提供了如下聚合函数：
+
+函数 | 说明
+-- | --
+`SUM()` | 计算某一列的合计值，该列必须为数值类型
+`AVG()` | 计算某一列的平均值，该列必须为数值类型
+`MAX()` | 计算某一列的最大值
+`MIN()` | 计算某一列的最小值
+
+注意， `MAX()` 和 `MIN()` 函数并不限于数值类型。如果是字符类型， `MAX()` 和 `MIN()` 会返回排序最后和排序最前的字符。
+
+要特别注意：如果聚合查询的 `WHERE` 条件没有匹配到任何行， `COUNT()` 会返回 `0` ，而 `SUM()` 、 `AVG()` 、 `MAX()` 和 `MIN()` 会返回 `NULL` ：
+
+##### 分组
+
+对于聚合查询，SQL还提供了“分组聚合”的功能，比如，要统计每个班的学生数量，可以用到分组。
+
+```sql
+# 根据 class_id 进行分组统计，但结果不知道哪个数据是哪个班
+SELECT COUNT(*) num FROM students GROUP BY class_id;
+
+# 分组统计时，同时查出班级的 class_id ，便于区分数据
+SELECT class_id, COUNT(*) num FROM students GROUP BY class_id;
+```
+
+注意，在聚合查询的列中，只能放入分组的列。也就是 `SELECT` 后的列名，只能是分组的列名，
+
+可以使用多个列进行分组。
+
+```sql
+SELECT class_id, gender, COUNT(*) num FROM students GROUP BY class_id, gender;
+```
+
+查询结果是：
+
+class_id | gender | num
+-- | -- | --
+1 | M | 2
+1 | F | 2
+2 | F | 1
+2 | M | 2
+3 | F | 2
+3 | M | 1
+
+#### 多表查询
+
+从多张表中查询数据：
+
+```sql
+SELECT * FROM <表1> <表2>;
+```
+
+比如：
+
+```sql
+SELECT * FROM students, classes;
+```
+
+这种一次查询两个表的数据，查询的结果也是一个二维表，它是 `students` 表和 `classes` 表的“乘积”，即 `students` 表的每一行与 `classes` 表的每一行都两两拼在一起返回。结果集的列数是 `students` 表和 `classes` 表的**列数之和**，行数是 `students` 表和 `classes` 表的**行数之积**。
+
+这种多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有 100 行记录的表进行笛卡尔查询将返回 10000 条记录，对两个各自有 1 万行记录的表进行笛卡尔查询将返回 1 亿条记录。
+
+多表查询时，各个表中相同的列名全都会作为结果的列名被列出来，所以结果中会看到多列 `id` 及其他相同字段。
+
+可以利用投影查询的“设置列的别名”来给两个表各自的 `id` 和 `name` 列起别名：
+
+```sql
+SELECT
+    students.id sid,
+    students.name,
+    students.gender,
+    students.score,
+    classes.id cid,
+    classes.name cname
+FROM students, classes;
+```
+
+要使用 `表名.列名` 这样的方式来引用列和设置别名，比如 `students.id` ，但这样书写太长太麻烦，可以给表设置别名来简化书写：
+
+```sql
+SELECT
+    s.id sid,
+    s.name,
+    s.gender,
+    s.score,
+    c.id cid,
+    c.name cname
+FROM students s, classes c;
+```
+
+给 `students` 表设置别名为 `s`, 给 `classes` 表设置别名为 `c` 。
+
+给多表查询添加条件语句：
+
+```sql
+SELECT
+    s.id sid,
+    s.name,
+    s.gender,
+    s.score,
+    c.id cid,
+    c.name cname
+FROM students s, classes c
+WHERE s.gender = 'M' AND c.id = 1;
+```
+
+#### 连接查询
+
+连接查询是另一种类型的多表查询。连接查询对多个表进行JOIN运算，简单地说，就是先确定一个主表作为结果集，然后，把其他表的行有选择性地“连接”在主表结果集上。
+
+```sql
+# 选出 students 表的所有学生信息
+SELECT s.id, s.name, s.class_id, s.gender, s.score FROM students s;
+```
+
+上面查出的学生信息中，没有班级名称，只有班级的 `class_id`，如果要查出对应的班级名称，要先根据 `students` 表的 `class_id` ，找到 `classes` 表对应的行，再取出 `name` 列，才可以获得班级名称。
+
+但是用连接查询就比较简单：
+
+语法：
+
+```sql
+SELECT ... FROM <主表> INNER JOIN <连接表> ON <条件...>
+```
+
+示例：
+
+```sql
+SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score
+FROM students s
+INNER JOIN classes c
+ON s.class_id = c.id;
+```
+
+注意 `INNER JOIN` 查询的写法是：
+
+1. 先确定主表，仍然使用 `FROM <主表>` 的语法；
+2. 再确定需要连接的表，使用 `INNER JOIN <连接表>` 的语法；
+3. 然后确定连接条件，使用 `ON <条件...>` ，这里的条件是 `s.class_id = c.id` ，表示 `students` 表的 `class_id` 列与 `classes` 表的 `id` 列相同的行需要连接；
+4. 可选：加上 `WHERE` 子句、 `ORDER BY` 等子句。
+
+所有连接方式：
+
+- `INNER JOIN` 只选取主表和连接表都存在的记录
+- `LEFT OUTER JOIN` 选取主表的全部记录，连接表没有对应值时补 `NULL`
+- `RIGHT OUTER JOIN` 选取连接表的全部记录，主表没有对应值时补 `NULL`
+- `FULL OUTER JOIN` 选取主表和连接表的全部记录，没有的都补 `NULL`
+
+JOIN 查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；
+
+`INNER JOIN` 是最常用的一种JOIN查询。
+
+### 修改数据的语句
+
+关系数据库的基本操作就是增删改查，即 CRUD：Create、Retrieve、Update、Delete。其中，对于查询，我们已经详细讲述了SELECT语句的详细用法。
+
+而对于增、删、改，对应的 SQL 语句分别是：
+
+`INSERT` ：插入新记录；
+`UPDATE` ：更新已有记录；
+`DELETE` ：删除已有记录。
+
+#### 插入语句 INSERT
+
+语法：
+
+```sql
+INSERT INTO <表名> (字段1, 字段2, ...) VALUES (值1, 值2, ...);
+```
+
+示例：
+
+```sql
+# 插入一条记录
+INSERT INTO students (class_id, name, gender, score) VALUES (2, '大牛', 'M', 80);
+
+# 插入多条记录，使用逗号分隔
+INSERT INTO students (class_id, name, gender, score) VALUES
+  (1, '大宝', 'M', 87),
+  (2, '二宝', 'M', 81);
+```
+
+#### 更新语句 UPDATE
+
+语法：
+
+```sql
+UPDATE <表名> SET 字段1=值1, 字段2=值2, ... WHERE ...;
+```
+
+示例：
+
+```sql
+# 更新，修改 id 为 1 的那一行数据
+UPDATE students SET name='大牛', score=66 WHERE id=1;
+
+# 更新时使用表达式，比如把 80 分以下的所有人加 10 分
+UPDATE students SET score=score+10 WHERE score<80;
+```
+
+如果 `WHERE` 条件没有匹配到任何记录， `UPDATE` 语句不会报错，也不会有任何记录被更新。
+
+要特别小心的是，`UPDATE` 语句可以没有 `WHERE` 条件，此时，整个表的所有记录都会被更新。
+
+所以，在执行 `UPDATE` 语句时要非常小心，最好先用 `SELECT` 语句来测试 `WHERE` 条件是否筛选出了期望的记录集，然后再用 `UPDATE` 更新。
+
+在使用 MySQL 这类真正的关系数据库时，`UPDATE` 语句会返回更新的行数以及 `WHERE` 条件匹配的行数，比如 `Rows matched: 1 Changed: 1` 。
+
+#### 删除语句 DELETE
+
+语法：
+
+```sql
+DELETE FROM <表名> WHERE ...;
+```
+
+示例：
+
+```sql
+# 删除 id 为 1 的记录
+DELETE FROM students WHERE id=1;
+
+# 删除 id 大于等于 5 并且 小于等于 7 的所有记录
+DELETE FROM students WHERE id>=5 AND id<=7;
+
+# WHERE 条件没有匹配记录时，不会报错，也不会删除任何记录
+DELETE FROM students WHERE id=999;
+
+# 不带 WHERE 条件，将会删除整个表所有的记录
+DELETE FROM students;
+```
+
+所以，在执行 `DELETE` 语句时也要非常小心，最好先用 `SELECT` 语句来测试 `WHERE` 条件是否筛选出了期望的记录集，然后再用 `DELETE` 删除。
+
+使用 MySQL 这类真正的关系数据库时， `DELETE` 语句也会返回删除的行数以及 `WHERE` 条件匹配的行数，比如 `Query OK, 1 row affected (0.01 sec)` 。
+
+## 示例
 
 以创建数据库 `app` 为例
 
@@ -148,22 +684,22 @@ DELETE FROM user WHERE id = 2;
 # 更改一行数据的某些字段
 UPDATE user SET user_name = 'Jerry',phone = '13111111113' WHERE id = 2;
 
-# 查询一行的所有字段
+# 查询一张表中每一行的所有字段
 SELECT * FROM user;
 
-# 查询一行的某些字段
+# 查询一张表中每一行的某些字段
 SELECT user_name, phone FROM user;
 ```
 
 ### 约束 (constraint)
 
-MySQL可以对插入表中的数据进行特定的验证，只有满足条件的数据才允许进入数据库
+MySQL可以对插入表中的数据进行特定的验证，只有满足条件的数据才允许进入数据库。
 
-约束可以在 `CREATE TABLE` (建立表时)或 `ALTER TABLE`(表建立后)添加或修改
+约束可以使用 `CREATE TABLE` (建立表时)或 `ALTER TABLE`(表建立后)添加或修改。
 
-约束定义在单列(列级约束), 可以约束当前列的数据;
+约束定义在单列(列级约束)时，可以约束当前列的数据。
 
-多列约束必须定义表级约束, 相关的列在括号中指定, 用逗号分隔
+多列约束必须定义表级约束，相关的列在括号中指定, 用逗号分隔。
 
 #### NOT NULL 非空约束
 
