@@ -2,29 +2,9 @@
 
 [toc]
 
-## 数据类型
+## 概述
 
-对于一个关系表，除了定义每一列的名称外，还需要定义每一列的数据类型。关系数据库支持的标准数据类型包括数值、字符串、时间等：
-
-名称 | 类型 | 说明
--- | -- | --
-INT | 整型 | 4字节整数类型，范围约+/-21亿
-BIGINT | 长整型 | 8字节整数类型，范围约+/-922亿亿
-REAL | 浮点型 | 4字节浮点数，范围约+/-1038
-DOUBLE | 浮点型 | 8字节浮点数，范围约+/-10308
-DECIMAL(M,N) | 高精度小数 | 由用户指定精度的小数，例如，DECIMAL(20,10)表示一共20位，其中小数10位，通常用于财务计算
-CHAR(N) | 定长字符串 | 存储指定长度的字符串，例如，CHAR(100)总是存储100个字符的字符串
-VARCHAR(N) | 变长字符串 | 存储可变长度的字符串，例如，VARCHAR(100)可以存储0~100个字符的字符串
-BOOLEAN | 布尔类型 | 存储True或者False
-DATE | 日期类型 | 存储日期，例如，2018-06-22
-TIME | 时间类型 | 存储时间，例如，12:20:59
-DATETIME | 日期和时间类型 | 存储日期+时间，例如，2018-06-22 12:20:59
-
-上面的表中列举了最常用的数据类型。很多数据类型还有别名，例如，REAL又可以写成FLOAT(24)。还有一些不常用的数据类型，例如，TINYINT（范围在0~255）。各数据库厂商还会支持特定的数据类型，例如JSON。
-
-选择数据类型的时候，要根据业务规则选择合适的类型。通常来说，BIGINT能满足整数存储的需求，VARCHAR(N)能满足字符串存储的需求，这两种类型是使用最广泛的。
-
-## 主流关系数据库
+### 主流关系数据库
 
 目前，主流的关系数据库主要分为以下几类：
 
@@ -33,39 +13,47 @@ DATETIME | 日期和时间类型 | 存储日期+时间，例如，2018-06-22 12:
 桌面数据库，以微软Access为代表，适合桌面应用程序使用；
 嵌入式数据库，以Sqlite为代表，适合手机应用和桌面程序。
 
-## SQL
+数据库的构成：server -> Database -> Table -> Row -> Column 。
+
+### SQL (Structured Query Language)
 
 SQL语言定义了这么几种操作数据库的能力：
 
-DDL：Data Definition Language
+#### DDL ：Data Definition Language
 
-DDL允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。通常，DDL由数据库管理员执行。
+DDL 允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。通常，DDL 由数据库管理员执行。
 
-DML：Data Manipulation Language
+#### DML ：Data Manipulation Language
 
-DML为用户提供添加、删除、更新数据的能力，这些是应用程序对数据库的日常操作。
+DML 为用户提供添加、删除、更新数据的能力，这些是应用程序对数据库的日常操作。
 
-DQL：Data Query Language
+#### DQL ：Data Query Language
 
-DQL允许用户查询数据，这也是通常最频繁的数据库日常操作。
+DQL 允许用户查询数据，这也是通常最频繁的数据库日常操作。
 
-## 开始
+## 开始使用
 
-安装完 MySQL 后，除了 MySQL Server，即真正的 MySQL 服务器外，还附带一个 MySQL Client 程序。
+以 MySQL 为例。
 
-可以通过 MySQL Client 登录 MySQL，然后，输入 SQL 语句并执行。
+### 安装 MySQL
 
-## 连接数据库
+首先安装 MySQL ，过程略。
+
+安装完 MySQL 后，实际上，除了 MySQL Server ，即真正的 MySQL 服务器外，还附带了一个 MySQL Client 客户端程序。
+
+可以通过 MySQL Client 登录 MySQL Server ，然后，输入 SQL 语句并执行。
+
+### 连接数据库
 
 输入 `mysql -u root -p` ，按下 Enter 确定后，输入密码，如果正确，将会连接成功。
 
 连接成功后，提示符变为 `mysql>` (MariaDB 提示为 `MariaDB [(none)]>`) 。
 
-输入 `exit` 会断开与 MySQL Server 的连接并返回到命令提示符。
+输入 `exit` 并确定后， 会断开与 MySQL Server 的连接并返回到命令提示符。
 
-MySQL Client 的可执行程序是 `mysql` ，MySQL Server 的可执行程序是 `mysqld` 。所以上面使用的连接语句以 `mysql` 开头，就是在使用客户端的可执行程序。
+其实，MySQL Client 的可执行程序是 `mysql` ，MySQL Server 的可执行程序是 `mysqld` 。所以上面使用的连接语句以 `mysql` 开头，就是在使用客户端的可执行程序。
 
-如果安装完后，没有将 MySQL Client 的可执行程序添加到环境变量中，可以手动添加：复制 mysql 安装目录下 bin 目录完整路径，添加到环境变量 path 中
+如果安装完后，没有将 MySQL Client 的可执行程序添加到环境变量中，执行上面的 `mysql ...` 语句会报错，可以手动添加：复制 mysql 安装目录下 bin 目录完整路径，添加到系统的环境变量 path 中。
 
 MySQL Client 和 MySQL Server 的关系如下：
 
@@ -77,25 +65,48 @@ MySQL Client 和 MySQL Server 的关系如下：
 
 在 MySQL Client 中输入的 SQL 语句通过 TCP 连接发送到 MySQL Server。默认端口号是 `3306` ，即如果发送到本机 MySQL Server，地址就是 `127.0.0.1:3306` 。
 
-也可以只安装 MySQL Client，然后连接到远程 MySQL Server。假设远程 MySQL Server的IP地址是 `10.0.1.99` ，那么就使用 `-h` 指定IP或域名：
+也可以只安装 MySQL Client，然后连接到远程 MySQL Server。假设远程 MySQL Server的IP地址是 `10.0.1.99` ，那么就使用 `-h` 指定 IP 或域名：
 
 ```sql
 mysql -h 10.0.1.99 -u root -p
 ```
 
-完整的连接命令：
+完整的连接命令语法：
 
 ```sql
-mysql -h xx.xx.xx.xx -P 3306 -u root -p
+mysql -h xxx.xxx.xxx.xxx -P 3306 -u root -p
 ```
 
-`-h` : host, 地址
+`-h` : host, IP 地址 或域名地址
 
 `-P` : 需大写，port, 端口
 
 `-u` : user, 用户名
 
 `-p` : password, 密码，确定后再单独输入密码
+
+### SQL 语句两种执行方式
+
+#### 交互模式
+
+在客户端输入一行，按下 Enter 键，服务器执行一行。适用于临时性查看数据。
+
+#### 脚本模式
+
+客户端把要执行的命令写在一个扩展名为 `.sql` 的文本文件中，一次性提交给服务器执行。适用于批量的增删改查。
+
+登录数据库服务器，并且执行 `demo.sql` 文件中的所有语句：
+
+```sql
+mysql -u root -p < ./demo.sql
+```
+
+### 语句编写规范
+
+- 不区分大小写，习惯上，关键字用大写，非关键字用小写。
+- 每条 SQL 语句都必须以英文分号 `;` 结尾，一条语句可跨越多行( `USE` 命令除外)，见到分号认为语句结束。
+- 某条语句执行发生错误时，执行会被退出，之后的语句不会再执行。
+- 注释，单行注释使用 `# 注释内容`，多行注释使用 `/* 注释内容 */` 包裹。
 
 ### 操作库
 
@@ -107,15 +118,29 @@ mysql -h xx.xx.xx.xx -P 3306 -u root -p
 
 #### 查看所有数据库 `show databases;`
 
-其中，`information_schema` 、 `mysql` 、 `performance_schema` 和 `sys` 是系统库，不要去改动它们。其他的是用户创建的数据库。
+其中，`information_schema` 、 `mysql` 、 `performance_schema` 和 `sys` 是系统库，不要去改动它们。
+
+其他的数据库是用户创建的数据库。
 
 #### 创建一个新数据库 `CREATE DATABASE <databaseName>;`
 
+```sql
+CREATE DATABASE <databaseName>;
+```
+
 #### 删除一个数据库 `DROP DATABASE <databaseName>;`
+
+```sql
+DROP DATABASE <databaseName>;
+```
 
 注意：删除一个数据库将导致该数据库的所有表全部被删除。
 
-#### 进入(使用)某个数据库 `use <databaseName>;`
+#### 进入(使用)某个数据库 `USE <databaseName>;`
+
+```sql
+USE <databaseName>;
+```
 
 对一个数据库进行操作时，必须先进入这个数据库。
 
@@ -125,9 +150,21 @@ mysql -h xx.xx.xx.xx -P 3306 -u root -p
 
 #### 查看所有表 `SHOW TABLES;`
 
+```sql
+SHOW TABLES;
+```
+
 #### 创建一张表 `CREATE TABLE ...`
 
+```sql
+CREATE TABLE ...
+```
+
 #### 删除一张表 `DROP TABLE <tableName>;`
+
+```sql
+DROP TABLE <tableName>;
+```
 
 #### 修改一张表 `ALTER TABLE ...`
 
@@ -153,7 +190,7 @@ ALTER TABLE students DROP COLUMN birthday;
 
 #### 查看一张表的创建语句 `SHOW CREATE TABLE <tableName>;`
 
-输出创建这个表使用的 SQL 语句。
+运行后，会输出创建这个表使用的 SQL 语句：
 
 ```sql
 students | CREATE TABLE `students` (
@@ -165,6 +202,28 @@ students | CREATE TABLE `students` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8
 ```
+
+## 数据类型
+
+对于一个关系表，除了定义每一列的名称外，还需要定义每一列的数据类型。关系数据库支持的标准数据类型包括数值、字符串、时间等：
+
+名称 | 类型 | 说明
+-- | -- | --
+INT | 整型 | 4字节整数类型，范围约+/-21亿
+BIGINT | 长整型 | 8字节整数类型，范围约+/-922亿亿
+REAL | 浮点型 | 4字节浮点数，范围约+/-1038
+DOUBLE | 浮点型 | 8字节浮点数，范围约+/-10308
+DECIMAL(M,N) | 高精度小数 | 由用户指定精度的小数，例如，DECIMAL(20,10)表示一共20位，其中小数10位，通常用于财务计算
+CHAR(N) | 定长字符串 | 存储指定长度的字符串，例如，CHAR(100)总是存储100个字符的字符串
+VARCHAR(N) | 变长字符串 | 存储可变长度的字符串，例如，VARCHAR(100)可以存储0~100个字符的字符串
+BOOLEAN | 布尔类型 | 存储True或者False
+DATE | 日期类型 | 存储日期，例如，2018-06-22
+TIME | 时间类型 | 存储时间，例如，12:20:59
+DATETIME | 日期和时间类型 | 存储日期+时间，例如，2018-06-22 12:20:59
+
+上面的表中列举了最常用的数据类型。很多数据类型还有别名，例如， `REAL` 又可以写成 `FLOAT(24)` 。还有一些不常用的数据类型，例如， `TINYINT` （范围在0~255）。各数据库厂商还会支持特定的数据类型，例如 `JSON` 。
+
+选择数据类型的时候，要根据业务规则选择合适的类型。通常来说， `BIGINT` 能满足整数存储的需求， `VARCHAR(N)` 能满足字符串存储的需求，这两种类型是使用最广泛的。
 
 ## 关系模型
 
@@ -253,21 +312,6 @@ ADD UNIQUE INDEX <indexName> (<columnName>);
 ```sql
 ALTER TABLE <tableName>
 ADD CONSTRAINT <indexName> UNIQUE (<columnName>);
-```
-
-## SQL 语句两种执行方式
-
-### 交互模式
-
-在客户端输入一行，点击回车，服务器执行一行。适用于临时性查看数据
-
-### 脚本模式
-
-客户端把要执行的命令写在一个文本文件中，一次性提交给服务器执行。适用于批量的增删改查。
-
-```sql
-mysql -u root -p > ./demo.sql
-
 ```
 
 ## 语句
@@ -635,6 +679,105 @@ DELETE FROM students;
 
 使用 MySQL 这类真正的关系数据库时， `DELETE` 语句也会返回删除的行数以及 `WHERE` 条件匹配的行数，比如 `Query OK, 1 row affected (0.01 sec)` 。
 
+### 实用 SQL 语句
+
+#### 插入或替换
+
+如果我们希望插入一条新记录（INSERT），但如果记录已经存在，就先删除原记录，再插入新记录。此时，可以使用 `REPLACE` 语句，这样就不必先查询，再决定是否先删除再插入：
+
+```sql
+REPLACE INTO students (id, class_id, name, gender, score) VALUES (1, 1, '小明', 'F', 99);
+```
+
+若 `id=1` 的记录不存在， `REPLACE` 语句将插入新记录，否则，当前 `id=1` 的记录将被删除，然后再插入新记录。
+
+#### 插入或更新
+
+如果我们希望插入一条新记录（INSERT），但如果记录已经存在，就更新该记录，此时，可以使用 `INSERT INTO ... ON DUPLICATE KEY UPDATE ...` 语句：
+
+```sql
+INSERT
+INTO students (id, class_id, name, gender, score)
+VALUES (1, 1, '小明', 'F', 99)
+ON DUPLICATE KEY UPDATE name='小明', gender='F', score=99;
+```
+
+若 `id=1` 的记录不存在， `INSERT` 语句将插入新记录，否则，当前 `id=1` 的记录将被更新，更新的字段由 `UPDATE` 指定。
+
+#### 插入或忽略
+
+如果我们希望插入一条新记录（INSERT），但如果记录已经存在，就啥事也不干直接忽略，此时，可以使用 `INSERT IGNORE INTO ...` 语句：
+
+```sql
+INSERT IGNORE
+INTO students (id, class_id, name, gender, score)
+VALUES (1, 1, '小明', 'F', 99);
+```
+
+若 `id=1` 的记录不存在， `INSERT` 语句将插入新记录，否则，不执行任何操作。
+
+#### 快照
+
+如果想要对一个表进行快照，即复制一份当前表的数据到一个新表，可以结合 `CREATE TABLE` 和 `SELECT` ：
+
+```sql
+# 对 class_id=1 的记录进行快照，并存储为新表 students_of_class1 :
+CREATE TABLE students_of_class1
+SELECT * FROM students WHERE class_id=1;
+```
+
+新创建的表结构和 `SELECT` 使用的表结构完全一致。
+
+#### 写入查询结果集
+
+如果查询结果集需要写入到表中，可以结合 `INSERT` 和 `SELECT` ，将 `SELECT` 语句的结果集直接插入到指定表中。
+
+例如，创建一个统计成绩的表 `statistics` ，记录各班的平均成绩：
+
+```sql
+CREATE TABLE statistics (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    class_id BIGINT NOT NULL,
+    average DOUBLE NOT NULL,
+    PRIMARY KEY (id)
+);
+```
+
+然后，我们就可以用一条语句写入各班的平均成绩：
+
+```sql
+INSERT INTO statistics (class_id, average)
+SELECT class_id, AVG(score) FROM students
+GROUP BY class_id;
+```
+
+确保 `INSERT` 语句的列和 `SELECT` 语句的列能一一对应，就可以在 `statistics` 表中直接保存查询的结果：
+
+```sql
+SELECT * FROM statistics;
+
++----+----------+--------------+
+| id | class_id | average      |
++----+----------+--------------+
+|  1 |        1 |         86.5 |
+|  2 |        2 | 73.666666666 |
+|  3 |        3 | 88.333333333 |
++----+----------+--------------+
+3 rows in set (0.00 sec)
+```
+
+#### 强制使用指定索引
+
+在查询的时候，数据库系统会自动分析查询语句，并选择一个最合适的索引。但是很多时候，数据库系统的查询优化器并不一定总是能使用最优索引。如果我们知道如何选择索引，可以使用 `FORCE INDEX` 强制查询使用指定的索引。例如：
+
+```sql
+SELECT * FROM students
+FORCE INDEX (idx_class_id)
+WHERE class_id = 1 ORDER BY id DESC;
+```
+
+指定索引的前提是索引 `idx_class_id` 必须存在。
+
 ## 示例
 
 以创建数据库 `app` 为例
@@ -689,6 +832,18 @@ SELECT * FROM user;
 
 # 查询一张表中每一行的某些字段
 SELECT user_name, phone FROM user;
+
+# 查询时使用正则表达式，比如，查询所有姓张的用户的电话
+SELECT phone FROM user WHERE user_name REGEXP '^张';
+
+# 统计表中某列有哪些值存在，比如，查询用户表中有哪些角色名存在
+SELECT DISTINCT roleName from user;
+
+# 在查询结果的基础上进行计算
+# 查询出所有员工的姓名和年薪
+SELECT ename 姓名, salary*12 年薪 FROM emp;
+# 假设每个员工工资增加500，年终奖是5000，查询所有员工的姓名和年薪是多少。
+SELECT ename 姓名, (salary+500)*12+5000 年薪 FROM emp;
 ```
 
 ### 约束 (constraint)
@@ -727,7 +882,7 @@ MySQL可以对插入表中的数据进行特定的验证，只有满足条件的
 
 外部键列和引用键(reference key)列可以位于相同的表中(自引用完整性约束)
 
-FOREIGN KEY约束还有两个关键字：
+FOREIGN KEY 约束还有两个关键字：
 
   `ON DELETE CASCADE` 当删除所引用的父表记录时,删除子表中相关的记录
   `ON DELETE SET NULL` 与上面不同的是删除时,转换子表中相关记录为 `NULL` 值
@@ -771,13 +926,19 @@ MySQL 不支持检查约束 `CHECK`，它认为会降低数据的插入速度。
 语法：
 
 ```sql
-ALTER TABLE 表名 ADD CONSTRAINT 约束名 FOREIGN KEY(列名) REFERENCES 另一表名(表中列名);
+ALTER TABLE <表名>
+ADD CONSTRAINT <约束名>
+FOREIGN KEY(<列名>)
+REFERENCES <另一表名>(<表中列名>);
 ```
 
 实例：
 
 ```sql
-ALTER TABLE user ADD CONSTRAINT constraint_name FOREIGN KEY(id) REFERENCES other_table(user_id);
+ALTER TABLE user
+ADD CONSTRAINT constraint_name
+FOREIGN KEY(id)
+REFERENCES other_table(user_id);
 ```
 
 ##### 删除约束
@@ -787,7 +948,7 @@ ALTER TABLE user DROP CONSTRAINT constraint_name;
 ALTER TABLE user DROP PRIMARY KEY CASCADE;
 ```
 
-##### 删除NOT NULL约束,用ALTER TABLE MODIFY子句来删除
+##### 删除 NOT NULL 约束,用 ALTER TABLE MODIFY 子句来删除
 
 ```sql
 ALTER TABLE user MODIFY phone NULL;
@@ -803,13 +964,15 @@ ALTER TABLE user DROP FOREIGN KEY constraint_name;
 ##### 关闭约束
 
 ```sql
-ALTER TABLE user DISABLE CONSTRAINT constraint_name CASCADE; # 如果没有被引用则不需CASCADE关键字
+# 如果没有被引用则不需 CASCADE 关键字
+ALTER TABLE user DISABLE CONSTRAINT constraint_name CASCADE;
 ```
 
 ##### 打开约束
 
 ```sql
-ALTER TABLE user ENABLE CONSTRAINT constraint_name; # 注意,打开一个先前关闭的被引用的主键约束,并不能自动打开相关的外键约束
+# 注意，打开一个先前关闭的被引用的主键约束,并不能自动打开相关的外键约束
+ALTER TABLE user ENABLE CONSTRAINT constraint_name;
 ```
 
 ##### 从约束合集视图中查询约束的信息
@@ -835,16 +998,53 @@ ALTER TABLE TEST CHANGE COLUMN ID ID INT NOT NULL DEFAULT 0 COMMENT '用户编�
 
 #### 修改表的注释修改表的注释
 
-  ALTER TABLE users COMMENT '修改后的表的注释';
+```sql
+ALTER TABLE users COMMENT '修改后的表的注释';
+```
 
 #### 修改列的注释
 
-  ALTER TABLE users MODIFY COLUMN uid INT COMMENT '用户编号';
+```sql
+ALTER TABLE users MODIFY COLUMN uid INT COMMENT '用户编号';
+```
 
 #### 查看表的注释
 
-  SHOW CREATE TABLE users;
+```sql
+SHOW CREATE TABLE users;
+```
 
 #### 查看列的注释
 
-  SHOW FULL COLUMNS FROM users;
+```sql
+SHOW FULL COLUMNS FROM users;
+```
+
+## 运算符
+
+符号 | 含义 | 示例
+-- | -- | --
+`+` | 加 |
+`-` | 减 |
+`*` | 乘 |
+`/` | 除 |
+`DIV` | 商 |
+`%`, `MOD` | 取余 |
+`=` | 等于 |
+`<>`, `!=` | 不等于 |
+`>` | 大于 |
+`<` | 小于 |
+`>=` | 大于等于 |
+`<=` | 小于等于 |
+`BETWEEN <min> AND <max>` | 在 `<min>` 到 `<max>` 范围之间 |
+`NOT BETWEEN <min> AND <max>` | 不在 `<min>` 到 `<max>` 范围之间 |
+`IN ()` | 在集合中 | SELECT 5 IN (1, 2, 3, 4, 5)
+`NOT IN` | 不在集合中 |
+`<=>` | 严格比较两个 NULL | 如果两侧都为 NULL 返回 `1`，否则返回 `0`
+`LIKE` | 模糊匹配 |
+`REGEXP`, `RLIKE` | 正则匹配 |
+`IS NULL` | 为空 |
+`IS NOT NULL` | 不为空 |
+`!`, `NOT` | 取反，非 |
+`AND` | 和，且 |
+`OR` | 或 |
