@@ -118,3 +118,11 @@
 [dayjs](https://github.com/iamkun/dayjs), 日期时间解析，验证，操作，格式化工具库，`moment` 的替代品，
 
 [moment](https://github.com/moment/moment), 日期时间解析，验证，操作，格式化工具库
+
+[file-saver](https://github.com/eligrey/FileSaver.js), 前端保存/下载文件
+
+[html2canvas](https://github.com/niklasvh/html2canvas), 将指定的 HTML 节点树转成 Canvas 图片
+
+[jszip](https://github.com/Stuk/jszip), 一个用 JavaScript 创建、读取和编辑 `.zip` 文件的库，带有一个可爱而简单的 API。
+
+[ua-parser-js](https://github.com/faisalman/ua-parser-js), JavaScript 库，用于检测浏览器，引擎，操作系统，CPU 和设备类型，可以用于浏览器(客户端)或node.js(服务器端)。
