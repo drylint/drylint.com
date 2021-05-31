@@ -103,7 +103,7 @@
 
 [GeoJson 官网](https://geojson.org/)
 
-### 浏览器端
+### npm 包
 
 [axios](https://github.com/axios/axios), 异步请求
 
@@ -126,3 +126,5 @@
 [jszip](https://github.com/Stuk/jszip), 一个用 JavaScript 创建、读取和编辑 `.zip` 文件的库，带有一个可爱而简单的 API。
 
 [ua-parser-js](https://github.com/faisalman/ua-parser-js), JavaScript 库，用于检测浏览器，引擎，操作系统，CPU 和设备类型，可以用于浏览器(客户端)或node.js(服务器端)。
+
+[uuid](https://github.com/uuidjs/uuid), 生成 uuid （guid） 工具。
