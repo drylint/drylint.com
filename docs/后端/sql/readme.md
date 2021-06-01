@@ -101,10 +101,11 @@ mysql -h xxx.xxx.xxx.xxx -P 3306 -u root -p
 mysql -u root -p < ./demo.sql
 ```
 
-### 语句编写规范
+### 语句编写
 
 - 不区分大小写，习惯上，关键字用大写，非关键字用小写。
-- 每条 SQL 语句都必须以英文分号 `;` 结尾，一条语句可跨越多行( `USE` 命令除外)，见到分号认为语句结束。
+- 每条 SQL 语句都必须以英文分号 `;` 结尾，
+- 一条语句可跨越多行( `USE` 命令除外)，见到分号才会视为语句结束。
 - 某条语句执行发生错误时，执行会被退出，之后的语句不会再执行。
 - 注释，单行注释使用 `# 注释内容`，多行注释使用 `/* 注释内容 */` 包裹。
 
@@ -250,19 +251,31 @@ DATETIME | 日期和时间类型 | 存储日期+时间，例如，2018-06-22 12:
 外键并不是通过列名实现的，而是通过定义外键约束实现的：
 
 ```sql
+ALTER TABLE <表名>
+ADD CONSTRAINT <约束名>
+FOREIGN KEY (<外键列名>)
+REFERENCES <关联表名> (关联列名);
+```
+
+```sql
 ALTER TABLE students
 ADD CONSTRAINT fk_class_id
 FOREIGN KEY (class_id)
 REFERENCES classes (id);
 ```
 
-其中，外键约束的名称fk_class_id可以任意，FOREIGN KEY (class_id)指定了class_id作为外键，REFERENCES classes (id)指定了这个外键将关联到classes表的id列（即classes表的主键）。
+其中，外键约束的名称 `fk_class_id` 可以任意，`FOREIGN KEY (class_id)` 指定了`class_id` 作为外键，`REFERENCES classes (id)` 指定了这个外键将关联到`classes` 表的 `id` 列。
 
-通过定义外键约束，关系数据库可以保证无法插入无效的数据。即如果classes表不存在id=99的记录，students表就无法插入class_id=99的记录。
+通过定义外键约束，关系数据库可以保证无法插入无效的数据。即如果 `classes` 表不存在 `id=99` 的记录， `students` 表就无法插入 `class_id=99` 的记录。
 
 由于外键约束会降低数据库的性能，大部分互联网应用程序为了追求速度，并不设置外键约束，而是仅靠应用程序自身来保证逻辑的正确性。
 
 删除一个外键约束，也是通过 `ALTER TABLE` 实现的：
+
+```sql
+ALTER TABLE <表名>
+DROP FOREIGN KEY <外键名>;
+```
 
 ```sql
 ALTER TABLE students
@@ -290,7 +303,7 @@ ALTER TABLE <tableName>
 ADD INDEX <indexName> (<column1>[, <column2>, ...<columnN>]);
 ```
 
-索引的效率取决于索引列的值是否散列，即该列的值如果越互不相同，那么索引效率越高。反过来，如果记录的列存在大量相同的值，例如gender列，大约一半的记录值是M，另一半是F，因此，对该列创建索引就没有意义。
+索引的效率取决于索引列的值是否散列，即该列的值如果越互不相同，那么索引效率越高。反过来，如果记录的列存在大量相同的值，例如 `gender` 列，大约一半的记录值是 `M` ，另一半是 `F` ，因此，对该列创建索引就没有意义。
 
 可以对一张表创建多个索引。索引的优点是提高了查询效率，缺点是在插入、更新和删除记录时，需要同时修改索引，因此，索引越多，插入、更新和删除记录的速度就越慢。
 
@@ -310,23 +323,25 @@ ADD UNIQUE INDEX <indexName> (<columnName>);
 也可以只对某一列添加一个唯一约束而不创建唯一索引：
 
 ```sql
-ALTER TABLE <tableName>
-ADD CONSTRAINT <indexName> UNIQUE (<columnName>);
+ALTER TABLE <表名>
+ADD CONSTRAINT <外键名>
+UNIQUE (<列名>);
 ```
 
 ## 语句
 
-- 每条语句可跨越多行( `USE` 命令除外)，见到分号认为语句结束，所以每条语句都应该以分号 `;` 结尾
-- SQL语句不区分大小写，习惯上，关键字用大写，非关键字用小写
-- 单行注释以 `#` 开头
-- 多行注释 `/*...*/`
-
-### 查询数据的语句
+### 查询语句
 
 #### 基本查询
 
+语法：
+
 ```sql
+# 查询一张表中的所有行，所有列
 SELECT * FROM <表名>
+
+# 查询一张表中的所有行中指定的某些列
+SELECT <column1>, <column2>, ... FROM <表名>
 ```
 
 `SELECT` 是关键字，表示将要执行一个查询， `*` 表示“所有列”， `FROM` 表示将要从哪个表查询。
@@ -347,15 +362,30 @@ SELECT * FROM <表名> WHERE <条件表达式>
 
 如果不加括号，条件运算按照 `NOT`, `AND`, `OR` 的优先级进行，即 `NOT` 优先级最高，其次是 `AND` ，最后是 `OR` 。加上括号可以改变优先级。
 
-条件 | 表达式举例1 | 表达式举例2 | 说明
+运算符 | 意义 |  说明
 -- | -- | -- | -- | --
-`=` 相等 | `score = 80` | `name = 'abc'` | 字符串需要用单引号括起来
-`>` 大于 | `score > 80` | `name > 'abc'` | 字符串比较根据 ASCII 码，中文字符比较根据数据库设置
-`>=` 大于或相等 | `score >= 80` | name >= 'abc'
-`<` 小于 | `score < 80` | `name <= 'abc'`
-`<=` 小于或相等 | `score <= 80` | `name <= 'abc'`
-`<>` 不相等 | `score <> 80` | `name <> 'abc'`
-`LIKE` 相似 | `name LIKE 'ab%'` | `name LIKE '%bc%'` | `%` 表示任意字符，例如 `'ab%'` 将匹配 `'ab'` ， `'abc'` ， `'abcd'`
+`=` | 等于 | 字符串需要用单引号括起来，比如 `name = 'abc'`
+`>` | 大于 | 字符串比较根据 ASCII 码，中文字符比较根据数据库设置
+`>=` | 大于等于 |
+`<` | 小于 |
+`<=` | 小于或相等 |
+`<>`, `!=` | 不相等 |
+`<=>` | NULL 比较 | 如果两侧都为 NULL 返回 `1`，否则返回 `0`
+`BETWEEN <min> AND <max>` | 范围 | 在两个数字范围之间
+`LIKE` | 相似 |`%` 表示任意字符，例如 `'ab%'` 将匹配 `'ab'` ， `'abc'` ， `'abcd'`
+
+`+` | 加 |
+`-` | 减 |
+`*` | 乘 |
+`/` | 除 |
+`DIV` | 商 |
+`%`, `MOD` | 取余 |
+
+`IN ()` | 在集合中 | SELECT 5 IN (1, 2, 3, 4, 5)
+
+`REGEXP`, `RLIKE` | 正则匹配 |
+`IS NULL` | 为空 |
+`IS NOT NULL` | 不为空 |
 
 #### 投影查询
 
@@ -412,7 +442,7 @@ LIMIT M OFFSET N;
 
 `OFFSET` 是可选的，如果只写 `LIMIT 15` ，那么相当于 `LIMIT 15 OFFSET 0` 。
 
-在MySQL中，`LIMIT 15 OFFSET 30` 还可以简写成 `LIMIT 30, 15` 。
+在MySQL中，`LIMIT 15 OFFSET 30` 还可以简写成 `LIMIT 30, 15` ，注意，OFFSET 和 LIMIT 的值对调了位置。
 
 使用 `LIMIT <M> OFFSET <N>` 分页时，随着 `N` 越来越大，查询效率也会越来越低。
 
@@ -846,7 +876,7 @@ SELECT ename 姓名, salary*12 年薪 FROM emp;
 SELECT ename 姓名, (salary+500)*12+5000 年薪 FROM emp;
 ```
 
-### 约束 (constraint)
+## 约束 (constraint)
 
 MySQL可以对插入表中的数据进行特定的验证，只有满足条件的数据才允许进入数据库。
 
@@ -1019,32 +1049,3 @@ SHOW CREATE TABLE users;
 ```sql
 SHOW FULL COLUMNS FROM users;
 ```
-
-## 运算符
-
-符号 | 含义 | 示例
--- | -- | --
-`+` | 加 |
-`-` | 减 |
-`*` | 乘 |
-`/` | 除 |
-`DIV` | 商 |
-`%`, `MOD` | 取余 |
-`=` | 等于 |
-`<>`, `!=` | 不等于 |
-`>` | 大于 |
-`<` | 小于 |
-`>=` | 大于等于 |
-`<=` | 小于等于 |
-`BETWEEN <min> AND <max>` | 在 `<min>` 到 `<max>` 范围之间 |
-`NOT BETWEEN <min> AND <max>` | 不在 `<min>` 到 `<max>` 范围之间 |
-`IN ()` | 在集合中 | SELECT 5 IN (1, 2, 3, 4, 5)
-`NOT IN` | 不在集合中 |
-`<=>` | 严格比较两个 NULL | 如果两侧都为 NULL 返回 `1`，否则返回 `0`
-`LIKE` | 模糊匹配 |
-`REGEXP`, `RLIKE` | 正则匹配 |
-`IS NULL` | 为空 |
-`IS NOT NULL` | 不为空 |
-`!`, `NOT` | 取反，非 |
-`AND` | 和，且 |
-`OR` | 或 |
