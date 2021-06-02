@@ -337,11 +337,22 @@ UNIQUE (<列名>);
 语法：
 
 ```sql
-# 查询一张表中的所有行，所有列
-SELECT * FROM <表名>
+# 查询一张表中的所有信息
+SELECT * FROM <表名>;
 
-# 查询一张表中的所有行中指定的某些列
-SELECT <column1>, <column2>, ... FROM <表名>
+# 查询一张表中的指定的某些列，称作 投影查询
+SELECT <列名1>, <列名2>, ... FROM <表名>;
+
+# 给查询的列起别名，其中 AS 可省略
+SELECT <列名1> AS <别名1>, <列名2> AS <别名2>, ... FROM <表名>;
+
+# 查询某列的所有出现过的值
+SELECT DISTINCT <列名> from <表名>;
+
+# 对查询的列的数据执行计算
+# 无别名时，会直接将表达式的字符串作为结果的字段
+SELECT <含列名的计算表达式> from <表名>;
+SELECT <计算表达式> AS <别名字段> from <表名>;
 ```
 
 `SELECT` 是关键字，表示将要执行一个查询， `*` 表示“所有列”， `FROM` 表示将要从哪个表查询。
@@ -372,7 +383,11 @@ SELECT * FROM <表名> WHERE <条件表达式>
 `<>`, `!=` | 不相等 |
 `<=>` | NULL 比较 | 如果两侧都为 NULL 返回 `1`，否则返回 `0`
 `BETWEEN <min> AND <max>` | 范围 | 在两个数字范围之间
-`LIKE` | 相似 |`%` 表示任意字符，例如 `'ab%'` 将匹配 `'ab'` ， `'abc'` ， `'abcd'`
+`LIKE` | 相似 |`%` 表示任意多个字符，`_` 表示一个字符，`'ab%'`, `ab_`
+`IS NULL` | 为空 | 不能用 `xx = NULL`
+`IS NOT NULL` | 不为空 | 不能用 `xx != NULL` 。
+`IN ()` | 条件集合 | `WHERE age IN (10, 20, 30)`
+`REGEXP`, `RLIKE` | 正则匹配 | `WHERE phone REGEXP '^\\d{11}$'` ，注意 `\` 需要转义
 
 `+` | 加 |
 `-` | 减 |
@@ -381,42 +396,19 @@ SELECT * FROM <表名> WHERE <条件表达式>
 `DIV` | 商 |
 `%`, `MOD` | 取余 |
 
-`IN ()` | 在集合中 | SELECT 5 IN (1, 2, 3, 4, 5)
-
-`REGEXP`, `RLIKE` | 正则匹配 |
-`IS NULL` | 为空 |
-`IS NOT NULL` | 不为空 |
-
-#### 投影查询
-
-使用 `SELECT * FROM <表名> WHERE <条件>` 可以选出表中的若干条记录，每一条记录都包含所有列的数据，如果只希望查询某些列的数据，可以使用 `SELECT 列1, 列2, 列3 FROM ...` ，让结果集仅包含指定列。这种操作称为投影查询。
-
-```sql
-SELECT 列1, 列2, 列3 FROM <表名> WHERE <条件>;
-```
-
-给列起别名：
-
-```sql
-SELECT 列1 别名1, 列2 别名2, 列3 别名3 FROM <表名> WHERE <条件>;
-```
-
 #### 排序
 
 通常，查询结果是按照主键排序的，如果要根据某列进行排序，可以使用 `ORDER BY ...` 子句。列名接上关键字 `ASC` 或 `DESC` 表示正序或倒序排列。
 
 ```sql
-# 正序，如果有 WHERE 子句，ORDER BY 语句要放在 WHERE 之后
-SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <colName>;
-
-# 等同于以下语句，因为默认为 ASC，所以 ASC 可以省略
-SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <colName> ASC;
+# 正序，如果有 WHERE 子句，ORDER BY 语句要放在 WHERE 之后，ASC 为默认值可省略。
+SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <列名> ASC;
 
 # 倒序
-SELECT * FROM <表名> ORDER BY <colName> DESC;
+SELECT * FROM <表名> ORDER BY <列名> DESC;
 
-# 先按 colName1 倒序排列，如果 colName1 值相同，再按 colName2 正序排列
-SELECT * FROM <表名> ORDER BY <colName1> DESC, <colName2>;
+# 先按 列名1 倒序排列，如果 列名1 值相同，再按 列名2 正序排列
+SELECT * FROM <表名> ORDER BY <列名1> DESC, <列名2>;
 ```
 
 #### 分页
@@ -424,23 +416,22 @@ SELECT * FROM <表名> ORDER BY <colName1> DESC, <colName2>;
 通过 `LIMIT <M> OFFSET <N>` 子句实现分页查询，表示本次最多查询 M 条记录，跳过前 N 条纪录（相当于从 N + 1 开始）。
 
 ```sql
-SELECT *
-FROM <表名>
+SELECT * FROM <表名>
 WHERE <条件表达式>
-ORDER BY <colName>
-LIMIT M OFFSET N;
+ORDER BY <列名>
+LIMIT <分页大小> OFFSET <跳过的数量>;
 ```
 
 比如，每一页查 10 条数据，第一页为 `LIMIT 10 OFFSET 0` ，第二页为 `LIMIT 10 OFFSET 10` ，第三页为 `LIMIT 10 OFFSET 20`，最后一页不足 10 条时，则返回实际剩余的条数。
 
-分页查询的关键在于，首先要确定每页需要显示的结果数量 `pageSize` ，然后根据当前页的索引 `pageIndex` （从1开始），确定 `LIMIT` 和 `OFFSET` 应该设定的值：
+分页查询的关键在于，首先要确定每页需要显示的结果数量 `pageSize` ，然后根据当前页的索引 `pageIndex` （从 `1` 开始），确定 `LIMIT` 和 `OFFSET` 应该设定的值：
 
 - `LIMIT` 总是设定为 `pageSize`；
 - `OFFSET` 计算公式为 `pageSize * (pageIndex - 1)` 。
 
 `OFFSET` 超过了数据表的最大数量并不会报错，而是得到一个空的结果集。
 
-`OFFSET` 是可选的，如果只写 `LIMIT 15` ，那么相当于 `LIMIT 15 OFFSET 0` 。
+`OFFSET` 是可选的（默认值为 `0`），如果只写 `LIMIT 15` ，那么相当于 `LIMIT 15 OFFSET 0` 。
 
 在MySQL中，`LIMIT 15 OFFSET 30` 还可以简写成 `LIMIT 30, 15` ，注意，OFFSET 和 LIMIT 的值对调了位置。
 
@@ -448,39 +439,25 @@ LIMIT M OFFSET N;
 
 #### 聚合查询
 
-对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
+对于统计总数、平均数这类计算，SQL 提供了专门的聚合函数，使用聚合函数进行查询，就是聚合查询，它可以快速获得结果。
 
-`COUNT()` 用于统计一张表的数据量：
+`COUNT()` 函数用于统计一张表的数据量或某一列的数据量：
 
 ```sql
 SELECT COUNT(*) FROM <表名>;
+SELECT COUNT(*) AS <别名> FROM <表名>;
+SELECT COUNT(<列名>) AS <别名> FROM <表名> WHERE <条件表达式>;
 ```
 
-`COUNT(*)` 表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是 `COUNT(*)` 。
-
-给 `COUNT(*)` 设置一个别名，便于处理结果：
-
-```sql
-# 给 COUNT(*) 设置一个别名叫做 num
-SELECT COUNT(*) num FROM <表名>;
-```
-
-`COUNT(*)` 和 `COUNT(id)` 实际上是一样的效果。
-
-另外注意，聚合查询同样可以使用 `WHERE` 条件：
-
-```bash
-SELECT COUNT(*) num FROM <表名> WHERE <条件表达式>;
-```
-
-除了 `COUNT()` 函数外，SQL还提供了如下聚合函数：
+SQL 提供如下聚合函数：
 
 函数 | 说明
 -- | --
-`SUM()` | 计算某一列的合计值，该列必须为数值类型
-`AVG()` | 计算某一列的平均值，该列必须为数值类型
-`MAX()` | 计算某一列的最大值
-`MIN()` | 计算某一列的最小值
+`COUNT(<列名>)` | 统计数量
+`SUM(<数值列>)` | 计算某一列的合计值，该列必须为数值类型
+`AVG(<数值列>)` | 计算某一列的平均值，该列必须为数值类型
+`MAX(<列名>)` | 计算某一列的最大值
+`MIN(<列名>)` | 计算某一列的最小值
 
 注意， `MAX()` 和 `MIN()` 函数并不限于数值类型。如果是字符类型， `MAX()` 和 `MIN()` 会返回排序最后和排序最前的字符。
 
@@ -488,7 +465,9 @@ SELECT COUNT(*) num FROM <表名> WHERE <条件表达式>;
 
 ##### 分组
 
-对于聚合查询，SQL还提供了“分组聚合”的功能，比如，要统计每个班的学生数量，可以用到分组。
+对于聚合查询，SQL 还提供了“分组聚合”的功能，使用 `GROUP BY <列名>` 进行分组查询。
+
+比如，要统计每个班的学生数量，可以用到分组。
 
 ```sql
 # 根据 class_id 进行分组统计，但结果不知道哪个数据是哪个班
