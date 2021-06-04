@@ -1,5 +1,7 @@
 # git commit message 规范
 
+[git commit 规范校验](https://github.com/conventional-changelog/commitlint#what-is-commitlint)
+
 [angular-Git Commit Guidelines](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
 
 提交 message 语法：
