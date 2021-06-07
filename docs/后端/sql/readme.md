@@ -77,13 +77,13 @@ mysql -h 10.0.1.99 -u root -p
 mysql -h xxx.xxx.xxx.xxx -P 3306 -u root -p
 ```
 
-`-h` : host, IP 地址 或域名地址
+`-h` : host, IP 地址或域名地址，连接到本地 MySQL 服务器时，默认为 `localhost`
 
-`-P` : 需大写，port, 端口
+`-P` : 需大写，端口（port），默认为 `3306`
 
 `-u` : user, 用户名
 
-`-p` : password, 密码，确定后再单独输入密码
+`-p` : password, 密码，按下 Enter 确定后，才会再单独要求输入密码
 
 ### SQL 语句两种执行方式
 
@@ -104,8 +104,9 @@ mysql -u root -p < ./demo.sql
 ### 语句编写
 
 - 不区分大小写，习惯上，关键字用大写，非关键字用小写。
-- 每条 SQL 语句都必须以英文分号 `;` 结尾，
-- 一条语句可跨越多行( `USE` 命令除外)，见到分号才会视为语句结束。
+- 多条 SQL 语句必须以分号（；）分隔。MySQL 如同多数 DBMS 一样，不需要在单条 SQL 语句后加分号。但 mysql 命令行，必须加上
+分号来结束 SQL 语句。所以应该每条语句结束后都加上分号。
+- 一条语句可跨越多行( `USE` 命令除外)，见到分号才会视为语句结束。将 SQL 语句分成多行更容易阅读和调试。
 - 某条语句执行发生错误时，执行会被退出，之后的语句不会再执行。
 - 注释，单行注释使用 `# 注释内容`，多行注释使用 `/* 注释内容 */` 包裹。
 
@@ -155,6 +156,18 @@ USE <databaseName>;
 SHOW TABLES;
 ```
 
+#### 查看一张表的所有列信息
+
+```sql
+# SQL 通用写法
+SHOW COLUMNS FROM <表名>;
+
+# MySQL 简写方式
+DESCRIBE <表名>;
+```
+
+会展示表中所有的 `Field`, `Type`, `Null`, `Key`, `Default`, `Extra` ，依次表示字段名、数据类型、是否允许 NULL 、键信息、默认值以及其他信息。
+
 #### 创建一张表 `CREATE TABLE ...`
 
 ```sql
@@ -187,9 +200,9 @@ ALTER TABLE students CHANGE COLUMN birth birthday VARCHAR(20) NOT NULL;
 ALTER TABLE students DROP COLUMN birthday;
 ```
 
-#### 查看一张表的结构 `DESC <tableName>;`
+#### 查看一个数据库的创建语句 `SHOW CREATE DATABASE <库名>;`
 
-#### 查看一张表的创建语句 `SHOW CREATE TABLE <tableName>;`
+#### 查看一张表的创建语句 `SHOW CREATE TABLE <表名>;`
 
 运行后，会输出创建这个表使用的 SQL 语句：
 
@@ -330,6 +343,8 @@ UNIQUE (<列名>);
 
 ## 语句
 
+语句就是一条完整的 SQL 语句，语句由多个子句（clause）组成，有些子句是必需的，而有的是可选的。一个子句通常由一个关键字和所提供的数据组成。子句的例子有 `FROM`, `WHERE`, `ORDER BY` 等。
+
 ### 查询语句
 
 #### 基本查询
@@ -343,23 +358,92 @@ SELECT * FROM <表名>;
 # 查询一张表中的指定的某些列，称作 投影查询
 SELECT <列名1>, <列名2>, ... FROM <表名>;
 
-# 给查询的列起别名，其中 AS 可省略
+# 使用完全限定的表名和列名
+SELECT <表名>.<列名1>, <表名>.<列名2>, ... FROM <库名>.<表名>;
+
+# 给查询的列起别名，其中关键字 AS 可省略，别名又叫做 导出列（derived column）
 SELECT <列名1> AS <别名1>, <列名2> AS <别名2>, ... FROM <表名>;
 
 # 查询某列的所有出现过的值
-SELECT DISTINCT <列名> from <表名>;
+SELECT DISTINCT <列名> FROM <表名>;
 
-# 对查询的列的数据执行计算
-# 无别名时，会直接将表达式的字符串作为结果的字段
-SELECT <含列名的计算表达式> from <表名>;
-SELECT <计算表达式> AS <别名字段> from <表名>;
 ```
 
 `SELECT` 是关键字，表示将要执行一个查询， `*` 表示“所有列”， `FROM` 表示将要从哪个表查询。
 
-`SELECT` 语句其实并不要求一定要有 `FROM` 子句，比如执行 `SELECT 100+200;` 会执行计算，并作为查询结果。
+`SELECT` 语句其实并不要求一定要有 `FROM` 子句， 比如，`SELECT 3*2;` 将返回 `6` ， `SELECT Trim('abc');` 将返回 `abc` ，而 `SELECT Now()` 利用 `Now()` 函数返回当前日期和时间。
 
 虽然 `SELECT` 可以用作计算，但它并不是 SQL 的强项。但是，不带 `FROM` 子句的 `SELECT` 语句有一个有用的用途，就是用来判断当前到数据库的连接是否有效。许多检测工具会执行一条 `SELECT 1;` 来测试数据库连接。
+
+#### 计算字段
+
+计算字段是运行时在 SELECT 语句内创建的，经过计算、转换、或者格式化后的字段。
+
+语法：
+
+```sql
+# 对查询的列的数据执行计算
+# 无别名时，会直接将表达式的字符串作为结果的字段，不方便引用结果
+SELECT <含列名的计算表达式> FROM <表名>;
+
+# 为计算结果设置别名，方便引用结果
+SELECT <计算表达式> AS <别名字段> FROM <表名>;
+```
+
+##### 拼接字段 `Concat()`
+
+多数 DBMS 使用 `+` 或 `||` 来实现拼接，MySQL则使用 `Concat()` 函数来实现。
+
+```sql
+# 查询所有用户名 user_name，以及拼接 省/市/区 作为 user_address 字段返回
+SELECT user_name, Concat(province, '/', city, '/', district) AS user_address
+FROM users;
+```
+
+##### 处理函数
+
+函数 | 意义
+-- | --
+`Lower(s)` | 将字符串 s 的所有字母变成小写字母
+`Upper(s)` | 将字符串 s 的所有字母变成大写字母
+`Trim(s)` | 去掉字符串 s 两边的空格
+`LTrim(s)` | 去掉字符串 s 开始处的空格
+`RTrim(s)` | 去掉字符串 s 结尾处的空格
+`Left(s, n)` | 返回字符串 s 的前 n 个字符
+`Right(s, n)` | 返回字符串 s 的后 n 个字符
+`Length(s)` | 返回字符串 s 的长度
+`Locate(s1, s)` | 返回字符串 s 中 s1 出现的位置，从 1 开始的数字
+`Soundex()` | 返回字符串的 SOUNDEX 值，听起来像什么
+`SubString(s, start, length)` | 从字符串 s 的 start 位置截取长度为 length 的子字符串
+
+`SOUNDEX` 需要做进一步的解释。 `SOUNDEX` 是一个将任何文本串转换为描述其语音表示的字母数字模式的算法。 `SOUNDEX` 考虑了类似
+的发音字符和音节，使得能对串进行发音比较而不是字母比较。虽然 `SOUNDEX`  不是SQL概念，但 MySQL（就像多数 DBMS 一样）都提供对 `SOUNDEX` 的支持。
+
+```sql
+# 查询时，将用户名转为大写
+SELECT Upper(user_name) AS user_name FROM students;
+
+# 查询时，移除 user_name 字段两边的空格
+SELECT Trim(user_name) AS user_name FROM students;
+
+
+```
+
+##### 算术计算
+
+运算符 | 意义
+-- | --
+`+` | 加 |
+`-` | 减 |
+`*` | 乘 |
+`/` | 除 |
+`DIV` | 商 |
+`%`, `MOD` | 取余 |
+
+```sql
+# 查询所有用户，5 年之后的年龄
+SELECT user_name, age + 5 AS after_five_years from students;
+```
 
 #### 查询条件
 
@@ -367,34 +451,122 @@ SELECT <计算表达式> AS <别名字段> from <表名>;
 SELECT * FROM <表名> WHERE <条件表达式>
 ```
 
-条件表达式可以用 `AND`, `OR`, `NOT` 来分别表示 和，或，非
+条件表达式可以用 `AND`, `OR`, `NOT` 来分别表示 和，或，非。用于连接两个或更多的条件
 
-要组合三个或者更多的条件，就需要用小括号 `()` 表示如何进行条件运算。
+要组合三个或者更多的条件，就需要用圆括号 `()` 表示条件的优先级。
 
 如果不加括号，条件运算按照 `NOT`, `AND`, `OR` 的优先级进行，即 `NOT` 优先级最高，其次是 `AND` ，最后是 `OR` 。加上括号可以改变优先级。
 
-运算符 | 意义 |  说明
+当条件语句中同时出现 `NOT`, `AND`, `OR` 时，应该始终使用圆括号包裹，而不是依赖默认的优先级，这样能够消除歧义，提高可读性。
+
+条件 | 意义 |  说明
 -- | -- | -- | -- | --
 `=` | 等于 | 字符串需要用单引号括起来，比如 `name = 'abc'`
+`<>`, `!=` | 不相等 |
 `>` | 大于 | 字符串比较根据 ASCII 码，中文字符比较根据数据库设置
 `>=` | 大于等于 |
 `<` | 小于 |
 `<=` | 小于或相等 |
-`<>`, `!=` | 不相等 |
 `<=>` | NULL 比较 | 如果两侧都为 NULL 返回 `1`，否则返回 `0`
 `BETWEEN <min> AND <max>` | 范围 | 在两个数字范围之间
-`LIKE` | 相似 |`%` 表示任意多个字符，`_` 表示一个字符，`'ab%'`, `ab_`
-`IS NULL` | 为空 | 不能用 `xx = NULL`
+`IS NULL` | 空值检查，是否为 `NULL` | 不能用 `x = NULL`
 `IS NOT NULL` | 不为空 | 不能用 `xx != NULL` 。
-`IN ()` | 条件集合 | `WHERE age IN (10, 20, 30)`
-`REGEXP`, `RLIKE` | 正则匹配 | `WHERE phone REGEXP '^\\d{11}$'` ，注意 `\` 需要转义
+`IN ()` | 条件集合 | `WHERE age IN (10, 20, 30)` 可以简化连续使用 `OR` 的语句。
+`LIKE` | 类似于 |`%` 表示任意字符出现任意次数（包括 0 次），`_` 表示一个字符（有且必须有一次），如 `'%ab%'`, `ab_`, `a_b` 等。
+`REGEXP`, `RLIKE` | 正则匹配 | `WHERE phone REGEXP '^\\\d{11}$'` ，MySQL 中转义使用 `\\` 而不是 `\` 。
 
-`+` | 加 |
-`-` | 减 |
-`*` | 乘 |
-`/` | 除 |
-`DIV` | 商 |
-`%`, `MOD` | 取余 |
+使用通配符（`%` 和 `_`）的注意事项：
+
+- 不要过度使用通配符。如果其他操作符能达到相同的目的，应该使用其他操作符。
+- 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的。
+- 仔细注意通配符的位置。如果放错地方，可能不会返回想要的数
+
+使用正则的注意事项：
+
+- 多数正则表达式实现使用单个反斜杠转义特殊字符，以便能使用这些字符本身。但 MySQL 要求两个反斜杠（MySQL 自己解释一个，正则表达式库解释另一个）。
+- 为了匹配反斜杠 `\` 字符本身，需要使用 `\\\` 。
+
+MySQL 正则的字符集合：
+
+写法 | 意义
+-- | --
+`[:alnum:]` | 任意字母和数字（同 `[a-zA-Z0-9]` ）
+`[:alpha:]` | 任意字符（同 `[a-zA-Z]` ）
+`[:blank:]` | 空格和制表（同 `[\\t]` ）
+`[:cntrl:]` | ASCII 控制字符（ASCII `0` 到 `31` 和 `127`）
+`[:digit:]` | 任意数字（同 `[0-9]` ）
+`[:graph:]` | 与 `[:print:]` 相同，但不包括空格
+`[:lower:]` | 任意小写字母（同 `[a-z]` ）
+`[:print:]` | 任意可打印字符
+`[:punct:]` | 既不在 `[:alnum:]` 又不在 `[:cntrl:]` 中的任意字符
+`[:space:]` | 包括空格在内的任意空白字符（同 `[\\f\\n\\r\\t\\v]` ）
+`[:upper:]` | 任意大写字母（同 `[A-Z]` ）
+`[:xdigit:]` | 任意十六进制数字（同 `[a-fA-F0-9]` ）
+
+正则的字符数量控制：
+
+写法 | 意义
+-- | --
+`*` | `0` 个或多个匹配
+`+` |`1` 个或多个匹配（等于 `{1,}`）
+`?` | `0` 个或 `1` 个匹配（等于 `{0,1}`）
+`{n}` | 指定数目的匹配
+`{n,}` | 不少于指定数目的匹配
+`{n,m}` | 匹配数目的范围（ m 不超过 `255`）
+
+正则匹配位置限定符：
+
+写法 | 意义
+-- | --
+`^` | 文本的开始
+`$` | 文本的结尾
+`[[:<:]]` | 单词边界，词的开始，相当于 `\b(?=\w)`, 比如 `[[:<:]]hello` 表示 `hello` 是一个词的开始才匹配
+`[[:>:]]` | 单词边界，词的结尾, 相当于 `\b(?<=\w)`, 比如 `hello[[:>:]]` 表示 `hello` 是一个词的末尾才匹配
+
+示例：
+
+```sql
+# 查询用户表中所有成年人(年龄大于 18 )的用户名称
+SELECT user_name FROM users WHERE age >= 18;
+
+# 查询用户表中，20 到 30 岁的用户名称
+SELECT user_name FROM users WHERE age BETWEEN 20 AND 30;
+
+# 查询用户表中，没有填写年龄的用户名称
+SELECT user_name FROM users WHERE age IS NULL;
+
+# 查询用户表中，所有姓 王 的用户名称
+SELECT user_name FROM users WHERE user_name LIKE '王%';
+
+# 查询用户表中，用户名包含 abc 的用户
+SELECT user_name FROM users WHERE user_name REGEXP 'abc';
+
+# 查询用户表中，用户名以 abc 开头的用户
+SELECT user_name FROM users WHERE user_name REGEXP '^abc';
+
+# 查询用户表中，用户名以 abc 结尾的用户
+SELECT user_name FROM users WHERE user_name REGEXP 'abc$';
+
+# 查询用户表中，用户名以大写字母 A 开头的用户， BINARY 指定区分大小写
+SELECT user_name FROM users WHERE user_name REGEXP BINARY '^A';
+
+# 查询用户表中，有正确的手机号的用户
+SELECT user_name FROM users WHERE phone_number REGEXP '^1[3-9]\\d{9}$';
+```
+
+注意，当筛选条件为 不等于 时，返回的结果不会包含值为 `NULL` 的行，比如
+
+```sql
+SELECT * FROM users WHERE age != 18;
+```
+
+上面的语句筛选出年龄不等于 `18` 的用户，结果中，不会包含那些没有填写年龄，值为 `NULL` 的行。
+
+如果想要在结果中包含值为 `NULL` 的行时，需要额外指定：
+
+```sql
+SELECT * FROM users WHERE age != 18 OR age IS NULL;
+```
 
 #### 排序
 
@@ -408,7 +580,7 @@ SELECT * FROM <表名> WHERE <条件表达式> ORDER BY <列名> ASC;
 SELECT * FROM <表名> ORDER BY <列名> DESC;
 
 # 先按 列名1 倒序排列，如果 列名1 值相同，再按 列名2 正序排列
-SELECT * FROM <表名> ORDER BY <列名1> DESC, <列名2>;
+SELECT * FROM <表名> ORDER BY <列名1> DESC, <列名2> ASC;
 ```
 
 #### 分页
@@ -846,7 +1018,7 @@ SELECT user_name, phone FROM user;
 SELECT phone FROM user WHERE user_name REGEXP '^张';
 
 # 统计表中某列有哪些值存在，比如，查询用户表中有哪些角色名存在
-SELECT DISTINCT roleName from user;
+SELECT DISTINCT roleName FROM user;
 
 # 在查询结果的基础上进行计算
 # 查询出所有员工的姓名和年薪
@@ -957,10 +1129,10 @@ ALTER TABLE user DROP CONSTRAINT constraint_name;
 ALTER TABLE user DROP PRIMARY KEY CASCADE;
 ```
 
-##### 删除 NOT NULL 约束,用 ALTER TABLE MODIFY 子句来删除
+##### 删除 NOT NULL 约束,用 `ALTER TABLE MODIFY` 子句来删除
 
 ```sql
-ALTER TABLE user MODIFY phone NULL;
+ALTER TABLE user MODIFY phone varchar(11) NULL;
 ```
 
 ##### 删除外键约束
