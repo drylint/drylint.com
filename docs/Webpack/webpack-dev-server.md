@@ -96,6 +96,8 @@ const devConfig = {
 
 ## `devServer.proxy` 选项详细配置
 
+`webpack-dev-server` 的 proxy 功能使用了第三方 `http-proxy-middleware` 中间件，支持的详细配置查看[http-proxy options 官方文档](https://github.com/chimurai/http-proxy-middleware#http-proxy-options) 。
+
 > 注意：当使用 axios 发送请求时，若要被代理，只能是相对路径(不包含 baseURL)，不能是绝对路径。
 > 比如：若要访问 `'http://www.xxx.com/api/users'`
 > 若要被代理，则访问路径不能包含 baseURL `'http://www.xxx.com'`
