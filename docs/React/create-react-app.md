@@ -661,3 +661,271 @@ module.exports = function(app) {
 [查看 http-proxy-middleware 详细使用方式](https://github.com/chimurai/http-proxy-middleware)
 
 ## 进阶用法
+
+### 自定义项目模版
+
+官方提供了 `cra-template` 和 `cra-template-typescript` 这两个模版可在项目初始化时选择，前者是默认的模版。
+
+如果不满足于官方的模版，可以自定义模版，自定义模版必须以 `cra-template-` 开头，也可以在 npm 上搜索 `cra-template-*` 来查看更多第三方提供的自定义模版。
+
+#### 构建自定义模版
+
+构建自定义模版必须包含以下目录结构：
+
+```bash
+cra-template-[template-name]/
+  README.md (for npm)
+  template.json
+  package.json
+  template/
+    README.md (for projects created from this template)
+    gitignore
+    public/
+      index.html
+    src/
+      index.js (or index.tsx)
+```
+
+可以添加其他任何自己想要添加到模版的文件或目录，但以上指定的文件和目录必须存在。
+
+本地测试自定义模版，使用 `file:` 路径作为 `--template` 的参数：
+
+```bash
+npx create-react-app my-app --template file:../path/to/your/template/cra-template-[template-name]
+```
+
+其中， `template` 目录下的所有文件，会在初始化创建项目时，直接全部复制到用户的项目目录中，`gitignore` 文件会被自动更名为 `.gitignore` 作为 Git 仓库的忽略文件的配置。
+
+`template.json` 文件是自定义模版的配置文件，目前，仅支持 `package` 这一个属性（key）。
+
+```json
+{
+  "package": {
+    "dependencies": {
+      "eslint-plugin-jsx-a11y": "^6.2.3",
+      "serve": "^11.2.0"
+    },
+    "scripts": {
+      "serve": "serve -s build",
+      "build-and-serve": "npm run build && npm run serve"
+    },
+    "eslintConfig": {
+      "extends": ["react-app", "plugin:jsx-a11y/recommended"],
+      "plugins": ["jsx-a11y"]
+    }
+  }
+}
+```
+
+`package` 属性允许添加任何键值对，这些键值对将会被添加到用户创建的项目的 `package.json` 中。
+
+注意，`package` 下的 `dependencies` 和 `scripts` 会和 `create-react-app` 指定的默认值进行合并，其他指定的键值对将会原封不动地被使用，如果 `create-react-app` 存在同名默认键值对，也会被自己指定的所替换掉。
+
+为了方便起见，如果用户使用 `yarn` 进行的项目初始化，那么，`package` 下的 `scripts` 和 `README.md` 中的所有 `npm run` 都将被替换为 `yarn` 。
+
+### 能否使用 decorators (装饰器)
+
+Create React App目前故意不支持装饰器语法，原因如下:
+
+- 这是一个实验性的建议，可能会改变(事实上，它已经改变过一次，还会再改变)。
+- 大多数库目前只支持该提议的旧版本——它永远不会成为标准。
+
+然而，在许多情况下，您可以在不使用装饰器的情况下重写基于装饰器的代码，并获得相同的结果。
+
+更多详情可查看 Github 的 Issues [#214](https://github.com/facebook/create-react-app/issues/214), [#411](https://github.com/facebook/create-react-app/issues/411)
+
+当规范进展到稳定阶段时，Create React App将添加装饰器支持。
+
+### 预渲染到静态HTML文件
+
+如果使用静态托管提供程序托管构建，可以使用 `react-snapshot` 或 `react-snap` 为应用程序中的每个路由或相对链接生成HTML页面。
+
+预渲染为 HTML 文件对搜索引擎优化（SEO）更友好。
+
+### 进阶配置
+
+您可以通过在命令行中或使用 `.env` 文件设置环境变量来调整各种开发和生产设置。
+
+不需要像使用自定义环境变量那样在以下变量之前声明 `REACT_APP_` 。
+
+#### `BROWSER` 开发环境，指定项目启动时打开的浏览器
+
+开发环境：是
+
+生产环境：否
+
+可选值：`none` | 其他浏览器值
+
+默认情况下，项目启动会自动打开系统默认浏览器，设为 `none` 可禁用自动打开浏览器。
+
+该功能使用 [open](https://github.com/sindresorhus/open) ，详情可点击查看。
+
+如果需要自定义浏览器的启动方式，则可以指定一个 Node 脚本。任何传递给 `npm start` 的参数也会被传递给这个脚本，你的应用服务的 url 将是最后一个参数。脚本的文件名必须是 `.js` 扩展名。
+
+#### `BROWSER_ARGS` 开发环境，要传递给 BROWSER 的参数
+
+开发环境：是
+
+生产环境：否
+
+当指定 `BROWSER` 环境变量时，设置到 `BROWSER_ARGS` 的任何参数都将传递给浏览器实例。支持多个参数作为空格分隔的列表。默认情况下，没有参数被传递给 `BROWSER` 。
+
+#### `HOST` 开发环境，主机名
+
+开发环境：是
+
+生产环境：否
+
+默认情况下，开发 web 服务器绑定到设备上的所有主机名(localhost 、 局域网网络地址等)。您可以使用此变量指定不同的主机。
+
+#### `PORT` 开发环境，指定开发服务器的端口
+
+开发环境：是
+
+生产环境：否
+
+默认情况下，开发 web 服务器将尝试监听端口 `3000` 或提示您尝试下一个可用端口。您可以使用此变量指定不同的端口。
+
+#### `HTTPS` 开发环境，以 `https` 模式运行开发服务器
+
+开发环境：是
+
+生产环境：否
+
+当设置为 true 时，Create React App 将以 `https` 模式运行开发服务器。
+
+#### `WDS_SOCKET_HOST` 开发环境，指定自定义的 websocket 主机名
+
+开发环境：是
+
+生产环境：否
+
+当设置时，Create React App 将运行开发服务器和一个自定义的 websocket 主机名，用于模块热更新。通常，webpack-dev-server 默认为 `window.location.hostname` 作为 SockJS 主机名。你可以使用这个变量同时在多个Create React App 项目上启动本地开发。更多细节请参见 [webpack-dev-server文档](https://webpack.js.org/configuration/dev-server/#devserversockhost)。
+
+#### `WDS_SOCKET_PATH` 开发环境，指定自定义的 websocket 路径
+
+开发环境：是
+
+生产环境：否
+
+当设置时，Create React App 将运行开发服务器，并带有一个自定义的 websocket 路径，用于模块热更新。通常，webpack-dev-server 默认为 `/sockjs-node` 作为 SockJS 路径名。你可以使用这个变量同时在多个 Create React App 项目上启动本地开发。更多细节请参见 [webpack-dev-server文档](https://webpack.js.org/configuration/dev-server/#devserversockpath) 。
+
+#### `WDS_SOCKET_PORT` 开发环境，指定自定义的 websocket 端口
+
+开发环境：是
+
+生产环境：否
+
+当设置时，Create React App 将运行开发服务器和一个自定义的 websocket 端口，用于模块热更新。通常，webpack-dev-server 默认为 `window.location.port` 作为 SockJS 端口。你可以使用这个变量同时在多个 Create React App 项目上启动本地开发。更多细节请参见 [webpack-dev-server文档](https://webpack.js.org/configuration/dev-server/#devserversockport) 。
+
+#### `PUBLIC_URL` 开发&生产环境，指定服务器资源存放路径
+
+开发环境：是
+
+生产环境：是
+
+Create React App 假定你的应用程序托管在 web 服务器的根目录或 `package.json` 中的 `homepage` 指定的路径中。通常，Create React App 会忽略主机名。您可以使用此变量强制将资产逐字引用到您提供的 url(包括主机名)。当使用 CDN 托管应用程序时，这会特别有用。
+
+#### `BUILD_PATH` 生产环境，指定打包构建的存放目录，默认 `/build`
+
+开发环境：否
+
+生产环境：是
+
+默认情况下，Create React App 会将编译后的资源输出到与 `/src` 同级的 `/build` 目录中。可以使用这个变量为 Create React App 指定一个新的路径来输出资源。`BUILD_PATH` 应该被指定为一个相对于项目根的路径。
+
+#### `CI` 开发&生产环境，是否启用 CI 控制
+
+开发环境：是
+
+生产环境：是
+
+当设置为 `true` 时，Create React App 将警告视为构建失败。它还使测试运行程序不具有监视性。大多数 ci 默认启用此功能。
+
+#### `REACT_EDITOR` 开发环境，设置编辑器检测功能
+
+开发环境：是
+
+生产环境：否
+
+当一个应用程序在开发中崩溃时，你会看到一个带有可点击堆栈跟踪的错误叠加。当你点击它时，Create React App 将尝试根据当前运行的进程来确定你正在使用的编辑器，并打开相关的源文件。设置此环境变量将覆盖自动检测。如果这样做，请确保系统 `PATH` 环境变量指向编辑器的 `bin` 目录。也可以将其设置为 `none` 以完全禁用它。
+
+#### `CHOKIDAR_USEPOLLING` 开发环境，是否启用轮询进行热更新检测，默认 false
+
+开发环境：是
+
+生产环境：否
+
+当设置为 `true` 时，监控器将根据需要在 VM 中以轮询模式运行。如果 `npm start` 没有检测到更改，请启用此选项。
+
+#### `GENERATE_SOURCEMAP` 生产环境，是否生成生产环境下的 SOURCEMAP 源码映射，默认 true
+
+开发环境：否
+
+生产环境：是
+
+当设置为 `false` 时，不会为生产构建生成源映射。这解决了一些较小机器上的内存不足(OOM)问题。
+
+#### `INLINE_RUNTIME_CHUNK` 生产环境，是否将运行时嵌入到 `index.html` 中，默认 true
+
+开发环境：否
+
+生产环境：是
+
+默认情况下，Create React App 会在产品构建期间将运行时脚本嵌入到 `index.html` 中。当设置为 `false` 时，脚本将不会被嵌入，并且将像其他脚本一样被导入。处理 CSP 时通常需要这样做。
+
+#### `IMAGE_INLINE_SIZE_LIMIT` 生产环境，设置图片被转为 base64 编码的阈值，默认 `10000` (字节)
+
+开发环境：否
+
+生产环境：是
+
+默认情况下，小于 `10000` Byte(字节)的图像在 base64 中被编码为一个 data URI，并内联在 CSS 或 JS 构建文件中。设置它以控制大小限制(以字节为单位)。将其设置为 `0` 将禁用图像内联。
+
+#### `FAST_REFRESH` 开发环境，是否启用 FAST_REFRESH 快速刷新功能，默认 true
+
+开发环境：是
+
+生产环境：否
+
+当设置为 `false` 时，禁用对 `Fast Refresh` 的实验性支持，以允许您实时调整组件而无需重新加载页面。
+
+#### `TSC_COMPILE_ON_ERROR` 开发&生产环境，是否在 TypeScript 检测到类型错误时中断编译，默认 false
+
+开发环境：是
+
+生产环境：是
+
+当设置为 `true` 时，即使存在 `TypeScript` 类型检查错误，你也可以运行并正确构建 TypeScript 项目。这些错误将在终端 和 浏览器控制台中作为警告打印出来。
+
+#### `ESLINT_NO_DEV_ERRORS` 开发环境，是否禁用 ESLint 在开发环境下报告错误（只报告警告），默认 false
+
+开发环境：是
+
+生产环境：否
+
+当设置为 `true` 时，ESLint 错误将在开发期间转换为警告。因此，ESLint 输出的错误信息将不再覆盖实际的页面。
+
+#### `DISABLE_ESLINT_PLUGIN` 开发&生产环境，是否禁用 eslint-webpack-plugin
+
+开发环境：是
+
+生产环境：是
+
+当设置为 `true` 时， `eslint-webpack-plugin` 将被完全禁用。
+
+#### `DISABLE_NEW_JSX_TRANSFORM` 开发&生产环境，是否禁用 React 17 推出的新的 JSX 转换
+
+开发环境：是
+
+生产环境：是
+
+当设置为 `true` 时，禁用 `React 17` 中引入的新的 JSX 转换，并将其反向移植到React `16.14.0` 、 `15.7.0` 和 `0.14.10` 。新项目将使用一个默认支持这个功能的 React 版本，但是如果你不能升级React，你可能需要在现有项目中禁用它。
+
+### 弹出(eject)配置的替代方式
+
+使用 `npm run eject` 弹出配置将允许您自定义任何内容，但从那一刻起，您必须自己维护配置和脚本。如果您有许多类似的项目，那么这可能会令人望而生畏。在这种情况下，我们建议 fork `react-scripts` 和您需要的任何其他包，而不是弹出。
+
+查看这篇文章，[Customizing create-react-app: How to Make Your Own Template](https://auth0.com/blog/how-to-configure-create-react-app/) 了解如何自定义配置。
+
+也可以查看这个 Issue [Document maintaining a fork of react-scripts as an alternative to ejecting #682](https://github.com/facebook/create-react-app/issues/682)
