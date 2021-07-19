@@ -39,13 +39,26 @@
 
 上面这些钩子，都是引入某种特定的副效应。
 
+Hooks 使用注意事项：
+
+- 只能在函数内部的最外层调用 Hook，不要在循环、条件判断或者子函数中调用
+- 只能在 React 的函数组件中调用 Hook，不要在其他 JavaScript 函数中调用
+
 ## `useState()` 数据管理
 
 `useState()` 接收一个参数作为初始值，返回一个数组，数组第一个元素是当前值，数组第二个元素是一个函数，这个函数是用来修改值的函数，调用这个函数并传入一个值，则会修改数组第一个元素值。
 
+语法：
+
+```jsx
+const [<state>, <setState>] = useState(<value>)
+```
+
+示例：
+
 ```jsx
 import { useState } from 'react'
-const Index = (props) => {
+const Index = () => {
   // 定义一个组件内状态，初始值为空字符串
   const [value, setValue] = useState('')
 
@@ -58,6 +71,70 @@ const Index = (props) => {
 
 export default Index
 ```
+
+`<setState>` 除了可以接收新的值以外，也可以接收一个回调函数：
+
+- 回调函数得到的第一个参数就是原来的值
+- 回调函数的返回值将作为新的值使用
+
+```jsx
+const Index = () => {
+  const [value, setValue] = useState(0)
+
+  return (
+    <div>
+      <div>{ value }</div>
+      <button onClick={ () => setValue(v => v + 1)}>Click</button>
+    </div>
+  )
+}
+```
+
+`useState()` 除了接收一个值作为初始值，也可以接收一个回调函数，这个回调函数只会在组件初始化时被执行一次，后续更新不会再执行。
+
+```jsx
+const Index = props => {
+  const initFn = () => {
+    // 在函数内可以执行一些计算，然后再返回初始值
+    return 0
+  }
+  const [value, setValue] = useState(initFn)
+
+  return (
+    <div>
+      <div>{ value }</div>
+      <button onClick={ () => setValue(v => v + 1)}>Click</button>
+    </div>
+  )
+}
+```
+
+注意事项：
+
+- state 更新，整个组件会重新渲染，包括所有子孙组件，不管子孙组件依不依赖该 state 。
+- 修改状态的时候，如果传的新值和旧值一样，则不会重新渲染
+- 和 class 组件的 `this.setState()` 不一样，hook 是直接用新值替换旧值
+
+## `useMemo` 和 `useCallback`
+
+`useMemo` 和 `useCallback` 都是用来解决 state 改变引发整个组件（包括子孙组件）重新渲染的，包括那些不依赖该状态的组件，通过 `useMemo` 和 `useCallback` 添加依赖的 state。就能只在依赖的 state 发生改变时才执行重新计算。
+
+- `useMemo()` 用于缓存值，返回的结果就是缓存的值，依赖值变化才会返回新的值
+- `useCallback()` 用于缓存函数，返回的结果就是缓存的函数，依赖值变化才会返回新的函数
+
+语法：
+
+```jsx
+const value = useMemo(() => {
+  return <结果值>
+}, [<依赖值>])
+
+const fn = useCallback(() => {
+  // 执行函数操作
+}, [<依赖值>])
+```
+
+`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)` ，主要区别是 `useMemo` 将调用 fn 函数并返回其结果，而 `React.useCallback` 将返回 fn 函数本身。
 
 ## `useEffect()` 做出一些副效应(副作用)的操作（可监听一个状态值的变化而执行）
 
@@ -104,7 +181,7 @@ export default Index
 
 副效应是随着组件加载而发生的，那么组件卸载时，可能需要清理这些副效应。
 
-`useEffect()` 允许返回一个函数，在组件卸载时，执行该函数，清理副效应。如果不需要清理副效应， `useEffect()` 就不用返回任何值。
+`useEffect()` 允许返回一个函数，在组件卸载时，会自动执行该函数，清理副效应。如果不需要清理副效应， `useEffect()` 就不用返回任何值。
 
 ```jsx
 useEffect(() => {
@@ -115,7 +192,7 @@ useEffect(() => {
 }, [props.source])
 ```
 
-上面例子中，useEffect()在组件加载时订阅了一个事件，并且返回一个清理函数，在组件卸载时取消订阅。
+上面例子中，`useEffect()` 在组件加载时订阅了一个事件，并且返回一个清理函数，在组件卸载时取消订阅。
 
 实际使用中，由于副效应函数默认是每次渲染都会执行，所以清理函数不仅会在组件卸载时执行一次，每次副效应函数重新执行之前，也会执行一次，用来清理上一次渲染的副效应。
 
@@ -356,13 +433,3 @@ const Messages = () => {
   )
 }
 ```
-
-## `useMemo`
-
-`useMemo` 主要用来解决使用 React hooks 产生的无用渲染的性能问题。使用function的形式来声明组件，失去了`shouldCompnentUpdate`（在组件更新之前）这个生命周期，也就是说我们没有办法通过组件更新前条件来决定组件是否更新。
-
-而且在函数组件中，也不再区分 `mount` 和 `update` 两个状态，这意味着函数组件的每一次调用都会执行内部的所有逻辑，就带来了非常大的性能损耗。 `useMemo` 和 `useCallback` 都是解决上述性能问题的。
-
-## `useCallback`
-
-`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)` ，主要区别是 `useMemo` 将调用 fn 函数并返回其结果，而 `React.useCallback` 将返回 fn 函数本身。
