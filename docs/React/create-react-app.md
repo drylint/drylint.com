@@ -929,3 +929,38 @@ Create React App 假定你的应用程序托管在 web 服务器的根目录或 
 查看这篇文章，[Customizing create-react-app: How to Make Your Own Template](https://auth0.com/blog/how-to-configure-create-react-app/) 了解如何自定义配置。
 
 也可以查看这个 Issue [Document maintaining a fork of react-scripts as an alternative to ejecting #682](https://github.com/facebook/create-react-app/issues/682)
+
+代替 eject 的方式有几种方式，任选一种即可。
+
+#### 方式一：react-app-rewired + customize-cra
+
+[react-app-rewired](https://github.com/timarney/react-app-rewired) 负责运行构建，[customize-cra](https://github.com/arackaf/customize-cra) 暴露了一些 [api](https://github.com/arackaf/customize-cra/blob/master/api.md) 用于对配置的修改。
+
+```bash
+npm install -D react-app-rewired customize-cra
+```
+
+比如配置 `antd` 的按需加载
+
+```bash
+npm install -D babel-plugin-import
+```
+
+在项目根目录创建 `config-overrides.js` 写入配置：
+
+```js
+const { override, fixBabelImports } = require('customize-cra')
+
+module.exports = override(
+  fixBabelImports('import', {
+    libraryName: 'antd-mobile',
+    style: 'css',
+  }),
+)
+```
+
+#### 方式二： craco
+
+[craco](https://github.com/gsoft-inc/craco) 是另一种方式，不需要搭配其他插件使用。
+
+
