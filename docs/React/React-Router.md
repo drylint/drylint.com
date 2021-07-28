@@ -1,5 +1,7 @@
 # React Router
 
+[toc]
+
 React Router 包括几个库（npm 包），`react-router` 是核心库，`react-router-dom` 和 `react-router-native` 都依赖于核心库，前者用于浏览器环境，后者用于 React Native 原生 App 开发环境。
 
 - `react-router`: 实现了核心功能，用作下面几个包的运行时依赖项(peer dependency)。
@@ -31,7 +33,7 @@ import {
   Prompt,
   StaticRouter,
   useParams, // 获取当前路由携带的参数
-  useRouteMatch,
+  useRouteMatch, // 当前路由匹配对象，{ isExact: true, params: {}, path: '/about', url: '/about' }
   useHistory,
   useLocation,
 } from 'react-router-dom'
@@ -146,7 +148,7 @@ export default function App () {
 
 结果是，在 `/` 的路由组件上，加上了 `exact` 后，访问 `/`, `/about`, `/users` 均能表现正常了。
 
- `exact` 表示精准匹配，意思是路由的 `path` 必须和 URL 完全匹配才会被渲染，可以在所有需要精准匹配的路由上，都加上这个属性。
+ `exact` 表示精准匹配，意思是路由的 `path` 必须和 URL 完全匹配才会被渲染，可以在所有需要精准匹配的路由上，都加上这个属性，但嵌套路由通常不能添加此属性。
 
 ```jsx
 <Switch>
@@ -178,15 +180,99 @@ export default function App () {
 </ul>
 ```
 
-这一段代码渲染了一个无序列表，分别是 `/`, `/about`, `/users` 这三个链接。这个无序列表
+这一段代码渲染了一个无序列表，分别是 `/`, `/about`, `/users` 这三个链接。不管路由切换到哪个 URL，这个无序列表会一直显示在页面最上方。
 
+因为在根组件 `<BrowserRouter>` 内部，路由 `<Route>` 定义在这个无序列表的下方，所以，对应的组件也只会在这个无序列表的下方渲染，这就让路由的嵌套变得非常简单。
 
+因此，`<Route>` 和普通的组件可以互相嵌套，以满足页面只有部分区域进行切换的功能。
 
+嵌套路由示例：
 
+```jsx
+import React from 'react'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+} from 'react-router-dom'
 
+const Home = () => <h2>Home</h2>
+const About = () => <h2>About</h2>
 
+const UpdateUserInfo = () => <h3>修改个人信息</h3>
+const UpdatePassword = () => <h3>修改密码</h3>
 
+const Users = () => {
+  const match = useRouteMatch()
+  return <div>
+    <h2>Users</h2>
+    <ul>
+      <li>
+        <Link to={`${match.path}/updateUserInfo`}>修改个人信息</Link>
+      </li>
+      <li>
+        <Link to={`${match.path}/updatePassword`}>修改密码</Link>
+      </li>
+    </ul>
+    <Switch>
+      <Route path={`${match.path}/updateUserInfo`}>
+        <UpdateUserInfo />
+      </Route>
+      <Route path={`${match.path}/updatePassword`}>
+        <UpdatePassword />
+      </Route>
+    </Switch>
+  </div>
+}
 
+export default function App () {
+  return (
+    <BrowserRouter>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/users">Users</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/about" exact>
+          <About />
+        </Route>
+        <Route path="/users">
+          <Users />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
+}
+```
+
+### 主要组件
+
+React Router中有三大类组件：
+
+- routers (路由)，比如 `<BrowserRouter>` 和 `<HashRouter>`
+- route matchers (路由匹配组件)，比如 `<Route>` 和 `<Switch>`
+- navigation (导航组件)，也叫做 route changers, 比如 `<Link>`, `<NavLink>` 和 `<Redirect>`
+
+使用任何组件之前，都需要从 `react-router-dom` 中导入。
+
+### routers (路由)
+
+每个 React Router 应用程序的核心都应该是一个路由组件。对于 web 项目，`react-router-dom` 提供了 `<BrowserRouter>` 和 `<HashRouter>` 路由器。两者之间的主要区别在于它们存储URL和与web服务器通信的方式。
+
+- `<BrowserRouter>`, 使用普通（没有 `#` 符号）的的 URL 路径，但是这种模式下需要正确配置服务器的路由映射，具体来说，web 服务器需要在 React Router 客户端管理的所有 url 上提供相同的页面。Create React App 在开发环境下，支持这种模式开箱即用无需配置，并附带了如何配置生产服务器的说明。
 
 
 
