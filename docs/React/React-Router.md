@@ -706,7 +706,7 @@ const FancyLink = React.forwardRef((props, ref) => (
 
 #### `location: object`
 
-`isActive` 默认是比较当前浏览器访问的 URL 的位置信息。如果想和其他的位置进行比较，可以传递一个 `location` 对象。
+默认情况下，一个路由是否匹配，是比较路由 `path` 和当前浏览器访问的 URL 的位置信息 `location.pathname` 是否匹配。如果想让路由 `path` 和其他的位置信息进行比较，可以传递一个 `location` 对象。
 
 #### `aria-current: string` 默认 `'page'`
 
@@ -764,21 +764,377 @@ const FancyLink = React.forwardRef((props, ref) => (
 
 指定 `location.key` 的长度，默认为 `6` 位.
 
-#### `children: node` 要渲染的子元素。
+#### `children: node` 要渲染的子元素
 
-要渲染的子元素。
+要渲染的子元素/组件
 
 ### `<Redirect>`
 
-### `<Route>`
+渲染 `<Redirect>` 将会立即导航到一个新位置。新位置将覆盖历史堆栈中的当前位置，就像服务器端重定向(HTTP 3xx)那样。
 
-### `<StaticRouter>`
+#### `to: string | object`
 
-### `<Switch>`
+要重定向去的 URL 或 location 对象
 
-### generatePath
+```jsx
+<Redirect to="/somewhere/else" />
 
-### history
+{/* state 对象在目标组件中可以通过 props.location.state 访问 */}
+<Redirect
+  to={{
+    pathname: "/login",
+    search: "?utm=your+face",
+    state: { referrer: currentLocation }
+  }}
+/>
+```
+
+#### `push: boolean` 是否将重定向的覆盖当前记录改为添加一条记录，默认 `false`
+
+当设为 `true` 时，不会在 `history` 中覆盖当前访问记录，而是在后面新增一条访问记录。
+
+#### `from: string`
+
+提供一个 URL 字符串，用于匹配来自那个路径，匹配到之后将立即重定向到 `to` 提供的路径。
+
+注意：带 `from` 的 `<Redirect>` 组件只支持在 `<Switch>` 组件中使用。
+
+```jsx
+<Switch>
+  {/* 如果访问 /old-path, 将立即被重定向到 /new-path */}
+  <Redirect from="/old-path" to="/new-path" />
+  <Route path="/new-path">
+    <Place />
+  </Route>
+</Switch>
+
+// 重定向时携带匹配的参数
+<Switch>
+  {/* 如果访问 /old-path/1, 将立即被重定向到 /new-path/1 */}
+  <Redirect from="/users/:id" to="/users/profile/:id" />
+  <Route path="/users/profile/:id">
+    <Profile />
+  </Route>
+</Switch>
+```
+
+#### `exact: boolean` 是否使用精准匹配模式
+
+注意：带 `exact` 的 `<Redirect>` 组件只支持在 `<Switch>` 组件中使用。
+
+```jsx
+<Switch>
+  <Redirect exact from="/" to="/home" />
+  <Route path="/home">
+    <Home />
+  </Route>
+  <Route path="/about">
+    <About />
+  </Route>
+</Switch>
+```
+
+#### `strict: boolean` 是否启用严格模式
+
+注意：带 `strict` 的 `<Redirect>` 组件只支持在 `<Switch>` 组件中使用。
+
+```jsx
+<Switch>
+  <Redirect strict from="/one/" to="/home" />
+  <Route path="/home">
+    <Home />
+  </Route>
+  <Route path="/about">
+    <About />
+  </Route>
+</Switch>
+```
+
+#### `sensitive: boolean` 是否开启大小写敏感匹配，默认 `false`
+
+设为 `true` 后，大小写完全一致时才会被匹配。
+
+### `<Route>` 定义路由的组件
+
+`<Route>` 组件可能是 React 路由器中最重要的组件，它最基本的职责是在其 `path` 属性值与当前 URL 匹配时呈现某些 UI 。
+
+如果同一个组件同时被用作多个 `<Route>` 的子组件，React 会将其视为同一个组件实例，并且在路由变化之间组件的状态会被保留。如果不希望这样做，那么在每个路由组件中添加一个唯一的 `key` 值，将使 React 在路由更改时重新创建组件实例，而不是复用同一个组件实例。
+
+待验证???
+
+```jsx
+{/* <About /> 组件同时用作两个 `<Route>` 的子组件
+  路由在 /about 和 /aboutUs 中切换时，组件实例会被复用，而不会被重新创建
+*/}
+<Route path="/about">
+  <About />
+</Route>
+<Route path="/aboutUs">
+  <About />
+</Route>
+```
+
+路由渲染方式
+
+使用 `<Route>` 渲染内容的推荐方式是使用子元素，比如：
+
+```jsx
+<Route path="/about">
+  <About />
+</Route>
+```
+
+不过，还提供了一些其他方法可以使用 `<Route>` 渲染内容。额外提供这些方法主要是为了支持那些在引入钩子之前用早期 React Router 版本构建的应用。
+
+- `<Route children> function` 如上介绍的推荐方式，使用子元素渲染组件。
+- `<Route component>` 使用 `component` 属性渲染组件。
+- `<Route render>` 使用 `render` 属性渲染组件。
+
+这三种方式只应该选择一种使用，推荐使用 children 的方式来使用。如果同时存在，只按优先级渲染其中一项，三者的优先级： `children > component > render` 。
+
+以上任意一种方式渲染组件时，该组件的 props 中都会被传入 `match`, `location`, `history` 这几个和路由相关的对象。
+
+#### `component` 通过该属性传入一个组件
+
+```jsx
+const User = ({match, location, history} => {
+  return <h2>username: {match.params.username}</h2>
+})
+
+// ...
+
+<Route path="/user/:username" component={User} />
+```
+
+注意，当你使用 `component` 属性(而不是 `render` 或 `children` )传入路由组件时，路由系统会使用 `React.createElement()` 从给定的组件中创建一个新的 React 元素。这意味着，如果给 `component` 属性传入一个内联函数组件，每次渲染时都将会创建一个新组件。这会导致现有组件被卸载，新组件被挂载，而不仅仅是更新现有组件。当需要使用内联函数组件进行渲染时，请使用 `render` 或 `children` 属性传入。
+
+#### `render: func`
+
+`render` 属性很方便地用于内联函数组件渲染，而不是像 `component` 属性传入内联函数时需要重新挂载。
+
+与使用`component` 属性接收内联函数会创建一个新的 React 元素不同，`render` 属性接收一个函数，以便在 `location` 匹配时调用。`render` 函数会被传入 `match`, `location`, `history` 这几个和路由相关的对象作为 props 的成员。
+
+```jsx
+<Route
+  path="/user/:username"
+  render={({match, location, history}) => {
+    return <h2>username: {match.params.username}</h2>
+  }}
+/>
+```
+
+#### `children: function` 接收一个组件进行渲染
+
+有时候，无论 `path` 值有没有匹配上当前所处位置, 都想进行渲染。在这些情况下，可以使用 `children` 属性。它的工作原理与 `render` 基本相同，唯一的不同就是无论是否匹配上它都会被渲染。
+
+`children` 属性接收的组件也会被传入 `match`, `location`, `history` 这几个和路由相关的对象作为 props 的成员。除非路由无法匹配 URL，则 match 为 `null` 。这允许你根据路由是否匹配动态调整你的 UI 。
+
+比如，如果路由匹配，我们将添加一个激活的 class 选择器：
+
+```jsx
+<Route
+  path="/user"
+  children={({ match }) => (
+    <li className={match ? "active" : ""}>
+      User
+    </li>
+  )}
+/>
+```
+
+#### `path: string | string[]` 路径或路径组成的数组
+
+传入合法的 URL 或由 URL 组成的数组。
+
+如果 `<Route>` 组件没有传入 `path` 属性，那么这个组件将永远能够匹配上，相当于永远会被渲染出来。
+
+
+#### `exact: boolean` 是否开启精准匹配，默认 `false`
+
+开启时，`path` 值必须和 `location.pathname` 精准匹配(除大小写以外完全一致)。
+
+比如 `path="/one"`, 当前 `location.pathname` 为 `/one/two`, 精准匹配开启时不会被匹配上，但默认情况下没有开启精准匹配，所以会被匹配上。
+
+#### `strict: boolean` 是否开启严格模式，默认 `false`
+
+是否严格匹配路径的尾斜线，开启时，`/one/` 和 `/one` 无法匹配。
+
+#### `location: object` 位置对象
+
+默认情况下，一个路由是否匹配，是比较路由 `path` 和当前浏览器访问的 URL 的位置信息 `location.pathname` 是否匹配。如果想让路由 `path` 和其他的位置信息进行比较，可以传递一个 `location` 对象。
+
+如果一个包裹在 `<Switch>` 中的 `<Route>` 匹配上了 `<Switch>` 的 `location` 属性或当前访问的 `history` 的 `location` 对象，那么传递给 `<Route>` 的 `location` 属性会被 `<Switch>` 使用的 `location` 覆盖。
+
+#### `sensitive: boolean` 是否启用大小写敏感，默认 `false`
+
+开启后，`/One` 和 `/one` 将不匹配。
+
+### `<Router>` 低级别组件
+
+所有路由组件的通用底层接口。通常情况下，应用程序应该使用以下这些高级路由组件：
+
+- `<BrowserRouter>`
+- `<HashRouter>`
+- `<MemoryRouter>`
+- `<NativeRouter>`
+- `<StaticRouter>`
+
+使用低级的 `<Router>` 组件，最常见的用例是将自定义历史与像 Redux 或 Mobx 这样的状态管理库同步。注意，与 React Router 一起使用状态管理库并不是必需的，它只是用于深度集成。
+
+`<Router>` 组件接收 `history: object` 和 `children: node` 两个属性。
+
+```jsx
+<Router history={history}>
+  ｛/* children */｝
+  <App />
+</Router>
+```
+
+### `<StaticRouter>` 一个不改变位置的 `<Router>`
+
+这在服务器端渲染的场景中非常有用，因为此时用户并没有实际点击，所以位置实际上不会改变，所以它叫做 static 。它在简单测试中也很有用，比如当您只需要插入一个 location 并对渲染输出进行断言时。
+
+下面是一个示例，Node 服务端为 `<Redirect>`发送 302 状态码，为其他请求发送常规HTML。
+
+```jsx
+import http from 'http'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { StaticRouter } from 'react-router'
+
+http
+  .createServer((req, res) => {
+    // This context object contains the results of the render
+    const context = {}
+
+    const html = ReactDOMServer.renderToString(
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>,
+    )
+
+    // context.url will contain the URL to redirect to if a <Redirect> was used
+    if (context.url) {
+      res.writeHead(302, {
+        Location: context.url,
+      })
+      res.end()
+    } else {
+      res.write(html)
+      res.end()
+    }
+  })
+  .listen(3000)
+```
+
+#### `basename: string` 基础路径
+
+基础 URL。当应用程序放置于服务器上子目录中时，可以设置，比如 `/public` 。
+
+```jsx
+<StaticRouter basename="/calendar">
+  {/* 渲染为 <a href="/calendar/today"> */}
+  <Link to="/today"/>
+</StaticRouter>
+```
+
+#### `location: string | object` 位置信息
+
+- string 类型，服务器接收到的 URL，在 Node 服务器可能是 `req.url` 。
+- 对象类型，像是 `{ pathname, search, hash, state }` 这样的对象
+
+```jsx
+<StaticRouter location={req.url}>
+  <App />
+</StaticRouter>
+
+<StaticRouter location={{ pathname: "/bubblegum" }}>
+  <App />
+</StaticRouter>
+```
+
+#### `context: object` 上下文对象
+
+一个普通 JavaScript 对象。在渲染过程中，组件可以向对象添加属性以存储有关渲染的信息。
+
+当 `<Route>` 匹配时，它将把 `context` 对象传递给这个组件，作为 `staticContext` 属性渲染。查看服务器呈现指南以获得更多关于如何自己完成此操作的信息。
+
+更多详情查看 [server-rendering](https://reactrouter.com/web/guides/server-rendering)
+
+渲染之后，可以使用这些属性来配置服务器的响应。
+
+```jsx
+const context = {}
+<StaticRouter context={context}>
+  <App />
+</StaticRouter>
+```
+
+#### `children: node` 子节点
+
+### `<Switch>` 仅渲染第一个匹配的组件
+
+渲染能和当前访问的位置信息 `location` 匹配的第一个 `<Route>` 或 `<Redirect>` 子元素。
+
+这对于动画过渡也很有用，因为匹配的 `<Route>` 被渲染在与前一个路由相同的位置。
+
+#### `location: object` 用来与子路由的 path 做匹配的对象
+
+当不想用当前访问的位置信息与路由的 path 做匹配时，手动传入一个 `location` 对象即可。
+
+如果 传入一个 `location` 对象给 `<Switch>` ，将同时覆盖匹配到的 `<Route>` 的 `location` 属性。
+
+#### `children: node` 子节点，通常是若干个 `<Route>` 或 `<Redirect>`
+
+### generatePath 一个生成路径的函数
+
+可以使用 `generatePath` 函数为路由生成 URL 。函数内部使用了 `path-to-regexp` 库。
+
+接收两个参数：
+
+- 第一个为正则 pattern 字符串
+- 第二个为参数对象，包含 pattern 中要使用的相应参数，如果提供的参数和路径不匹配，将抛出一个错误。
+
+```jsx
+import { generatePath } from "react-router";
+
+generatePath('/user/:id/:entity(posts|comments)', {
+  id: 1, // pattern 需要的 id 参数
+  entity: 'posts', // pattern 需要的 entity 参数
+})
+
+// 返回 /user/1/posts
+```
+
+将路径编译为正则表达式的结果会被缓存，因此使用相同 pattern 模式生成多个路径不会带来额外的开销。
+
+### `history`
+
+在本文档中，术语 `history` 和 `history object` 指的是 [history](https://github.com/ReactTraining/history) 依赖包，它是 React Router (除了React本身)仅有的两个主要依赖项之一，它提供了几种不同的实现，用于在不同的环境中管理 JavaScript 中的会话历史。
+
+还有这些术语：
+
+- `browser history` 一个特定于 DOM 的实现，在支持 HTML5 history API的 web 浏览器中很有用。
+- `hash history` 用于遗留的旧 web 浏览器的，特定于 DOM 的实现，基于 Hash 来改变 URL 。
+- `memory history` 一个内存中的 history 实现，在测试和非 DOM 环境(如 React Native )中很有用
+
+历史对象通常具有以下属性和方法：
+
+- length - (number) 历史堆栈中的条目数
+- action - (string) 当前的动作 (是 PUSH, REPLACE, 还是 POP)
+- location - (object) 当前位置对象，有以下属性：
+  - pathname - (string) URL 路径
+  - search - (string) 查询字符串
+  - hash - (string) URL 哈希片段
+  - state - (object) 这个位置被推入堆栈时，提供给 `push(path, state)` 的特定位置状态。仅在 `browser history` 和 `memory history` 中可用。
+- push(path, [state]) - (function) 将一个新条目推入历史堆栈
+- replace(path, [state]) - (function) 替换历史堆栈上的当前条目
+- go(n) - (function) 将历史堆栈中的指针向前或向后移动 n 项
+- goBack() - (function) 等同于 `go(-1)`
+- goForward() - (function) 等同于 go`(1)`
+- block(prompt) - (function) 阻止导航 (详情查看 [history docs](https://github.com/ReactTraining/history/blob/master/docs/blocking-transitions.md))
+
+`history` 对象是可变的。因此，建议从 `<Route>` 的 `render` 属性中访问 `location` 对象，而不是从 `history.location` 。这确保了你对React的假设在生命周期钩子中是正确的。例如:
 
 ### location
 
