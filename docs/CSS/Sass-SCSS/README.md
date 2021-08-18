@@ -5,3 +5,4 @@
 ## 相关资源
 
 - [Sass 风格指南](https://sass-guidelin.es/#syntax--formatting)
+- [知乎专栏@Jim Yuan：Sass 内建函数用法一览](https://zhuanlan.zhihu.com/p/59684868)
