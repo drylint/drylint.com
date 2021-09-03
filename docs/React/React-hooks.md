@@ -9,16 +9,16 @@
 
 钩子列表：
 
-- useState
-- useEffect,
-- useRef,
-- useReducer,
-- useContext,
-- useMemo,
-- useCallback, 每当依赖的数组改变时，就会创建一个 memoized 函数
-- useImperativeHandle,
-- useDebugValue,
-- useLayoutEffect,
+- `useState`
+- `useEffect`
+- `useRef`
+- `useReducer`
+- `useContext`
+- `useMemo`
+- `useCallback` 每当依赖的数组改变时，就会创建一个 memoized 函数
+- `useImperativeHandle`
+- `useDebugValue`
+- `useLayoutEffect` API 同 `useEffect` 一致，可用于需要同步执行的操作，例如测量布局
 
 以前，React API 只有一套，现在有两套：类（class）API 和基于函数的钩子（hooks） API。
 
