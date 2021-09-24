@@ -1,4 +1,4 @@
-# Sass 编译及工程化使用
+# Sass编译方式及工程化使用
 
 Sass 编译有两种工具，一种是 `Dart Sass` ，一种是 `LibSass` ，而这两种编译工具又分别对应两个 JavaScript 版本的 npm 包。
 

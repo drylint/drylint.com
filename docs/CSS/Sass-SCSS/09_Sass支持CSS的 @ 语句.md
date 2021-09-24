@@ -1,4 +1,4 @@
-# CSS 的 @ 语句
+# Sass支持CSS的 @ 语句
 
 [toc]
 

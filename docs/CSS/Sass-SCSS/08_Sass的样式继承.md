@@ -1,5 +1,5 @@
 
-# `@extend`
+# Sass的样式继承 `@extend`
 
 [toc]
 
