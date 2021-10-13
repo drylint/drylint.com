@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.11f8e218.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/146.0f2cb743.js" as="script"><link rel="prefetch" href="/assets/js/10.2bb1fe05.js"><link rel="prefetch" href="/assets/js/100.fe98bc44.js"><link rel="prefetch" href="/assets/js/101.77935927.js"><link rel="prefetch" href="/assets/js/102.6dd57db7.js"><link rel="prefetch" href="/assets/js/103.8c6a454c.js"><link rel="prefetch" href="/assets/js/104.43c82f89.js"><link rel="prefetch" href="/assets/js/105.08b8e1be.js"><link rel="prefetch" href="/assets/js/106.54be75d3.js"><link rel="prefetch" href="/assets/js/107.2af1bf29.js"><link rel="prefetch" href="/assets/js/108.0fcd494c.js"><link rel="prefetch" href="/assets/js/109.2b4adcff.js"><link rel="prefetch" href="/assets/js/11.a771880c.js"><link rel="prefetch" href="/assets/js/110.46865503.js"><link rel="prefetch" href="/assets/js/111.bada80a8.js"><link rel="prefetch" href="/assets/js/112.2b2b6c60.js"><link rel="prefetch" href="/assets/js/113.ffed6330.js"><link rel="prefetch" href="/assets/js/114.1041abac.js"><link rel="prefetch" href="/assets/js/115.9b54f0d3.js"><link rel="prefetch" href="/assets/js/116.cd915184.js"><link rel="prefetch" href="/assets/js/117.f532de20.js"><link rel="prefetch" href="/assets/js/118.d67ec6c1.js"><link rel="prefetch" href="/assets/js/119.f7883ba1.js"><link rel="prefetch" href="/assets/js/12.ce2c26a4.js"><link rel="prefetch" href="/assets/js/120.2825397b.js"><link rel="prefetch" href="/assets/js/121.329db677.js"><link rel="prefetch" href="/assets/js/122.22b31bd3.js"><link rel="prefetch" href="/assets/js/123.54124385.js"><link rel="prefetch" href="/assets/js/124.da0e74ab.js"><link rel="prefetch" href="/assets/js/125.71810425.js"><link rel="prefetch" href="/assets/js/126.ac2bb29e.js"><link rel="prefetch" href="/assets/js/127.7dfd9180.js"><link rel="prefetch" href="/assets/js/128.74093077.js"><link rel="prefetch" href="/assets/js/129.762bb4c0.js"><link rel="prefetch" href="/assets/js/13.9c87e937.js"><link rel="prefetch" href="/assets/js/130.06e74142.js"><link rel="prefetch" href="/assets/js/131.edc89c02.js"><link rel="prefetch" href="/assets/js/132.3654b387.js"><link rel="prefetch" href="/assets/js/133.580fc16e.js"><link rel="prefetch" href="/assets/js/134.4194ed9c.js"><link rel="prefetch" href="/assets/js/135.1241b083.js"><link rel="prefetch" href="/assets/js/136.181bb7cb.js"><link rel="prefetch" href="/assets/js/137.9d65d8a9.js"><link rel="prefetch" href="/assets/js/138.ab78d744.js"><link rel="prefetch" href="/assets/js/139.a4c11f4d.js"><link rel="prefetch" href="/assets/js/14.33276526.js"><link rel="prefetch" href="/assets/js/140.e4e88bb7.js"><link rel="prefetch" href="/assets/js/141.844de3e6.js"><link rel="prefetch" href="/assets/js/142.c13323e5.js"><link rel="prefetch" href="/assets/js/143.708943ed.js"><link rel="prefetch" href="/assets/js/144.c5b3e16a.js"><link rel="prefetch" href="/assets/js/145.fbbd1721.js"><link rel="prefetch" href="/assets/js/147.8809e00c.js"><link rel="prefetch" href="/assets/js/148.84fbe503.js"><link rel="prefetch" href="/assets/js/149.6c4eaec5.js"><link rel="prefetch" href="/assets/js/15.a0d47d4d.js"><link rel="prefetch" href="/assets/js/150.865e2e80.js"><link rel="prefetch" href="/assets/js/151.ebf5b22d.js"><link rel="prefetch" href="/assets/js/152.fce48051.js"><link rel="prefetch" href="/assets/js/153.07c0c82b.js"><link rel="prefetch" href="/assets/js/154.6c1c51bf.js"><link rel="prefetch" href="/assets/js/155.2bb83eb6.js"><link rel="prefetch" href="/assets/js/156.6a31e3fb.js"><link rel="prefetch" href="/assets/js/157.2f2f7d42.js"><link rel="prefetch" href="/assets/js/158.b73f8330.js"><link rel="prefetch" href="/assets/js/159.6b71c2df.js"><link rel="prefetch" href="/assets/js/16.e8b12db9.js"><link rel="prefetch" href="/assets/js/160.c8d54e1a.js"><link rel="prefetch" href="/assets/js/161.43da1a28.js"><link rel="prefetch" href="/assets/js/162.6fb42042.js"><link rel="prefetch" href="/assets/js/163.f9a48561.js"><link rel="prefetch" href="/assets/js/164.f3148a06.js"><link rel="prefetch" href="/assets/js/165.19c72ebd.js"><link rel="prefetch" href="/assets/js/166.bdd0b9b0.js"><link rel="prefetch" href="/assets/js/167.53be506d.js"><link rel="prefetch" href="/assets/js/168.01b1af37.js"><link rel="prefetch" href="/assets/js/169.29f14eea.js"><link rel="prefetch" href="/assets/js/17.7bd579f1.js"><link rel="prefetch" href="/assets/js/170.23099a16.js"><link rel="prefetch" href="/assets/js/171.e2ac169d.js"><link rel="prefetch" href="/assets/js/172.2b8a42e0.js"><link rel="prefetch" href="/assets/js/173.163f5e5d.js"><link rel="prefetch" href="/assets/js/174.d4d1436e.js"><link rel="prefetch" href="/assets/js/175.84dbdb7c.js"><link rel="prefetch" href="/assets/js/176.ac1982e0.js"><link rel="prefetch" href="/assets/js/177.df52d16f.js"><link rel="prefetch" href="/assets/js/178.65e3c499.js"><link rel="prefetch" href="/assets/js/179.ff0ed662.js"><link rel="prefetch" href="/assets/js/18.bdfc32d3.js"><link rel="prefetch" href="/assets/js/180.d70866a9.js"><link rel="prefetch" href="/assets/js/181.dcb32231.js"><link rel="prefetch" href="/assets/js/182.3de78dbe.js"><link rel="prefetch" href="/assets/js/183.3466572e.js"><link rel="prefetch" href="/assets/js/184.2cdaeecb.js"><link rel="prefetch" href="/assets/js/185.3e916fba.js"><link rel="prefetch" href="/assets/js/186.96c048cf.js"><link rel="prefetch" href="/assets/js/187.d71be9b6.js"><link rel="prefetch" href="/assets/js/188.d2e39b82.js"><link rel="prefetch" href="/assets/js/189.13b07b30.js"><link rel="prefetch" href="/assets/js/19.3ff13ace.js"><link rel="prefetch" href="/assets/js/190.204790b4.js"><link rel="prefetch" href="/assets/js/191.327f3a6b.js"><link rel="prefetch" href="/assets/js/192.c8f9b3df.js"><link rel="prefetch" href="/assets/js/193.b5fa1f2a.js"><link rel="prefetch" href="/assets/js/194.5681f2c5.js"><link rel="prefetch" href="/assets/js/195.a35b9612.js"><link rel="prefetch" href="/assets/js/196.fd9df5f2.js"><link rel="prefetch" href="/assets/js/197.1baa330c.js"><link rel="prefetch" href="/assets/js/198.4483fc9d.js"><link rel="prefetch" href="/assets/js/20.9dd375e6.js"><link rel="prefetch" href="/assets/js/21.f73a4bcf.js"><link rel="prefetch" href="/assets/js/22.e6e597d1.js"><link rel="prefetch" href="/assets/js/23.cbfa90f3.js"><link rel="prefetch" href="/assets/js/24.c56e6f99.js"><link rel="prefetch" href="/assets/js/25.a504ea01.js"><link rel="prefetch" href="/assets/js/26.102397a2.js"><link rel="prefetch" href="/assets/js/27.65fdddf8.js"><link rel="prefetch" href="/assets/js/28.eb9012ca.js"><link rel="prefetch" href="/assets/js/29.43821e0c.js"><link rel="prefetch" href="/assets/js/3.215993e0.js"><link rel="prefetch" href="/assets/js/30.132be143.js"><link rel="prefetch" href="/assets/js/31.65f1b445.js"><link rel="prefetch" href="/assets/js/32.8027dcae.js"><link rel="prefetch" href="/assets/js/33.e4f3c764.js"><link rel="prefetch" href="/assets/js/34.926d1d16.js"><link rel="prefetch" href="/assets/js/35.a941e909.js"><link rel="prefetch" href="/assets/js/36.9e6310c6.js"><link rel="prefetch" href="/assets/js/37.ce14298d.js"><link rel="prefetch" href="/assets/js/38.ba9e7814.js"><link rel="prefetch" href="/assets/js/39.628b2842.js"><link rel="prefetch" href="/assets/js/4.5d977487.js"><link rel="prefetch" href="/assets/js/40.80657342.js"><link rel="prefetch" href="/assets/js/41.3ec0f60f.js"><link rel="prefetch" href="/assets/js/42.545d3aac.js"><link rel="prefetch" href="/assets/js/43.131f52c4.js"><link rel="prefetch" href="/assets/js/44.25cacf62.js"><link rel="prefetch" href="/assets/js/45.11bb5717.js"><link rel="prefetch" href="/assets/js/46.aa4baf48.js"><link rel="prefetch" href="/assets/js/47.9eea7acf.js"><link rel="prefetch" href="/assets/js/48.b91b8da9.js"><link rel="prefetch" href="/assets/js/49.f379e925.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.07b77690.js"><link rel="prefetch" href="/assets/js/51.6ad0a6d1.js"><link rel="prefetch" href="/assets/js/52.b9ea8528.js"><link rel="prefetch" href="/assets/js/53.4322150c.js"><link rel="prefetch" href="/assets/js/54.84f62d9a.js"><link rel="prefetch" href="/assets/js/55.3abcdeab.js"><link rel="prefetch" href="/assets/js/56.ca8a19f4.js"><link rel="prefetch" href="/assets/js/57.ed3ea2d4.js"><link rel="prefetch" href="/assets/js/58.e0597216.js"><link rel="prefetch" href="/assets/js/59.ac9b4034.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.e80590ec.js"><link rel="prefetch" href="/assets/js/61.a7ac5518.js"><link rel="prefetch" href="/assets/js/62.2aa95404.js"><link rel="prefetch" href="/assets/js/63.f637d8a0.js"><link rel="prefetch" href="/assets/js/64.b10fa6f2.js"><link rel="prefetch" href="/assets/js/65.ff1398d0.js"><link rel="prefetch" href="/assets/js/66.5615f304.js"><link rel="prefetch" href="/assets/js/67.2e3ecb25.js"><link rel="prefetch" href="/assets/js/68.438568ca.js"><link rel="prefetch" href="/assets/js/69.6be90c78.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.35b686d6.js"><link rel="prefetch" href="/assets/js/71.a6748cf4.js"><link rel="prefetch" href="/assets/js/72.4a25eefc.js"><link rel="prefetch" href="/assets/js/73.201146fc.js"><link rel="prefetch" href="/assets/js/74.ff5f439b.js"><link rel="prefetch" href="/assets/js/75.7bbe3d4b.js"><link rel="prefetch" href="/assets/js/76.08f68d1d.js"><link rel="prefetch" href="/assets/js/77.5bbae1bf.js"><link rel="prefetch" href="/assets/js/78.1c81888e.js"><link rel="prefetch" href="/assets/js/79.1bc91acb.js"><link rel="prefetch" href="/assets/js/8.51cd3eac.js"><link rel="prefetch" href="/assets/js/80.2fe9172c.js"><link rel="prefetch" href="/assets/js/81.28d25c26.js"><link rel="prefetch" href="/assets/js/82.15251ed3.js"><link rel="prefetch" href="/assets/js/83.03bce4b6.js"><link rel="prefetch" href="/assets/js/84.6c59d203.js"><link rel="prefetch" href="/assets/js/85.9af07bfa.js"><link rel="prefetch" href="/assets/js/86.0c6c40b6.js"><link rel="prefetch" href="/assets/js/87.318f1561.js"><link rel="prefetch" href="/assets/js/88.73052f54.js"><link rel="prefetch" href="/assets/js/89.2191dff6.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.73fc5ddc.js"><link rel="prefetch" href="/assets/js/91.7648bbb4.js"><link rel="prefetch" href="/assets/js/92.c74b7da6.js"><link rel="prefetch" href="/assets/js/93.03500cdd.js"><link rel="prefetch" href="/assets/js/94.9810c2af.js"><link rel="prefetch" href="/assets/js/95.0c7a68a4.js"><link rel="prefetch" href="/assets/js/96.24173e0d.js"><link rel="prefetch" href="/assets/js/97.14caebc3.js"><link rel="prefetch" href="/assets/js/98.364ce6fe.js"><link rel="prefetch" href="/assets/js/99.d5e43505.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>1</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_1"><a href="#_1" class="header-anchor">#</a> 1</h1> <div class="language-cmd line-numbers-mode"><pre class="language-text"><code>
+MySQL数据库
+  1. 如何保存数据
+    内存：速度快，空间有限
+    自定义文件，速度慢
+    Acess/Excel 文件越大速度越慢
+    数据库存储
+  2. 数据库概述(Database)：按照特定的数据结构存储数据的软件
+    网状数据库
+    层次性数据库
+    关系型数据库(RDBMS)
+      server -&gt; Database -&gt; Table -&gt; Row -&gt; Column
+      SQLite：微型数据库，常用于移动设备
+      MySQL: 开源中小型数据库，可用于各种操作系统
+      PostgreSQL：开源中小型数据库
+      SQL Server：Microsoft开发的中型数据库，只用于Windows系统
+      Oracle：Oracle公司开发的中大型数据库，可用于各种操作系统
+      DB2：IBM公司开发的中大型数据库，常与IBM服务器搭配
+    非关系型数据库(NoSQL)
+  3. MySQL数据库
+    Oracle分支： mysql.com
+    Martin分支： mariadb.org
+    xampp服务器套装：包含有多个开源服务器Apache、MySQL、PHP
+      mysqld.exe 服务器启动文件(d：deamon进程)
+      mysql.exe  连接数据库服务器
+      data： 保存数据库服务器中的数据
+    安装使用MySQL数据库系统
+      (1)服务器端：下载并安装mysql服务器软件
+      (2)服务器端：启动mysql服务器，保证端口3306被MySQL占用
+      (3)客户端：使用MySQL.exe连接数据库
+           输入命令：mysql.exe -h127.0.0.1 -P3306 -uroot -p
+           (-hlocalhost也可，-P3306的P需大写)
+           -h：host
+           -P:port端口;
+           -u：user用户名(root为默认用户名)
+           -p：password密码
+           最终简写形式：mysql -uroot (-uroot如果删除则进入的来宾账户)
+
+  4. MySQL常用管理命令(前提是已经成功连接进入数据库)【全部加分号结尾】
+    quit;(exit;)    退出数据库：
+    show databases;    查看服务器中有哪些数据库：
+    use dbName数据库名称;  使用数据库：
+    show tables;    显示当前数据库中所有的数据表
+    desc tableName数据表名称; 描述表中都有哪些列(表头)
+    练习：查询MySQL数据库中每一个数据库都有多少个数据表
+  5. MySQL中的SQL语句
+    SQL：Structured Query Language 结构化查询语言，用于操作关系型数据服务器
+       中的数据————增删改查
+    SQL语言最早由ANSI提出，后提交给ISO最终成为了数据库行业标准的语言，
+       分为SQL-87、SQL-92、SQL-99，被绝大多数关系型数据库所支持。
+
+    SQL语句两种执行方式：
+      (1)交互模式：在客户端输入一行，点击回车，服务器执行一行。
+        适用于临时性查看数据
+        mysql -uroot 回车
+      (2)脚本模式：客户端把要执行的命令写在一个文本文件中，一次性提交给服务器执行。
+        适用于批量的增删改查。
+        mysql -uroot &lt; C:/xampp/htdocs/.../2.sql()
+    SQL语法规范：
+      (1)每条SQL语句都以英文分号结尾，一条语句可跨越多行(USE命令除外)，见到分号认为语句结束。
+      (2)假如第N条语句出现语法错误，则此语句之后的所有语句都不会再执行。
+      (3)SQL语句不区分大小写，习惯上，关键字用大写，非关键字用小写。
+      (4)SQL语句单行注释(#...)、多行注释(/*...*/)，注释的语句不执行。
+    常用的SQL语句
+      (0)指定编码格式
+          SET NAMES UTF8;
+      (1)丢弃指定的数据库，如果存在的话
+           DROP DATABASE IF EXISTS jd;
+      (2)创建新的数据库
+           CREATE DATABASE jd CHARSET=UTF8;
+      (3)进入(使用)创建的数据库
+           USE jd;
+      (4)在进入的数据库中创建数据表
+           CREATE TABLE emp(
+            id INT,
+            name VARCHAR(20),
+            addr VARCHAR(20),
+            phone VARCHAR(11)
+           );
+      (5)插入数据
+        a. INSERT INTO tableName(column1,colume2,column3...)
+            VALUES (value1,value2,value3...),(value1,value2,value3...)...; //批量插入多行指定某几个列的数据
+        b. INSERT INTO emp VALUES('1','Tom','BEIJING','131...'); // 插入一行完整的完整的包含每一列数据
+        c. INSERT INTO emp VALUES(...),(...),(...),(...); // 插入多行完整的包含每一列数据
+        d. INSERT INTO emp(name,phone) VALUES('Jerry','135...',);
+        e. INSERT INTO tableName SET field1 = value1,field2 = value2,... ; // 使用键值对快速插入一行若干列数据，不能批量插入
+        f. INSERT INTO tableName SET {field1 = value1,field2 = value2,...};// 使用对象形式插入数据
+      (6)删除数据
+           DELETE FROM emp WHERE id='2';
+      (6)更改数据
+           UPDATE user SET upwd='12345678', email='123@163.com' WHERE uid='3';
+      (7)查询数据
+           SELECT * FROM emp;
+    练习：新建4.sql，创建数据库tedu，在其中创建表student，
+    包含sid,name,sex,score，向表中插入4条学生的数据
+课后练习：
+创建xz.sql，创建数据库xz，在其中创建表user，
+包含uid,uname,upwd,email,phone,sex,userName(真实姓名)，registerTime(注册时间 2018-08-20)
+插入5条数据，并查询所有。
+--------------------------------------------------------------------------------------
+
+2.数据库中的中文乱码
+  计算机如何存储英文字符
+    ASCII码：总共有128个，对所有的英文字符以及符号进行的编码。
+    Latin-1：总共有256个，兼容ASCII码，同时对欧洲的符号进行了编码。
+    MySQL默认使用Latin-1编码，而Latin-1不支持中文字符，直接插入中文会出现乱码。
+  计算机如何存储中文字符
+    GB2312：对六千多个中文字符进行的编码，主要是简体中文，兼容ASCII码。
+    GBK：对两万多个中文字符进行编码，支持简繁体，兼容ASCII码。
+    Unicode：对世界上主要国家的语言进行了编码，兼容ASCII码。有UTF-8，UTF-16，UTF-32存储方案
+  中文乱码解决方案：
+    (1)sql脚本文件保存时使用UTF8
+    (2)客户端连接服务使用UTF8
+    (3)服务器存储数据使用UTF8
+练习：创建一个脚本文件01_dangdang.sql，使用UTF8，创建book数据表，
+    包含bid，title，price，pubDate，isJia(是或否)
+
+3. 列类型
+  创建数据表的时候，制定的列所保存的数据类型
+  CREATE TABLE book(bid 列类型);
+  (1)数值类型-------数值类型可以不加引号
+    TINYINT   微整型，1字节，存储范围 -128~127
+    SMALLINT  小整型，占用二个字节，存储范围 -32768~32767
+    INT    整型，占用四个字节，存储范围-2147483648~2147483647
+    BIGINT   大整型，占用八个字节，存储范围-9223372036854775808~9223372036854775807
+    FLOAT   单精度浮点型，占用4个字节，可取出几位作为指数使用，实际存储范围比INT大得多
+    DOUBLE   双精度浮点型，占8个字节，实际存储范围比BIGINT大得多
+    DECIMAL(M,D) 定点小数，不会产生误差,总共有效位数(不含小数点)，D表示小数点后有效位数
+    BOOL   布尔型，只有两个值，TURE(1)和FALSE(0)，最终的存储方式使用数字1和0
+类型     大小    范围(有符号)          范围(无符号)                   用途
+TINYINT    1字节   (-128，127)             (0，255)                      小整数值
+SMALLINT   2 字节  (-32 768，32 767)          (0，65 535)                     大整数值
+MEDIUMINT   3 字节  (-8 388 608，8 388 607)       (0，16 777 215)                   大整数值
+INT或INTEGER 4 字节  (-2 147 483 648，2 147 483 647)   (0，4 294 967 295)                 大整数值
+BIGINT    8 字节  (-9 233 372 036 854 775 808，9 223 372 036 854 775 807)  (0，18 446 744 073 709 551 615) 极大整数值
+FLOAT     4 字节  (-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38) 0，(1.175 494 351 E-38，3.402 823 466 E+38) 单精度
+浮点数值
+DOUBLE    8 字节  (-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308) 双精度
+浮点数值
+DECIMAL   对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2 依赖于M和D的值 依赖于M和D的值 小数值
+
+
+  (2)日期/时间类型--必须加引号( 日期列插入 now()  表示当前时间 )
+    DATE   日期类型，例如2018-09-04
+    TIME   时间类型，例如14:50:30
+    DATETIME  日期时间类型，例如：2018-09-04 14:50:30
+    存储时间，存储的是距离1970年1月1日的毫秒数。
+
+类型  大小(字节)    范围              格式         用途
+DATE   3   1000-01-01/9999-12-31           YYYY-MM-DD      日期值
+TIME   3   '-838:59:59'/'838:59:59'         HH:MM:SS       时间值或持续时间
+YEAR   1   1901/2155                 YYYY         年份值
+DATETIME 8   1000-01-01 00:00:00/9999-12-31 23:59:59  YYYY-MM-DD HH:MM:SS  混合日期和时间值
+TIMESTAMP 4
+1970-01-01 00:00:00/2038
+
+结束时间是第 2147483647 秒，北京时间 2038-1-19 11:14:07，格林尼治时间 2038年1月19日 凌晨 03:14:07
+
+YYYYMMDD HHMMSS 混合日期和时间值，时间戳
+  (3)字符串类型-----必须加引号
+    VARCHAR(M)  Variable Character 变长字符串，查询速度相对较慢，不存在空间浪费，M长度最多存储65535
+    CHAR(M)   定长字符串，如手机号，身份证号等，查询速度较快，可能存在空间浪费，M最多存储255
+    TEXT(M)   大型变长字符串，M最多存储2G
+    注：
+      VARCHAR(M)中字符串长度小于指定长度M时，字符串后只补一个空格\0
+      CHAR(M)中字符串长度小于指定长度M时，字符串后补多个空格\0直至长度和指定长度相同
+练习：创建一个脚本文件02_xz.sql,设置编码UTF8，创建数据库xz，在其中创建表laptop，
+    包含lid,title,price,stockCount,shelfTime,isIndex，插入4条。
+练习：使用恰当的列类型
+    创建脚本文件03_tedu.sql,设置UTF8，创建数据库tedu，创建部门信息表dept，包含did,dname,empCount,
+    10号部门，3人
+    20号部门，2人
+    30号部门，2人
+    创建员工表emp，包含eid,ename,sex,phone,birthday,salary,deptid
+3. 约束(constraint)
+  MySQL可以对插入表中的数据进行特定的验证，只有满足条件的数据才允许进入数据库
+  约束可以在CREATE TABLE(建立表时)或ALTER TABLE(表建立后)添加或修改
+  约束定义在单列(列级约束), 可以约束当前列的数据;多列约束必须定义表级约束,相关的列在括号中指定,用逗号分隔
+  如果没有为约束提供一个名字,那么ORACLE会分配一个系统生成的唯一名字,以SYS_开头,
+  可以使用关键字CONSTRAINTS后面跟随相关的约束名字来为约束指定名字.
+  (1)主键约束 PRIMARY KEY
+    主键约束相当于 唯一约束 + 非空约束 的组合，主键约束列不允许重复，也不允许出现空值
+    每个表最多只允许一个主键，建立主键约束可以在列级别创建，也可以在表级别创建。
+    当创建主键的约束时，系统默认会在所在的列和列组合上建立对应的唯一索引。
+    使用主键约束会加快查找速度。
+    约束定义存储在数据字典中,查询USER_CONSTRAINTS可以获得相关信息.
+    A. 建表时约束:
+      A. 列级
+        CREATE TABLE users(
+          uid INT(10) PRIMARY KEY,
+          ...
+        );
+      B. 表级
+        CREATE TABLE users(
+          uid INT(10),
+          ...,
+          CONSTRAINT users_id_pk PRIMARY KEY(id)
+        );
+      C. 复合主键
+        CREATE TABLE users(
+          uid INT(10),
+          uname VARCHAR(16),
+          ...,
+          CONSTRAINT xxx PRIMARY KEY(uid,uname)
+        );
+    B. 建表后约束:
+      ALTER TABLE 表名 ADD CONSTRAINT 约束名称 增加的约束类型 (列名)
+      ALTER TABLE users ADD CONSTRAINT xxx PRIMARY KEY (id)
+    C. 修改列为主键
+      ALTER TABLE users MODIFY uname VARCHAR(32) PRIMARY KEY;
+  (2)唯一约束 UNIQUE
+    声明了唯一约束的列不能插入重复的值，但是允许插入一个或多个NULL。可在多行插入UNIQUE。
+    创建唯一约束时，如果不定义约束名称，就默认和列名相同。
+    A. 建表时约束:
+      A. 列级
+        CREATE TABLE users(
+          uid INT(10) PRIMARY KEY,
+          uname VARCHAR(32) NOT NULL UNIQUE,
+          ...
+        );
+      B. 表级
+        CREATE TABLE users(
+          uid INT(10),
+          uname VARCHAR(32) NOT NULL,
+          ...,
+          CONSTRAINT users_uname-uq UNIQUE(id)
+        );
+      C. 复合
+        CREATE TABLE users(
+          uid INT(10),
+          uname VARCHAR(32),
+          email VARCHAR(64),
+          ...,
+          //另一条数据的UNAME和EMAIL都重复则报错,一项重复不报错
+          CONSTRAINT xxx UNIQUE(uname,email)
+        );
+    B. 建表后约束:
+      ALTER TABLE 表格名称 ADD CONSTRAINT 约束名称 增加的约束类型 (列名)
+      ALTER TABLE users ADD CONSTRAINT xxx UNIQUE (id)
+  (3)非空约束 NOT NULL
+    禁止插入NULL，必须给定具体的数据,如果定义了NOT NULL的列没有插入数据，则会报错
+    如果插入的值是null，不会报错，字符串保存的值变成空的，数值型保存的值变成0。
+    非空约束只能定义列级，不能定义表级
+  (4)默认值约束 DEFAULT
+    可以使用DEFAULT关键字为类声明默认值，两种方法使用：
+    在定义类后写 DEFAULT 值，然后在插入中写DEFAULT则使用默认值。
+    ① INSERT INTO user VALUES(1,'Tom',DEFAULT); #DEFAULT为默认值
+    ② INSERT INTO user(uid,uname) VALUES(1,'Tom'); #最后一栏不写也是默认值
+  (5)检查约束 CHECK
+    检查约束对要插入的数据进行检验
+    CREATE TABLE student(
+      score TINYINT CHECK(score&gt;=0 AND score&lt;=100)
+    );
+    MySQL不支持检查约束CHECK，它认为会降低数据的插入速度。
+  (6)外键约束 FOREIGN KEY
+    声明了外键约束的列，取值必须在另一个表的主键列上出现过。
+    外部键列和引用键(reference key)列可以位于相同的表中(自引用完整性约束)
+    FOREIGN KEY约束还有两个关键字：
+      ON DELETE CASCADE --当删除所引用的父表记录时,删除子表中相关的记录
+      ON DELETE SET NULL--与上面不同的是删除时,转换子表中相关记录为NULL值
+      默认情况下,如果没有指定以上两个中任一,则父表中被引用的记录将不能被删除.
+    FOREIGN KEY(本表的列) REFERENCES 之前的表(表中的列)
+    A. 创建表时约束
+      CREATE TABLE posts(
+        uid INT(10) REFERENCES users(uid) ON DELETE SET NULL, //列级
+        newsid INT(10)
+        ...,
+        posts_id INT(10),
+        FOREIGN KEY(uid) REFERENCES users(uid) ON DELETE CASCADE//表级,不指定约束名称,系统默认命名posts_uidfk_n(n为整数)
+        FOREIGN KEY(posts_id) REFERENCES posts(newsid) //自引用、自关联（递归表、树状表）
+      );
+      多列外键组合，必须用表级别约束语法
+      CONSTRAINT fk_uid_uname FOREIGN KEY(uid, uname) REFERENCES CLASSES(uid, uname)
+    B. 建表后约束
+      ALTER TABLE EMP ADD CONSTRAINT users_uid_fk FOREIGN KEY (did) REFERENCES users (id)
+  (7) 约束命令
+    添加约束
+      ALTER TABLE posts ADD CONSTRAINT users_uid_fk FOREIGN KEY(uid) REFERENCES users(uid);
+    删除约束
+      ALTER TABLE posts DROP CONSTRAINT users_uid_fk;
+      ALTER TABLE users DROP PRIMARY KEY CASCADE; //由于departments被employees.department_id引用了
+    删除NOT NULL约束,用ALTER TABLE MODIFY子句来删除
+      ALTER TABLE users MODIFY email NULL;
+    删除外键约束
+      ALTER TABLE TEMP DROP INDEX email;
+      alter table student drop foreign key fk_uid_uname;
+    关闭约束
+      ALTER TABLE users DISABLE CONSTRAINT users_uid_pk CASCADE;   //如果没有被引用则不需CASCADE关键字
+    打开约束
+      ALTER TABLE users ENABLE CONSTRAINT users_uid_pk; //注意,打开一个先前关闭的被引用的主键约束,并不能自动打开相关的外部键约束
+
+    可以从约束合集视图中查询约束的信息
+    SELECT constraint_name,constraint_type,search_condition
+      FROM user_constraints WHERE   table_name='users';
+
+    约束类型
+    C--CHECK和NOT NULL都算为C TYPE
+    P--PRIMARY KEY
+    R--REFERENTIAL INTEGRITY就是外部键约束
+    U--UNIQUE
+4. 注释(comment)
+  CREATE TABLE users(
+    uid INT NOT NULL DEFAULT 0 COMMENT '用户ID', //列的注释
+    ...
+  )COMMENT='用户表'; //表的注释
+  建表后添加注释
+    ALTER TABLE TEST CHANGE COLUMN ID ID INT NOT NULL DEFAULT 0 COMMENT '用户编号'
+  修改表的注释修改表的注释
+    ALTER TABLE users COMMENT '修改后的表的注释';
+  修改列的注释
+    ALTER TABLE users MODIFY COLUMN uid INT COMMENT '用户编号';
+  查看表的注释
+    SHOW CREATE TABLE users;
+  查看列的注释
+    SHOW FULL COLUMNS FROM users;
+4. 正则表达式
+  查找name是以'st'为开头的所有数据：
+  SELECT name FROM person_tbl WHERE name REGEXP '^st';
+
+5. 运算符
+  (1)算术运算符
+      +    加法
+      -    减法
+      *    乘法
+      /    除法 10 / 4 == 2.5
+      DIV   商值，10 DIV 4 ==2
+      %    或 MOD 取余
+  (2)比较运算符(返回 1， 0，或 NULL)
+      =           等于
+      &lt;&gt;, !=        不等于
+      &gt;           大于
+      &lt;           小于
+      &lt;=          小于
+      &gt;=          大于等于
+      BETWEEN...AND...   在两值之间 &gt;=min&amp;&amp;&lt;=max
+      NOT BETWEEN...AND... 不在两值之间
+      IN          在集合中 select 5 in (1,2,3,4,5);
+      NOT IN        不在集合中 select 5 not in (1,2,3,4,5);
+      &lt;=&gt;          严格比较两个NULL值是否相等 两个操作码均为NULL时，其所得值为1；而当一个操作码为NULL时，其所得值为0
+      LIKE         模糊匹配
+      REGEXP或RLIKE     正则式匹配
+      IS NULL        为空
+      IS NOT NULL      不为空
+  (3)逻辑运算符
+      NOT 或 !   非
+      AND      与
+      OR      或
+-------------------------------------------------------------------------------
+
+1. 标准SQL语句的分类
+  (1)DDL：Data Define Language 定义数据语言
+     CREATE/DROP/ALTER(修改)/TRUNCATE(删除内容、释放空间但不删除定义)
+  (2)DML：Data Manipulate Language 操作数据语言
+     INSERT/DELETE/UPDATE
+  (3)DQL：Data Quary Language  查询数据语言
+     SELECT
+  (4)DCL：Data Control Language 控制数据语言
+     GRANT(授权、管理数据库)，REVOKE(收权)
+
+2. 扩展知识：MySQL中的自增列
+  AUTO_INCREMENT 只能用于整型列的主键上
+  作用：在原来的最大值基础上+1，允许手动赋值，如果设置NULL就会自增。
+
+练习：创03_tedu.sql，创库03_tedu,
+    创表dept(did,dname)
+    10  研发部
+    20 测试部
+    30 运营部
+    40 市场部
+    创表emp(eid,ename,sex,phone,birthday,salary,deptId)
+    插入15条数据，有一个员工部门为NULL，其中市场部没有员工
+3. 简单查询
+  (1)查询所有的列：SELECT * FROM emp;
+  (2)查询特定的列：
+     查询所有员工的编号的姓名：SELECT eid,ename FROM emp;
+     查询所有员工的姓名，性别，工资，生日：SELECT ename,sex,salary,birthday FROM emp;
+  (3)给列取别名：(AS可省略，引号可省略，但乱码时要set charset gbk;)
+     查询员工的姓名，工资，列名称使用汉字：SELECT ename AS '姓名', salary AS '工资' FROM emp;
+     查询所有员工的编号，姓名，性别，生日，全部使用中文别名：
+     SELECT eid '编号',ename '姓名',sex '性别',birthday '生日' FROM emp;
+     SELECT eid 编号,ename 姓名,sex 性别,birthday 生日 FROM emp;
+  (4)只显示不同的记录(合并相同的记录)
+     查询哪些部门下有员工(员工都在哪些部门)？
+     SELECT DISTINCT deptId FROM emp;
+     查询公司都有哪些性别的员工？
+     SELECT DISTINCT sex FROM emp;
+  (5)在查询时执行计算
+     计算3*4/5+2
+     SELECT 3*4/5+2 AS 结果;
+     查询出所有员工的姓名和年薪
+     SELECT ename 姓名, salary*12 年薪 FROM emp;
+     假设每个员工工资增加500，年终奖是5000，查询所有员工的姓名和年薪是多少。
+     SELECT ename 姓名, (salary+500)*12+5000 年薪 FROM emp;
+  (6)查询结果集的排序(ORDER BY 后不写ASC/DESC的话，默认为ASC升序)
+     查询出所有的部门信息，结果按照部门编号排序
+     SELECT * FROM dept ORDER BY did ASC; #ASC：Ascendent 升序排列
+     SELECT * FROM dept ORDER BY did DESC; #DESC：Descendent 降序排列
+     查询所有的员工，结果按照工资由低到高排序；
+     SELECT * FROM emp ORDER BY salary;
+     查询所有的员工，按照年龄排序从小到大；
+     SELECT * FROM emp ORDER BY birthday DESC;
+     查询所有的员工，按照姓名升序排列；
+     SELECT * FROM emp ORDER BY ename ASC;
+     按工资升序排，工资相同则按照姓名升序排。
+     SELECT * FROM emp ORDER BY salary ASC,sex ASC,ename DESC;
+     按生日升序，相同则按工资降序；
+     SELECT * FROM emp ORDER BY birthday ASC,salary DESC;
+  (7)条件查询
+     查询出编号为5的员工的所有信息
+      SELECT * FROM emp WHERE eid=5;
+     查询出姓名为KING的员工的编号，工资，生日
+      SELECT eid,salary,birthday FROM emp WHERE ename='KING';
+     查询出所有的男员工信息
+      SELECT * FROM emp WHERE sex=1;
+     查询出工资大于等于5000的员工信息；
+      SELECT * FROM emp WHERE salary&gt;=5000;
+     查询出19910101之后出生的员工信息
+      SELECT * FROM emp WHERE birthday&gt;=19910101;#也可写'1991-1-1','1991-01-01'，有杠需有引号
+     查询出不在10号部门的员工信息
+      SELECT * FROM emp WHERE deptId!=10;
+     查询出暂时没有部门的员工信息；
+      SELECT * FROM emp WHERE deptId IS NULL;#查询null只能用is不能用=
+     查询出有明确部门的员工信息；
+      SELECT * FROM emp WHERE deptId IS NOT NULL;
+     查询出工资大于6000的女员工的信息；
+      SELECT * FROM emp WHERE salary&gt;6000 AND sex=0;
+     查询出工资在5000~5999之间的员工信息；
+      SELECT * FROM emp WHERE salary&gt;=5000 AND salary&lt;=5999;
+      SELECT * FROM emp WHERE salary BETWEEN 5000 AND 5999;#BETWEEN...AND...用于两者之间的条件
+     查询出工资小于4000和大于8000的员工信息;
+      SELECT * FROM emp WHERE salary&lt;=4000 OR salary&gt;=8000;
+      SELECT * FROM emp WHERE salary NOT BETWEEN 4000 AND 8000;
+     查询出在1991年出生的员工信息;
+      SELECT * FROM emp WHERE birthday&gt;=19910101 AND birthday&lt;=19911231;
+      SELECT * FROM emp WHERE birthday BETWEEN 19910101 AND 19911231;
+     查询出在1990年之前和1993年之后出生的员工信息;
+      SELECT * FROM emp WHERE birthday&lt;19900101 OR birthday&gt;19931231;
+      SELECT * FROM emp WHERE birthday NOT BETWEEN 19900101 AND 19931231;
+     查询出在10号和30号部门的员工信息;
+      SELECT * FROM emp WHERE deptId=10 OR deptId=30;
+      SELECT * FROM emp WHERE deptId IN(10,30);#IN(条件1，条件2...)满足任一条件即选出
+     查询出在10,30,50,80号部门的员工信息;
+      SELECT * FROM emp WHERE deptId=10 OR deptId=30 OR deptId=50 OR deptId=80;
+      SELECT * FROM emp WHERE deptId IN(10,30,50,80);
+     查询出不在10和30号部门的员工信息;
+      SELECT * FROM emp WHERE deptId!=10 AND deptId!=30 OR deptId IS NULL;
+      SELECT * FROM emp WHERE deptId NOT IN(10,30) OR deptId IS NULL;
+    删除工资在5000~10000之间的员工信息；
+      DELETE FROM emp WHERE salary BETWEEN 5000 AND 10000;
+  (8)模糊查询(LIKE) %代表任意字符
+     查询出姓名中包含字母E的员工信息；
+      SELECT * FROM emp WHERE ename LIKE '%e%';# %在前后表示前后都还有字符
+     查询出姓名以E结尾的员工信息；
+      SELECT * FROM emp WHERE ename LIKE '%e';#后面无%表示后面没有字符
+     查询出姓名中倒数第二个字符是E的员工信息；
+      SELECT * FROM emp WHERE ename LIKE '%e_'; #_一个字符；__两个；___三个...
+  (9)分页查询----LIMIT
+     分页显示：查询结果集中有太多的记录行，一次显示不完，可以分页显示，
+     不同的数据库有不同的分页查询方式，MySQL分页查询最简单。
+     语法：limit后的两个数不能加引号
+      SELECT * FROM emp LIMIT START,count;
+      #START：是一个数字，表示从结果集中的哪一行开始读取。
+      #COUNT：是一个数字，表示读取的最多行数。
+      假设每一页最多显示4条记录：
+        SELECT * FROM emp LIMIT 0,4; #第一页
+        SELECT * FROM emp LIMIT 4,4; #第二页
+        SELECT * FROM emp LIMIT 8,4; #第三页
+        ...
+      假设每一页最多显示5条记录：
+        SELECT * FROM emp LIMIT 0,5; #第一页
+        SELECT * FROM emp LIMIT 5,5; #第二页
+        SELECT * FROM emp LIMIT 10,5; #第三页
+        ...
+      练习：查询工资最低的5个员工
+        SELECT * FROM emp ORDER BY salary asc LIMIT 0,5;
+      练习：查询男员工中工资最高的五个人
+        SELECT * FROM emp WHERE sex=1 ORDER BY salary DESC LIMIT 0,5;
+综合语法：SELECT ... FROM tableName WHERE ... ORDER BY ... LIMIT...;
+          SELECT ... FROM ... WHERE ... GROUP BY ... ORDER BY ... LIMIT ...;
+
+4. 复杂查询----聚合查询/分组查询
+  函数：功能体，接收若干个数据，返回特定的计算结果。
+  (1)聚合函数：COUNT(...); sum(...); avg(...); MAX(...); MIN(...);
+  示例：查询出所有员工的数量
+    SELECT COUNT(eid) FROM emp;
+    SELECT COUNT(deptId) FROM emp;#deptId有一行为null，查不到null的行数
+    SELECT COUNT(*) FROM emp; #推荐使用
+  男员工数量：SELECT COUNT(sex) FROM emp WHERE SEX=1;
+  女员工数量：SELECT COUNT(sex) FROM emp WHERE SEX=0;
+  查询出所有员工的工资总和：
+    SELECT SUM(salary) FROM emp;
+  查询出所有员工的平均工资：
+    SELECT SUM(salary)/COUNT(*) FROM emp;
+    SELECT AVG(salary) FROM emp;
+  查询出工资最高/最低的员工：
+    SELECT MAX(salary) FROM emp;
+    SELECT MIN(salary) FROM emp;
+  查询年龄最大/最小的员工：
+    SELECT MIN(birthday) FROM emp;
+    SELECT MAX(birthday) FROM emp;
+  (2)分组查询：GROUP BY ... 只能查询分组的条件和聚合函数。
+  查询出每个部门的员工数量是多少：
+    SELECT deptId,COUNT(*),SUM(salary) FROM emp GROUP BY deptId;
+  查询出男女员工的平均工资/最高工资/最低工资：
+    SELECT sex '性别',SUM(salary) '工资总和',AVG(salary)'平均工资',
+      Max(salary)'最高工资',MIN(salary) '最低工资' FROM emp GROUP BY sex;
+  year(rowName) 获取rowName日期中的年份
+  month(rowName) 获取rowName日期中的月份
+  day(rowName) 获取rowName日期中的天
+  查询出1991年出生的员工：
+  SELECT * FROM emp where YEAR(birthday)=1991;
+  查询出3月份出生的员工：
+  SELECT * FROM emp where MONTH(birthday)=3;
+  查询出每个月5号生日的员工：
+  SELECT * FROM emp where DAY(birthday)=5;
+
+  (3)子查询---一个SQL语句的结果作为另一个SQL语句的查询条件。
+  查询出研发部中的所有员工的信息
+    步骤1：查询出研发部的部门编号：
+      SELECT did FROM dept WHERE dname='研发部';
+    步骤2：查询出员工表中，部门编号为10的员工
+      SELECT * FROM emp WHERE deptId=10;
+    综合：
+      SELECT * FROM emp WHERE deptId=(SELECT did FROM dept WHERE dname='研发部');
+    练习：查询出工资比Tom高的所有员工信息：
+      SELECT * FROM emp WHERE salary&gt;(SELECT salary FROM emp WHERE ename='Tom');
+    练习：查询出与Tom同一年出生的员工信息：
+      SELECT * FROM emp WHERE year(birthday)=(SELECT year(birthday) FROM emp WHERE ename='Tom');
+  (4)多表查询
+    查询出所有员工的姓名及其部门名称
+      SELECT ename,dname FROM emp,dept; #产生笛卡尔积错误
+    多表查询如何避免笛卡尔积，为查询添加条件
+      SELECT ename,dname FROM emp,dept WHERE deptId=did;
+    /*上述的语法是SQL-92中的多表查询语法，无法查询出没有部门的员工，
+      也无法查询出没有员工的部门,SQL-99中提出了新的多表查询方法
+    */
+    ①内连接 INNER JOIN tableName ON 条件----和SQL-92的结果一致，不完整。
+      SELECT ename,dname FROM emp INNER JOIN dept ON deptId=did;
+    ②左外链接 LEFT OUTER JOIN tableName ON 条件
+      #查询结果是左侧所有的记录都显示
+      SELECT ename,dname FROM emp LEFT OUTER JOIN dept ON deptId=did;
+      #OUTER可省略
+      SELECT ename,dname FROM emp LEFT JOIN dept ON deptId=did;
+    ③右外链接 RIGHT OUTER JOIN tableName ON 条件
+      #查询结果是右侧所有的记录都显示，OUTER可省略
+      SELECT ename,dname FROM emp RIGHT JOIN dept ON deptId=did;
+    ④全连接 FULL JOIN
+    #查询结果是显示左侧和右侧所有的记录，MySQL不支持。
+     MySQL的全连接形式：UNION/UNION ALL
+    #两个查询结果集中合并相同记录  UNION
+    SELECT ename,dname FROM emp LEFT OUTER JOIN dept ON deptId=did
+    UNION
+    SELECT ename,dname FROM emp RIGHT JOIN dept ON deptId=did;
+
+    #两个查询结果集中不合并相同记录  UNION ALL
+    SELECT ename,dname FROM emp LEFT OUTER JOIN dept ON deptId=did
+    UNION ALL
+    SELECT ename,dname FROM emp RIGHT JOIN dept ON deptId=did;
+
+课后任务：
+  (1)复习今天内容，把代码删除只保留注释，重新书写SQL语句。
+  (2)创建学子商城数据库
+  (3)预习复杂查询
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br><span class="line-number">569</span><br><span class="line-number">570</span><br><span class="line-number">571</span><br><span class="line-number">572</span><br><span class="line-number">573</span><br><span class="line-number">574</span><br><span class="line-number">575</span><br><span class="line-number">576</span><br><span class="line-number">577</span><br><span class="line-number">578</span><br><span class="line-number">579</span><br><span class="line-number">580</span><br><span class="line-number">581</span><br><span class="line-number">582</span><br><span class="line-number">583</span><br><span class="line-number">584</span><br><span class="line-number">585</span><br><span class="line-number">586</span><br><span class="line-number">587</span><br><span class="line-number">588</span><br><span class="line-number">589</span><br><span class="line-number">590</span><br><span class="line-number">591</span><br><span class="line-number">592</span><br><span class="line-number">593</span><br><span class="line-number">594</span><br><span class="line-number">595</span><br><span class="line-number">596</span><br><span class="line-number">597</span><br><span class="line-number">598</span><br><span class="line-number">599</span><br><span class="line-number">600</span><br><span class="line-number">601</span><br><span class="line-number">602</span><br><span class="line-number">603</span><br><span class="line-number">604</span><br><span class="line-number">605</span><br><span class="line-number">606</span><br><span class="line-number">607</span><br><span class="line-number">608</span><br><span class="line-number">609</span><br><span class="line-number">610</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/_backEnd/_database.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.11f8e218.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/146.0f2cb743.js" defer></script>
+  </body>
+</html>

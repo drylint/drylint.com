@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sass中的运算操作符 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.11f8e218.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/24.c56e6f99.js" as="script"><link rel="prefetch" href="/assets/js/10.2bb1fe05.js"><link rel="prefetch" href="/assets/js/100.fe98bc44.js"><link rel="prefetch" href="/assets/js/101.77935927.js"><link rel="prefetch" href="/assets/js/102.6dd57db7.js"><link rel="prefetch" href="/assets/js/103.8c6a454c.js"><link rel="prefetch" href="/assets/js/104.43c82f89.js"><link rel="prefetch" href="/assets/js/105.08b8e1be.js"><link rel="prefetch" href="/assets/js/106.54be75d3.js"><link rel="prefetch" href="/assets/js/107.2af1bf29.js"><link rel="prefetch" href="/assets/js/108.0fcd494c.js"><link rel="prefetch" href="/assets/js/109.2b4adcff.js"><link rel="prefetch" href="/assets/js/11.a771880c.js"><link rel="prefetch" href="/assets/js/110.46865503.js"><link rel="prefetch" href="/assets/js/111.bada80a8.js"><link rel="prefetch" href="/assets/js/112.2b2b6c60.js"><link rel="prefetch" href="/assets/js/113.ffed6330.js"><link rel="prefetch" href="/assets/js/114.1041abac.js"><link rel="prefetch" href="/assets/js/115.9b54f0d3.js"><link rel="prefetch" href="/assets/js/116.cd915184.js"><link rel="prefetch" href="/assets/js/117.f532de20.js"><link rel="prefetch" href="/assets/js/118.d67ec6c1.js"><link rel="prefetch" href="/assets/js/119.f7883ba1.js"><link rel="prefetch" href="/assets/js/12.ce2c26a4.js"><link rel="prefetch" href="/assets/js/120.2825397b.js"><link rel="prefetch" href="/assets/js/121.329db677.js"><link rel="prefetch" href="/assets/js/122.22b31bd3.js"><link rel="prefetch" href="/assets/js/123.54124385.js"><link rel="prefetch" href="/assets/js/124.da0e74ab.js"><link rel="prefetch" href="/assets/js/125.71810425.js"><link rel="prefetch" href="/assets/js/126.ac2bb29e.js"><link rel="prefetch" href="/assets/js/127.7dfd9180.js"><link rel="prefetch" href="/assets/js/128.74093077.js"><link rel="prefetch" href="/assets/js/129.762bb4c0.js"><link rel="prefetch" href="/assets/js/13.9c87e937.js"><link rel="prefetch" href="/assets/js/130.06e74142.js"><link rel="prefetch" href="/assets/js/131.edc89c02.js"><link rel="prefetch" href="/assets/js/132.3654b387.js"><link rel="prefetch" href="/assets/js/133.580fc16e.js"><link rel="prefetch" href="/assets/js/134.4194ed9c.js"><link rel="prefetch" href="/assets/js/135.1241b083.js"><link rel="prefetch" href="/assets/js/136.181bb7cb.js"><link rel="prefetch" href="/assets/js/137.9d65d8a9.js"><link rel="prefetch" href="/assets/js/138.ab78d744.js"><link rel="prefetch" href="/assets/js/139.a4c11f4d.js"><link rel="prefetch" href="/assets/js/14.33276526.js"><link rel="prefetch" href="/assets/js/140.e4e88bb7.js"><link rel="prefetch" href="/assets/js/141.844de3e6.js"><link rel="prefetch" href="/assets/js/142.c13323e5.js"><link rel="prefetch" href="/assets/js/143.708943ed.js"><link rel="prefetch" href="/assets/js/144.c5b3e16a.js"><link rel="prefetch" href="/assets/js/145.fbbd1721.js"><link rel="prefetch" href="/assets/js/146.0f2cb743.js"><link rel="prefetch" href="/assets/js/147.8809e00c.js"><link rel="prefetch" href="/assets/js/148.84fbe503.js"><link rel="prefetch" href="/assets/js/149.6c4eaec5.js"><link rel="prefetch" href="/assets/js/15.a0d47d4d.js"><link rel="prefetch" href="/assets/js/150.865e2e80.js"><link rel="prefetch" href="/assets/js/151.ebf5b22d.js"><link rel="prefetch" href="/assets/js/152.fce48051.js"><link rel="prefetch" href="/assets/js/153.07c0c82b.js"><link rel="prefetch" href="/assets/js/154.6c1c51bf.js"><link rel="prefetch" href="/assets/js/155.2bb83eb6.js"><link rel="prefetch" href="/assets/js/156.6a31e3fb.js"><link rel="prefetch" href="/assets/js/157.2f2f7d42.js"><link rel="prefetch" href="/assets/js/158.b73f8330.js"><link rel="prefetch" href="/assets/js/159.6b71c2df.js"><link rel="prefetch" href="/assets/js/16.e8b12db9.js"><link rel="prefetch" href="/assets/js/160.c8d54e1a.js"><link rel="prefetch" href="/assets/js/161.43da1a28.js"><link rel="prefetch" href="/assets/js/162.6fb42042.js"><link rel="prefetch" href="/assets/js/163.f9a48561.js"><link rel="prefetch" href="/assets/js/164.f3148a06.js"><link rel="prefetch" href="/assets/js/165.19c72ebd.js"><link rel="prefetch" href="/assets/js/166.bdd0b9b0.js"><link rel="prefetch" href="/assets/js/167.53be506d.js"><link rel="prefetch" href="/assets/js/168.01b1af37.js"><link rel="prefetch" href="/assets/js/169.29f14eea.js"><link rel="prefetch" href="/assets/js/17.7bd579f1.js"><link rel="prefetch" href="/assets/js/170.23099a16.js"><link rel="prefetch" href="/assets/js/171.e2ac169d.js"><link rel="prefetch" href="/assets/js/172.2b8a42e0.js"><link rel="prefetch" href="/assets/js/173.163f5e5d.js"><link rel="prefetch" href="/assets/js/174.d4d1436e.js"><link rel="prefetch" href="/assets/js/175.84dbdb7c.js"><link rel="prefetch" href="/assets/js/176.ac1982e0.js"><link rel="prefetch" href="/assets/js/177.df52d16f.js"><link rel="prefetch" href="/assets/js/178.65e3c499.js"><link rel="prefetch" href="/assets/js/179.ff0ed662.js"><link rel="prefetch" href="/assets/js/18.bdfc32d3.js"><link rel="prefetch" href="/assets/js/180.d70866a9.js"><link rel="prefetch" href="/assets/js/181.dcb32231.js"><link rel="prefetch" href="/assets/js/182.3de78dbe.js"><link rel="prefetch" href="/assets/js/183.3466572e.js"><link rel="prefetch" href="/assets/js/184.2cdaeecb.js"><link rel="prefetch" href="/assets/js/185.3e916fba.js"><link rel="prefetch" href="/assets/js/186.96c048cf.js"><link rel="prefetch" href="/assets/js/187.d71be9b6.js"><link rel="prefetch" href="/assets/js/188.d2e39b82.js"><link rel="prefetch" href="/assets/js/189.13b07b30.js"><link rel="prefetch" href="/assets/js/19.3ff13ace.js"><link rel="prefetch" href="/assets/js/190.204790b4.js"><link rel="prefetch" href="/assets/js/191.327f3a6b.js"><link rel="prefetch" href="/assets/js/192.c8f9b3df.js"><link rel="prefetch" href="/assets/js/193.b5fa1f2a.js"><link rel="prefetch" href="/assets/js/194.5681f2c5.js"><link rel="prefetch" href="/assets/js/195.a35b9612.js"><link rel="prefetch" href="/assets/js/196.fd9df5f2.js"><link rel="prefetch" href="/assets/js/197.1baa330c.js"><link rel="prefetch" href="/assets/js/198.4483fc9d.js"><link rel="prefetch" href="/assets/js/20.9dd375e6.js"><link rel="prefetch" href="/assets/js/21.f73a4bcf.js"><link rel="prefetch" href="/assets/js/22.e6e597d1.js"><link rel="prefetch" href="/assets/js/23.cbfa90f3.js"><link rel="prefetch" href="/assets/js/25.a504ea01.js"><link rel="prefetch" href="/assets/js/26.102397a2.js"><link rel="prefetch" href="/assets/js/27.65fdddf8.js"><link rel="prefetch" href="/assets/js/28.eb9012ca.js"><link rel="prefetch" href="/assets/js/29.43821e0c.js"><link rel="prefetch" href="/assets/js/3.215993e0.js"><link rel="prefetch" href="/assets/js/30.132be143.js"><link rel="prefetch" href="/assets/js/31.65f1b445.js"><link rel="prefetch" href="/assets/js/32.8027dcae.js"><link rel="prefetch" href="/assets/js/33.e4f3c764.js"><link rel="prefetch" href="/assets/js/34.926d1d16.js"><link rel="prefetch" href="/assets/js/35.a941e909.js"><link rel="prefetch" href="/assets/js/36.9e6310c6.js"><link rel="prefetch" href="/assets/js/37.ce14298d.js"><link rel="prefetch" href="/assets/js/38.ba9e7814.js"><link rel="prefetch" href="/assets/js/39.628b2842.js"><link rel="prefetch" href="/assets/js/4.5d977487.js"><link rel="prefetch" href="/assets/js/40.80657342.js"><link rel="prefetch" href="/assets/js/41.3ec0f60f.js"><link rel="prefetch" href="/assets/js/42.545d3aac.js"><link rel="prefetch" href="/assets/js/43.131f52c4.js"><link rel="prefetch" href="/assets/js/44.25cacf62.js"><link rel="prefetch" href="/assets/js/45.11bb5717.js"><link rel="prefetch" href="/assets/js/46.aa4baf48.js"><link rel="prefetch" href="/assets/js/47.9eea7acf.js"><link rel="prefetch" href="/assets/js/48.b91b8da9.js"><link rel="prefetch" href="/assets/js/49.f379e925.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.07b77690.js"><link rel="prefetch" href="/assets/js/51.6ad0a6d1.js"><link rel="prefetch" href="/assets/js/52.b9ea8528.js"><link rel="prefetch" href="/assets/js/53.4322150c.js"><link rel="prefetch" href="/assets/js/54.84f62d9a.js"><link rel="prefetch" href="/assets/js/55.3abcdeab.js"><link rel="prefetch" href="/assets/js/56.ca8a19f4.js"><link rel="prefetch" href="/assets/js/57.ed3ea2d4.js"><link rel="prefetch" href="/assets/js/58.e0597216.js"><link rel="prefetch" href="/assets/js/59.ac9b4034.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.e80590ec.js"><link rel="prefetch" href="/assets/js/61.a7ac5518.js"><link rel="prefetch" href="/assets/js/62.2aa95404.js"><link rel="prefetch" href="/assets/js/63.f637d8a0.js"><link rel="prefetch" href="/assets/js/64.b10fa6f2.js"><link rel="prefetch" href="/assets/js/65.ff1398d0.js"><link rel="prefetch" href="/assets/js/66.5615f304.js"><link rel="prefetch" href="/assets/js/67.2e3ecb25.js"><link rel="prefetch" href="/assets/js/68.438568ca.js"><link rel="prefetch" href="/assets/js/69.6be90c78.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.35b686d6.js"><link rel="prefetch" href="/assets/js/71.a6748cf4.js"><link rel="prefetch" href="/assets/js/72.4a25eefc.js"><link rel="prefetch" href="/assets/js/73.201146fc.js"><link rel="prefetch" href="/assets/js/74.ff5f439b.js"><link rel="prefetch" href="/assets/js/75.7bbe3d4b.js"><link rel="prefetch" href="/assets/js/76.08f68d1d.js"><link rel="prefetch" href="/assets/js/77.5bbae1bf.js"><link rel="prefetch" href="/assets/js/78.1c81888e.js"><link rel="prefetch" href="/assets/js/79.1bc91acb.js"><link rel="prefetch" href="/assets/js/8.51cd3eac.js"><link rel="prefetch" href="/assets/js/80.2fe9172c.js"><link rel="prefetch" href="/assets/js/81.28d25c26.js"><link rel="prefetch" href="/assets/js/82.15251ed3.js"><link rel="prefetch" href="/assets/js/83.03bce4b6.js"><link rel="prefetch" href="/assets/js/84.6c59d203.js"><link rel="prefetch" href="/assets/js/85.9af07bfa.js"><link rel="prefetch" href="/assets/js/86.0c6c40b6.js"><link rel="prefetch" href="/assets/js/87.318f1561.js"><link rel="prefetch" href="/assets/js/88.73052f54.js"><link rel="prefetch" href="/assets/js/89.2191dff6.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.73fc5ddc.js"><link rel="prefetch" href="/assets/js/91.7648bbb4.js"><link rel="prefetch" href="/assets/js/92.c74b7da6.js"><link rel="prefetch" href="/assets/js/93.03500cdd.js"><link rel="prefetch" href="/assets/js/94.9810c2af.js"><link rel="prefetch" href="/assets/js/95.0c7a68a4.js"><link rel="prefetch" href="/assets/js/96.24173e0d.js"><link rel="prefetch" href="/assets/js/97.14caebc3.js"><link rel="prefetch" href="/assets/js/98.364ce6fe.js"><link rel="prefetch" href="/assets/js/99.d5e43505.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link router-link-active">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link router-link-active">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Sass-SCSS</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/CSS/Sass-SCSS/" aria-current="page" class="sidebar-link">说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/#相关资源" class="sidebar-link">相关资源</a></li></ul></li><li><a href="/CSS/Sass-SCSS/01_基本介绍.html" class="sidebar-link">Sass 基本介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#注释-comments" class="sidebar-link">注释（Comments）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#单行注释-single-line-comments" class="sidebar-link">单行注释（Single-line comments）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#多行注释-multi-line-comments" class="sidebar-link">多行注释（Multi-line comments）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#sassdoc" class="sidebar-link">SassDoc</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#特殊的函数-special-functions" class="sidebar-link">特殊的函数（Special Functions）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#url" class="sidebar-link">url()</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#calc-和-element" class="sidebar-link">calc() 和 element()</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#progid-和-expression-弃用" class="sidebar-link">progid:...() 和 expression() 弃用</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#min-和-max" class="sidebar-link">min() 和 max()</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#变量" class="sidebar-link">变量</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#默认值" class="sidebar-link">默认值</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#插值-interpolation" class="sidebar-link">插值（Interpolation）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#语句-at-rules" class="sidebar-link">@语句（At-Rules）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#mixin-and-include" class="sidebar-link">@mixin and @include</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/01_基本介绍.html#at-root" class="sidebar-link">@at-root</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/02_Sass调试.html" class="sidebar-link">Sass 调试</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#error" class="sidebar-link">@error</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#warn" class="sidebar-link">@warn</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/02_Sass调试.html#debug" class="sidebar-link">@debug</a></li></ul></li><li><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html" class="sidebar-link">Sass 中的数据类型（值类型）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#number" class="sidebar-link">Number</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#单位" class="sidebar-link">单位</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#精度-precision" class="sidebar-link">精度（Precision）</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#string" class="sidebar-link">String</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#转义-escapes" class="sidebar-link">转义（Escapes）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#带引号的-string" class="sidebar-link">带引号的 string</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#不带引号的字符串" class="sidebar-link">不带引号的字符串</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#字符串的索引" class="sidebar-link">字符串的索引</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#color" class="sidebar-link">Color</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#list" class="sidebar-link">List</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#索引" class="sidebar-link">索引</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#访问某个元素" class="sidebar-link">访问某个元素</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#遍历列表" class="sidebar-link">遍历列表</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#追加元素" class="sidebar-link">追加元素</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#查找元素的索引" class="sidebar-link">查找元素的索引</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#列表的不可变性-immutability" class="sidebar-link">列表的不可变性（Immutability）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#参数列表" class="sidebar-link">参数列表</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#map" class="sidebar-link">Map</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#访问-map-的值" class="sidebar-link">访问 map 的值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#遍历-map" class="sidebar-link">遍历 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#修改-map" class="sidebar-link">修改 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#合并-map" class="sidebar-link">合并 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#不可变性" class="sidebar-link">不可变性</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#function" class="sidebar-link">Function</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#boolean" class="sidebar-link">Boolean</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#使用布尔值" class="sidebar-link">使用布尔值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#truthy-和-falsy" class="sidebar-link">Truthy 和 Falsy</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html#null" class="sidebar-link">null</a></li></ul></li><li><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html" class="active sidebar-link">Sass中的运算操作符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#操作符优先级" class="sidebar-link">操作符优先级</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#相等运算符" class="sidebar-link">相等运算符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#比较运算符" class="sidebar-link">比较运算符</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#数学运算符" class="sidebar-link">数学运算符</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#用于字符串" class="sidebar-link">+, -, / 用于字符串</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#boolean-操作符" class="sidebar-link">Boolean 操作符</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/04_Sass中的运算操作符.html#truthy-和-falsy" class="sidebar-link">Truthy 和 Falsy</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html" class="sidebar-link">Sass中的流程控制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#if" class="sidebar-link">@if</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#for" class="sidebar-link">@for</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#each" class="sidebar-link">@each</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#遍历-map" class="sidebar-link">遍历 map</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#解构-list-中的-list" class="sidebar-link">解构 list 中的 list</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html#while" class="sidebar-link">@while</a></li></ul></li><li><a href="/CSS/Sass-SCSS/06_Sass中的函数.html" class="sidebar-link">Sass 中的函数 @function</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#默认参数" class="sidebar-link">默认参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#关键词参数" class="sidebar-link">关键词参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#接收任意参数" class="sidebar-link">接收任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#接收带关键词的任意参数" class="sidebar-link">接收带关键词的任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#传递任意参数" class="sidebar-link">传递任意参数</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/06_Sass中的函数.html#纯-css-函数" class="sidebar-link">纯 css 函数</a></li></ul></li><li><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html" class="sidebar-link">Sass中的样式规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#选择器" class="sidebar-link">选择器</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#父选择器-parent-selector" class="sidebar-link">父选择器 &amp; （Parent Selector）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#添加后缀" class="sidebar-link">添加后缀</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#in-sassscript" class="sidebar-link">In SassScript</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#占位符选择器-placeholder-selectors" class="sidebar-link">占位符选择器（Placeholder Selectors）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#样式属性" class="sidebar-link">样式属性</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/07_Sass中的样式规则.html#自定义属性-custom-properties" class="sidebar-link">自定义属性（Custom Properties）</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/08_Sass的样式继承.html" class="sidebar-link">Sass的样式继承 @extend</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_Sass的样式继承.html#仅用于被继承的占位选择器" class="sidebar-link">仅用于被继承的占位选择器</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_Sass的样式继承.html#可选继承" class="sidebar-link">可选继承</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_Sass的样式继承.html#extend-和-mixin" class="sidebar-link">@extend 和 @mixin</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/08_Sass的样式继承.html#extend-的限制" class="sidebar-link">@extend 的限制</a></li></ul></li><li><a href="/CSS/Sass-SCSS/09_Sass支持CSS的 @ 语句.html" class="sidebar-link">Sass支持CSS的 @ 语句</a></li><li><a href="/CSS/Sass-SCSS/10_Sass的模块化.html" class="sidebar-link">Sass的模块化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#use" class="sidebar-link">@use</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#使用成员" class="sidebar-link">使用成员</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#自定义命名空间名称" class="sidebar-link">自定义命名空间名称</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#去除命名空间" class="sidebar-link">去除命名空间</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#私有成员" class="sidebar-link">私有成员</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#引入时的配置" class="sidebar-link">引入时的配置</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#使用-mixin" class="sidebar-link">使用 mixin</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#查找模块" class="sidebar-link">查找模块</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#forward" class="sidebar-link">@forward</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#转发时添加前缀" class="sidebar-link">转发时添加前缀</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#控制成员可见性" class="sidebar-link">控制成员可见性</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#转发时配置模块的成员" class="sidebar-link">转发时配置模块的成员</a></li></ul></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#import" class="sidebar-link">@import</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#嵌套的-import" class="sidebar-link">嵌套的 @import</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#在-sass-中导入-css-并编译" class="sidebar-link">在 sass 中导入 css 并编译</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#纯-css-导入语句-不编译" class="sidebar-link">纯 css 导入语句（不编译）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#import-中使用插值" class="sidebar-link">@import 中使用插值</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#import-与模块" class="sidebar-link">@import 与模块</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#只供-import-使用的文件-import-only-files" class="sidebar-link">只供 @import 使用的文件（Import-Only Files）</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/10_Sass的模块化.html#使用-import-导入时配置模块成员" class="sidebar-link">使用 @import 导入时配置模块成员</a></li></ul></li></ul></li><li><a href="/CSS/Sass-SCSS/11_Sass编译方式及工程化使用.html" class="sidebar-link">Sass编译方式及工程化使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass编译方式及工程化使用.html#sass-命令行编译" class="sidebar-link">Sass 命令行编译</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass编译方式及工程化使用.html#基本编译命令" class="sidebar-link">基本编译命令</a></li><li class="sidebar-sub-header"><a href="/CSS/Sass-SCSS/11_Sass编译方式及工程化使用.html#命令行选项" class="sidebar-link">命令行选项</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="sass中的运算操作符"><a href="#sass中的运算操作符" class="header-anchor">#</a> Sass中的运算操作符</h1> <p></p><div class="table-of-contents"><ul><li><a href="#操作符优先级">操作符优先级</a></li><li><a href="#相等运算符">相等运算符</a><ul><li><a href="#比较运算符">比较运算符</a></li><li><a href="#数学运算符">数学运算符</a><ul><li><a href="#和-作为一元操作符使用">+ 和 -作为一元操作符使用</a></li><li><a href="#用于斜线分隔-slash-separated-values">/ 用于斜线分隔（Slash-Separated Values）</a></li><li><a href="#单位在运算中的处理">单位在运算中的处理</a></li></ul></li><li><a href="#用于字符串">+, -, / 用于字符串</a><ul><li><a href="#一元操作符">一元操作符</a></li></ul></li></ul></li><li><a href="#boolean-操作符">Boolean 操作符</a><ul><li><a href="#truthy-和-falsy">Truthy 和 Falsy</a></li></ul></li></ul></div><p></p> <p>Sass 支持的运算操作符：</p> <ul><li><code>==</code>, <code>!=</code> 判断两个值是否相等或不相等</li> <li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> 比较两个值的大小</li> <li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> 对数字来说它们就是正常的数学计算, 对于单位来说，有他们特殊的行为，和科学数学中单位的使用一致。</li> <li><code>and</code>, <code>or</code>, <code>not</code> 且、或、非操作符。</li> <li><code>+</code>, <code>-</code>, <code>/</code> 可以用于字符串拼接</li></ul> <p>在 Sass 的早期版本中，支持对颜色进行数学运算。两个颜色值相加时，会让他们的 RGB 各自相加生成一个新的颜色。</p> <p>这种行为并不是很有用，因为 RGB 各个通道各自运算的算法并不能很好地与人类感知颜色的方式相匹配。</p> <p>所以现在 Sass 添加了更有用的颜色相关的函数，而废弃了对颜色执行运算操作的支持。</p> <h2 id="操作符优先级"><a href="#操作符优先级" class="header-anchor">#</a> 操作符优先级</h2> <p>操作符的优先级从高到低依次为：</p> <ul><li>一元操作符 <code>not</code>, <code>+</code>, <code>-</code>, <code>/</code></li> <li><code>*</code>, <code>/</code>, <code>%</code></li> <li><code>+</code>, <code>-</code></li> <li><code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code></li> <li><code>==</code>, <code>!=</code></li> <li><code>and</code></li> <li><code>or</code></li> <li><code>=</code></li></ul> <p>所有的优先级都可以通过括号 <code>()</code> 来调整，括号内的表达式优先计算。</p> <p>Sass 还支持一个特殊的 <code>=</code> 操作符，该操作符只允许在函数参数中使用，它只创建一个不带引号的字符串，其两个操作数由 <code>=</code> 分隔。这是为了向后兼容非常老的ie语法而存在的。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token selector">.transparent-blue </span><span class="token punctuation">{</span>
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">chroma</span><span class="token punctuation">(</span>color = #00f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>编译后的 css ：</p> <div class="language-css line-numbers-mode"><pre class="language-css"><code><span class="token selector">.transparent-blue</span> <span class="token punctuation">{</span>
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">chroma</span><span class="token punctuation">(</span>color=#00f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="相等运算符"><a href="#相等运算符" class="header-anchor">#</a> 相等运算符</h2> <ul><li><p>Number 比较时，具有相同的值和相同的单位，或者当它们的单位在彼此之间转换时，它们的值是相等的，则返回 <code>true</code> 。</p></li> <li><p>String 比较的特殊之处在于，有引号和无引号的字符串如果字符内容相等，则返回 <code>true</code> 。</p></li> <li><p>Color 值比较时，只要 rgba 四个值都是相等的，则返回 <code>true</code> 。</p></li> <li><p>List 比较时，如果内容相等，则返回 <code>true</code> 。逗号分隔和空格分隔的列表不相等，括起来的列表不等于不括起来的列表。</p></li> <li><p>Map 比较时， 如果 key 和 value 都相等，则返回 <code>true</code> 。</p></li> <li><p><code>true</code>, <code>false</code>, <code>null</code> 只和他们自身的值相等。</p></li> <li><p>Function 比较时，因为是引用类型，所以是同一引用才相等，不同引用即使写成完全一样也不相等。</p></li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// Number 比较</span>
+<span class="token keyword">@debug</span> 1px <span class="token operator">==</span> 1px<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 1px <span class="token operator">!=</span> 1em<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 1 <span class="token operator">!=</span> 1px<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 96px <span class="token operator">==</span> 1in<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// String 比较</span>
+<span class="token keyword">@debug</span> <span class="token string">&quot;Helvetica&quot;</span> <span class="token operator">==</span> Helvetica<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token string">&quot;Helvetica&quot;</span> <span class="token operator">!=</span> <span class="token string">&quot;Arial&quot;</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Color 比较</span>
+<span class="token keyword">@debug</span> <span class="token function">hsl</span><span class="token punctuation">(</span>34<span class="token punctuation">,</span> 35%<span class="token punctuation">,</span> 92.1%<span class="token punctuation">)</span> <span class="token operator">==</span> #f2ece4<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token function">rgba</span><span class="token punctuation">(</span>179<span class="token punctuation">,</span> 115<span class="token punctuation">,</span> 153<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token function">rgba</span><span class="token punctuation">(</span>179<span class="token punctuation">,</span> 115<span class="token punctuation">,</span> 153<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// List 比较</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>5px 7px 10px<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span>5px 7px 10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>5px 7px 10px<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>10px 14px 20px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>5px 7px 10px<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token punctuation">(</span>5px<span class="token punctuation">,</span> 7px<span class="token punctuation">,</span> 10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>5px 7px 10px<span class="token punctuation">)</span> <span class="token operator">!=</span> [5px 7px 10px]<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Map 比较</span>
+<span class="token property"><span class="token variable">$theme</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">&quot;venus&quot;</span><span class="token punctuation">:</span> #998099<span class="token punctuation">,</span> <span class="token string">&quot;nebula&quot;</span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">@debug</span> <span class="token variable">$theme</span> <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token string">&quot;venus&quot;</span><span class="token punctuation">:</span> #998099<span class="token punctuation">,</span> <span class="token string">&quot;nebula&quot;</span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token variable">$theme</span> <span class="token operator">!=</span> <span class="token punctuation">(</span><span class="token string">&quot;venus&quot;</span><span class="token punctuation">:</span> #998099<span class="token punctuation">,</span> <span class="token string">&quot;iron&quot;</span><span class="token punctuation">:</span> #dadbdf<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Boolean 和 null</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">==</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">!=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token null keyword">null</span> <span class="token operator">!=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Function 比较</span>
+<span class="token keyword">@debug</span> <span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">&quot;rgba&quot;</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">&quot;rgba&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">&quot;rgba&quot;</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">&quot;hsla&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h3 id="比较运算符"><a href="#比较运算符" class="header-anchor">#</a> 比较运算符</h3> <p><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> 分别表示小于，小于等于，大于，大于等于。</p> <p>特殊的地方：</p> <ul><li>无单位的数字可以和有单位的比较</li> <li>不兼容的单位不能放在一起比较，会报错</li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> 100 <span class="token operator">&gt;</span> 50<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 10px <span class="token operator">&lt;</span> 17px<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 96px <span class="token operator">&gt;=</span> 1in<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 1000ms <span class="token operator">&lt;=</span> 1s<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// 无单位的数字可以和有单位的比较</span>
+<span class="token keyword">@debug</span> 100 <span class="token operator">&gt;</span> 50px<span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> 10px <span class="token operator">&lt;</span> 17<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// 不兼容的单位</span>
+<span class="token keyword">@debug</span> 100px <span class="token operator">&gt;</span> 10s<span class="token punctuation">;</span> <span class="token comment">// Error: Incompatible units px and s.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="数学运算符"><a href="#数学运算符" class="header-anchor">#</a> 数学运算符</h3> <p><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> 用于数学运算。</p> <p>特殊的地方：</p> <ul><li>不同单位的数字，只要单位是兼容的则可以放在一起做运算。</li> <li>有单位的和无单位的可以做运算。</li> <li>不兼容的单位不能放在一起做运算。</li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> 10s <span class="token operator">+</span> 15s<span class="token punctuation">;</span> <span class="token comment">// 25s</span>
+<span class="token keyword">@debug</span> 1in <span class="token operator">-</span> 10px<span class="token punctuation">;</span> <span class="token comment">// 0.8958333333in</span>
+<span class="token keyword">@debug</span> 5px <span class="token operator">*</span> 3px<span class="token punctuation">;</span> <span class="token comment">// 15px*px</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>12px/4px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+<span class="token keyword">@debug</span> 1in <span class="token operator">%</span> 9px<span class="token punctuation">;</span> <span class="token comment">// 0.0625in</span>
+
+<span class="token comment">// 有单位的和无单位的可以做运算</span>
+<span class="token keyword">@debug</span> 100px <span class="token operator">+</span> 50<span class="token punctuation">;</span> <span class="token comment">// 150px</span>
+<span class="token keyword">@debug</span> 4s <span class="token operator">*</span> 10<span class="token punctuation">;</span> <span class="token comment">// 40s</span>
+
+<span class="token comment">// 不兼容的单位不能放在一起做运算</span>
+<span class="token keyword">@debug</span> 100px <span class="token operator">+</span> 10s<span class="token punctuation">;</span> <span class="token comment">// Error: Incompatible units px and s.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h4 id="和-作为一元操作符使用"><a href="#和-作为一元操作符使用" class="header-anchor">#</a> <code>+</code> 和 <code>-</code>作为一元操作符使用</h4> <p>可以把 <code>+</code> 和 <code>-</code> 写成一元操作符，它们只接受一个值:</p> <p><code>+</code> 返回表达式的值，不做任何改变。</p> <p><code>-</code> 返回表达式的负值，正数变负数，负数变正数。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> +<span class="token punctuation">(</span>5s <span class="token operator">+</span> 7s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 12s</span>
+<span class="token keyword">@debug</span> <span class="token function">-</span><span class="token punctuation">(</span>50px <span class="token operator">+</span> 30px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -80px</span>
+<span class="token keyword">@debug</span> <span class="token function">-</span><span class="token punctuation">(</span>10px <span class="token operator">-</span> 15px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5px</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>注意，因为 <code>-</code> 号既可以表示减法，也可以表示一元负值操作符，所以如果负值操作符出现在用空格分隔的列表中时，很容易造成迷惑。</p> <p>比如 <code>10px -10px -20px -10px</code> 这个列表，其实是用空格分隔开的四个列表元素，分别是 <code>10px</code>,  <code>-10px</code>,  <code>-20px</code>,  <code>-10px</code> ，但这也很容易被迷惑地认成这是一个连续的减法表达式。</p> <p>所以为了保证安全区分减法和负值，应该做到：</p> <ul><li>做减法的时候，在 <code>-</code> 号的两边都写上空格。</li> <li>做负数或一元操作符时，只在 <code>-</code> 号前面写空格，后面不写空格。</li> <li>做一元否定出现在空格分隔的列表中时，使用括号包裹，比如 <code>10px (-10px) (-20px) (-10px)</code></li></ul> <p>在 Sass 中，<code>-</code> 出现时代表的含义按以下优先级从高到低排序：</p> <ul><li>出现在标识符中，它将被视为连字符，并作为标识符的一部分。唯一的例外是在单位中，Sass 通常允许使用任何有效的标识符作为标识符，但数字后面的单位中不能包含连字符。</li> <li>出现在一个表达式和数字之间，则被视为减法。</li> <li>出现在两个数字之间，则被视为减法。</li> <li>出现在一个字面量数字的前面，则被视为负数。</li> <li>出现在一个非字面量数字前面，视为一元操作符。</li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> a-1<span class="token punctuation">;</span> <span class="token comment">// a-1</span>
+<span class="token keyword">@debug</span> 5px-3px<span class="token punctuation">;</span> <span class="token comment">// 2px</span>
+<span class="token keyword">@debug</span> 5-3<span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token keyword">@debug</span> 1 -2 3<span class="token punctuation">;</span> <span class="token comment">// 1 -2 3</span>
+
+<span class="token property"><span class="token variable">$number</span></span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+
+<span class="token keyword">@debug</span> 1 -<span class="token variable">$number</span> 3<span class="token punctuation">;</span> <span class="token comment">// -1 3</span>
+<span class="token keyword">@debug</span> 1 <span class="token punctuation">(</span>-<span class="token variable">$number</span><span class="token punctuation">)</span> 3<span class="token punctuation">;</span> <span class="token comment">// 1 -2 3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="用于斜线分隔-slash-separated-values"><a href="#用于斜线分隔-slash-separated-values" class="header-anchor">#</a> <code>/</code> 用于斜线分隔（Slash-Separated Values）</h4> <p>CSS 有一些属性支持使用斜线 <code>/</code> 将一些值分隔开。这意味着 Sass 必须知道用户写的 <code>/</code> 是作为属性值分隔符还是作为除法。</p> <p>为了实现这个功能，如果两个数字用 <code>/</code> 隔开，Sass 会将其作为分隔符输出，而不是用于做除法运算。</p> <p>要将 <code>/</code> 作为除法运算，至少需要满足以下条件之一：</p> <ul><li>Either expression is anything other than a literal number.</li> <li>将运算结果存储在变量中或是由函数返回。</li> <li>运算表达式被括号 <code>()</code> 包裹，但如果圆括号在包含操作的列表之外依然作为分隔符。</li> <li>结果用于另一个非 <code>/</code> 的操作表达式中</li></ul> <p>如果想强制将 <code>/</code> 作为分隔符，可以写成 <code>#{&lt;expression&gt;} / #{&lt;expression&gt;}</code> 。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// 表达式两边都是数值，但任意一边不是字面量数值时，即视为除法</span>
+<span class="token keyword">@debug</span> 15px <span class="token operator">/</span> 30px<span class="token punctuation">;</span> <span class="token comment">// 15px/30px</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>10px <span class="token operator">+</span> 5px<span class="token punctuation">)</span> <span class="token operator">/</span> 30px<span class="token punctuation">;</span> <span class="token comment">// 0.5</span>
+
+<span class="token comment">// 表达式有一边不是数值类型时，不视为除法</span>
+<span class="token keyword">@debug</span> #<span class="token punctuation">{</span>10px <span class="token operator">+</span> 5px<span class="token punctuation">}</span> <span class="token operator">/</span> 30px<span class="token punctuation">;</span> <span class="token comment">// 15px/30px</span>
+
+<span class="token comment">// 运算结果保存在变量中，被视为除法</span>
+<span class="token property"><span class="token variable">$result</span></span><span class="token punctuation">:</span> 15px <span class="token operator">/</span> 30px<span class="token punctuation">;</span>
+
+<span class="token keyword">@debug</span> <span class="token variable">$result</span><span class="token punctuation">;</span> <span class="token comment">// 0.5</span>
+
+<span class="token comment">// .. 运算结果由函数返回，视为除法</span>
+<span class="token keyword">@function</span> <span class="token function">fifteen-divided-by-thirty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@return</span> 15px <span class="token operator">/</span> 30px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@debug</span> <span class="token function">fifteen-divided-by-thirty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5</span>
+
+<span class="token comment">// 圆括号包裹表达式，视为除法</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>15px/30px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5</span>
+<span class="token comment">// 圆括号在包含操作的列表之外，依然作为分隔符</span>
+<span class="token keyword">@debug</span> <span class="token punctuation">(</span>bold 15px <span class="token operator">/</span> 30px sans-serif<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bold 15px/30px sans-serif</span>
+
+<span class="token comment">// 结果用于另一个非 `/` 的操作表达式中，视为除法</span>
+<span class="token keyword">@debug</span> 15px <span class="token operator">/</span> 30px <span class="token operator">+</span> 1<span class="token punctuation">;</span> <span class="token comment">// 1.5</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h4 id="单位在运算中的处理"><a href="#单位在运算中的处理" class="header-anchor">#</a> 单位在运算中的处理</h4> <p>Sass 对单位的操作是基于现实世界的单位计算的。当两个数相乘时，它们的单位也相乘。当一个数除以另一个数时，结果取第一个数的分子单位和第二个数的分母单位。一个数的分子和/或分母可以有任意数量的单位。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token property"><span class="token variable">$num1</span></span><span class="token punctuation">:</span> 4px <span class="token operator">*</span> 6px<span class="token punctuation">;</span> <span class="token comment">// 24px*px (read &quot;square pixels&quot;)</span>
+<span class="token property"><span class="token variable">$num2</span></span><span class="token punctuation">:</span> 5px <span class="token operator">/</span> 2s<span class="token punctuation">;</span> <span class="token comment">// 2.5px/s (read &quot;pixels per second&quot;)</span>
+<span class="token property"><span class="token variable">$num3</span></span><span class="token punctuation">:</span> 5px <span class="token operator">*</span> 30deg <span class="token operator">/</span> 2s <span class="token operator">/</span> 24em<span class="token punctuation">;</span> <span class="token comment">// 3.125px*deg/s*em (read &quot;pixel-degrees per second-em&quot;)</span>
+<span class="token property"><span class="token variable">$num4</span></span><span class="token punctuation">:</span> 20deg <span class="token operator">/</span> 1s<span class="token punctuation">;</span> <span class="token comment">// 20deg/s</span>
+<span class="token property"><span class="token variable">$num5</span></span><span class="token punctuation">:</span> 1 <span class="token operator">/</span> <span class="token variable">$num4</span><span class="token punctuation">;</span> <span class="token comment">// 0.05s/deg</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>但是，CSS 是不支持像 <code>square pixels</code> 这样的复杂单位，使用带有复杂单位的数字作为属性值将会产生错误。如果没有得到正确的单位，这通常意味着你的计算出了问题。</p> <p>可以使用 <code>@debug</code> 规则来检查任何变量或表达式的单位。</p> <p>Sass 将在兼容的单元之间自动转换，尽管它将为结果选择哪个单元取决于您使用的 Sass 的哪个实现版本。如果你试图组合不兼容的单位，比如 <code>1in + 1em</code> ， Sass将抛出一个错误。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// CSS defines one inch as 96 pixels.</span>
+<span class="token keyword">@debug</span> 1in <span class="token operator">+</span> 6px<span class="token punctuation">;</span> <span class="token comment">// 102px or 1.0625in</span>
+<span class="token keyword">@debug</span> 1in <span class="token operator">+</span> 1s<span class="token punctuation">;</span>
+<span class="token comment">//     ^^^^^^^^</span>
+<span class="token comment">// Error: Incompatible units s and in.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>在现实世界的单位计算中，如果分子包含与分母单位兼容的单位(如 <code>96px / 1in</code> )，它们就会抵消。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token property"><span class="token variable">$num1</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>96px <span class="token operator">/</span> 1in<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>注意，要避免使用像 <code>#{$number}px</code> 这样的插值。这实际上并没有创建一个数字，它创建了一个看起来像数字的<strong>无引号字符串</strong>，但不能用于任何数字操作或函数。定义 <code>$number</code> 变量时可以带上单位 <code>px</code> ，或者写为 <code>$number * 1px</code>。</p> <p>Sass 的百分比和其他单位一样。它们不能与小数互换，因为在 CSS 中小数和百分比表示不同的东西。例如，<code>50%</code> 是一个以 <code>%</code> 为单位的数字，Sass 认为它与 <code>0.5</code> 不同。</p> <p>可以使用单位算术在小数和百分比之间进行转换。<code>$percentage / 100%</code> 将返回相应的小数，而<code>$decimal * 100%</code> 将返回相应的百分比。还可以使用 <code>math.percentage()</code> 函数作为 <code>$decimal * 100%</code> 的更显式的写法。</p> <h3 id="用于字符串"><a href="#用于字符串" class="header-anchor">#</a> <code>+</code>, <code>-</code>, <code>/</code> 用于字符串</h3> <p>Sass 中的 <code>+</code>, <code>-</code>, <code>/</code> 还可以用于操作字符串。</p> <ul><li><code>+</code> 号两边都是表达式时，作为拼接功能，两侧都没有引号时，结果就没有引号，否则有引号。</li> <li><code>/</code> 号两侧都是表达式时，返回以 <code>/</code> 分隔的无引号字符串，两侧分别是表达式的值。</li> <li><code>-</code> 号两侧都是表达式时，返回以 <code>-</code> 分隔的无引号字符串，两侧分别是表达式的值。</li></ul> <p>注意，<code>-</code> 号用于表达式连接符是一个历史遗留的操作符，现在应该使用插值 <code>#{}</code> 来代替。</p> <p>使用插值来创建字符串通常比依赖操作符更清晰。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> <span class="token string">&quot;Helvetica&quot;</span> <span class="token operator">+</span> <span class="token string">&quot; Neue&quot;</span><span class="token punctuation">;</span> <span class="token comment">// &quot;Helvetica Neue&quot;</span>
+<span class="token keyword">@debug</span> sans- <span class="token operator">+</span> serif<span class="token punctuation">;</span> <span class="token comment">// sans-serif</span>
+<span class="token keyword">@debug</span> #<span class="token punctuation">{</span>10px <span class="token operator">+</span> 5px<span class="token punctuation">}</span> <span class="token operator">/</span> 30px<span class="token punctuation">;</span> <span class="token comment">// 15px/30px</span>
+<span class="token keyword">@debug</span> sans <span class="token operator">-</span> serif<span class="token punctuation">;</span> <span class="token comment">// sans-serif</span>
+<span class="token keyword">@debug</span> <span class="token string">&quot;Elapsed time: &quot;</span> <span class="token operator">+</span> 10<span class="token punctuation">;</span> <span class="token comment">// &quot;Elapsed time: 10s&quot;;</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">+</span> <span class="token string">&quot; is a boolean value&quot;</span><span class="token punctuation">;</span> <span class="token comment">// &quot;true is a boolean value&quot;;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h4 id="一元操作符"><a href="#一元操作符" class="header-anchor">#</a> 一元操作符</h4> <p>由于历史原因，Sass 还支持 <code>/</code> 和 <code>-</code> 作为只接受一个值的一元操作符:</p> <ul><li><code>/表达式</code> 返回一个以 <code>/</code> 开头，后跟表达式值的未加引号的字符串。</li> <li><code>-表达式</code> 返回一个以 <code>-</code> 开头，后跟表达式值的未加引号的字符串。</li></ul> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token keyword">@debug</span> <span class="token operator">/</span> 15px<span class="token punctuation">;</span> <span class="token comment">// /15px</span>
+<span class="token keyword">@debug</span> <span class="token operator">-</span> moz<span class="token punctuation">;</span> <span class="token comment">// -moz</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="boolean-操作符"><a href="#boolean-操作符" class="header-anchor">#</a> Boolean 操作符</h2> <p>与 JavaScript 等语言不同，Sass 使用单词而不是符号来表示布尔操作符。</p> <p>Sass 中的布尔操作符对应的 JavaScript 中的布尔操作符：</p> <table><thead><tr><th>Sass</th> <th>JavaScript</th> <th>结果</th></tr></thead> <tbody><tr><td><code>and</code></td> <td><code>&amp;&amp;</code></td> <td>两侧为 true 才返回 true</td></tr> <tr><td><code>or</code></td> <td><code>||</code></td> <td>一侧为 true 则返回 true</td></tr> <tr><td><code>not</code></td> <td><code>!</code></td> <td>布尔值取反</td></tr></tbody></table> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// and</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">and</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">and</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token keyword">@debug</span> <span class="token boolean">false</span> <span class="token operator">and</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token comment">// or</span>
+<span class="token keyword">@debug</span> <span class="token boolean">true</span> <span class="token operator">or</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token boolean">false</span> <span class="token operator">or</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token boolean">false</span> <span class="token operator">or</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token comment">// not</span>
+<span class="token keyword">@debug</span> <span class="token operator">not</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token keyword">@debug</span> <span class="token operator">not</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="truthy-和-falsy"><a href="#truthy-和-falsy" class="header-anchor">#</a> Truthy 和 Falsy</h3> <p>在 Sass 中，只有 <code>false</code> 和 <code>null</code> 会被视为 Falsy 值，其他全部是 Truthy 值，包括 <code>0</code> ，空字符串等都是 Truthy 值。</p> <div class="language-scss line-numbers-mode"><pre class="language-scss"><code><span class="token comment">// Falsy</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token comment">// Truthy</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span>[]<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token keyword">@debug</span> <span class="token function">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/CSS/Sass-SCSS/04_Sass中的运算操作符.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/CSS/Sass-SCSS/03_Sass 中的数据类型.html" class="prev">
+        Sass 中的数据类型（值类型）
+      </a></span> <span class="next"><a href="/CSS/Sass-SCSS/05_Sass中的流程控制.html">
+        Sass中的流程控制
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.11f8e218.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/24.c56e6f99.js" defer></script>
+  </body>
+</html>

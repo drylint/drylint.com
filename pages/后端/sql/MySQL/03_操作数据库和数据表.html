@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>操作数据库和数据表 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.11f8e218.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/177.df52d16f.js" as="script"><link rel="prefetch" href="/assets/js/10.2bb1fe05.js"><link rel="prefetch" href="/assets/js/100.fe98bc44.js"><link rel="prefetch" href="/assets/js/101.77935927.js"><link rel="prefetch" href="/assets/js/102.6dd57db7.js"><link rel="prefetch" href="/assets/js/103.8c6a454c.js"><link rel="prefetch" href="/assets/js/104.43c82f89.js"><link rel="prefetch" href="/assets/js/105.08b8e1be.js"><link rel="prefetch" href="/assets/js/106.54be75d3.js"><link rel="prefetch" href="/assets/js/107.2af1bf29.js"><link rel="prefetch" href="/assets/js/108.0fcd494c.js"><link rel="prefetch" href="/assets/js/109.2b4adcff.js"><link rel="prefetch" href="/assets/js/11.a771880c.js"><link rel="prefetch" href="/assets/js/110.46865503.js"><link rel="prefetch" href="/assets/js/111.bada80a8.js"><link rel="prefetch" href="/assets/js/112.2b2b6c60.js"><link rel="prefetch" href="/assets/js/113.ffed6330.js"><link rel="prefetch" href="/assets/js/114.1041abac.js"><link rel="prefetch" href="/assets/js/115.9b54f0d3.js"><link rel="prefetch" href="/assets/js/116.cd915184.js"><link rel="prefetch" href="/assets/js/117.f532de20.js"><link rel="prefetch" href="/assets/js/118.d67ec6c1.js"><link rel="prefetch" href="/assets/js/119.f7883ba1.js"><link rel="prefetch" href="/assets/js/12.ce2c26a4.js"><link rel="prefetch" href="/assets/js/120.2825397b.js"><link rel="prefetch" href="/assets/js/121.329db677.js"><link rel="prefetch" href="/assets/js/122.22b31bd3.js"><link rel="prefetch" href="/assets/js/123.54124385.js"><link rel="prefetch" href="/assets/js/124.da0e74ab.js"><link rel="prefetch" href="/assets/js/125.71810425.js"><link rel="prefetch" href="/assets/js/126.ac2bb29e.js"><link rel="prefetch" href="/assets/js/127.7dfd9180.js"><link rel="prefetch" href="/assets/js/128.74093077.js"><link rel="prefetch" href="/assets/js/129.762bb4c0.js"><link rel="prefetch" href="/assets/js/13.9c87e937.js"><link rel="prefetch" href="/assets/js/130.06e74142.js"><link rel="prefetch" href="/assets/js/131.edc89c02.js"><link rel="prefetch" href="/assets/js/132.3654b387.js"><link rel="prefetch" href="/assets/js/133.580fc16e.js"><link rel="prefetch" href="/assets/js/134.4194ed9c.js"><link rel="prefetch" href="/assets/js/135.1241b083.js"><link rel="prefetch" href="/assets/js/136.181bb7cb.js"><link rel="prefetch" href="/assets/js/137.9d65d8a9.js"><link rel="prefetch" href="/assets/js/138.ab78d744.js"><link rel="prefetch" href="/assets/js/139.a4c11f4d.js"><link rel="prefetch" href="/assets/js/14.33276526.js"><link rel="prefetch" href="/assets/js/140.e4e88bb7.js"><link rel="prefetch" href="/assets/js/141.844de3e6.js"><link rel="prefetch" href="/assets/js/142.c13323e5.js"><link rel="prefetch" href="/assets/js/143.708943ed.js"><link rel="prefetch" href="/assets/js/144.c5b3e16a.js"><link rel="prefetch" href="/assets/js/145.fbbd1721.js"><link rel="prefetch" href="/assets/js/146.0f2cb743.js"><link rel="prefetch" href="/assets/js/147.8809e00c.js"><link rel="prefetch" href="/assets/js/148.84fbe503.js"><link rel="prefetch" href="/assets/js/149.6c4eaec5.js"><link rel="prefetch" href="/assets/js/15.a0d47d4d.js"><link rel="prefetch" href="/assets/js/150.865e2e80.js"><link rel="prefetch" href="/assets/js/151.ebf5b22d.js"><link rel="prefetch" href="/assets/js/152.fce48051.js"><link rel="prefetch" href="/assets/js/153.07c0c82b.js"><link rel="prefetch" href="/assets/js/154.6c1c51bf.js"><link rel="prefetch" href="/assets/js/155.2bb83eb6.js"><link rel="prefetch" href="/assets/js/156.6a31e3fb.js"><link rel="prefetch" href="/assets/js/157.2f2f7d42.js"><link rel="prefetch" href="/assets/js/158.b73f8330.js"><link rel="prefetch" href="/assets/js/159.6b71c2df.js"><link rel="prefetch" href="/assets/js/16.e8b12db9.js"><link rel="prefetch" href="/assets/js/160.c8d54e1a.js"><link rel="prefetch" href="/assets/js/161.43da1a28.js"><link rel="prefetch" href="/assets/js/162.6fb42042.js"><link rel="prefetch" href="/assets/js/163.f9a48561.js"><link rel="prefetch" href="/assets/js/164.f3148a06.js"><link rel="prefetch" href="/assets/js/165.19c72ebd.js"><link rel="prefetch" href="/assets/js/166.bdd0b9b0.js"><link rel="prefetch" href="/assets/js/167.53be506d.js"><link rel="prefetch" href="/assets/js/168.01b1af37.js"><link rel="prefetch" href="/assets/js/169.29f14eea.js"><link rel="prefetch" href="/assets/js/17.7bd579f1.js"><link rel="prefetch" href="/assets/js/170.23099a16.js"><link rel="prefetch" href="/assets/js/171.e2ac169d.js"><link rel="prefetch" href="/assets/js/172.2b8a42e0.js"><link rel="prefetch" href="/assets/js/173.163f5e5d.js"><link rel="prefetch" href="/assets/js/174.d4d1436e.js"><link rel="prefetch" href="/assets/js/175.84dbdb7c.js"><link rel="prefetch" href="/assets/js/176.ac1982e0.js"><link rel="prefetch" href="/assets/js/178.65e3c499.js"><link rel="prefetch" href="/assets/js/179.ff0ed662.js"><link rel="prefetch" href="/assets/js/18.bdfc32d3.js"><link rel="prefetch" href="/assets/js/180.d70866a9.js"><link rel="prefetch" href="/assets/js/181.dcb32231.js"><link rel="prefetch" href="/assets/js/182.3de78dbe.js"><link rel="prefetch" href="/assets/js/183.3466572e.js"><link rel="prefetch" href="/assets/js/184.2cdaeecb.js"><link rel="prefetch" href="/assets/js/185.3e916fba.js"><link rel="prefetch" href="/assets/js/186.96c048cf.js"><link rel="prefetch" href="/assets/js/187.d71be9b6.js"><link rel="prefetch" href="/assets/js/188.d2e39b82.js"><link rel="prefetch" href="/assets/js/189.13b07b30.js"><link rel="prefetch" href="/assets/js/19.3ff13ace.js"><link rel="prefetch" href="/assets/js/190.204790b4.js"><link rel="prefetch" href="/assets/js/191.327f3a6b.js"><link rel="prefetch" href="/assets/js/192.c8f9b3df.js"><link rel="prefetch" href="/assets/js/193.b5fa1f2a.js"><link rel="prefetch" href="/assets/js/194.5681f2c5.js"><link rel="prefetch" href="/assets/js/195.a35b9612.js"><link rel="prefetch" href="/assets/js/196.fd9df5f2.js"><link rel="prefetch" href="/assets/js/197.1baa330c.js"><link rel="prefetch" href="/assets/js/198.4483fc9d.js"><link rel="prefetch" href="/assets/js/20.9dd375e6.js"><link rel="prefetch" href="/assets/js/21.f73a4bcf.js"><link rel="prefetch" href="/assets/js/22.e6e597d1.js"><link rel="prefetch" href="/assets/js/23.cbfa90f3.js"><link rel="prefetch" href="/assets/js/24.c56e6f99.js"><link rel="prefetch" href="/assets/js/25.a504ea01.js"><link rel="prefetch" href="/assets/js/26.102397a2.js"><link rel="prefetch" href="/assets/js/27.65fdddf8.js"><link rel="prefetch" href="/assets/js/28.eb9012ca.js"><link rel="prefetch" href="/assets/js/29.43821e0c.js"><link rel="prefetch" href="/assets/js/3.215993e0.js"><link rel="prefetch" href="/assets/js/30.132be143.js"><link rel="prefetch" href="/assets/js/31.65f1b445.js"><link rel="prefetch" href="/assets/js/32.8027dcae.js"><link rel="prefetch" href="/assets/js/33.e4f3c764.js"><link rel="prefetch" href="/assets/js/34.926d1d16.js"><link rel="prefetch" href="/assets/js/35.a941e909.js"><link rel="prefetch" href="/assets/js/36.9e6310c6.js"><link rel="prefetch" href="/assets/js/37.ce14298d.js"><link rel="prefetch" href="/assets/js/38.ba9e7814.js"><link rel="prefetch" href="/assets/js/39.628b2842.js"><link rel="prefetch" href="/assets/js/4.5d977487.js"><link rel="prefetch" href="/assets/js/40.80657342.js"><link rel="prefetch" href="/assets/js/41.3ec0f60f.js"><link rel="prefetch" href="/assets/js/42.545d3aac.js"><link rel="prefetch" href="/assets/js/43.131f52c4.js"><link rel="prefetch" href="/assets/js/44.25cacf62.js"><link rel="prefetch" href="/assets/js/45.11bb5717.js"><link rel="prefetch" href="/assets/js/46.aa4baf48.js"><link rel="prefetch" href="/assets/js/47.9eea7acf.js"><link rel="prefetch" href="/assets/js/48.b91b8da9.js"><link rel="prefetch" href="/assets/js/49.f379e925.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.07b77690.js"><link rel="prefetch" href="/assets/js/51.6ad0a6d1.js"><link rel="prefetch" href="/assets/js/52.b9ea8528.js"><link rel="prefetch" href="/assets/js/53.4322150c.js"><link rel="prefetch" href="/assets/js/54.84f62d9a.js"><link rel="prefetch" href="/assets/js/55.3abcdeab.js"><link rel="prefetch" href="/assets/js/56.ca8a19f4.js"><link rel="prefetch" href="/assets/js/57.ed3ea2d4.js"><link rel="prefetch" href="/assets/js/58.e0597216.js"><link rel="prefetch" href="/assets/js/59.ac9b4034.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.e80590ec.js"><link rel="prefetch" href="/assets/js/61.a7ac5518.js"><link rel="prefetch" href="/assets/js/62.2aa95404.js"><link rel="prefetch" href="/assets/js/63.f637d8a0.js"><link rel="prefetch" href="/assets/js/64.b10fa6f2.js"><link rel="prefetch" href="/assets/js/65.ff1398d0.js"><link rel="prefetch" href="/assets/js/66.5615f304.js"><link rel="prefetch" href="/assets/js/67.2e3ecb25.js"><link rel="prefetch" href="/assets/js/68.438568ca.js"><link rel="prefetch" href="/assets/js/69.6be90c78.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.35b686d6.js"><link rel="prefetch" href="/assets/js/71.a6748cf4.js"><link rel="prefetch" href="/assets/js/72.4a25eefc.js"><link rel="prefetch" href="/assets/js/73.201146fc.js"><link rel="prefetch" href="/assets/js/74.ff5f439b.js"><link rel="prefetch" href="/assets/js/75.7bbe3d4b.js"><link rel="prefetch" href="/assets/js/76.08f68d1d.js"><link rel="prefetch" href="/assets/js/77.5bbae1bf.js"><link rel="prefetch" href="/assets/js/78.1c81888e.js"><link rel="prefetch" href="/assets/js/79.1bc91acb.js"><link rel="prefetch" href="/assets/js/8.51cd3eac.js"><link rel="prefetch" href="/assets/js/80.2fe9172c.js"><link rel="prefetch" href="/assets/js/81.28d25c26.js"><link rel="prefetch" href="/assets/js/82.15251ed3.js"><link rel="prefetch" href="/assets/js/83.03bce4b6.js"><link rel="prefetch" href="/assets/js/84.6c59d203.js"><link rel="prefetch" href="/assets/js/85.9af07bfa.js"><link rel="prefetch" href="/assets/js/86.0c6c40b6.js"><link rel="prefetch" href="/assets/js/87.318f1561.js"><link rel="prefetch" href="/assets/js/88.73052f54.js"><link rel="prefetch" href="/assets/js/89.2191dff6.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.73fc5ddc.js"><link rel="prefetch" href="/assets/js/91.7648bbb4.js"><link rel="prefetch" href="/assets/js/92.c74b7da6.js"><link rel="prefetch" href="/assets/js/93.03500cdd.js"><link rel="prefetch" href="/assets/js/94.9810c2af.js"><link rel="prefetch" href="/assets/js/95.0c7a68a4.js"><link rel="prefetch" href="/assets/js/96.24173e0d.js"><link rel="prefetch" href="/assets/js/97.14caebc3.js"><link rel="prefetch" href="/assets/js/98.364ce6fe.js"><link rel="prefetch" href="/assets/js/99.d5e43505.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>后端</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%90%8E%E7%AB%AF/" aria-current="page" class="sidebar-link">后端相关</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="操作数据库和数据表"><a href="#操作数据库和数据表" class="header-anchor">#</a> 操作数据库和数据表</h1> <p></p><div class="table-of-contents"><ul><li><a href="#操作库">操作库</a><ul><li><a href="#退出数据库连接-exit">退出数据库连接 exit;</a></li><li><a href="#查看所有数据库-show-databases">查看所有数据库 show databases;</a></li><li><a href="#创建一个新数据库-create-database-数据库名">创建一个新数据库 CREATE DATABASE &lt;数据库名&gt;;</a></li><li><a href="#查看一个数据库的创建语句-show-create-database-库名">查看一个数据库的创建语句 SHOW CREATE DATABASE &lt;库名&gt;;</a></li><li><a href="#删除一个数据库-drop-database-数据库名">删除一个数据库 DROP DATABASE &lt;数据库名&gt;;</a></li><li><a href="#进入-使用-某个数据库-use-数据库名">进入(使用)某个数据库 USE &lt;数据库名&gt;;</a></li></ul></li><li><a href="#操作表">操作表</a><ul><li><a href="#查看所有表-show-tables">查看所有表 SHOW TABLES;</a></li><li><a href="#查看一张表的所有列信息">查看一张表的所有列信息</a></li><li><a href="#创建一张表-create-table">创建一张表 CREATE TABLE ...</a><ul><li><a href="#表的引擎类型">表的引擎类型</a></li></ul></li><li><a href="#重命名表-rename-table">重命名表 RENAME TABLE</a></li><li><a href="#删除一张表-drop-table-tablename">删除一张表 DROP TABLE <tableName>;</tableName></a></li><li><a href="#修改一张表-alter-table">修改一张表 ALTER TABLE ...</a></li><li><a href="#查看一张表的创建语句-show-create-table-表名">查看一张表的创建语句 SHOW CREATE TABLE &lt;表名&gt;;</a></li></ul></li><li><a href="#为表或列添加注释-comment">为表或列添加注释 COMMENT</a><ul><li><a href="#建表时添加注释">建表时添加注释</a></li><li><a href="#建表后添加或修改注释">建表后添加或修改注释</a></li></ul></li></ul></div><p></p> <h2 id="操作库"><a href="#操作库" class="header-anchor">#</a> 操作库</h2> <h3 id="退出数据库连接-exit"><a href="#退出数据库连接-exit" class="header-anchor">#</a> 退出数据库连接 <code>exit;</code></h3> <p><code>quit;</code> 同样可以退出连接。</p> <p>注意，这个操作仅仅是断开了客户端和服务器的连接，MySQL 服务器仍然继续运行。</p> <h3 id="查看所有数据库-show-databases"><a href="#查看所有数据库-show-databases" class="header-anchor">#</a> 查看所有数据库 <code>show databases;</code></h3> <p>其中，<code>information_schema</code> 、 <code>mysql</code> 、 <code>performance_schema</code> 和 <code>sys</code> 是系统库，通常不需要去改动它们。</p> <p>其他的数据库是用户创建的数据库。</p> <h3 id="创建一个新数据库-create-database-数据库名"><a href="#创建一个新数据库-create-database-数据库名" class="header-anchor">#</a> 创建一个新数据库 <code>CREATE DATABASE &lt;数据库名&gt;;</code></h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 创建数据库</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>数据库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 仅在不存在指定的数据库时，创建数据库</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token operator">&lt;</span>数据库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="查看一个数据库的创建语句-show-create-database-库名"><a href="#查看一个数据库的创建语句-show-create-database-库名" class="header-anchor">#</a> 查看一个数据库的创建语句 <code>SHOW CREATE DATABASE &lt;库名&gt;;</code></h3> <h3 id="删除一个数据库-drop-database-数据库名"><a href="#删除一个数据库-drop-database-数据库名" class="header-anchor">#</a> 删除一个数据库 <code>DROP DATABASE &lt;数据库名&gt;;</code></h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>数据库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>注意：删除一个数据库将导致该数据库的所有表全部被删除。</p> <h3 id="进入-使用-某个数据库-use-数据库名"><a href="#进入-使用-某个数据库-use-数据库名" class="header-anchor">#</a> 进入(使用)某个数据库 <code>USE &lt;数据库名&gt;;</code></h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">USE</span> <span class="token operator">&lt;</span>数据库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>对一个数据库进行操作时，必须先进入这个数据库。</p> <h2 id="操作表"><a href="#操作表" class="header-anchor">#</a> 操作表</h2> <p>以下操作，必须是先使用 <code>use &lt;数据库名&gt;;</code> 进入某个数据库之后。</p> <h3 id="查看所有表-show-tables"><a href="#查看所有表-show-tables" class="header-anchor">#</a> 查看所有表 <code>SHOW TABLES;</code></h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">SHOW</span> <span class="token keyword">TABLES</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查看一张表的所有列信息"><a href="#查看一张表的所有列信息" class="header-anchor">#</a> 查看一张表的所有列信息</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># SQL 通用写法</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">COLUMNS</span> <span class="token keyword">FROM</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 查看更完整的列信息</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">FULL</span> <span class="token keyword">COLUMNS</span> <span class="token keyword">FROM</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># MySQL 简写方式，还可以简写为 `DESC &lt;表名&gt;`</span>
+<span class="token keyword">DESCRIBE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>会展示表中所有的 <code>Field</code>, <code>Type</code>, <code>Null</code>, <code>Key</code>, <code>Default</code>, <code>Extra</code> ，依次表示字段名、数据类型、是否允许 NULL 、键信息、默认值以及其他信息。</p> <h3 id="创建一张表-create-table"><a href="#创建一张表-create-table" class="header-anchor">#</a> 创建一张表 <code>CREATE TABLE ...</code></h3> <ul><li>表名紧跟在 <code>CREATE TABLE</code> 关键字后</li> <li>表定义（所有列）括在表名后面的圆括号之中</li> <li>各列之间用逗号分隔，最后一列后面不要逗号</li> <li>列名和数据类型必须存在，约束可以没有。</li></ul> <p>语法：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>列级约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>列级约束<span class="token number">2</span><span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>默认值<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>列级约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>列级约束<span class="token number">2</span><span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>默认值<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名N<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>列级约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>列级约束<span class="token number">2</span><span class="token operator">&gt;</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>默认值<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span>表级别约束<span class="token punctuation">]</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>示例，创建一个用户表：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">user</span> <span class="token punctuation">(</span>
+  user_id <span class="token keyword">INT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  user_name <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  user_gender <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  user_age <span class="token keyword">INT</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>在创建新表时，指定的表名必须不存在，否则将出错。如果要防止意外覆盖已有的表，SQL要求首先手工删除该表（请参阅后面的小节），然后再重建它，而不是简单地用创建表语句覆盖它。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 在表名后给出 IF NOT EXISTS 则可以在表名不存在时才创建，存在时不做操作</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名N<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="表的引擎类型"><a href="#表的引擎类型" class="header-anchor">#</a> 表的引擎类型</h4> <p>MySQL 与其他 DBMS 不一样，它具有多种引擎。它打包多个引擎，这些引擎都隐藏在 MySQL 服务器内，全都能执行 <code>CREATE TABLE</code> 和 <code>SELECT</code> 等命令。</p> <p>查看数据库支持的引擎：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">SHOW</span> ENGINES<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>引擎类型：</p> <ul><li><code>InnoDB</code> 默认，是一个可靠的事务处理引擎，它不支持全文本搜索</li> <li><code>MEMORY</code> 在功能等同于 MyISAM ，但由于数据存储在内存（不是磁盘）中，速度很快（特别适合于临时表）</li> <li><code>MyISAM</code> 是一个性能极高的引擎，它支持全文本搜索，但不支持事务处理</li> <li>...</li></ul> <p>MySQL 5 使用了很多 MyISAM， 由于其性能和特性可能是最受欢迎的引擎。</p> <p>MySQL 8 开始，系统表全部换成事务型的 InnoDB 表，默认的 MySQL 实例不再包含任何 MyISAM 引擎的表了。</p> <p>一个数据库中，引擎类型可以混用，也就是各个表可以使用不同的引擎。但注意，外键关联的两张表不能跨引擎，必须是同一种引擎。</p> <p>在 <code>CREATE TABLE</code> 创建表时，末尾可以使用 <code>ENGINE = &lt;引擎类型&gt;</code> 来指定创建的表使用什么引擎。</p> <p>强烈推荐总是在末尾指定引擎类型。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 建表时指定引擎</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>列名N<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span> <span class="token operator">=</span> <span class="token keyword">InnoDB</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 建表后修改引擎</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">ENGINE</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>引擎名<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="重命名表-rename-table"><a href="#重命名表-rename-table" class="header-anchor">#</a> 重命名表 <code>RENAME TABLE</code></h3> <p>使用 RENAME TABLE 语句可以重命名一个表。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 重命名一张表的名字</span>
+<span class="token keyword">RENAME</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 如果需要同时修改多张表，使用逗号分隔即可</span>
+<span class="token keyword">RENAME</span> <span class="token keyword">TABLE</span>
+<span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+<span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+<span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">TO</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="删除一张表-drop-table-tablename"><a href="#删除一张表-drop-table-tablename" class="header-anchor">#</a> 删除一张表 <code>DROP TABLE &lt;tableName&gt;;</code></h3> <p>删除表（删除整个表而不是其内容）非常简单，使用 <code>DROP TABLE</code> 语句即可</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>表名<span class="token number">1</span><span class="token punctuation">,</span> 表名<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>删除表没有确认，也不能撤销，执行这条语句将永久删除该表。</p> <p>如果要删除的表是一个主表（被其他表的外键引用的表），需要先移除外键关联，然后再执行删除。</p> <h3 id="修改一张表-alter-table"><a href="#修改一张表-alter-table" class="header-anchor">#</a> 修改一张表 <code>ALTER TABLE ...</code></h3> <p>为更新表定义，可使用 <code>ALTER TABLE</code> 语句。但是，理想状态下，当表中存储数据以后，该表就不应该再被更新。在表的设计过程中需要花费大量时间来考虑，以便后期不对该表进行大的改动。</p> <p>语法：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 基本语法</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment"># 给表增加一列，可以设置约束，还可以指定位置，默认为添加到表的最后</span>
+<span class="token comment"># `FIRST` 设为表的第一个字段，`AFTER &lt;某个已存在列名&gt;` 添加到某字段之后</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">ADD</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span>约束<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">FIRST</span> <span class="token operator">|</span> <span class="token keyword">AFTER</span> <span class="token operator">&lt;</span>某个已存在列名<span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 修改表中字段的排列位置，将 列名1 移到第一个或 列名2 之后</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">MODIFY</span> <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token keyword">FIRST</span> <span class="token operator">|</span> <span class="token keyword">AFTER</span> <span class="token operator">&lt;</span>列名<span class="token number">2</span><span class="token operator">&gt;</span> <span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 删除一列</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">DROP</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 修改列的数据类型</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">MODIFY</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 修改列的名称，数据类型不能省略，不变时也需要设置为和原来的类型一样</span>
+<span class="token comment"># CHANGE 也可以用来修改数据类型，新列名与旧列名设置为一样即可</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> CHANGE <span class="token operator">&lt;</span>原列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>新列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>新数据类型<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 给某列添加约束，比如定义外键</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> <span class="token operator">&lt;</span>约束名<span class="token operator">&gt;</span>
+<span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+<span class="token keyword">REFERENCES</span> <span class="token operator">&lt;</span>另一表名<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>表中列名<span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 也可以用于重命名表</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">RENAME</span> <span class="token punctuation">[</span><span class="token keyword">TO</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>比如，如果要给 <code>students</code> 表新增一列 <code>birth</code> ，使用：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">COLUMN</span> birth <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>要修改 <code>birth</code> 列，例如把列名改为 <code>birthday</code> ，类型改为 <code>VARCHAR(20)</code> ：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students CHANGE <span class="token keyword">COLUMN</span> birth birthday <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>要删除列，使用：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">DROP</span> <span class="token keyword">COLUMN</span> birthday<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查看一张表的创建语句-show-create-table-表名"><a href="#查看一张表的创建语句-show-create-table-表名" class="header-anchor">#</a> 查看一张表的创建语句 <code>SHOW CREATE TABLE &lt;表名&gt;;</code></h3> <p>运行后，会输出创建这个表使用的 SQL 语句：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code>students <span class="token operator">|</span> <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">`</span>students<span class="token punctuation">`</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>class_id<span class="token punctuation">`</span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>name<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>gender<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token punctuation">`</span>score<span class="token punctuation">`</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token punctuation">`</span>id<span class="token punctuation">`</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token operator">=</span><span class="token number">11</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="为表或列添加注释-comment"><a href="#为表或列添加注释-comment" class="header-anchor">#</a> 为表或列添加注释 <code>COMMENT</code></h2> <h3 id="建表时添加注释"><a href="#建表时添加注释" class="header-anchor">#</a> 建表时添加注释</h3> <ul><li>列的注释内容，在约束之后写 <code>COMMENT '&lt;列的注释内容&gt;'</code> 即可</li> <li>表的注释内容，在建表的乐句最后添加 <code>COMMENT '&lt;表的注释内容&gt;'</code> 即可。</li></ul> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token operator">&gt;</span> <span class="token keyword">COMMENT</span> <span class="token string">'&lt;列的注释内容&gt;'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'&lt;表的注释内容&gt;'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="建表后添加或修改注释"><a href="#建表后添加或修改注释" class="header-anchor">#</a> 建表后添加或修改注释</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 添加/修改表的注释内容</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">COMMENT</span> <span class="token string">'表的新的注释内容'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 添加/修改某列的注释内容，同时可以修改数据类型，约束等</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">MODIFY</span> <span class="token punctuation">[</span><span class="token keyword">COLUMN</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>列名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>约束<span class="token operator">&gt;</span> <span class="token keyword">COMMENT</span> <span class="token string">'&lt;列的注释内容&gt;'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/后端/sql/MySQL/03_操作数据库和数据表.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.11f8e218.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/177.df52d16f.js" defer></script>
+  </body>
+</html>

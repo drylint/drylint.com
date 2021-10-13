@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.910798bd.css" as="style"><link rel="preload" href="/assets/js/app.11f8e218.js" as="script"><link rel="preload" href="/assets/js/2.fbdcd9f4.js" as="script"><link rel="preload" href="/assets/js/147.8809e00c.js" as="script"><link rel="prefetch" href="/assets/js/10.2bb1fe05.js"><link rel="prefetch" href="/assets/js/100.fe98bc44.js"><link rel="prefetch" href="/assets/js/101.77935927.js"><link rel="prefetch" href="/assets/js/102.6dd57db7.js"><link rel="prefetch" href="/assets/js/103.8c6a454c.js"><link rel="prefetch" href="/assets/js/104.43c82f89.js"><link rel="prefetch" href="/assets/js/105.08b8e1be.js"><link rel="prefetch" href="/assets/js/106.54be75d3.js"><link rel="prefetch" href="/assets/js/107.2af1bf29.js"><link rel="prefetch" href="/assets/js/108.0fcd494c.js"><link rel="prefetch" href="/assets/js/109.2b4adcff.js"><link rel="prefetch" href="/assets/js/11.a771880c.js"><link rel="prefetch" href="/assets/js/110.46865503.js"><link rel="prefetch" href="/assets/js/111.bada80a8.js"><link rel="prefetch" href="/assets/js/112.2b2b6c60.js"><link rel="prefetch" href="/assets/js/113.ffed6330.js"><link rel="prefetch" href="/assets/js/114.1041abac.js"><link rel="prefetch" href="/assets/js/115.9b54f0d3.js"><link rel="prefetch" href="/assets/js/116.cd915184.js"><link rel="prefetch" href="/assets/js/117.f532de20.js"><link rel="prefetch" href="/assets/js/118.d67ec6c1.js"><link rel="prefetch" href="/assets/js/119.f7883ba1.js"><link rel="prefetch" href="/assets/js/12.ce2c26a4.js"><link rel="prefetch" href="/assets/js/120.2825397b.js"><link rel="prefetch" href="/assets/js/121.329db677.js"><link rel="prefetch" href="/assets/js/122.22b31bd3.js"><link rel="prefetch" href="/assets/js/123.54124385.js"><link rel="prefetch" href="/assets/js/124.da0e74ab.js"><link rel="prefetch" href="/assets/js/125.71810425.js"><link rel="prefetch" href="/assets/js/126.ac2bb29e.js"><link rel="prefetch" href="/assets/js/127.7dfd9180.js"><link rel="prefetch" href="/assets/js/128.74093077.js"><link rel="prefetch" href="/assets/js/129.762bb4c0.js"><link rel="prefetch" href="/assets/js/13.9c87e937.js"><link rel="prefetch" href="/assets/js/130.06e74142.js"><link rel="prefetch" href="/assets/js/131.edc89c02.js"><link rel="prefetch" href="/assets/js/132.3654b387.js"><link rel="prefetch" href="/assets/js/133.580fc16e.js"><link rel="prefetch" href="/assets/js/134.4194ed9c.js"><link rel="prefetch" href="/assets/js/135.1241b083.js"><link rel="prefetch" href="/assets/js/136.181bb7cb.js"><link rel="prefetch" href="/assets/js/137.9d65d8a9.js"><link rel="prefetch" href="/assets/js/138.ab78d744.js"><link rel="prefetch" href="/assets/js/139.a4c11f4d.js"><link rel="prefetch" href="/assets/js/14.33276526.js"><link rel="prefetch" href="/assets/js/140.e4e88bb7.js"><link rel="prefetch" href="/assets/js/141.844de3e6.js"><link rel="prefetch" href="/assets/js/142.c13323e5.js"><link rel="prefetch" href="/assets/js/143.708943ed.js"><link rel="prefetch" href="/assets/js/144.c5b3e16a.js"><link rel="prefetch" href="/assets/js/145.fbbd1721.js"><link rel="prefetch" href="/assets/js/146.0f2cb743.js"><link rel="prefetch" href="/assets/js/148.84fbe503.js"><link rel="prefetch" href="/assets/js/149.6c4eaec5.js"><link rel="prefetch" href="/assets/js/15.a0d47d4d.js"><link rel="prefetch" href="/assets/js/150.865e2e80.js"><link rel="prefetch" href="/assets/js/151.ebf5b22d.js"><link rel="prefetch" href="/assets/js/152.fce48051.js"><link rel="prefetch" href="/assets/js/153.07c0c82b.js"><link rel="prefetch" href="/assets/js/154.6c1c51bf.js"><link rel="prefetch" href="/assets/js/155.2bb83eb6.js"><link rel="prefetch" href="/assets/js/156.6a31e3fb.js"><link rel="prefetch" href="/assets/js/157.2f2f7d42.js"><link rel="prefetch" href="/assets/js/158.b73f8330.js"><link rel="prefetch" href="/assets/js/159.6b71c2df.js"><link rel="prefetch" href="/assets/js/16.e8b12db9.js"><link rel="prefetch" href="/assets/js/160.c8d54e1a.js"><link rel="prefetch" href="/assets/js/161.43da1a28.js"><link rel="prefetch" href="/assets/js/162.6fb42042.js"><link rel="prefetch" href="/assets/js/163.f9a48561.js"><link rel="prefetch" href="/assets/js/164.f3148a06.js"><link rel="prefetch" href="/assets/js/165.19c72ebd.js"><link rel="prefetch" href="/assets/js/166.bdd0b9b0.js"><link rel="prefetch" href="/assets/js/167.53be506d.js"><link rel="prefetch" href="/assets/js/168.01b1af37.js"><link rel="prefetch" href="/assets/js/169.29f14eea.js"><link rel="prefetch" href="/assets/js/17.7bd579f1.js"><link rel="prefetch" href="/assets/js/170.23099a16.js"><link rel="prefetch" href="/assets/js/171.e2ac169d.js"><link rel="prefetch" href="/assets/js/172.2b8a42e0.js"><link rel="prefetch" href="/assets/js/173.163f5e5d.js"><link rel="prefetch" href="/assets/js/174.d4d1436e.js"><link rel="prefetch" href="/assets/js/175.84dbdb7c.js"><link rel="prefetch" href="/assets/js/176.ac1982e0.js"><link rel="prefetch" href="/assets/js/177.df52d16f.js"><link rel="prefetch" href="/assets/js/178.65e3c499.js"><link rel="prefetch" href="/assets/js/179.ff0ed662.js"><link rel="prefetch" href="/assets/js/18.bdfc32d3.js"><link rel="prefetch" href="/assets/js/180.d70866a9.js"><link rel="prefetch" href="/assets/js/181.dcb32231.js"><link rel="prefetch" href="/assets/js/182.3de78dbe.js"><link rel="prefetch" href="/assets/js/183.3466572e.js"><link rel="prefetch" href="/assets/js/184.2cdaeecb.js"><link rel="prefetch" href="/assets/js/185.3e916fba.js"><link rel="prefetch" href="/assets/js/186.96c048cf.js"><link rel="prefetch" href="/assets/js/187.d71be9b6.js"><link rel="prefetch" href="/assets/js/188.d2e39b82.js"><link rel="prefetch" href="/assets/js/189.13b07b30.js"><link rel="prefetch" href="/assets/js/19.3ff13ace.js"><link rel="prefetch" href="/assets/js/190.204790b4.js"><link rel="prefetch" href="/assets/js/191.327f3a6b.js"><link rel="prefetch" href="/assets/js/192.c8f9b3df.js"><link rel="prefetch" href="/assets/js/193.b5fa1f2a.js"><link rel="prefetch" href="/assets/js/194.5681f2c5.js"><link rel="prefetch" href="/assets/js/195.a35b9612.js"><link rel="prefetch" href="/assets/js/196.fd9df5f2.js"><link rel="prefetch" href="/assets/js/197.1baa330c.js"><link rel="prefetch" href="/assets/js/198.4483fc9d.js"><link rel="prefetch" href="/assets/js/20.9dd375e6.js"><link rel="prefetch" href="/assets/js/21.f73a4bcf.js"><link rel="prefetch" href="/assets/js/22.e6e597d1.js"><link rel="prefetch" href="/assets/js/23.cbfa90f3.js"><link rel="prefetch" href="/assets/js/24.c56e6f99.js"><link rel="prefetch" href="/assets/js/25.a504ea01.js"><link rel="prefetch" href="/assets/js/26.102397a2.js"><link rel="prefetch" href="/assets/js/27.65fdddf8.js"><link rel="prefetch" href="/assets/js/28.eb9012ca.js"><link rel="prefetch" href="/assets/js/29.43821e0c.js"><link rel="prefetch" href="/assets/js/3.215993e0.js"><link rel="prefetch" href="/assets/js/30.132be143.js"><link rel="prefetch" href="/assets/js/31.65f1b445.js"><link rel="prefetch" href="/assets/js/32.8027dcae.js"><link rel="prefetch" href="/assets/js/33.e4f3c764.js"><link rel="prefetch" href="/assets/js/34.926d1d16.js"><link rel="prefetch" href="/assets/js/35.a941e909.js"><link rel="prefetch" href="/assets/js/36.9e6310c6.js"><link rel="prefetch" href="/assets/js/37.ce14298d.js"><link rel="prefetch" href="/assets/js/38.ba9e7814.js"><link rel="prefetch" href="/assets/js/39.628b2842.js"><link rel="prefetch" href="/assets/js/4.5d977487.js"><link rel="prefetch" href="/assets/js/40.80657342.js"><link rel="prefetch" href="/assets/js/41.3ec0f60f.js"><link rel="prefetch" href="/assets/js/42.545d3aac.js"><link rel="prefetch" href="/assets/js/43.131f52c4.js"><link rel="prefetch" href="/assets/js/44.25cacf62.js"><link rel="prefetch" href="/assets/js/45.11bb5717.js"><link rel="prefetch" href="/assets/js/46.aa4baf48.js"><link rel="prefetch" href="/assets/js/47.9eea7acf.js"><link rel="prefetch" href="/assets/js/48.b91b8da9.js"><link rel="prefetch" href="/assets/js/49.f379e925.js"><link rel="prefetch" href="/assets/js/5.6fee5ab2.js"><link rel="prefetch" href="/assets/js/50.07b77690.js"><link rel="prefetch" href="/assets/js/51.6ad0a6d1.js"><link rel="prefetch" href="/assets/js/52.b9ea8528.js"><link rel="prefetch" href="/assets/js/53.4322150c.js"><link rel="prefetch" href="/assets/js/54.84f62d9a.js"><link rel="prefetch" href="/assets/js/55.3abcdeab.js"><link rel="prefetch" href="/assets/js/56.ca8a19f4.js"><link rel="prefetch" href="/assets/js/57.ed3ea2d4.js"><link rel="prefetch" href="/assets/js/58.e0597216.js"><link rel="prefetch" href="/assets/js/59.ac9b4034.js"><link rel="prefetch" href="/assets/js/6.62fd2d62.js"><link rel="prefetch" href="/assets/js/60.e80590ec.js"><link rel="prefetch" href="/assets/js/61.a7ac5518.js"><link rel="prefetch" href="/assets/js/62.2aa95404.js"><link rel="prefetch" href="/assets/js/63.f637d8a0.js"><link rel="prefetch" href="/assets/js/64.b10fa6f2.js"><link rel="prefetch" href="/assets/js/65.ff1398d0.js"><link rel="prefetch" href="/assets/js/66.5615f304.js"><link rel="prefetch" href="/assets/js/67.2e3ecb25.js"><link rel="prefetch" href="/assets/js/68.438568ca.js"><link rel="prefetch" href="/assets/js/69.6be90c78.js"><link rel="prefetch" href="/assets/js/7.272c1b30.js"><link rel="prefetch" href="/assets/js/70.35b686d6.js"><link rel="prefetch" href="/assets/js/71.a6748cf4.js"><link rel="prefetch" href="/assets/js/72.4a25eefc.js"><link rel="prefetch" href="/assets/js/73.201146fc.js"><link rel="prefetch" href="/assets/js/74.ff5f439b.js"><link rel="prefetch" href="/assets/js/75.7bbe3d4b.js"><link rel="prefetch" href="/assets/js/76.08f68d1d.js"><link rel="prefetch" href="/assets/js/77.5bbae1bf.js"><link rel="prefetch" href="/assets/js/78.1c81888e.js"><link rel="prefetch" href="/assets/js/79.1bc91acb.js"><link rel="prefetch" href="/assets/js/8.51cd3eac.js"><link rel="prefetch" href="/assets/js/80.2fe9172c.js"><link rel="prefetch" href="/assets/js/81.28d25c26.js"><link rel="prefetch" href="/assets/js/82.15251ed3.js"><link rel="prefetch" href="/assets/js/83.03bce4b6.js"><link rel="prefetch" href="/assets/js/84.6c59d203.js"><link rel="prefetch" href="/assets/js/85.9af07bfa.js"><link rel="prefetch" href="/assets/js/86.0c6c40b6.js"><link rel="prefetch" href="/assets/js/87.318f1561.js"><link rel="prefetch" href="/assets/js/88.73052f54.js"><link rel="prefetch" href="/assets/js/89.2191dff6.js"><link rel="prefetch" href="/assets/js/9.3cae9f6c.js"><link rel="prefetch" href="/assets/js/90.73fc5ddc.js"><link rel="prefetch" href="/assets/js/91.7648bbb4.js"><link rel="prefetch" href="/assets/js/92.c74b7da6.js"><link rel="prefetch" href="/assets/js/93.03500cdd.js"><link rel="prefetch" href="/assets/js/94.9810c2af.js"><link rel="prefetch" href="/assets/js/95.0c7a68a4.js"><link rel="prefetch" href="/assets/js/96.24173e0d.js"><link rel="prefetch" href="/assets/js/97.14caebc3.js"><link rel="prefetch" href="/assets/js/98.364ce6fe.js"><link rel="prefetch" href="/assets/js/99.d5e43505.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.910798bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Typescript/ts 编译选项.html" class="nav-link">
+  ts 编译选项
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_声明文件.html" class="nav-link">
+  ts_声明文件
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/声明文件.d.ts.html" class="nav-link">
+  声明文件.d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/Typescript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="content__default"><div class="language- line-numbers-mode"><pre class="language-text"><code>
+Python相关链接
+ 官网
+  https://www.python.org/
+ python手册：
+  https://docs.python.org/3.6/tutorial/index.html
+  https://docs.python.org/3.6/library/index.html
+ 基于pyhon的优秀的项目：
+  https://github.com/vinta/awesome-python
+ 手册:
+  https://docs.python.org/3.6/tutorial/index.html
+ mySql-connector:
+  https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-transaction.html
+ django的优秀资源集合：
+  https://www.djangoproject.com/
+  https://github.com/haiiiiiyun/awesome-django-cn
+  https://github.com/wsvincent/awesome-django
+ django支持的数据类型:
+  https://docs.djangoproject.com/en/2.1/ref/models/fields/
+ django做查询：
+  https://docs.djangoproject.com/en/2.1/topics/db/queries/
+ scotch.io 大量的优质的优秀项目
+  https://scotch.io/tutorials/building-a-weather-app-in-django
+ django的竞品项目:flask
+  https://scotch.io/tutorials/build-a-crud-web-app-with-python-and-flask-part-one
+
+Python常见错误信息；
+ NameError: name 'score' is not defined #变量未定义/已被释放
+ TypeError: can't multiply sequence by non-int of type 'str' #字符串不能做算术运算
+ TypeError：must be str,not int #字符串和数字不能拼接，没有隐式转换
+ TypeError: 'tuple' object does not support item assignment #tuple不支持修改元素
+ ValueError: incomplete format
+ SyntaxError: invalid syntax
+ SyntaxError: EOL while scanning string literal #字符串首尾引号错误
+ IndentationError: unexpected indent  #缩进错误
+ IndexError: list index out of range  #访问下标超出list的范围
+ KeyError: 'ages' 操作字典时key写错了
+
+目标：
+  ①熟练掌握python基本语法、常见的标准库的使用、面向对象、异常处理
+  ②第三方的库django:ORM、模板语法、基本用法。。
+  ③采用python和django框架编写出后台的api
+
+一、概述
+ 1. python：是一门编程语言，用来实现：
+  ①Web Development:
+   Django, Pyramid, Bottle, Tornado, Flask, web2py
+  ②GUI Development:
+   tkInter, PyGObject, PyQt, PySide, Kivy, wxPython
+  ③Scientific and Numeric:
+   SciPy, Pandas, IPython
+  ④Software Development:
+   Buildbot, Trac, Roundup
+  ⑤System Administration:
+   Ansible, Salt, OpenStack
+
+ 2. 优势能力：
+  跨平台
+  类库非常丰富
+  可扩展
+  语法简洁
+  开源
+
+
+ 3. 版本:
+  python2.* --&gt; 遗产
+  python3.* --&gt; 现在和未来
+
+ 4. 搭建python的环境：
+  https://www.python.org/downloads/windows/
+
+
+二、python准备工作
+ 1. 基本规则
+  格式: 文件名.py
+  行注释： #行注释内容
+  块注释：
+   &quot;&quot;&quot;
+    块注释
+    内部是可以换行的
+   &quot;&quot;&quot;
+  缩进：不要随便写，一般是用在控制流
+  输出：
+   print()
+  输入：
+   input()
+   input(&quot;请输入:&quot;)
+  运行py脚本:
+   命令行: py/python/python3(mac) 文件名.py  运行脚本
+   命令行: py --&gt; enter --&gt; 代码... --&gt; enter... --&gt; quit()/exit()退出运行
+  在解析模式查看帮助信息：
+   py
+   help('keywords')
+   hel('print')
+  查看变量的数据类型：
+   type(score)
+  关键词：
+   False def if raise None del import return True elif in try
+   and  else is while as  except lambda with assert finally nonlocal
+   yield break for not class from or continue global pass
+
+ 2. 变量
+  #定义变量并赋值
+   score = 80
+  #释放变量
+   del score  
+  #释放后再次访问
+   print(age)  #NameError: name 'age' is not defined
+  #输出的时候，字符串不同类型不能使用拼接输出，可使用占位符输出变量
+  A. print('My name is %s, I am %s years old'%(uname,age))
+  B. print('%(uname)s ....'%{uname:'Tom Jerry'})
+  C. print('{uname} ....{age}'.format(uname='Tom',age=20))
+
+  
+三、python数据类型  
+ 1. 基本数据类型
+  (1)数值  int float
+   age = 20
+   print(age,type(age)) #20 &lt;class 'int'&gt; 整数
+   price = 19.99
+   print(price,type(price)) #19.99 &lt;class 'float'&gt; 浮点数
+  (2)bool
+   isTrue = True
+   print(isTrue,type(isTrue)) #True &lt;class 'bool'&gt; 布尔型
+  (3)complex
+   mySignal = 3+2j
+   print(mySignal,type(mySignal)) #(3+2j) &lt;class 'complex'&gt; 复数型
+  (4)字符串 str
+   ① 单引号、双引号、三引号，三引号内部可换行，可自由使用单双引号
+   ② + 拼接
+   ③ * 重复输出
+    myName = 'Tom'
+    print(myName,type(myName)) #Tom &lt;class 'str'&gt;
+    addr = &quot;成都&quot;
+    print(addr,type(addr)) #成都 &lt;class 'str'&gt;
+    article = '''
+     这是一篇文章
+     可以换行的
+    '''
+    print(article,type(article)) # &lt;class 'str'&gt;
+    print('Hello world' * 3)  #Hello worldHello worldHello world
+     #相当于print('Hello world' + 'Hello world' + 'Hello world')
+    print('Hello world' + 3)  #报错
+
+   练习:
+   步骤1：定义两个变量，一个单价，一个数量
+   步骤2：输出总价格是多少
+    price = input('单价：')
+    count = input('数量: ')
+    #total = price * count #TypeError: can't multiply sequence by non-int of type 'str'#字符串不能做算术运算
+    total = int(price) * int(count)
+    #print('总价是:'+ total) #TypeError：must be str,not int #字符串和数字不能拼接，没有隐式转换
+    print('总价是:%d'%total)
+    print('总价是:'+ str(total))
+    print('单价：%d, 数量：%d, 总价为：%d' %(int(price),int(count),total))
+  (5)数据类型之间的转换
+   int(x [,base]) 将x转换为一个整数
+   float(x ) 将x转换到一个浮点数
+   complex(real [,imag]) 创建一个复数
+   str(x) 将对象x转换为字符串
+   repr(x) 将对象x转换为表达式字符串
+   eval(str) 用来计算在字符串中的有效Python表达式,并返回一个对象
+   tuple(s) 将序列s转换为一个元组
+   list(s) 将序列s转换为一个列表
+   chr(x) 将一个整数转换为一个字符
+   unichr(x) 将一个整数转换为Unicode字符
+   ord(x) 将一个字符转换为它的整数值
+   hex(x) 将一个整数转换为一个十六进制字符串
+   oct(x) 将一个整数转换为一个八进制字符串
+  (6)数学函数
+   abs(x)  返回数字的绝对值，如abs(-10) 返回 10
+   ceil(x)  返回数字的上入整数，如math.ceil(4.1) 返回 5
+   cmp(x, y) 如果 x &lt; y 返回 -1, 如果 x == y 返回 0, 如果 x &gt; y 返回 1
+   exp(x)  返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045
+   fabs(x)  返回数字的绝对值，如math.fabs(-10) 返回10.0
+   floor(x) 返回数字的下舍整数，如math.floor(4.9)返回 4
+   log(x)  如math.log(math.e)返回1.0,math.log(100,10)返回2.0
+   log10(x) 返回以10为基数的x的对数，如math.log10(100)返回 2.0
+   max(x1, x2,...)  返回给定参数的最大值，参数可以为序列。
+   min(x1, x2,...)  返回给定参数的最小值，参数可以为序列。
+   modf(x)  返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。
+   pow(x, y) x**y 运算后的值。
+   round(x [,n]) 返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数。
+   sqrt(x)  返回数字x的平方根，数字可以为负数，返回类型为实数，如math.sqrt(4)返回 2+0j
+ 2. list 列表(有序序列)
+  (1)列表操作
+   A. 定义
+    myList = [100,200,300,400]
+    print(myList,type(myList)) #[100, 200, 300, 400] &lt;class 'list'&gt;
+   B. 获取
+    print(myList[2])  #300, 下标为正数，从左往右0开始
+    print(myList[-1]) #400, 下标为负数，从右往左-1开始
+    #print(myList[4]) #IndexError: list index out of range
+    #冒号获取指定元素
+     nums=[1, 3, 5, 7, 8, 13, 20]
+     #从下标为2的元素切割到下标为5的元素，但不包含下标为5的元素'''
+      print(nums[2:5])
+     #从下标为1切割到最后一个元素'''
+      print(nums[1:])
+     #从最开始的元素一直切割到倒数第3个元素，但不包含倒数第三个元素'''
+      print(nums[:-3])
+     #返回所有元素'''
+      print(nums[:])
+   C. 修改
+    myList[2] = 301
+    print('修改后的数组', myList) #修改后的数组 [100, 200, 301, 400]
+    print('修改后的值是:%d' %myList[2]) #修改后的值是:301
+   D. 删除
+    del myList[0]
+    myList.pop()
+   E. 列表脚本操作符
+    列表对+和*的操作符与字符串相似。+号用于组合列表，*号用于重复列表，例如：
+    print len([1, 2, 3]) #3
+    print [1, 2, 3] + [4, 5, 6] #[1, 2, 3, 4, 5, 6]
+    print ['Hi!'] * 4 #['Hi!', 'Hi!', 'Hi!', 'Hi!']
+    print 3 in [1, 2, 3] #True
+    for x in [1, 2, 3]: print x, #1 2 3
+  (2)列表常用API
+   len(xxList)   得到列表的长度
+   max/min(xxList) 获取最大值/最小值
+   xx.insert(index,newValue) 指定的位置添加元素，index为0插入到开头
+   xx.append(newValue) 尾部追加
+   xx.pop(index) 删除指定下标的元素，不写下标默认删除最后一个
+   xx.sort()  升序排序  xx.sort(reverse=True) 降序排序
+   xx.reverse() 翻转列表
+   xx.count(elem) 统计某个元素在列表中出现的次数
+   xx.extend(seq) 在列表末尾一次性追加另一个序列中的多个值(用新列表扩展原来的列表)
+   xx.index(obj) 从列表中找出某个值第一个匹配项的索引位置，索引从0开始
+   xx.remove(obj) 移除列表中某个值的第一个匹配项
+   myList = [1,2,3]
+   #获取长度
+    print(myList,len(myList))
+   #指定位置添加
+    myList.insert(0,5)
+    print(myList)
+   #尾部添加
+    myList.append(4)
+    print(myList)
+    myList.insert(len(myList),0)
+    print(myList)
+   #删除
+    myList.pop()
+    print(myList)
+   #排序
+   scoreList = [60,30,80,75,45]
+   scoreList.sort()  #升序
+   print(scoreList) #[30, 45, 60, 75, 80]
+   scoreList.sort(reverse=True)  #降序
+   print(scoreList) #[30, 45, 60, 75, 80]
+   nameList = ['Tom','Jerry','Bob','Kan']
+   nameList.sort()
+   print(nameList) #['Bob', 'Jerry', 'Kan', 'Tom']
+   list1 = [1,3,4,8,6,5]
+   #翻转
+   list1.reverse()
+   print(list1) #[5, 6, 8, 4, 3, 1]
+
+ 3. tuple 元祖
+  tuple的数据不可修改，只有一个数据时也需加一个逗号
+  元组中的元素值是不允许修改的，但我们可以对元组进行连接组合，例如:
+  tup3 = tup1 + tup2
+  #两种定义方式
+   myTuple = (100,200,300,400)
+   myTuple = tuple([100,200,300，400])
+   print(myTuple,type(myTuple)) #(100, 200, 300, 400) &lt;class 'tuple'&gt;
+   print(myTuple[0], myTuple[-1]) #100 400
+   #myTuple[0] = 101 #TypeError: 'tuple' object does not support item assignment #元祖数据无法修改
+  #只有一个值的元祖
+   myTuple2 = (10)
+   print(myTuple2,type(myTuple2)) #10 &lt;class 'int'&gt; 一个值的会变成整数
+   myTuple3 = (10,)
+   print(myTuple3,type(myTuple3)) #(10,) &lt;class 'tuple'&gt; 加一个逗号即可识别为tuple型
+  #删除元祖
+   del tup
+  #元祖API
+   cmp(tuple1, tuple2) 比较两个元组元素。
+   len(tuple) 计算元组元素个数。
+   max(tuple) 返回元组中元素最大值。
+   min(tuple) 返回元组中元素最小值。
+   tuple(seq) 将列表转换为元组。
+  #元祖运算符
+   与字符串一样，元组之间可以使用+号和*号进行运算。这就意味着他们可以组合和复制，运算后会生成一个新的元组。
+
+ 4. dict 字典
+  (1)dict基本操作
+   由若干个键值对构成，查找和插入的速度很快，占用的内存比较大
+    #xxdict = {name:'Tom', 'age':20} #NameError: name 'name' is not defined
+    xxDict = {'name':'Tom', 'age':20}
+    print(xxDict,type(xxDict)) #{'name': 'Tom', 'age': 20} &lt;class 'dict'&gt;
+   #添加(不存在的key即为添加)
+    xxDict['key1'] = myValue
+   #删除
+    xxDict.pop('key1')
+    del xxdict['name'] # 删除键是'name'的条目
+    xxdict.clear() # 清空词典所有条目
+    del xxdict  # 删除词典
+   #修改(存在的key即为修改)
+    xxDict['key1'] = newValue
+   #获取
+    xxDict.get('key1')
+    xxDict['key1']
+   #读操作
+    #print(xxDict.name) #AttributeError: 'dict' object has no attribute 'name'
+    #print(xxDict['name1']) #KeyError: 'name1'
+    print(xxDict['name'])  #Tom
+    print(xxDict.get('name')) #Tom
+    print(xxDict.get('name1')) #none
+   #写操作
+    xxDict['name'] = 'Jerry'
+    print(xxDict['name'])  #Jerry
+    xxDict.get('name') = 'Bob' #SyntaxError: can't assign to function call 函数调用不能被赋值
+    print(xxDict.get('name')) #Tom
+    print(xxDict.get('name1')) #none
+  (2)dict的API
+   cmp(dict1, dict2) 比较两个字典元素。
+   len(dict) 计算字典元素个数，即键的总数。
+   str(dict) 输出字典可打印的字符串表示。
+   type(variable) 返回输入的变量类型，如果变量是字典就返回字典类型。
+   radiansdict.clear() 删除字典内所有元素
+   radiansdict.copy() 返回一个字典的浅复制
+   radiansdict.fromkeys() 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值
+   radiansdict.get(key, default=None) 返回指定键的值，如果值不在字典中返回default值
+   radiansdict.has_key(key) 如果键在字典dict里返回true，否则返回false
+   radiansdict.items() 以列表返回可遍历的(键, 值) 元组数组
+   radiansdict.keys() 以列表返回一个字典所有的键
+   radiansdict.setdefault(key, default=None) 和get()类似, 但如果键不已经存在于字典中，将会添加键并将值设为default
+   radiansdict.update(dict2) 把字典dict2的键/值对更新到dict里
+   radiansdict.values() 以列表返回字典中的所有值
+ 5. set (没有重复)
+   set存储不会重复的多个数据构成的无序集合
+   mySet = set([100,200,300,400,300,200])
+   print (mySet,type(mySet)) #{200, 100, 400, 300} &lt;class 'set'&gt; #自动去除重复数据，无序
+   #添加
+    mySet.add(newValue)
+   #移除
+   mySet.remove(value)
+
+
+   练习：创建一个demo10_lianxi.py
+    步骤1：准备一个由3个字符串所构成的数组
+    步骤2：打印数组中下标为2的元素
+    步骤3：获取用户输入的用户名和密码，保存在一个字典中
+    步骤4：打印字典中所存储的用户名
+ 6. 日期和时间
+  首先引入模块
+  import time, datetime
+  (1)获取时间
+   nowTime = time.time() #1547555909.9550362
+   localtime = time.localtime(nowTime)
+   print(localtime) # time.struct_time(tm_year=2019, tm_mon=1, tm_mday=15, tm_hour=20, tm_min=18, tm_sec=20, tm_wday=1, tm_yday=15, tm_isdst=0)
+    tm_year=2019,  年
+    tm_mon=1,    月0-12
+    tm_mday=15,   日1-31
+    tm_hour=20,   时0-23
+    tm_min=18,   分0-59
+    tm_sec=20,   0-61(60或61是闰秒)
+    tm_wday=1,   周几 0-6
+    tm_yday=15,   年的第多少天 0-366
+    tm_isdst=0   是否为夏令时 -1,0,1
+  (2)获取格式化的时间
+   # 最简单的获取可读的时间模式
+   print(time.asctime(localtime)) #Tue Jan 15 20:25:19 2019
+   # 首选：print time.strftime('%Y-%m-%d %H:%M:%S')
+   print(time.strftime('%Y-%m-%d %H:%M:%S')) #2019-01-15 20:25:19
+   # 其次：print datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')
+   print(datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d %H:%M:%S')) #2019-01-15 20:25:19
+   # 最后：print(str(datetime.datetime.now())[:19])
+   print(str(datetime.datetime.now())[:19])  # 2019-01-15 20:25:19
+  (3)字符串转换为日期
+   expire_time = &quot;2013-05-21 09:50:35&quot;
+   d = datetime.datetime.strptime(expire_time,&quot;%Y-%m-%d %H:%M:%S&quot;)
+   print (d) #2013-05-21 09:50:35
+
+  (4)获取日期差
+   oneday = datetime.timedelta(days=1)
+   #今天，2014-03-21
+   today = datetime.date.today()
+   #昨天，2014-03-20
+   yesterday = datetime.date.today() - oneday
+   #明天，2014-03-22
+   tomorrow = datetime.date.today() + oneday
+   #获取今天零点的时间，2014-03-21 00:00:00
+   today_zero_time = datetime.datetime.strftime(today, '%Y-%m-%d %H:%M:%S')
+   #0:00:00.001000
+   print (datetime.timedelta(milliseconds=1)) #1毫秒
+   #0:00:01
+   print (datetime.timedelta(seconds=1)) #1秒
+   #0:01:00
+   print (datetime.timedelta(minutes=1)) #1分钟
+   #1:00:00
+   print (datetime.timedelta(hours=1)) #1小时
+   #1 day, 0:00:00
+   print (datetime.timedelta(days=1)) #1天
+   #7 days, 0:00:00
+   print (datetime.timedelta(weeks=1))
+  (5)获取时间差
+   #1 day, 0:00:00
+   oneday = datetime.timedelta(days=1)
+   #今天，2014-03-21 16:07:23.943000
+   today_time = datetime.datetime.now()
+   #昨天，2014-03-20 16:07:23.943000
+   yesterday_time = datetime.datetime.now() - oneday
+   #明天，2014-03-22 16:07:23.943000
+   tomorrow_time = datetime.datetime.now() + oneday
+   #注意时间是浮点数，带毫秒。
+   #格式化今天、昨天、明天：
+   print (datetime.datetime.strftime(today_time, '%Y-%m-%d %H:%M:%S'))
+   print (datetime.datetime.strftime(yesterday_time, '%Y-%m-%d %H:%M:%S'))
+   print (datetime.datetime.strftime(tomorrow_time, '%Y-%m-%d %H:%M:%S'))
+  (6)获取上个月最后一天
+   last_month_last_day = datetime.date(datetime.date.today().year,datetime.date.today().month,1)-datetime.timedelta(1)
+   print(last_month_last_day) #2018-12-31
+
+  (7)字符串日期格式化为秒数，返回浮点类型
+   expire_time = &quot;2018-01-15 20:50:35&quot;
+   d = datetime.datetime.strptime(expire_time,&quot;%Y-%m-%d %H:%M:%S&quot;)
+   time_sec_float = time.mktime(d.timetuple())
+   print (time_sec_float) #1516020635.0
+
+  (8)日期格式化为秒数，返回浮点类型：
+   d = datetime.date.today()
+   time_sec_float = time.mktime(d.timetuple())
+   print (time_sec_float) #1547481600.0
+
+  (9)秒数转字符串
+   time_sec = time.time()
+   print (time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;, time.localtime(time_sec))) #2019-01-15 20:37:27
+
+四、Python内置函数
+ 1. range()
+  函数可创建一个整数列表，一般用在 for 循环中
+  range([start, ]stop[, step])
+   start: 计数从 start 开始。不写默认是从 0 开始。例如range（5）等价于range（0， 5）
+   stop: 计数到 stop 结束，但不包括 stop。例如：range（0， 5） 是[0, 1, 2, 3, 4]没有5
+   step：步长，默认为1。例如：range（0， 5） 等价于 range(0, 5, 1)
+   range(4) 0 1 2 3
+   range(3,8) 3,4,5,6,7
+   range(0,6,2) 0 2 4
+ 2. chr(unicode)
+  根据unicode码转换成为对应字符，unicode码可为十进制或十六进制
+   print(chr(20123)) # 些
+   print(chr(0x4e00)) # 一
+ 3. input('请输入:')
+  接受一个标准输入数据，返回为 输入的值，string 类型
+  Python 2.x版本中
+   raw_input() 将所有输入作为字符串看待，返回字符串类型。
+   而input() 在对待纯数字输入时具有自己的特性，它返回所输入的数字的类型（ int, float ）
+  Python3.x 中
+  raw_input() 和 input() 进行了整合，去除了 raw_input( )，仅保留了input( )函数，
+  其接收任意任性输入，将所有输入默认为字符串处理，并返回字符串类型。
+ 4. int()
+ 5. str()
+ 6. print()
+ 7. tuple()
+ 8. bool()
+ 9. len()
+ 10. len()
+ 11. range()
+ 12. type()
+ 13. float()
+ 14. list()
+ 15. max()
+ 16. min()
+ 17. reverse()
+ 18. complex()
+ 19. help()
+ 20. dict()
+
+  abs() divmod() input() open() staticmethod()
+  all() enumerate() int() ord() str()
+  any() eval() isinstance() pow() sum()
+  basestring() execfile() issubclass() print() super()
+  bin() file() iter() property() tuple()
+  bool() filter() len() range() type()
+  bytearray() float() list() raw_input() unichr()
+  callable() format() locals() reduce() unicode()
+  chr() frozenset() long() reload() vars()
+  classmethod() getattr() map() repr() xrange()
+  cmp() globals() max() reverse() zip()
+  compile() hasattr() memoryview() round() __import__()
+  complex() hash() min() set()
+  delattr() help() next() setattr()
+  dict() hex() object() slice()
+  dir() id() oct() sorted() exec 内置表达式
+
+五、Python模块
+ 1. 内置模块
+  (1)random模块
+   import random
+   print(random.random()) #生成0~1的随机数
+   print(random.choice([1,3,5,2,4,6])) #随机选择列表中的一个值
+   print(random.randint(1,10)) #整数1-10(包括10),随机取一个值
+   print(random.randrange(1, 10)) ## 整数1-10(不包括10),随机取一个值
+   #生成随机验证码
+    import random
+    checkcode = ''
+    for i in range(6):
+      current = random.randrange(0, 6)
+      if current != i and current+1 != i:
+        temp = chr(random.randint(65, 90))
+        # 65-90是A-Z
+      elif current+1 == i:
+        temp = chr(random.randint(97, 122))
+        # 97-122是a-z
+      else:
+        temp = random.randint(0, 9)
+      checkcode += str(temp)
+    print(checkcode)
+    # 一共6位验证码,
+    # 第一位有1/6几率是数字,其它都是大写字母
+    # 第二到第六位,都是有1/6几率是小写字母,1/6几率是数字,其它都是大写字母
+  (2)date模块
+   # datetime模块
+    import datetime
+    print(datetime.datetime)  # &lt;class 'datetime.datetime'&gt;
+    print(datetime.datetime.now())  # 2019-01-18 10:41:38.144124
+    day1 = datetime.datetime(2008,3,22) #2008-03-22 00:00:00
+   # datetime.timedelta([days[, seconds[, microseconds[, milliseconds[, minutes[, hours[, weeks]]]]]]])
+    myDuration = datetime.timedelta(weeks = 2 , days = 3, hours = 5, minutes = 12, seconds = 23)
+    print(day1) #2008-03-22 00:00:00
+    print(myDuration) # 17 days, 5:12:23
+    print(day1+myDuration) # 2008-04-08 05:12:23
+   # 时间可以进行加减运算，比如获取当前时间之前的3天5小时18分24秒
+    datetime.datetime.now() - datetime.timedelta(days = 3, hours = 5, minutes = 18, seconds = 24)
+  (3)time模块
+   # time模块
+    import time
+    print(time.time()) #时间戳 类似于1547778908.475174
+    print(time.strftime(&quot;%y/%m/%d %H:%M:%S&quot;)) # 19/01/18 10:35:08
+  (4)os模块
+   import os
+   print(os.path.abspath('.')) # 当前绝对路径 C:\xampp\htdocs\WA\20_Python\day04
+   print(os.path.abspath('..')) # 当前路径的上级的绝对路径 C:\xampp\htdocs\WA\20_Python\day04
+   print(os.path.exists('C:\\xampp\\htdocs\\WA\\20_Python\\day04')) # True \要用\\表示
+  (5)sys模块
+  (6)shutil 模块
+  (7)logging 模块
+  (8)re模块
+  (9)math模块
+   import math
+   print(math.fabs(10-17)) #7.0 取绝对值
+   print(math.fabs(17-10)) #7.0 取绝对值
+   print(math.ceil(19.01)) #20  向上取整
+   print(math.floor(19.99)) #19 向下取整
+  (10)json模块
+   import json
+   json.dumps() 转换为json格式的字符串
+   json.loads() 将json的字符串转为其它的数据类型
+
+六、异常处理
+  异常并不是错误，只要未处理错误没有解决，程序还是会崩溃
+  (1)异常的处理：
+   try：
+    do sth
+   except:(也可以写except xxError:)
+    错误处理
+   finally:
+    执行最终要执行的代码
+
+  (2)捕获多个错误的处理：
+   A. 方式1：单独捕获错误单独处理
+    try:
+     ...
+    except Error1 as e:  # e就保存错误提示信息
+     print(e)
+     ...
+
+    except Error2:
+     ...
+   B. 方式2：分组捕获错误，一次性处理
+    try:
+     ...
+    except (Error1,Error2,...):
+     ...
+   C. 方式3：捕获所有类型错误
+    try:
+     ...
+    except Exception:
+     ...
+  3. 手工触发错误 raise
+   try:
+    raise(ValueError('自定义消息'))
+   except ValueError as msg:
+    # msg就是触发错误时，所传来的自定义消息
+    print(msg)
+  练习:
+   ①定义一个列表，访问列表中不存在的索引，捕获错误
+    myList =[1, 2, 3]
+    try:
+     print(myList[3])
+    except Exception as msg:
+     print(msg) # list index out of range
+   ②定义一个字符串，一个整数，做一个拼接运算，捕获错误，提示‘不允许将整数和字符串进行拼接’
+    className = '班级'
+    classNo = 1
+    # print(className + classNo) #TypeError: must be str, not int
+    try:
+     print(className + classNo)
+    except TypeError as errMsg:
+     print(errMsg) # must be str, not int
+七、运算符
+ 1. 算术运算
+  +  -  *  /  %
+  m//n 商下取整 m除n的商取整
+  m**n 取m的n次方
+  print(10/2)  # 5.0 即使整除也是浮点数
+  print(10/3)  # 3.3333333333333335
+  print(10%3)  # 1
+  print(10//3) # 3 商下取整
+  print(10**3)  # 1000  取10的三次方
+  print(10+True) # 11 True/False在内存中按照1/0存储
+ 2. 关系运算
+   &gt; &gt;=
+   &lt; &lt;=
+   == !=
+   支持数字之间、字符串之间、数组之间、元组之间相互比较
+   数字、字符串、列表、元祖之间都是从第一个下标的值开始依次比较unicode码
+   None不支持和任何的数据对比
+  练习
+   ① 提示用户分别输入语文成绩、数学成绩、英语成绩
+   ② 计算平均值
+   ③ 将平均值和80比较 True/False
+
+ 3. 赋值运算
+   [num1,num2,num3] = [1,2,3]
+    =
+   +=
+   -+
+   *=
+   /=
+   %=
+   不支持：自增、自减！！！
+
+ 4. 逻辑运算
+  and  逻辑与
+  or  逻辑或
+  not  逻辑取反
+ 5. 三目运算符
+  '条件为True的值' if 条件表达式 else '条件为false的值'
+
+ 6. 位运算
+  &amp; 按位与  
+  |  按位或  
+  ~  按位取反
+  ^  按位异或
+  &lt;&lt;  按位左移
+  &gt;&gt;  按位右移
+
+  练习
+  ①获取用户输入的年份
+  ②判断 是否是闰年
+   符合以下条件任何一个：
+   条件1：能整除4且不能整除100
+   条件2：能整除400
+
+ 7. 身份运算 in id is
+   a in b / a not in b 判断一个数据是否在数组或者元组中
+   id(a) 得到一个变量在python所分配的地址
+   a is b 判断前后变量的id是否一致
+
+   值类型:数字、字符串...  两个变量只要声明的值相等，id就相等
+   引用类型: list\tuple\dict.. 两个变量声明的值相等，id也不相等
+
+八、控制流
+  通过冒号和缩进表示相应代码块
+ 1. if判断
+  (1)单条件判断
+   if expression:
+    ...
+    ...
+   else:
+    ...
+    ...
+  (2)多重条件判断:
+   if expression1:
+    print('')
+   elif expression2:
+    print('')
+   elif expression3:
+    print('')
+    ...
+   else:
+    print()
+
+  
+ 2. 循环
+   A. 循环取出元素
+    for item in xxList: #item就是遍历的序列中的临时变量
+     ...
+   B. 循环取出下标
+    for index in range(len(xxList)):
+     ....
+   练习：
+    ① 实现一个for循环，循环5次，在for循环中 获取用户输入的成绩
+    ② 将获取到的成绩，计算平均值
+    ③ 平均值大于80，输出'优秀'；否则输出'一般'
+
+ 3. 循环的控制
+   continue / break
+   while 条件:
+    ...
+    if 条件:
+     continue
+    if 条件:
+     break
+
+  练习，猜一个0~100之间的随机数
+   random1 = random.choice(range(100))
+   inputVal = 0
+   while inputVal != random1:
+    inputVal = int(input('猜一个数'))
+    print('猜对了' if inputVal == random1 else '大了' if inputVal &gt; random1 else '小了' )
+
+九、方法
+ 1. 创建方法:
+  def add(num1,num2):
+   result = num1+num2
+   return result
+
+ 2. 调用方法：
+   add(10,20)
+   注意：实参要和形参数量保持一致
+ 3. 参数传递：
+  (1) 参数类型
+   # 基本类型：值传递，修改参数，原始数据不受影响 number/string/tuple
+   # 引用类型：地址传递，修改参数，原始数据也会变化 list/set/dict
+
+   练习:求一个数的阶乘的函数
+   # 函数: 使用递归实现阶乘
+    def jie1(a):
+     if(a == 1):
+      return 1
+     return (a * jie1(a-1))
+    print(jie1(4))
+
+  (2)关键字参数(可自定义参数顺序):
+   myFunc(arg2=10,arg1=20)
+   myFunc(10,arg2=20)
+   #myFunc(arg1=10,20) ##SyntaxError: positional argument follows keyword argument
+   #关键字参数不能放在实际参数的前边
+
+  (3)可变长参数(相当于剩余参数)：
+   可变长参数接收的是除实际参数以外的剩余参数
+   A. *args中的args保存参数为tuple类型
+    def myFunc(*args):
+     #args是一个元组类型
+    myFunc()
+    myFunc(1,2)
+   B. **args的args保存数据为dict类型
+    def fun3(**args):
+     print(args)
+    # fun3(1,3,5) # TypeError: fun3() takes 0 positional arguments but 3 were given
+    fun3(a=1,b=3,c=5) # {'a': 1, 'b': 3, 'c': 5}
+
+  (4)默认值参数(指定形参的默认值)：
+   指定了默认值的参数，有传入值就使用传入值，否则就使用默认值。
+   注意事项：有默认值参数必须要放在普通参数的后边，否则会提示语法错误
+    不能写 #def myFunc(arg1=20,arg2) # 默认值参数必须定义在后面
+    def myFunc(arg1,arg2=20):
+     pass
+    myFunc(10)
+    myFunc(10,30)
+
+   练习:#封装一个indexOf函数
+    def indexOf( li, val, startsi = 0 ):
+     for i in range(startsi,len(li)):
+      if li[i] == val :
+       return i
+     return -1
+    print(indexOf([1,3,5,7,9],5,0))
+
+   练习: demo40_lianxi.py
+   ①创建一个方法，传入n个整数，输出其中的最大值和最小值
+    def func (*args):
+     print ('最大值', max(args))
+     print ('最小值', min(args))
+    func(1,5,9,5,4,8,6,3,7)
+   ②创建一个支持3个参数函数,可以调用多次(通过关键字参数，调整参数的顺序)；方法中打印参数内容即可
+
+十、作用域、闭包
+ 1. LEGB
+  L —— Local(function)；函数内的名字空间
+  E —— Enclosing function locals；外部嵌套函数的名字空间(例如closure)
+  G —— Global(module)；函数定义所在模块（文件）的名字空间
+  B —— Builtin(Python)；Python内置模块的名字空间
+  变量使用的优先级:
+   局部变量 &gt; 嵌套函数外层变量 &gt; 当前模块的全局 &gt; Python内置变量
+  (1)全局：
+   可被重用，但容易被污染
+  (2)局部：不会被污染，但不可重用
+   要在局部读取全局变量，可直接使用
+   要在局部改变全局变量的值, 需要先用global xx 引入全局变量
+    count = 0 #定义全局变量
+    def fun1():
+     count = 3 #定义局部变量, 不是修改全局变量的值
+     count2 = 5#定义局部变量，函数外部无法访问
+     print('函数内的count = %d'%count)
+    print('count = %d'%count) # 0
+    fun1() # 3
+    print('count = %d'%count) # 0
+    # print('count2 = %d'%count2) # NameError: name 'count2' is not defined
+
+    # 函数内部修改全局变量
+    a = 5
+    def fun2() :
+     global a # 函数内修改全局变量需要用global 引入
+     a = 3
+     print(a)
+    print(a) # 5
+    fun2() # 3
+    print(a) # 3
+  (3)嵌套函(闭包)
+   重用变量，又保护变量不被篡改--&gt;闭包
+   要在内层函数修改外层函数的变量，需要先用 nonlocal xx 引入外层变量
+   闭包基本原理：
+   ①外层函数在调用，创建外层函数作用域对象
+   ②内层函数在创建时，通过自己__closure__属性 引用外层作用域对象
+   在外层函数执行之后，无法释放，形成一个闭包的结果(变量依然保留在内存中，可重用)
+
+   注意事项：
+   ①在函数内部的作用范围内，如果读全局变量没问题！如果要修改某一个全局变量的数据，得必须通过global将此变量引入到函数内部
+   ②在嵌套函数的内部，如果要修改外层函数中的变量，得通过nonlocal引入到嵌套的内部
+
+    # 嵌套函数 闭包
+    def sum1(a):
+     print('sum1执行了')
+     def add1(b):
+      return a + b
+     return add1
+    funcAdd = sum1(10)
+    print(funcAdd(5))
+
+    # 闭包2
+    def outer () :
+     count = 0
+     def inner () :
+      # count = 13 内部不定义count变量,就会到外层函数找, 内部定义了，就不会引用外层变量,外层则会释放
+      print('inner count is %d'%count)
+     return inner
+    fun1 = outer()
+    fun1() # 0
+
+    #闭包3
+    def outer2 () :
+     count = 0
+     def inner2 () :
+      nonlocal count # 需要修改外层函数的值，需要用nonlocal引入外层变量
+      count += 1
+      print('inne2 count is %d'%count)
+     return inner2
+    fun2 = outer2()
+    fun2() # 1
+    fun2() # 2
+    fun2() # 3
+    def len():
+     print('这是自定义的len()')
+    len() # 这是自定义的len(), 自定义的函数会覆盖内置函数
+
+   练习：
+    def chatroom () :
+     userList = [1,3,5]
+     def enter (uname) :
+      nonlocal userList
+      userList.insert(0,uname)
+      return userList
+     return enter
+    getU = chatroom()
+    print(getU('Tom'))
+    print(getU('Jerry'))
+    print(getU('Bob'))
+
+ 2. lambda函数 (匿名函数)
+  一个语法，三个特性，四个用法，一个争论
+  (1)语法
+   lambda argument_list: expression
+   lambda 参数列表 : 单行表达式
+    lambda是Python预留的关键字，argument_list和expression由用户自定义
+    表达式中出现的参数需要在argument_list中有定义，并且表达式只能是单行的
+    不能写return, 程序默认return 冒号后的表达式的值
+    lamda a,b : a+b
+  例如：
+   def fun1() :
+    print('fun1被调用了')
+   a = 5
+   b = 7
+   test = lambda a,b : a + b
+   fun1() # fun1被调用了
+   print(test(a,b)) # 12
+  (2)特性
+   A. lambda函数是匿名的：匿名函数，lambda函数没有名字。
+   B. lambda函数有输入和输出：输入参数列表argument_list，输出表达式expression计算得到的值。
+   C. lambda函数一般功能简单：单行expression决定了lambda函数不可能完成复杂的逻辑，只能完成非常简单的功能。
+  (3)用法
+   A. 将lambda函数赋值给一个变量，通过这个变量间接调用该lambda函数
+   B. 将lambda函数赋值给其他函数，从而将其他函数用该lambda函数替换。
+   C. 将lambda函数作为其他函数的返回值，返回给调用者。可用于闭包中。
+   D. 将lambda函数作为参数传递给其他函数
+    部分Python内置函数接收函数作为参数。典型的此类内置函数有这些。
+    filter函数。此时lambda函数用于指定过滤列表元素的条件。例如filter(lambda x: x % 3 == 0, [1, 2, 3])指定将列表[1,2,3]中能够被3整除的元素过滤出来，其结果是[3]。
+    sorted函数。此时lambda函数用于指定对列表中所有元素进行排序的准则。例如sorted([1, 2, 3, 4, 5, 6, 7, 8, 9], key=lambda x: abs(5-x))将列表[1, 2, 3, 4, 5, 6, 7, 8, 9]按照元素与5距离从小到大进行排序，其结果是[5, 4, 6, 3, 7, 2, 8, 1, 9]。
+    map函数。此时lambda函数用于指定对列表中每一个元素的共同操作。例如map(lambda x: x+1, [1, 2,3])将列表[1, 2, 3]中的元素分别加1，其结果[2, 3, 4]。
+    reduce函数。此时lambda函数用于指定列表中两两相邻元素的结合条件。例如reduce(lambda a, b: '{}, {}'.format(a, b), [1, 2, 3, 4, 5, 6, 7, 8, 9])将列表 [1, 2, 3, 4, 5, 6, 7, 8, 9]中的元素从左往右两两以逗号分隔的字符的形式依次结合起来，其结果是'1, 2, 3, 4, 5, 6, 7, 8, 9'。
+    另外，部分Python库函数也接收函数作为参数，例如gevent的spawn函数。此时，lambda函数也能够作为参数传入。
+
+ 3. 装饰器函数
+  装饰器的强大在于 在不修改原有业务逻辑的情况下 对代码进行扩展：
+  比如权限校验、用户认证、日志处理、性能测试。。。，最大限度的对代码进行复用
+  (1)例1：在调用add/subtract函数时，先经过装饰器函数log的处理
+    # 封装一个装饰器函数
+    def log(func) :
+     def myFunc (a, b) :
+      nonlocal func
+      print('被调用的方法是: ',func.__name__)
+      func(a,b)
+     return myFunc
+
+    #调用装饰器函数装饰add函数, add函数在执行时会先经过装饰器函数的操作
+    @log()
+    def add (a,b) :
+     print (a + b)
+
+    #调用装饰器函数装饰subtract函数,subtract函数在执行时会经过装饰器函数的操作
+    @log
+    def subtract (a,b) :
+     print (a - b)
+    add (7,3)
+    subtract (7,3)
+  (2)例2：在调用addToCart/modifyUserInfo函数时，先经过装饰器函数的验证
+    import random
+    def checkLogin (fun) :
+     def mycheck () :
+      nonlocal fun
+      if random.randint(1,10) &lt; 5 :
+       print('验证成功，可执行...')
+       fun()
+      else:
+       print('验证失败，无法执行...')
+     return mycheck
+
+    @checkLogin
+    def addToCart () :
+     print('添加成功')
+    @checkLogin
+    def modifyUserInfo () :
+     print('修改成功')
+    addToCart()
+    modifyUserInfo()
+
+
+十一、模块与包
+ 1. 模块
+  每一个py文件就是一个模块
+  (1)模块化：
+    方便团队协作
+    提高了代码的复用率
+    方便对业务进行拆分、维护、开发
+  (2)导出模块
+   无须手动导出，每个文件就是一个模块，自动导出
+   当另一个模块使用模糊引入时，当前模块可限制能够被模糊引入的数据列表
+   __all__ = ['login','',...] # []中的数据才能够被*模糊引入
+  (3)引入模块：
+   A. 仅引入
+    import demo01_module
+    demo01_module.xx
+   B. 引入并起别名
+    import demo01_module as m1
+    m1.xx
+   C. 引入一个某块中的某方法/变量...
+    from demo01_module import func1
+    func1()
+   D. 模糊引入
+    from demo01_module import *
+    func1()
+    练习:
+ 2. 包 package
+  一个文件夹就是一个package，在此文件夹中可以创建多个py文件
+  包是由多个模块构成的，是对多个模块的一个封装
+  (1)调用同级目录(包)下的模块：
+   和之前引入模块语法一致(需要在引入的模块名前 加上包的名字)
+    # 方式一:
+    # import utils.myFile
+    # utils.myFile.openFile()
+
+    # 方式二:
+    # import utils.myFile as xxFile
+    # xxFile.openFile()
+
+    # # 方式三:
+    # from utils.myHTTP import sendRQ
+    # sendRQ()
+
+    # #方式四:
+    # from utils.myHTTP import *
+    # sendRQ()
+
+    # 方式五:(此方式需要在文件夹(包)下增加__init__.py, 并写入__all__=['',''])
+    from utils import *
+    myFile.openFile()
+    myHTTP.sendRQ()
+   (2)调用父级其他目录(包)下的模块
+    其他目录下已有__init__.py 并配置好之后
+    当前模块要引入需先回到上层再引入，需要调用python的sys模块实现
+     A目录下有a.py，且有__init__.py 并配置__all__=['','',...]
+     B目录下有b.py
+     在b.py中要引入A目录中的a.py模块：
+     import sys
+     sys.path.append('..') # 用append()方法进行追加，..表示回到上一级目录中去，括号中也可写绝对路径
+     from A import a
+     这里就可以使用a中的数据了
+    【解释】b.py回到上一级就是B这个目录了，对于B来说，和A就是同级目录，
+        A下面已经创建了__init__.py文件，已经是个模块可以用来引入，
+        这个时候from A  import a 就可以顺利调用
+
+十二、面向对象编程
+  封装、继承、多态
+ 1. 封装
+  将现实问题中 有共同特征的实例，把共同特征封装在类中(创建一个类)
+  (1)创建一个类:
+   class Student:
+    name = 'Tom';
+    age = 20;
+    def intro(self):
+     print('...')
+  (2)实例化一个类：
+   m1 = Student()
+   m1.intro()
+  (3)注意
+   ①构造函数
+    def __init__(self):
+   ②私有内部成员,不可以被实例化之后的对象直接调用
+    __score = 90 #访问m1.__age 会报错
+  
+
+ 2. 继承
+   在创建一个类时，指定基类(父类)，此类就会拥有父类中的属性和方法
+   子类不重写 __init__，实例化子类时，会自动调用父类定义的 __init__。
+   如果重写了__init__ 时，实例化子类，就不会调用父类已经定义的 __init__
+   如果重写了__init__ 时，要继承父类的构造方法，可以使用 super 关键字：
+   super(子类，self).__init__(参数1，参数2，....)
+   //另一种写法
+   父类名称.__init__(self,参数1，参数2，...)
+    # 类的继承
+    class Person :
+     classNo = 5
+     def __init__ (self, uid, uname) :
+      self.uid = uid
+      self.uname = uname
+     def getClassNo (self) : #方法中接收self的话就表示定义的实例方法
+      return self.classNo
+     def staticFun () : #方法中不接收self的话就表示定义的静态方法
+      print('我是静态方法')
+    #继承上一个类
+    class Student(Person) :
+     grade = '一年级'
+     def __init__ (self,uid,uname,phone) :
+      self.phone = phone
+      # super(Student,self).__init__(uid,uname)  #继承父类型的__init__()方式1
+      Person.__init__ (self,uid, uname) #继承父类型的__init__()方式2
+
+    tom = Student(1001,'Tom','134...')
+    print(tom.grade) # 一年级
+    print(tom.classNo) # 5
+    print(tom.uid) # 1001
+    Person.staticFun() # 我是静态方法
+    Student.staticFun() # 我是静态方法
+
+ 3. 多态
+   python的多态 同一个函数，在不同的情况下 会有多个状态；在python中主要是通过方法的重写来实现的
+
+    (:- 17:35)
+   练习:demo56_lianxi.py
+   ①创建两个类，Car SUV
+   ②Car类在实例化，传递一个参数brand;定义一个方法drive:汽车正在行驶
+   ③SUV类继承自Car，复写drive:汽车正在快速行驶
+
+十三、python标准库的使用
+ 1. time/datetime
+  (1)time
+   import time
+   print(time.time()) #时间戳 类似于1547778908.475174
+
+   print(time.strftime(&quot;%y/%m/%d %H:%M:%S&quot;)) # 19/01/18 10:35:08
+  (2)datetime
+
+ 2. math
+十四、操作数据库 mysql-connector
+ 1.安装
+  pip install mysql-connector
+  回顾:node+mysql
+   npm i mysql
+   mysql = require('mysql')
+   mysql.createConnection()
+ 2. 连接数据库执行sql语句:
+  (1)引入
+    import mysql.connector as c
+  (2)连接指定的数据库服务器
+    myConnection = c.connect(host=&quot;localhost&quot;,user=&quot;root&quot;,passwd=&quot;&quot;,database=&quot;xz&quot;)
+    print(myConnection) # &lt;mysql.connector.connection.MySQLConnection object at 0x031121D0&gt; 表示连接成功
+  (3)创建游标对象
+    # myCursor = myConnection.cursor() # 查出的数据是多个tuple构成的list
+    myCursor = myConnection.cursor( dictionary = True) # 查出的数据是多个dict构成的list
+  (4)执行sql语句，处理结果
+    sql = 'sql语句'
+     #sql = 'INSERT INTO 表名 VALUES(%s,%s,%s)' # 全部参数都用%s占位
+    myCursor.execute(sql,params=(val1,val2,val3)) #执行sql
+     #params是tuple或list, 只有一个参数时tuple类型要加逗号
+     #params = (5,) 或 params = [5] 或 (5,) 或 [5]
+    result = myCursor.fetchall()   #获取查询到的结果保存在result中
+    myCursor.lastrowid        #最后的自增主键的值
+    myCursor.rowcount         #修改了几行
+    # 当执行修改数据库数据的语句时，一定要commit才能生效
+    myConnection.commit() # 如果执行需要修改数据库中的数据，一定要调用myConnection.commit()。
+  (5)执行结束
+   myCursor.close()  # 数据库操作完成之后将游标对象释放
+   myCo.close()  # 将数据库连接关闭
+  3. python借助于mysql-connector来完成连接池的操作：
+  (1)引入连接池模块
+   import mysql.connector.pooling as pooling
+  (2)创建连接池
+    connectConfig = {
+     &quot;host&quot;:&quot;localhost&quot;,
+     &quot;user&quot;:&quot;root&quot;,
+     &quot;passwd&quot;:&quot;&quot;,
+     &quot;database&quot;:&quot;xz&quot;
+    }
+    pool = pooling.MySQLConnectionPool(pool_size=10, **config)
+    # 从连接池得到一个连接
+     myConn = pool.get_connection()
+     myCursor = myConn.cursor(dictionary = True)
+     sql = 'select * from xz_user where uid &lt; %s'
+     params = [5]
+     myCursor.execute(sql,params)
+     result = myCursor.fetchall()
+     print(result)
+     做数据库修改时依然要执行myConn.commit() 才能提交修改
+ 4. cursor 游标对象
+  cursor用来执行命令的方法:
+  cursor.callproc(self, procname, args):用来执行存储过程,接收的参数为存储过程名和参数列表,返回值为受影响的行数
+  cursor.execute(self, query, args):执行单条sql语句,接收的参数为sql语句本身和使用的参数列表,返回值为受影响的行数
+  cursor.executemany(self, query, args):执行单挑sql语句,但是重复执行参数列表里的参数,返回值为受影响的行数
+  cursor.nextset(self):移动到下一个结果集
+  cursor.cursor用来接收返回值的方法:
+  cursor.fetchall(self):接收全部的返回结果行.
+  cursor.fetchmany(self, size=None):接收size条返回结果行.如果size的值大于返回的结果行的数量,则会返回cursor.arraysize条数据.
+  cursor.fetchone(self):返回一条结果行.
+  cursor.scroll(self, value, mode='relative'):移动指针到某一行.如果mode='relative',则表示从当前所在行移动value条,如果mode='absolute',则表示从结果集的第一 行移动value条.
+
+十五、Django
+ 准备
+  django-admin startproject mysite
+  django-admin startapp demo01
+  py manage.py runserver
+
+  数据库：
+  py manage.py makemigrations
+  py manage.py migrate
+  
+  创建一个超级管理用户:
+  py manage.py createsuperuser
+
+ 1、概述
+  django是一个基于python的框架，05年发布，早期可以用做新闻门户；
+  提供了强大的后台管理系统，实现网站的前后端的所有东西
+  从模板、ORM、Session、用户认证、路由系统都是内置的，甚至划分了app的概念
+   (1)利用django实现:
+   ①project和app的使用
+   ②命令的基本用法
+   ③实现后台api
+    get/post
+    携带的参数
+    返回
+   ④路由系统
+   ⑤ORM
+   ⑥模板语法
+  (2)优缺点：
+   ①免费的开源框架 有非常棒的文档
+   ②功能强大，集成了ORM\模板\路由..
+   ③强大的后台管理
+   缺点：耦合度太高
+
+  一些使用django的项目:
+  Disqus Instagram Knight Foundation MacArthur Foundation Mozilla National Geographic Open Knowledge Foundation Pinterest Open Stack
+  
+  符合MVT:
+  Models:
+   模型层 Django 提供了一个抽象的模型 (&quot;models&quot;) 层，为了构建和操纵你的Web应用的数据。
+
+  View:
+   Django 具有 “视图” 的概念，负责处理用户的请求并返回响应。
+
+  Template:
+   模板层提供了一个对设计者友好的语法 用于渲染向用户呈现的信息
+  
+ 2、开始使用
+  (1)安装
+   pip install django
+   一个django的项目就是一个project；而django可以包含多个模块，将模块称之为app
+
+   #创建一个django的工程:
+    django-admin startproject mysite
+
+    在当前目录下创建一个文件夹mysite,这个文件夹又包含一个文件夹mysite、一个文件manage.py
+
+  (2)启动当前的项目:
+   py manage.py runserver
+   测试:
+   localhost:8000
+   localhost:8000/admin
+
+  (3)admin
+   admin需要登录，需要创建一个管理员用户
+
+   py manage.py makemigrations # make迁移
+   py manage.py migrate # 迁移
+   py manage.py createsuperuser #设置用户名，邮箱，和密码，注意：设置密码时，是不显示的
+
+  (4)在一个project中创建一个app:
+   py manage.py startapp demo01
+  
+ 3. django服务器中为每个app配置路由
+   (1)设置视图: 在app中 定义视图
+   # demo01/views.py
+    from django.shortcuts import render
+    from django.http import HttpResponse
+
+    # 定义路由处理函数，访问设置的路由就会触发这个函数，函数有一个参数默认会接收请求数据
+    def handleIndex(request):
+     return HttpResponse(&quot;hello world&quot;)
+    def handleDetail(request):
+     return HttpResponse('这是详情页')
+
+  (2)设置二级路由: 在app中 配置路由系统
+   # 在demo01这个文件夹中 新建urls.py
+    from django.urls import path
+    from . import views  # 必须写 from . 表示从当前路径引入views
+
+    urlpatterns = [
+     path(&quot;&quot;,views.handleIndex),
+     path(&quot;detail&quot;,views.handleDetail)
+    ]
+
+  (3)设置一级路由: 在project 给app设置一个路由地址
+   # 在mysite/urls.py 中
+    from django.urls import path,include
+
+    urlpatterns = [
+     path('demo01/',include(&quot;demo01.urls&quot;))
+    ]
+  
+  练习:
+  在当前的project，创建一个新的app：demo02
+  希望路由可以被访问:
+   http://localhost:8000/demo02/ 返回：这是demo02的首页
+   http://localhost:8000/demo02/list 返回：这是demo02的列表页面
+
+
+ 4、路由接收get请求以及参数处理
+  请求地址: http://localhost:8000/demo03/login?uname=tom
+  在demo03/views设置路由处理函数:
+
+   def userlogin(req) :
+    print(req.GET)  # &lt;QueryDict: {'uname': ['tom']}&gt; get请求参数全部存放在【req.GET(查询字典)】中
+    uname = req.GET['uname']
+    return HttpResponse('%s登录成功'%uname)
+
+ 5. json模块(Python内置模块)
+  用于从服务器响应json格式的数据给客户端使用
+  (1)尝试响应json格式数据
+   def userRegister(req) :
+    res = {'uname':'Tom', 'upwd':'123456'}
+    return HttpResponse(res) # 但客户端接收到的是 unameupwd,只有key没有value
+  
+  (2)正确发送json格式数据
+   import json
+   # json格式数据
+   def userRegister(req) :
+    res = {'uname':'Tom', 'upwd':'123456'}
+    return HttpResponse(json.dumps(res)) # 客户端接收到 {&quot;uname&quot;: &quot;Tom&quot;, &quot;upwd&quot;: &quot;123456&quot;}
+  (3)Compact encoding:
+   print(json.dumps({&quot;c&quot;: 0, &quot;b&quot;: 0, &quot;a&quot;: 0}, sort_keys=True)) # {&quot;a&quot;: 0, &quot;b&quot;: 0, &quot;c&quot;: 0}
+   json.dumps([1, 2, 3, {'4': 5, '6': 7}], separators=(',', ':')) # '[1,2,3,{&quot;4&quot;:5,&quot;6&quot;:7}]'
+   print(json.dumps({'4': 5, '6': 7}, sort_keys=True, indent=4)) 排序+缩进
+  (4)Decoding JSON:
+   json.loads('[&quot;foo&quot;, {&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]}]')
+   ['foo', {'bar': ['baz', None, 1.0, 2]}]
+   &gt;&gt;&gt; json.loads('&quot;\\&quot;foo\\bar&quot;')
+   '&quot;foo\x08ar'
+
+ 5. ORM(重点)
+  (0)概述
+   Django默认的数据库为SQLite3
+   Object Relational Mapping # (普通)对象关系映射
+   不用直接编写sql，直接调用对象中的一些方法，这些方法经过映射，转换为sql完成CRUD的操作
+   在计算机领域中android,java,php都有对ORM的实现
+   py manage.py createsuperuser 创建管理员，设置密码时不会显示，正常写
+   python manage.py makemigrations 命令，创建模型类迁移，针对模型类models.py中有新建的class类
+    Migrations for 'store':
+    store\migrations\0001_initial.py
+     - Create model Product
+    执行后，Django 在app的 migrations\ 目录下生成了一个 0001_initial.py文件，这个文件
+    是 Django 用来记录我们对模型做了哪些修改的文件。比如我们在 models.py 文件里
+    创建了 n 个模型类，Django 把这些变化记录在了 0001_initial.py里。
+    此时还只是告诉了 Django 我们做了哪些改变，
+    为了让 Django 真正地为我们创建数据库表，接下来又执行了：
+   python manage.py migrate 命令，应用迁移
+    Django 通过检测应用中 migrations\ 目录下的文件，得知我们对数据库做了哪些操作，
+    然后它把这些操作翻译成数据库操作语言，从而把这些操作作用于真正的数据库。
+
+
+  (1) 创建一个app:demo03并先将路由系统配置好，并注册app到INSTALLED_APPS
+   以后每创建一个app都要到这里注册
+  A. py manage.py startapp demo03 #创建一个新的app
+  B. 在项目配置目录下的settings.py 中追加注册
+   INSTALLED_APPS = [
+   ......
+   'demo03'
+   ]
+  (2) 创建一个模型类(表)  
+   属性=models.字段类型(选项)
+  在 demo03/models.py 中
+   from django.db import models
+   class ProductItem(models.Model) :  #继承models.Model
+    pname = models.CharField(max_length = 100)
+    pinfo = models.CharField(max_length = 100)
+    objects = models.Manager() # 固定写法，不写也会正常运行, 只是使用ProductItem.objects的时候语法检查会报错。
+    ...
+   # models中的字段类型(类似于sql中的列类型指定)
+    models.CharField(max_length=255)
+    models.TextField()
+    models.DateField()
+    models.IntegerField()
+    DecimalField(max_digits = 10, decimal_places =2) #前者总位数，后者小数位数
+    FloatField
+    models.ManyToManyField()
+    models.ForeignKey()
+  
+  (3) 注册模型类
+   # 在 demo03/admin.py 中
+   将创建的模型类注册到admin的site (然后到后台的admin中即可对模型进行管理)
+    from django.contrib import admin
+    from .models import ProductItem
+    admin.site.register(ProductItem)
+  (4)在demo03/views.py中创建路由方法
+   from . import models
+   from .models import ProductItem
+   import json
+
+   # 添加一个商品
+   def handleAdd (req) :
+    title = req.GET['title']
+    content = req.GET['content']
+    item = ProductItem()  # 模型类的实例化
+    item.pname = title  # 模型类的赋值
+    item.pinfo = content
+    # 前三行可以简写为 item = ProductItem(pname = title, pinfo = content)
+    item.save()
+    return HttpResponse('这是添加操作')
+   # 查看商品的列表并返回给客户端
+   def handleList(req):
+    result = ProductItem.objects.values() # 结果是queryset而不是list类型
+    myList = list(result) # 将查询结果转为list类型
+    print(myList)
+    return HttpResponse(myList)
+
+   # 查看id为1的商品数据并返回给客户端
+   def handleDetaills(req):
+    item = ProductItem.objects.get(id = 1)
+    #为了方便item做json序列化，需要做以下设置
+    myDict = item.__dict__
+    myDict.pop('_state')
+    return HttpResponse(json.dumps(myDict))
+
+  C. 生成表结构 映射到真实的数据库(模型类的激活)
+   py manage.py makemigrations
+    #makemigrations 命令，Django 会检测你对模型文件的修改
+    (在这种情况下，你已经取得了新的)，并且把修改的部分储存为一次 迁移
+   py manage.py migrate
+    #这个 migrate 命令检查 INSTALLED_APPS 设置，为其中的每个应用创建需要的数据表
+
+    检查：localhost:8000/admin 登陆后查看后台管理系统有没有添加额外的的表结构
+
+  (5)使用模型类，完成数据库的CRUD
+   插入:
+    p = ProductItem(title=&quot;商品1&quot;,detail=&quot;这是商品1的详情&quot;)
+    p.save()
+   获取所有的行：
+    result = ProductItem.objects.all()
+
+  (6)ORM所支持的常见操作：
+  增
+   方式1：
+   product = ProductItem(brand='bmw',price=30)
+   product.save()
+   方式2:
+   product = ProductItem()
+   product.brand = 'bmw'
+   product.price = 30
+   product.save()
+  删:
+   result = ProductItem.objects.get(brand='bmw')
+   result.delete()
+  改
+   product = ProductItem.objects.get(brand=request.GET['brand'])
+   product.price = request.GET['price']
+   product.save()
+  查
+   ProductItem.objects.get(fname = 'Tom')
+   ProductItem.objects.all()
+   ProductItem.objects.values('列名如fname') # .values('uname')
+
+  (7)json的处理:
+    import json
+    json.dumps() 转换为json格式的字符串(json序列化)
+    json.loads() 将json的字符串转为其它的数据类型
+   views.py的路由方法中
+    id = req.GET['id']
+    result = Friend.objects.get(id = id) #根据id获取到数据无法直接完成json序列化
+
+    myData = result.__dict__  #取出dict类型的数据
+    print(mydata) #{'_state': &lt;django.db.models.base.ModelState object at 0x0468FA70&gt;, 'id': 1, 'fname': 'tom', 'fage': 23}
+    mydata.pop('_state')  #第一项不需要，先去除
+    print(mydata) #去除第一项后的结果{'id': 1, 'fname': 'tom', 'fage': 23}可以进行json序列化返回到客户端了
+    data = json.dumps(mydata) #将dict进行json序列化后再返回客户端
+    print(type(data)) #&lt;class 'str'&gt;json序列化之后数据就变成字符串了
+    return HttpResponse(data) #序列化后页面返回{&quot;id&quot;: 1, &quot;fname&quot;: &quot;tom&quot;, &quot;fage&quot;: 23}而不是 'idfnamefage'
+  处理技巧:
+   在当前的project，输入py manage.py shell进入到django项目的命令解析模式，在shell中输入py语句 执行对应的代码
+   比如:
+    from product.models import ProductItem
+    ProductItem.objects.all()
+    product = ProductItem(brand='honda',price=20)
+    product.save()
+
+  练习:
+  ①在当前的sina的project中，完成一个news的app的创建和注册
+  ②创建路由系统
+   localhost:8000/news/add?content=新闻内容&amp;title=新闻标题 保存起来 返回'添加成功'
+   localhost:8000/news/list 获取新闻标题列表，以json的格式返回
+
+  ③完成ORM的处理
+   创建一个模型类NewsItem,包含两个属性content\title 都是字符串
+   注册到admin
+   激活
+
+  (8)[可选]将默认的SQLite更换为MySQL
+   A. 注释默认的SQLite3配置：
+    项目settings.py中
+    DATABASES = {
+      'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+      }
+    }
+   B. 添加MySQL配置(配置你自己的mysql库前提是你已经有能够供自己使用的MySQL库了)
+    DATABASES = {
+      'default': {
+        'ENGINE': 'django.db.backends.mysql', #固定配置
+        'HOST': '127.0.0.1',#mysql地址
+        'PORT': '3306',#端口号
+        'NAME': 'guest',#库名（组名）
+        'USER': 'root',#用户
+        'PASSWORD': '123456',#密码
+        'OPTIONS': {'init_command': &quot;SET sql_mode='STRICT_TRANS_TABLES'&quot;, },
+      }
+    }
+   C. 迁移数据库
+    为了让 Django 完成翻译，使用我们在modele.py已经创建好的这些数据库表，
+    我们请出我的工程管理助手 manage.py。激活虚拟环境，切换到 manage.py 文件
+    所在的目录下，分别运行 python manage.py makemigrations和 python manage.py migrate命令
+   D. 如果你使用的是mysql会生成0001_auto_20180507_2145.py
+    如果你需要在mysql和SQLite3之间切换你需要重新执行python manage.py makemigrations和
+    python manage.py migrate命令，而且你原来库中的数据不会转移
+    (执行完上面两个命令只会在新的数据库中创建modele.py中的表)。
+
+ 6. 模板语法(重要)
+  Django是自带template模块，可以通过HttpResponse返回一个模板内容，可以是html...
+  (1)基本步骤
+   A. 创建模板
+    在当前app目录下创建templates目录，再在templates目录中创建一个子目录存放html
+     store/templates/store/index.html
+   B. 在views.py文件中
+    from django.shortcuts import render
+    from django.http import HttpResponse
+    from django.template import loader  # 引入模板加载工具
+
+    def handleIndex(req) :
+     tpl = loader.get_template('store/index.html') #使用模板加载工具
+     return HttpResponse(tpl.render()) # 渲染加载出来的模板到页面
+   C. 配置路由系统调用路由方法即可访问
+    http://127.0.0.1:8000/store/index
+    会将index.html 的内容渲染到页面
+   D. 动态传参、接收
+    # 在路由方法中
+     id = req.GET['id']
+     tpl.render({'id':id}) #render中的数据必须是dict类型,字典key必须用引号包裹
+    # 在模板html中插入数据
+     这是id为{{id}}的商品
+  
+   练习:
+   在当前的news的app中，创建一个路由all,返回给h2(显示当前NewsItem所有的数据的个数)
+   ①创建一个views的方法
+   ②配置路由
+   ③创建模板文件 all.html
+   ④加载模板，并传值
+  
+  (2)django模板引擎所支持的模板语法
+   {{}}
+   {{}}之中不支持表达式，比如{{data[0]}},{{item + 1}}...
+  
+   A. 数据循环渲染:
+    {% for story in story_list %}
+     &lt;h2&gt;{{story}}&lt;/h2&gt;
+     {{forloop.counter}} #循环中的特殊属性：下标计数器，从1开始每次+1
+     {{forloop.counter0}}#循环中的特殊属性：下标计数器，从0开始每次+1
+     {{forloop.first}}  #循环中的特殊属性：当前循环是否是第一个元素，True/False
+     {{forloop.last}}  #循环中的特殊属性：当前循环是否是最后一个元素，True/False
+    {% endfor %}
+   B. 数据条件判断:
+    {% if score &gt; 60 %}
+     &lt;h2&gt;成绩及格&lt;/h2&gt;
+    {% else %}
+     &lt;h2&gt;成绩不及格&lt;/h2&gt;
+    {% endif %}
+   C. 综合写法
+    &lt;ul&gt;
+     {% for item in data %}
+      &lt;li&gt;forloop.counter0：{{forloop.counter0}}&lt;/li&gt;
+      &lt;li&gt;forloop.counter：{{forloop.counter}}&lt;/li&gt;
+      &lt;li&gt;forloop.first：{{forloop.first}}&lt;/li&gt;
+      &lt;li&gt;forloop.last：{{forloop.last}}&lt;/li&gt;
+      {%  if item &gt;= 100 %}
+       &lt;li&gt;{{ item }}&lt;/li&gt;
+      {% elif item &gt;= 200%}
+       &lt;li&gt;{{ item }}&lt;/li&gt;
+      {% else %}
+       &lt;li&gt;{{ item }}&lt;/li&gt;
+      {% endif%}
+      &lt;li&gt;--------------------------&lt;/li&gt;
+     {% endfor %}
+    &lt;/ul&gt;
+
+  综合练习:
+   ①完成一个app的创建和注册:product
+   ②完成模型类的创建、注册、激活
+   Product
+    title/price/pid
+    ③创建视图并配置路由
+   (数据的添加：py manage.py shell)
+   localhost:8000/product/list
+   返回一个html文件， 文件中有一个无序列表，列表项显示商品的标题
+  考察的细节：
+  ①路由系统的搭建 V (views)
+   创建视图 配置路由
+  ②模型数据的准备 M (models)
+   创建模型类、注册到admin、激活
+   通过模型类来实现CRUD
+  ③模板 T(templates)
+   模板的创建、载入、渲染、语法
+
+ 7. Django跨域处理：
+  (1)跨域处理:
+   A. 安装django跨域工具
+    pip install django-cors-headers
+   B. 注册到INSTALLED_APPS、MIDDLEWARE
+    找到settings.py中的INSTALLED_APPS添加'corsheaders':
+     INSTALLED_APPS = (
+       ...
+       'corsheaders',
+       ...
+     )
+    找到settings.py中的MIDDLWARE的数组添加:
+     MIDDLEWARE = [
+       'corsheaders.middleware.CorsMiddleware', #将此行添加到数组的最前面
+       ...
+       ...
+     ]
+
+   C. 在MIDDLWARE数组后，设置白名单以及允许cookie
+    CORS_ORIGIN_WHITELIST = (
+      '127.0.0.1:8080',
+      'localhost:8080',
+      ...
+    )
+    CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
+   配置好之后客户端即可发送get请求了
+  (2)post请求中的参数
+   A. 关闭CSRF(post请求会被forbidden)
+    在settings.py 中的MIDDLEWARE中
+    注释/去除掉这一行代码: 'django.middleware.csrf.CsrfViewMiddleware'后即可发送post请求
+   B. 接收POST请求时的参数
+    myData = req.body.decode(&quot;utf-8&quot;)
+    # 实现一个json的反序列化
+    myDic = json.loads(myData)
+   路由方法:
+    def handleLogin (req) :
+     # print(req.body)  # b'{&quot;uname&quot;:&quot;Tom&quot;}' 是一个字节码，需要解码
+     userStr = req.body.decode('utf-8')  # {&quot;uname&quot;:&quot;Tom&quot;} 解码后其实还是一个json字符串
+     userDict = json.loads(userStr)  # json反序列化，将json字符串转为dict字典
+     uname = userDict.get('uname')
+     return HttpResponse('%s登录成功'%uname)
+十六、Django综合练习
+ 1. 创建一个新的工程
+   (1)创建一个新的工程 xuezi
+   django-admin startproject xuezi //创建工程项目xuezi
+   cd xuezi //进入xuezi目录
+ 2. 完成一个app的创建和注册 store
+   py manage.py startapp store
+  settings.py中 注册
+   INSTALLED_APPS = [
+     ......,
+     'store'
+   ]
+ 3. 设置管理员，并完成模型类 Product 的创建、激活、注册到admin
+  py manage.py createsuperuser 创建管理员
+  (1)创建模型类
+   包含两个属性: title  price
+   在app的models.py中
+    from django.db import models
+    class Product(models.Model):
+     title = models.CharField(max_length = 100)
+     price = models.DecimalField(max_digits = 10, decimal_places = 2)
+     objects = models.Manager()
+  (2)注册模型类
+   在app的admin.py中
+    from django.contrib import admin
+    from .models import Product
+    # Register your models here.
+    admin.site.register(Product)
+
+  (3)迁移数据库：创建模型类并应用
+   python manage.py makemigrations //创建迁移
+   python manage.py migrate //应用迁移
+   完成之后用管理员账号登录admin页面可查看已经添加到数据库
+ 4. 配置跨域请求及允许post请求
+  (1)跨域请求
+   A. 安装跨域模块
+    pip install django-cors-headers
+   B. 注册到INSTALLED_APPS、MIDDLEWARE
+    #找到settings.py中的INSTALLED_APPS添加'corsheaders':
+     INSTALLED_APPS = (
+       ...
+       'corsheaders',
+       ...
+     )
+    #找到settings.py中的MIDDLWARE的数组在开头添加:
+     MIDDLEWARE = [
+       'corsheaders.middleware.CorsMiddleware', #将此行添加到数组的最前面
+       ...
+       ...
+     ]
+   C. 在MIDDLWARE数组后，设置白名单以及允许cookie
+    CORS_ORIGIN_WHITELIST = (
+      '127.0.0.1:8080',
+      'localhost:8080',
+      ...
+    )
+    CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
+   D. 配置好之后客户端即可发送get请求了
+ 5. 在app的views.py中创建几个api
+   (1)接口1：store/add
+   post {title:&quot;&quot;,price:&quot;&quot;}
+   接收post请求中的参数，插入到数据库，返回json格式字符串{&quot;code&quot;:1,&quot;msg&quot;:&quot;添加成功&quot;}
+  
+   (2)接口2：store/del
+   get /store/del?id=1
+   接收get请求中的参数，从数据库中将此数据删除
+   返回json格式字符串{&quot;code&quot;:1,&quot;msg&quot;:&quot;删除成功&quot;}
+
+   (3)接口3：store/modify
+   post {id:1,price:30}
+   接收post请求中的参数，查询指定id的商品，修改价格
+   返回json格式字符串{&quot;code&quot;:1,&quot;msg&quot;:&quot;修改成功&quot;}
+
+   (4)接口4：store/list
+   get
+   获取所有的商品数组，返回json格式的数据
+   {&quot;code&quot;:1,&quot;list&quot;:**}
+   #views.py中:
+    from django.shortcuts import render
+    from django.http import HttpResponse
+    from .models import Product
+    import json
+    # Create your views here.
+
+    # 添加商品
+    def addProduct(req):
+     reqStr = req.body.decode(&quot;utf-8&quot;)
+     print(reqStr)
+     reqDict = json.loads(reqStr)
+     print(reqDict)
+     title = reqDict.get('title')
+     price = float(reqDict.get('price'))
+     print(type(price))
+     item = Product(title = title, price = price)
+     item.save()
+     res = json.dumps({'code':1, 'msg':'添加成功'})
+     return HttpResponse(res)
+
+    #删除商品
+    def delProduct(req):
+     id = req.GET['id']
+     result = Product.objects.get(id = id)
+     result.delete()
+     res = json.dumps({'code':1, 'msg':'删除%s号商品成功'%id})
+     return HttpResponse(res)
+
+    #修改商品
+    def modifyProduct(req):
+     reqStr = req.body.decode('utf-8')
+     reqDict = json.loads(reqStr)
+     id = int(reqDict.get('id'))
+     price = float(reqDict.get('price'))
+     result = Product.objects.get(id = id)
+     result.price = price
+     result.save()
+     res = json.dumps({'code':1, 'msg':'修改%s号商品成功'%id})
+     return HttpResponse(res)
+
+    #查询商品列表
+    def getProductsList(req):
+     result = Product.objects.values()
+     result = list(result)
+     print(type(result))
+     res = json.dumps({'code':1,'list':result})
+     return HttpResponse(res)
+
+    # 查看单个商品数据并返回给客户端
+    def handleDetaills(req):
+     item = ProductItem.objects.get(id = 1)  #Product object (1)
+     #为了方便item做json序列化，需要做以下设置
+     myDict = item.__dict__
+     myDict.pop('_state')
+     return HttpResponse(json.dumps(myDict))
+
+ 5. 配置路由系统
+  (1)在app目录下新建urls.py配置路由和路由方法
+   from django.urls import path
+   from . import views
+   urlpatterns = [
+    path('/add', views.addProduct),
+    path('/del', views.delProduct),
+    path('/modify', views.modifyProduct),
+    path('/list', views.getProductsList),
+   ]
+
+  (2)在项目配置的urls中
+   from django.contrib import admin
+   from django.urls import path,include
+   urlpatterns = [
+     path('admin/', admin.site.urls),
+     path('store', include('store.urls'))
+   ]
+
+九、项目课
+ 1. 概述
+  (1)目标：重构净美仕官网项目，实现一个前后端分离的项目
+  http://www.codeboy.com/mfresh 预览项目
+  http://www.codeboy.com/mfresh/mfresh.zip 下载源码
+  
+  (2)技术分析
+   之前的架构:
+    php+原生的前端技术
+
+   新的技术架构：
+    web服务器---django内置的http
+    数据库服务器--django内置sql服务器
+    后台的api--django内置的路由系统以及ORM
+    前端页面---vue+vuex
+ 9.1 分析
+ 分析当前的项目构成:
+ 前端:首页、登录、注册、关于、产品、新闻、购物车
+
+ 后台api:
+  购物车、新闻、商品、用户
+
+ 9.2 重构后台API(使用django)
+
+ 9.2.1 创建一个django的工程
+  django-admin startproject mfresh
+
+ 9.2.2 在此工程中创建4个app(:-16:40)
+  py manage.py startapp **
+  cart/user/product/news
+  (要记得将app注册到INSTALLED_APPS)
+
+ 9.2.3 路由系统的搭建
+  ①创建视图 views.py
+  ②配置二级路由地址(app内部) urls.py
+  ③配置一级路由地址(project) urls.py
+  user:
+    check_name?uname=zhangsan
+    register?uname=zhangsan&amp;upwd=12345
+    login?uname=zhangsan&amp;upwd=123456
+  cart:
+   add?cid=1&amp;userid=1
+   delete?cid=1
+   update?cid=1&amp;pid=1&amp;count=1
+   list?cid=1
+  product:
+   list
+   detail？pid=1
+  news：
+   list
+   detail?id=1
+
+ 9.2.4 完成app内部模型类的创建、注册、激活
+  模型类的创建：models.py
+  注册:admin.py
+  激活：
+    py manage.py makemigrations
+     py manage.py migrate
+
+  py manage.py createsuperuser
+  
+  cart:
+   CartItem :cid/userId
+   CartItemDetail:cartId/pid/count
+  product:
+   ProductItem:pid/title/price
+  news：
+   NewsItem:title/content
+  user:
+   User:uname/upwd
+
+ 9.2.5 ORM
+  完成user模块中的3个api的具体要求：
+   {&quot;code&quot;:1,&quot;msg&quot;:&quot;&quot;}
+
+  register?uname=zhangsan&amp;upwd=12345
+   保存
+   check_name?uname=zhangsan
+   查询指定的用户名是否存在
+  login?uname=zhangsan&amp;upwd=123456
+   登录
+
+  完成News模块中的api的处理:
+   list
+   detail?id=1
+   ①自己手工到admin后台管理系统初始化5条数据
+   ②实现list，获取所有的数据，json返回
+   ③实现detail，获取指定id对应的详情，json返回
+
+  (:- 11:40)
+  完成Product模块中的api的处理:
+   在Product模块中手工添加5条数据
+   product:
+   list
+   detail?pid=1
+
+
+ 9.3 使用Vue重构前端页面
+ 准备工作:
+ 下载vue_template.rar到指定的目录C:\xampp\htdocs\framework\6_django\mfresh_frontend，解压缩到当前文件夹，用vscode打开这个工程
+
+ npm i //安装vue模板项目需要的依赖的包
+
+ npm start //启动开发服务器
+
+ 回顾:
+  ①vue中组件的创建、使用
+  SFC single file component 单文件组件系统
+  **.vue
+  组件：可被反复使用的，带有特定功能的模板内容
+
+  组件的创建:
+   ①.vue
+   ②Vue.component(&quot;&quot;,{
+    components:{}
+   })
+  组件的调用:
+   ①路由地址
+   ②嵌套调用
+
+
+  ②vue中基本语法
+  指令、过滤器、属性、插件
+  vue官方提供了两个核心插件:vueRouter/vuex
+
+  自定义插件的创建和使用
+   MyPlugin = {
+    install:function(vue){
+     //在此插件的内部，封装组件、过滤器、指令。。。
+    }
+   }
+
+   Vue.use(MyPlugin)
+
+
+  ③vue中组件间内部通信
+   props down
+    &lt;son myTitle=&quot;&quot;&gt;&lt;/son&gt;
+    son:
+     {
+      props:['myTitle']//this.myTitle
+     }
+
+   events up
+    handleEvent(msg){}
+    &lt;son @myEvent=&quot;handleEvent&quot;&gt;&lt;/son&gt;
+    this.$emit(myEvent,123)
+
+   bus:基于事件的机制
+   main.js
+    Vue.prototype.$bus = new Vue()
+    this.$bus.$on('myEvent',(msg)=&gt;{})
+    this.$bus.$emit('myEvent',123)
+
+
+  ④vue中网络通信
+  axios
+   安装:
+   npm i axios
+   引入，使用
+   import Axios from 'axios'
+
+   Axios.get/post().then((response)=&gt;{
+    //response.data
+   })
+
+  ⑤vue-router(路由系统)
+   基本配置
+    创建组件
+    创建容器 &lt;router-view&gt;&lt;/router-view&gt;
+    配置路由词典
+     [
+      {path:'',component:**},
+      {}
+     ]
+    配置路由器
+     new Router({
+      routes:[]
+     })
+    调用路由器
+     new Vue({
+      router:**
+     })
+   跳转
+   this.$router.push()/go()/back()..
+   传参
+   配置接收方的路由地址
+    /detail --&gt; /detail/:id
+   传参
+    this.$router.push('/detail/10')
+   接收参数
+    this.$route.params.id
+   嵌套:
+   A需要嵌套B、C
+   步骤1：给A组件的模板指定一个容器
+   步骤2：给A组件设置子路由 children
+   守卫：
+    全局守卫
+     router.beforeEach((to,from,next)=&gt;{
+      next()//放行
+      next(false)//禁止访问
+     })
+
+    路由独享守卫
+    {
+     path:'',
+     component:**,
+     beforeEnter:(to,from,next)=&gt;{
+
+     }
+    }
+  
+
+   练习: (:- 16:45)
+   步骤1：在当前的vue项目中，创建两个组件 Demo06List/Demo06Detail.vue
+   步骤2：在Demo06List组件，挂载完，向服务器发请求http://jsonplaceholder.typicode.com/todos；将请求到的数据保存，渲染在无需列表，列表项显示一个标题(title)和复选框(completed)
+   步骤3：点击列表项的标题，跳转到Demo06Detail,同时将id传递，接收到id直接打印在终端
+  
+  ⑥vuex
+  为什么需要Vuex?
+   中大型Vue项目 组件间通讯会变得非常复杂，简化通讯任务，使用vuex
+  
+  Vuex如何解决问题？
+   Vuex借助于状态来集中式管理数据，读写操作都要经过vuex
+  
+  准备工作:
+   npm i vuex
+   import Vuex from 'vuex'
+   Vue.use(Vuex)//this.$store
+
+  核心概念：
+   state:
+    //state是负责来初始化数据的
+     state:{
+      id:0,
+      list:[1,2,3,4,5]
+     },
+   getters:
+    //getters是负责在state原始数据基础之上，派生新的数据
+    getters:{
+     getOddList(state){
+      return [2,4]
+     }
+    },
+   mutations:
+     //mutations是负责来定义修改数据的方法，认为类似事件绑定 this.$store.commit('getList',12)
+     mutations:{
+      modifyList(state){
+       var num  = Math.floor(Math.random()*100)
+       state.list.push(num)
+      },
+      getList(state,list){
+       state.list = list
+      }
+     },
+   actions:
+   需要异步的来修改数据，异步操作写在action，数据操作还要靠触发mutation来实现 this.$store.dispatch(&quot;myInit&quot;)
+    actions:{
+      myInit(context){
+       //异步操作
+       setTimeout(()=&gt;{
+        var myList = [&quot;商品1&quot;,&quot;商品2&quot;,&quot;商品3&quot;]
+        //保存在state:应该通过触发mutation来实现
+        context.commit(&quot;getList&quot;,myList)
+       },3000)
+      }
+     }
+   modules:
+    const moduleA = {
+     state: { ... },
+     mutations: { ... },
+     actions: { ... },
+     getters: { ... }
+    }
+
+    const moduleB = {
+     state: { ... },
+     mutations: { ... },
+     actions: { ... }
+    }
+
+    const store = new Vuex.Store({
+     modules: {
+      a: moduleA,
+      b: moduleB
+     }
+    })
+
+    store.state.a // -&gt; moduleA 的状态
+    store.state.b // -&gt; moduleB 的状态
+
+
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br><span class="line-number">265</span><br><span class="line-number">266</span><br><span class="line-number">267</span><br><span class="line-number">268</span><br><span class="line-number">269</span><br><span class="line-number">270</span><br><span class="line-number">271</span><br><span class="line-number">272</span><br><span class="line-number">273</span><br><span class="line-number">274</span><br><span class="line-number">275</span><br><span class="line-number">276</span><br><span class="line-number">277</span><br><span class="line-number">278</span><br><span class="line-number">279</span><br><span class="line-number">280</span><br><span class="line-number">281</span><br><span class="line-number">282</span><br><span class="line-number">283</span><br><span class="line-number">284</span><br><span class="line-number">285</span><br><span class="line-number">286</span><br><span class="line-number">287</span><br><span class="line-number">288</span><br><span class="line-number">289</span><br><span class="line-number">290</span><br><span class="line-number">291</span><br><span class="line-number">292</span><br><span class="line-number">293</span><br><span class="line-number">294</span><br><span class="line-number">295</span><br><span class="line-number">296</span><br><span class="line-number">297</span><br><span class="line-number">298</span><br><span class="line-number">299</span><br><span class="line-number">300</span><br><span class="line-number">301</span><br><span class="line-number">302</span><br><span class="line-number">303</span><br><span class="line-number">304</span><br><span class="line-number">305</span><br><span class="line-number">306</span><br><span class="line-number">307</span><br><span class="line-number">308</span><br><span class="line-number">309</span><br><span class="line-number">310</span><br><span class="line-number">311</span><br><span class="line-number">312</span><br><span class="line-number">313</span><br><span class="line-number">314</span><br><span class="line-number">315</span><br><span class="line-number">316</span><br><span class="line-number">317</span><br><span class="line-number">318</span><br><span class="line-number">319</span><br><span class="line-number">320</span><br><span class="line-number">321</span><br><span class="line-number">322</span><br><span class="line-number">323</span><br><span class="line-number">324</span><br><span class="line-number">325</span><br><span class="line-number">326</span><br><span class="line-number">327</span><br><span class="line-number">328</span><br><span class="line-number">329</span><br><span class="line-number">330</span><br><span class="line-number">331</span><br><span class="line-number">332</span><br><span class="line-number">333</span><br><span class="line-number">334</span><br><span class="line-number">335</span><br><span class="line-number">336</span><br><span class="line-number">337</span><br><span class="line-number">338</span><br><span class="line-number">339</span><br><span class="line-number">340</span><br><span class="line-number">341</span><br><span class="line-number">342</span><br><span class="line-number">343</span><br><span class="line-number">344</span><br><span class="line-number">345</span><br><span class="line-number">346</span><br><span class="line-number">347</span><br><span class="line-number">348</span><br><span class="line-number">349</span><br><span class="line-number">350</span><br><span class="line-number">351</span><br><span class="line-number">352</span><br><span class="line-number">353</span><br><span class="line-number">354</span><br><span class="line-number">355</span><br><span class="line-number">356</span><br><span class="line-number">357</span><br><span class="line-number">358</span><br><span class="line-number">359</span><br><span class="line-number">360</span><br><span class="line-number">361</span><br><span class="line-number">362</span><br><span class="line-number">363</span><br><span class="line-number">364</span><br><span class="line-number">365</span><br><span class="line-number">366</span><br><span class="line-number">367</span><br><span class="line-number">368</span><br><span class="line-number">369</span><br><span class="line-number">370</span><br><span class="line-number">371</span><br><span class="line-number">372</span><br><span class="line-number">373</span><br><span class="line-number">374</span><br><span class="line-number">375</span><br><span class="line-number">376</span><br><span class="line-number">377</span><br><span class="line-number">378</span><br><span class="line-number">379</span><br><span class="line-number">380</span><br><span class="line-number">381</span><br><span class="line-number">382</span><br><span class="line-number">383</span><br><span class="line-number">384</span><br><span class="line-number">385</span><br><span class="line-number">386</span><br><span class="line-number">387</span><br><span class="line-number">388</span><br><span class="line-number">389</span><br><span class="line-number">390</span><br><span class="line-number">391</span><br><span class="line-number">392</span><br><span class="line-number">393</span><br><span class="line-number">394</span><br><span class="line-number">395</span><br><span class="line-number">396</span><br><span class="line-number">397</span><br><span class="line-number">398</span><br><span class="line-number">399</span><br><span class="line-number">400</span><br><span class="line-number">401</span><br><span class="line-number">402</span><br><span class="line-number">403</span><br><span class="line-number">404</span><br><span class="line-number">405</span><br><span class="line-number">406</span><br><span class="line-number">407</span><br><span class="line-number">408</span><br><span class="line-number">409</span><br><span class="line-number">410</span><br><span class="line-number">411</span><br><span class="line-number">412</span><br><span class="line-number">413</span><br><span class="line-number">414</span><br><span class="line-number">415</span><br><span class="line-number">416</span><br><span class="line-number">417</span><br><span class="line-number">418</span><br><span class="line-number">419</span><br><span class="line-number">420</span><br><span class="line-number">421</span><br><span class="line-number">422</span><br><span class="line-number">423</span><br><span class="line-number">424</span><br><span class="line-number">425</span><br><span class="line-number">426</span><br><span class="line-number">427</span><br><span class="line-number">428</span><br><span class="line-number">429</span><br><span class="line-number">430</span><br><span class="line-number">431</span><br><span class="line-number">432</span><br><span class="line-number">433</span><br><span class="line-number">434</span><br><span class="line-number">435</span><br><span class="line-number">436</span><br><span class="line-number">437</span><br><span class="line-number">438</span><br><span class="line-number">439</span><br><span class="line-number">440</span><br><span class="line-number">441</span><br><span class="line-number">442</span><br><span class="line-number">443</span><br><span class="line-number">444</span><br><span class="line-number">445</span><br><span class="line-number">446</span><br><span class="line-number">447</span><br><span class="line-number">448</span><br><span class="line-number">449</span><br><span class="line-number">450</span><br><span class="line-number">451</span><br><span class="line-number">452</span><br><span class="line-number">453</span><br><span class="line-number">454</span><br><span class="line-number">455</span><br><span class="line-number">456</span><br><span class="line-number">457</span><br><span class="line-number">458</span><br><span class="line-number">459</span><br><span class="line-number">460</span><br><span class="line-number">461</span><br><span class="line-number">462</span><br><span class="line-number">463</span><br><span class="line-number">464</span><br><span class="line-number">465</span><br><span class="line-number">466</span><br><span class="line-number">467</span><br><span class="line-number">468</span><br><span class="line-number">469</span><br><span class="line-number">470</span><br><span class="line-number">471</span><br><span class="line-number">472</span><br><span class="line-number">473</span><br><span class="line-number">474</span><br><span class="line-number">475</span><br><span class="line-number">476</span><br><span class="line-number">477</span><br><span class="line-number">478</span><br><span class="line-number">479</span><br><span class="line-number">480</span><br><span class="line-number">481</span><br><span class="line-number">482</span><br><span class="line-number">483</span><br><span class="line-number">484</span><br><span class="line-number">485</span><br><span class="line-number">486</span><br><span class="line-number">487</span><br><span class="line-number">488</span><br><span class="line-number">489</span><br><span class="line-number">490</span><br><span class="line-number">491</span><br><span class="line-number">492</span><br><span class="line-number">493</span><br><span class="line-number">494</span><br><span class="line-number">495</span><br><span class="line-number">496</span><br><span class="line-number">497</span><br><span class="line-number">498</span><br><span class="line-number">499</span><br><span class="line-number">500</span><br><span class="line-number">501</span><br><span class="line-number">502</span><br><span class="line-number">503</span><br><span class="line-number">504</span><br><span class="line-number">505</span><br><span class="line-number">506</span><br><span class="line-number">507</span><br><span class="line-number">508</span><br><span class="line-number">509</span><br><span class="line-number">510</span><br><span class="line-number">511</span><br><span class="line-number">512</span><br><span class="line-number">513</span><br><span class="line-number">514</span><br><span class="line-number">515</span><br><span class="line-number">516</span><br><span class="line-number">517</span><br><span class="line-number">518</span><br><span class="line-number">519</span><br><span class="line-number">520</span><br><span class="line-number">521</span><br><span class="line-number">522</span><br><span class="line-number">523</span><br><span class="line-number">524</span><br><span class="line-number">525</span><br><span class="line-number">526</span><br><span class="line-number">527</span><br><span class="line-number">528</span><br><span class="line-number">529</span><br><span class="line-number">530</span><br><span class="line-number">531</span><br><span class="line-number">532</span><br><span class="line-number">533</span><br><span class="line-number">534</span><br><span class="line-number">535</span><br><span class="line-number">536</span><br><span class="line-number">537</span><br><span class="line-number">538</span><br><span class="line-number">539</span><br><span class="line-number">540</span><br><span class="line-number">541</span><br><span class="line-number">542</span><br><span class="line-number">543</span><br><span class="line-number">544</span><br><span class="line-number">545</span><br><span class="line-number">546</span><br><span class="line-number">547</span><br><span class="line-number">548</span><br><span class="line-number">549</span><br><span class="line-number">550</span><br><span class="line-number">551</span><br><span class="line-number">552</span><br><span class="line-number">553</span><br><span class="line-number">554</span><br><span class="line-number">555</span><br><span class="line-number">556</span><br><span class="line-number">557</span><br><span class="line-number">558</span><br><span class="line-number">559</span><br><span class="line-number">560</span><br><span class="line-number">561</span><br><span class="line-number">562</span><br><span class="line-number">563</span><br><span class="line-number">564</span><br><span class="line-number">565</span><br><span class="line-number">566</span><br><span class="line-number">567</span><br><span class="line-number">568</span><br><span class="line-number">569</span><br><span class="line-number">570</span><br><span class="line-number">571</span><br><span class="line-number">572</span><br><span class="line-number">573</span><br><span class="line-number">574</span><br><span class="line-number">575</span><br><span class="line-number">576</span><br><span class="line-number">577</span><br><span class="line-number">578</span><br><span class="line-number">579</span><br><span class="line-number">580</span><br><span class="line-number">581</span><br><span class="line-number">582</span><br><span class="line-number">583</span><br><span class="line-number">584</span><br><span class="line-number">585</span><br><span class="line-number">586</span><br><span class="line-number">587</span><br><span class="line-number">588</span><br><span class="line-number">589</span><br><span class="line-number">590</span><br><span class="line-number">591</span><br><span class="line-number">592</span><br><span class="line-number">593</span><br><span class="line-number">594</span><br><span class="line-number">595</span><br><span class="line-number">596</span><br><span class="line-number">597</span><br><span class="line-number">598</span><br><span class="line-number">599</span><br><span class="line-number">600</span><br><span class="line-number">601</span><br><span class="line-number">602</span><br><span class="line-number">603</span><br><span class="line-number">604</span><br><span class="line-number">605</span><br><span class="line-number">606</span><br><span class="line-number">607</span><br><span class="line-number">608</span><br><span class="line-number">609</span><br><span class="line-number">610</span><br><span class="line-number">611</span><br><span class="line-number">612</span><br><span class="line-number">613</span><br><span class="line-number">614</span><br><span class="line-number">615</span><br><span class="line-number">616</span><br><span class="line-number">617</span><br><span class="line-number">618</span><br><span class="line-number">619</span><br><span class="line-number">620</span><br><span class="line-number">621</span><br><span class="line-number">622</span><br><span class="line-number">623</span><br><span class="line-number">624</span><br><span class="line-number">625</span><br><span class="line-number">626</span><br><span class="line-number">627</span><br><span class="line-number">628</span><br><span class="line-number">629</span><br><span class="line-number">630</span><br><span class="line-number">631</span><br><span class="line-number">632</span><br><span class="line-number">633</span><br><span class="line-number">634</span><br><span class="line-number">635</span><br><span class="line-number">636</span><br><span class="line-number">637</span><br><span class="line-number">638</span><br><span class="line-number">639</span><br><span class="line-number">640</span><br><span class="line-number">641</span><br><span class="line-number">642</span><br><span class="line-number">643</span><br><span class="line-number">644</span><br><span class="line-number">645</span><br><span class="line-number">646</span><br><span class="line-number">647</span><br><span class="line-number">648</span><br><span class="line-number">649</span><br><span class="line-number">650</span><br><span class="line-number">651</span><br><span class="line-number">652</span><br><span class="line-number">653</span><br><span class="line-number">654</span><br><span class="line-number">655</span><br><span class="line-number">656</span><br><span class="line-number">657</span><br><span class="line-number">658</span><br><span class="line-number">659</span><br><span class="line-number">660</span><br><span class="line-number">661</span><br><span class="line-number">662</span><br><span class="line-number">663</span><br><span class="line-number">664</span><br><span class="line-number">665</span><br><span class="line-number">666</span><br><span class="line-number">667</span><br><span class="line-number">668</span><br><span class="line-number">669</span><br><span class="line-number">670</span><br><span class="line-number">671</span><br><span class="line-number">672</span><br><span class="line-number">673</span><br><span class="line-number">674</span><br><span class="line-number">675</span><br><span class="line-number">676</span><br><span class="line-number">677</span><br><span class="line-number">678</span><br><span class="line-number">679</span><br><span class="line-number">680</span><br><span class="line-number">681</span><br><span class="line-number">682</span><br><span class="line-number">683</span><br><span class="line-number">684</span><br><span class="line-number">685</span><br><span class="line-number">686</span><br><span class="line-number">687</span><br><span class="line-number">688</span><br><span class="line-number">689</span><br><span class="line-number">690</span><br><span class="line-number">691</span><br><span class="line-number">692</span><br><span class="line-number">693</span><br><span class="line-number">694</span><br><span class="line-number">695</span><br><span class="line-number">696</span><br><span class="line-number">697</span><br><span class="line-number">698</span><br><span class="line-number">699</span><br><span class="line-number">700</span><br><span class="line-number">701</span><br><span class="line-number">702</span><br><span class="line-number">703</span><br><span class="line-number">704</span><br><span class="line-number">705</span><br><span class="line-number">706</span><br><span class="line-number">707</span><br><span class="line-number">708</span><br><span class="line-number">709</span><br><span class="line-number">710</span><br><span class="line-number">711</span><br><span class="line-number">712</span><br><span class="line-number">713</span><br><span class="line-number">714</span><br><span class="line-number">715</span><br><span class="line-number">716</span><br><span class="line-number">717</span><br><span class="line-number">718</span><br><span class="line-number">719</span><br><span class="line-number">720</span><br><span class="line-number">721</span><br><span class="line-number">722</span><br><span class="line-number">723</span><br><span class="line-number">724</span><br><span class="line-number">725</span><br><span class="line-number">726</span><br><span class="line-number">727</span><br><span class="line-number">728</span><br><span class="line-number">729</span><br><span class="line-number">730</span><br><span class="line-number">731</span><br><span class="line-number">732</span><br><span class="line-number">733</span><br><span class="line-number">734</span><br><span class="line-number">735</span><br><span class="line-number">736</span><br><span class="line-number">737</span><br><span class="line-number">738</span><br><span class="line-number">739</span><br><span class="line-number">740</span><br><span class="line-number">741</span><br><span class="line-number">742</span><br><span class="line-number">743</span><br><span class="line-number">744</span><br><span class="line-number">745</span><br><span class="line-number">746</span><br><span class="line-number">747</span><br><span class="line-number">748</span><br><span class="line-number">749</span><br><span class="line-number">750</span><br><span class="line-number">751</span><br><span class="line-number">752</span><br><span class="line-number">753</span><br><span class="line-number">754</span><br><span class="line-number">755</span><br><span class="line-number">756</span><br><span class="line-number">757</span><br><span class="line-number">758</span><br><span class="line-number">759</span><br><span class="line-number">760</span><br><span class="line-number">761</span><br><span class="line-number">762</span><br><span class="line-number">763</span><br><span class="line-number">764</span><br><span class="line-number">765</span><br><span class="line-number">766</span><br><span class="line-number">767</span><br><span class="line-number">768</span><br><span class="line-number">769</span><br><span class="line-number">770</span><br><span class="line-number">771</span><br><span class="line-number">772</span><br><span class="line-number">773</span><br><span class="line-number">774</span><br><span class="line-number">775</span><br><span class="line-number">776</span><br><span class="line-number">777</span><br><span class="line-number">778</span><br><span class="line-number">779</span><br><span class="line-number">780</span><br><span class="line-number">781</span><br><span class="line-number">782</span><br><span class="line-number">783</span><br><span class="line-number">784</span><br><span class="line-number">785</span><br><span class="line-number">786</span><br><span class="line-number">787</span><br><span class="line-number">788</span><br><span class="line-number">789</span><br><span class="line-number">790</span><br><span class="line-number">791</span><br><span class="line-number">792</span><br><span class="line-number">793</span><br><span class="line-number">794</span><br><span class="line-number">795</span><br><span class="line-number">796</span><br><span class="line-number">797</span><br><span class="line-number">798</span><br><span class="line-number">799</span><br><span class="line-number">800</span><br><span class="line-number">801</span><br><span class="line-number">802</span><br><span class="line-number">803</span><br><span class="line-number">804</span><br><span class="line-number">805</span><br><span class="line-number">806</span><br><span class="line-number">807</span><br><span class="line-number">808</span><br><span class="line-number">809</span><br><span class="line-number">810</span><br><span class="line-number">811</span><br><span class="line-number">812</span><br><span class="line-number">813</span><br><span class="line-number">814</span><br><span class="line-number">815</span><br><span class="line-number">816</span><br><span class="line-number">817</span><br><span class="line-number">818</span><br><span class="line-number">819</span><br><span class="line-number">820</span><br><span class="line-number">821</span><br><span class="line-number">822</span><br><span class="line-number">823</span><br><span class="line-number">824</span><br><span class="line-number">825</span><br><span class="line-number">826</span><br><span class="line-number">827</span><br><span class="line-number">828</span><br><span class="line-number">829</span><br><span class="line-number">830</span><br><span class="line-number">831</span><br><span class="line-number">832</span><br><span class="line-number">833</span><br><span class="line-number">834</span><br><span class="line-number">835</span><br><span class="line-number">836</span><br><span class="line-number">837</span><br><span class="line-number">838</span><br><span class="line-number">839</span><br><span class="line-number">840</span><br><span class="line-number">841</span><br><span class="line-number">842</span><br><span class="line-number">843</span><br><span class="line-number">844</span><br><span class="line-number">845</span><br><span class="line-number">846</span><br><span class="line-number">847</span><br><span class="line-number">848</span><br><span class="line-number">849</span><br><span class="line-number">850</span><br><span class="line-number">851</span><br><span class="line-number">852</span><br><span class="line-number">853</span><br><span class="line-number">854</span><br><span class="line-number">855</span><br><span class="line-number">856</span><br><span class="line-number">857</span><br><span class="line-number">858</span><br><span class="line-number">859</span><br><span class="line-number">860</span><br><span class="line-number">861</span><br><span class="line-number">862</span><br><span class="line-number">863</span><br><span class="line-number">864</span><br><span class="line-number">865</span><br><span class="line-number">866</span><br><span class="line-number">867</span><br><span class="line-number">868</span><br><span class="line-number">869</span><br><span class="line-number">870</span><br><span class="line-number">871</span><br><span class="line-number">872</span><br><span class="line-number">873</span><br><span class="line-number">874</span><br><span class="line-number">875</span><br><span class="line-number">876</span><br><span class="line-number">877</span><br><span class="line-number">878</span><br><span class="line-number">879</span><br><span class="line-number">880</span><br><span class="line-number">881</span><br><span class="line-number">882</span><br><span class="line-number">883</span><br><span class="line-number">884</span><br><span class="line-number">885</span><br><span class="line-number">886</span><br><span class="line-number">887</span><br><span class="line-number">888</span><br><span class="line-number">889</span><br><span class="line-number">890</span><br><span class="line-number">891</span><br><span class="line-number">892</span><br><span class="line-number">893</span><br><span class="line-number">894</span><br><span class="line-number">895</span><br><span class="line-number">896</span><br><span class="line-number">897</span><br><span class="line-number">898</span><br><span class="line-number">899</span><br><span class="line-number">900</span><br><span class="line-number">901</span><br><span class="line-number">902</span><br><span class="line-number">903</span><br><span class="line-number">904</span><br><span class="line-number">905</span><br><span class="line-number">906</span><br><span class="line-number">907</span><br><span class="line-number">908</span><br><span class="line-number">909</span><br><span class="line-number">910</span><br><span class="line-number">911</span><br><span class="line-number">912</span><br><span class="line-number">913</span><br><span class="line-number">914</span><br><span class="line-number">915</span><br><span class="line-number">916</span><br><span class="line-number">917</span><br><span class="line-number">918</span><br><span class="line-number">919</span><br><span class="line-number">920</span><br><span class="line-number">921</span><br><span class="line-number">922</span><br><span class="line-number">923</span><br><span class="line-number">924</span><br><span class="line-number">925</span><br><span class="line-number">926</span><br><span class="line-number">927</span><br><span class="line-number">928</span><br><span class="line-number">929</span><br><span class="line-number">930</span><br><span class="line-number">931</span><br><span class="line-number">932</span><br><span class="line-number">933</span><br><span class="line-number">934</span><br><span class="line-number">935</span><br><span class="line-number">936</span><br><span class="line-number">937</span><br><span class="line-number">938</span><br><span class="line-number">939</span><br><span class="line-number">940</span><br><span class="line-number">941</span><br><span class="line-number">942</span><br><span class="line-number">943</span><br><span class="line-number">944</span><br><span class="line-number">945</span><br><span class="line-number">946</span><br><span class="line-number">947</span><br><span class="line-number">948</span><br><span class="line-number">949</span><br><span class="line-number">950</span><br><span class="line-number">951</span><br><span class="line-number">952</span><br><span class="line-number">953</span><br><span class="line-number">954</span><br><span class="line-number">955</span><br><span class="line-number">956</span><br><span class="line-number">957</span><br><span class="line-number">958</span><br><span class="line-number">959</span><br><span class="line-number">960</span><br><span class="line-number">961</span><br><span class="line-number">962</span><br><span class="line-number">963</span><br><span class="line-number">964</span><br><span class="line-number">965</span><br><span class="line-number">966</span><br><span class="line-number">967</span><br><span class="line-number">968</span><br><span class="line-number">969</span><br><span class="line-number">970</span><br><span class="line-number">971</span><br><span class="line-number">972</span><br><span class="line-number">973</span><br><span class="line-number">974</span><br><span class="line-number">975</span><br><span class="line-number">976</span><br><span class="line-number">977</span><br><span class="line-number">978</span><br><span class="line-number">979</span><br><span class="line-number">980</span><br><span class="line-number">981</span><br><span class="line-number">982</span><br><span class="line-number">983</span><br><span class="line-number">984</span><br><span class="line-number">985</span><br><span class="line-number">986</span><br><span class="line-number">987</span><br><span class="line-number">988</span><br><span class="line-number">989</span><br><span class="line-number">990</span><br><span class="line-number">991</span><br><span class="line-number">992</span><br><span class="line-number">993</span><br><span class="line-number">994</span><br><span class="line-number">995</span><br><span class="line-number">996</span><br><span class="line-number">997</span><br><span class="line-number">998</span><br><span class="line-number">999</span><br><span class="line-number">1000</span><br><span class="line-number">1001</span><br><span class="line-number">1002</span><br><span class="line-number">1003</span><br><span class="line-number">1004</span><br><span class="line-number">1005</span><br><span class="line-number">1006</span><br><span class="line-number">1007</span><br><span class="line-number">1008</span><br><span class="line-number">1009</span><br><span class="line-number">1010</span><br><span class="line-number">1011</span><br><span class="line-number">1012</span><br><span class="line-number">1013</span><br><span class="line-number">1014</span><br><span class="line-number">1015</span><br><span class="line-number">1016</span><br><span class="line-number">1017</span><br><span class="line-number">1018</span><br><span class="line-number">1019</span><br><span class="line-number">1020</span><br><span class="line-number">1021</span><br><span class="line-number">1022</span><br><span class="line-number">1023</span><br><span class="line-number">1024</span><br><span class="line-number">1025</span><br><span class="line-number">1026</span><br><span class="line-number">1027</span><br><span class="line-number">1028</span><br><span class="line-number">1029</span><br><span class="line-number">1030</span><br><span class="line-number">1031</span><br><span class="line-number">1032</span><br><span class="line-number">1033</span><br><span class="line-number">1034</span><br><span class="line-number">1035</span><br><span class="line-number">1036</span><br><span class="line-number">1037</span><br><span class="line-number">1038</span><br><span class="line-number">1039</span><br><span class="line-number">1040</span><br><span class="line-number">1041</span><br><span class="line-number">1042</span><br><span class="line-number">1043</span><br><span class="line-number">1044</span><br><span class="line-number">1045</span><br><span class="line-number">1046</span><br><span class="line-number">1047</span><br><span class="line-number">1048</span><br><span class="line-number">1049</span><br><span class="line-number">1050</span><br><span class="line-number">1051</span><br><span class="line-number">1052</span><br><span class="line-number">1053</span><br><span class="line-number">1054</span><br><span class="line-number">1055</span><br><span class="line-number">1056</span><br><span class="line-number">1057</span><br><span class="line-number">1058</span><br><span class="line-number">1059</span><br><span class="line-number">1060</span><br><span class="line-number">1061</span><br><span class="line-number">1062</span><br><span class="line-number">1063</span><br><span class="line-number">1064</span><br><span class="line-number">1065</span><br><span class="line-number">1066</span><br><span class="line-number">1067</span><br><span class="line-number">1068</span><br><span class="line-number">1069</span><br><span class="line-number">1070</span><br><span class="line-number">1071</span><br><span class="line-number">1072</span><br><span class="line-number">1073</span><br><span class="line-number">1074</span><br><span class="line-number">1075</span><br><span class="line-number">1076</span><br><span class="line-number">1077</span><br><span class="line-number">1078</span><br><span class="line-number">1079</span><br><span class="line-number">1080</span><br><span class="line-number">1081</span><br><span class="line-number">1082</span><br><span class="line-number">1083</span><br><span class="line-number">1084</span><br><span class="line-number">1085</span><br><span class="line-number">1086</span><br><span class="line-number">1087</span><br><span class="line-number">1088</span><br><span class="line-number">1089</span><br><span class="line-number">1090</span><br><span class="line-number">1091</span><br><span class="line-number">1092</span><br><span class="line-number">1093</span><br><span class="line-number">1094</span><br><span class="line-number">1095</span><br><span class="line-number">1096</span><br><span class="line-number">1097</span><br><span class="line-number">1098</span><br><span class="line-number">1099</span><br><span class="line-number">1100</span><br><span class="line-number">1101</span><br><span class="line-number">1102</span><br><span class="line-number">1103</span><br><span class="line-number">1104</span><br><span class="line-number">1105</span><br><span class="line-number">1106</span><br><span class="line-number">1107</span><br><span class="line-number">1108</span><br><span class="line-number">1109</span><br><span class="line-number">1110</span><br><span class="line-number">1111</span><br><span class="line-number">1112</span><br><span class="line-number">1113</span><br><span class="line-number">1114</span><br><span class="line-number">1115</span><br><span class="line-number">1116</span><br><span class="line-number">1117</span><br><span class="line-number">1118</span><br><span class="line-number">1119</span><br><span class="line-number">1120</span><br><span class="line-number">1121</span><br><span class="line-number">1122</span><br><span class="line-number">1123</span><br><span class="line-number">1124</span><br><span class="line-number">1125</span><br><span class="line-number">1126</span><br><span class="line-number">1127</span><br><span class="line-number">1128</span><br><span class="line-number">1129</span><br><span class="line-number">1130</span><br><span class="line-number">1131</span><br><span class="line-number">1132</span><br><span class="line-number">1133</span><br><span class="line-number">1134</span><br><span class="line-number">1135</span><br><span class="line-number">1136</span><br><span class="line-number">1137</span><br><span class="line-number">1138</span><br><span class="line-number">1139</span><br><span class="line-number">1140</span><br><span class="line-number">1141</span><br><span class="line-number">1142</span><br><span class="line-number">1143</span><br><span class="line-number">1144</span><br><span class="line-number">1145</span><br><span class="line-number">1146</span><br><span class="line-number">1147</span><br><span class="line-number">1148</span><br><span class="line-number">1149</span><br><span class="line-number">1150</span><br><span class="line-number">1151</span><br><span class="line-number">1152</span><br><span class="line-number">1153</span><br><span class="line-number">1154</span><br><span class="line-number">1155</span><br><span class="line-number">1156</span><br><span class="line-number">1157</span><br><span class="line-number">1158</span><br><span class="line-number">1159</span><br><span class="line-number">1160</span><br><span class="line-number">1161</span><br><span class="line-number">1162</span><br><span class="line-number">1163</span><br><span class="line-number">1164</span><br><span class="line-number">1165</span><br><span class="line-number">1166</span><br><span class="line-number">1167</span><br><span class="line-number">1168</span><br><span class="line-number">1169</span><br><span class="line-number">1170</span><br><span class="line-number">1171</span><br><span class="line-number">1172</span><br><span class="line-number">1173</span><br><span class="line-number">1174</span><br><span class="line-number">1175</span><br><span class="line-number">1176</span><br><span class="line-number">1177</span><br><span class="line-number">1178</span><br><span class="line-number">1179</span><br><span class="line-number">1180</span><br><span class="line-number">1181</span><br><span class="line-number">1182</span><br><span class="line-number">1183</span><br><span class="line-number">1184</span><br><span class="line-number">1185</span><br><span class="line-number">1186</span><br><span class="line-number">1187</span><br><span class="line-number">1188</span><br><span class="line-number">1189</span><br><span class="line-number">1190</span><br><span class="line-number">1191</span><br><span class="line-number">1192</span><br><span class="line-number">1193</span><br><span class="line-number">1194</span><br><span class="line-number">1195</span><br><span class="line-number">1196</span><br><span class="line-number">1197</span><br><span class="line-number">1198</span><br><span class="line-number">1199</span><br><span class="line-number">1200</span><br><span class="line-number">1201</span><br><span class="line-number">1202</span><br><span class="line-number">1203</span><br><span class="line-number">1204</span><br><span class="line-number">1205</span><br><span class="line-number">1206</span><br><span class="line-number">1207</span><br><span class="line-number">1208</span><br><span class="line-number">1209</span><br><span class="line-number">1210</span><br><span class="line-number">1211</span><br><span class="line-number">1212</span><br><span class="line-number">1213</span><br><span class="line-number">1214</span><br><span class="line-number">1215</span><br><span class="line-number">1216</span><br><span class="line-number">1217</span><br><span class="line-number">1218</span><br><span class="line-number">1219</span><br><span class="line-number">1220</span><br><span class="line-number">1221</span><br><span class="line-number">1222</span><br><span class="line-number">1223</span><br><span class="line-number">1224</span><br><span class="line-number">1225</span><br><span class="line-number">1226</span><br><span class="line-number">1227</span><br><span class="line-number">1228</span><br><span class="line-number">1229</span><br><span class="line-number">1230</span><br><span class="line-number">1231</span><br><span class="line-number">1232</span><br><span class="line-number">1233</span><br><span class="line-number">1234</span><br><span class="line-number">1235</span><br><span class="line-number">1236</span><br><span class="line-number">1237</span><br><span class="line-number">1238</span><br><span class="line-number">1239</span><br><span class="line-number">1240</span><br><span class="line-number">1241</span><br><span class="line-number">1242</span><br><span class="line-number">1243</span><br><span class="line-number">1244</span><br><span class="line-number">1245</span><br><span class="line-number">1246</span><br><span class="line-number">1247</span><br><span class="line-number">1248</span><br><span class="line-number">1249</span><br><span class="line-number">1250</span><br><span class="line-number">1251</span><br><span class="line-number">1252</span><br><span class="line-number">1253</span><br><span class="line-number">1254</span><br><span class="line-number">1255</span><br><span class="line-number">1256</span><br><span class="line-number">1257</span><br><span class="line-number">1258</span><br><span class="line-number">1259</span><br><span class="line-number">1260</span><br><span class="line-number">1261</span><br><span class="line-number">1262</span><br><span class="line-number">1263</span><br><span class="line-number">1264</span><br><span class="line-number">1265</span><br><span class="line-number">1266</span><br><span class="line-number">1267</span><br><span class="line-number">1268</span><br><span class="line-number">1269</span><br><span class="line-number">1270</span><br><span class="line-number">1271</span><br><span class="line-number">1272</span><br><span class="line-number">1273</span><br><span class="line-number">1274</span><br><span class="line-number">1275</span><br><span class="line-number">1276</span><br><span class="line-number">1277</span><br><span class="line-number">1278</span><br><span class="line-number">1279</span><br><span class="line-number">1280</span><br><span class="line-number">1281</span><br><span class="line-number">1282</span><br><span class="line-number">1283</span><br><span class="line-number">1284</span><br><span class="line-number">1285</span><br><span class="line-number">1286</span><br><span class="line-number">1287</span><br><span class="line-number">1288</span><br><span class="line-number">1289</span><br><span class="line-number">1290</span><br><span class="line-number">1291</span><br><span class="line-number">1292</span><br><span class="line-number">1293</span><br><span class="line-number">1294</span><br><span class="line-number">1295</span><br><span class="line-number">1296</span><br><span class="line-number">1297</span><br><span class="line-number">1298</span><br><span class="line-number">1299</span><br><span class="line-number">1300</span><br><span class="line-number">1301</span><br><span class="line-number">1302</span><br><span class="line-number">1303</span><br><span class="line-number">1304</span><br><span class="line-number">1305</span><br><span class="line-number">1306</span><br><span class="line-number">1307</span><br><span class="line-number">1308</span><br><span class="line-number">1309</span><br><span class="line-number">1310</span><br><span class="line-number">1311</span><br><span class="line-number">1312</span><br><span class="line-number">1313</span><br><span class="line-number">1314</span><br><span class="line-number">1315</span><br><span class="line-number">1316</span><br><span class="line-number">1317</span><br><span class="line-number">1318</span><br><span class="line-number">1319</span><br><span class="line-number">1320</span><br><span class="line-number">1321</span><br><span class="line-number">1322</span><br><span class="line-number">1323</span><br><span class="line-number">1324</span><br><span class="line-number">1325</span><br><span class="line-number">1326</span><br><span class="line-number">1327</span><br><span class="line-number">1328</span><br><span class="line-number">1329</span><br><span class="line-number">1330</span><br><span class="line-number">1331</span><br><span class="line-number">1332</span><br><span class="line-number">1333</span><br><span class="line-number">1334</span><br><span class="line-number">1335</span><br><span class="line-number">1336</span><br><span class="line-number">1337</span><br><span class="line-number">1338</span><br><span class="line-number">1339</span><br><span class="line-number">1340</span><br><span class="line-number">1341</span><br><span class="line-number">1342</span><br><span class="line-number">1343</span><br><span class="line-number">1344</span><br><span class="line-number">1345</span><br><span class="line-number">1346</span><br><span class="line-number">1347</span><br><span class="line-number">1348</span><br><span class="line-number">1349</span><br><span class="line-number">1350</span><br><span class="line-number">1351</span><br><span class="line-number">1352</span><br><span class="line-number">1353</span><br><span class="line-number">1354</span><br><span class="line-number">1355</span><br><span class="line-number">1356</span><br><span class="line-number">1357</span><br><span class="line-number">1358</span><br><span class="line-number">1359</span><br><span class="line-number">1360</span><br><span class="line-number">1361</span><br><span class="line-number">1362</span><br><span class="line-number">1363</span><br><span class="line-number">1364</span><br><span class="line-number">1365</span><br><span class="line-number">1366</span><br><span class="line-number">1367</span><br><span class="line-number">1368</span><br><span class="line-number">1369</span><br><span class="line-number">1370</span><br><span class="line-number">1371</span><br><span class="line-number">1372</span><br><span class="line-number">1373</span><br><span class="line-number">1374</span><br><span class="line-number">1375</span><br><span class="line-number">1376</span><br><span class="line-number">1377</span><br><span class="line-number">1378</span><br><span class="line-number">1379</span><br><span class="line-number">1380</span><br><span class="line-number">1381</span><br><span class="line-number">1382</span><br><span class="line-number">1383</span><br><span class="line-number">1384</span><br><span class="line-number">1385</span><br><span class="line-number">1386</span><br><span class="line-number">1387</span><br><span class="line-number">1388</span><br><span class="line-number">1389</span><br><span class="line-number">1390</span><br><span class="line-number">1391</span><br><span class="line-number">1392</span><br><span class="line-number">1393</span><br><span class="line-number">1394</span><br><span class="line-number">1395</span><br><span class="line-number">1396</span><br><span class="line-number">1397</span><br><span class="line-number">1398</span><br><span class="line-number">1399</span><br><span class="line-number">1400</span><br><span class="line-number">1401</span><br><span class="line-number">1402</span><br><span class="line-number">1403</span><br><span class="line-number">1404</span><br><span class="line-number">1405</span><br><span class="line-number">1406</span><br><span class="line-number">1407</span><br><span class="line-number">1408</span><br><span class="line-number">1409</span><br><span class="line-number">1410</span><br><span class="line-number">1411</span><br><span class="line-number">1412</span><br><span class="line-number">1413</span><br><span class="line-number">1414</span><br><span class="line-number">1415</span><br><span class="line-number">1416</span><br><span class="line-number">1417</span><br><span class="line-number">1418</span><br><span class="line-number">1419</span><br><span class="line-number">1420</span><br><span class="line-number">1421</span><br><span class="line-number">1422</span><br><span class="line-number">1423</span><br><span class="line-number">1424</span><br><span class="line-number">1425</span><br><span class="line-number">1426</span><br><span class="line-number">1427</span><br><span class="line-number">1428</span><br><span class="line-number">1429</span><br><span class="line-number">1430</span><br><span class="line-number">1431</span><br><span class="line-number">1432</span><br><span class="line-number">1433</span><br><span class="line-number">1434</span><br><span class="line-number">1435</span><br><span class="line-number">1436</span><br><span class="line-number">1437</span><br><span class="line-number">1438</span><br><span class="line-number">1439</span><br><span class="line-number">1440</span><br><span class="line-number">1441</span><br><span class="line-number">1442</span><br><span class="line-number">1443</span><br><span class="line-number">1444</span><br><span class="line-number">1445</span><br><span class="line-number">1446</span><br><span class="line-number">1447</span><br><span class="line-number">1448</span><br><span class="line-number">1449</span><br><span class="line-number">1450</span><br><span class="line-number">1451</span><br><span class="line-number">1452</span><br><span class="line-number">1453</span><br><span class="line-number">1454</span><br><span class="line-number">1455</span><br><span class="line-number">1456</span><br><span class="line-number">1457</span><br><span class="line-number">1458</span><br><span class="line-number">1459</span><br><span class="line-number">1460</span><br><span class="line-number">1461</span><br><span class="line-number">1462</span><br><span class="line-number">1463</span><br><span class="line-number">1464</span><br><span class="line-number">1465</span><br><span class="line-number">1466</span><br><span class="line-number">1467</span><br><span class="line-number">1468</span><br><span class="line-number">1469</span><br><span class="line-number">1470</span><br><span class="line-number">1471</span><br><span class="line-number">1472</span><br><span class="line-number">1473</span><br><span class="line-number">1474</span><br><span class="line-number">1475</span><br><span class="line-number">1476</span><br><span class="line-number">1477</span><br><span class="line-number">1478</span><br><span class="line-number">1479</span><br><span class="line-number">1480</span><br><span class="line-number">1481</span><br><span class="line-number">1482</span><br><span class="line-number">1483</span><br><span class="line-number">1484</span><br><span class="line-number">1485</span><br><span class="line-number">1486</span><br><span class="line-number">1487</span><br><span class="line-number">1488</span><br><span class="line-number">1489</span><br><span class="line-number">1490</span><br><span class="line-number">1491</span><br><span class="line-number">1492</span><br><span class="line-number">1493</span><br><span class="line-number">1494</span><br><span class="line-number">1495</span><br><span class="line-number">1496</span><br><span class="line-number">1497</span><br><span class="line-number">1498</span><br><span class="line-number">1499</span><br><span class="line-number">1500</span><br><span class="line-number">1501</span><br><span class="line-number">1502</span><br><span class="line-number">1503</span><br><span class="line-number">1504</span><br><span class="line-number">1505</span><br><span class="line-number">1506</span><br><span class="line-number">1507</span><br><span class="line-number">1508</span><br><span class="line-number">1509</span><br><span class="line-number">1510</span><br><span class="line-number">1511</span><br><span class="line-number">1512</span><br><span class="line-number">1513</span><br><span class="line-number">1514</span><br><span class="line-number">1515</span><br><span class="line-number">1516</span><br><span class="line-number">1517</span><br><span class="line-number">1518</span><br><span class="line-number">1519</span><br><span class="line-number">1520</span><br><span class="line-number">1521</span><br><span class="line-number">1522</span><br><span class="line-number">1523</span><br><span class="line-number">1524</span><br><span class="line-number">1525</span><br><span class="line-number">1526</span><br><span class="line-number">1527</span><br><span class="line-number">1528</span><br><span class="line-number">1529</span><br><span class="line-number">1530</span><br><span class="line-number">1531</span><br><span class="line-number">1532</span><br><span class="line-number">1533</span><br><span class="line-number">1534</span><br><span class="line-number">1535</span><br><span class="line-number">1536</span><br><span class="line-number">1537</span><br><span class="line-number">1538</span><br><span class="line-number">1539</span><br><span class="line-number">1540</span><br><span class="line-number">1541</span><br><span class="line-number">1542</span><br><span class="line-number">1543</span><br><span class="line-number">1544</span><br><span class="line-number">1545</span><br><span class="line-number">1546</span><br><span class="line-number">1547</span><br><span class="line-number">1548</span><br><span class="line-number">1549</span><br><span class="line-number">1550</span><br><span class="line-number">1551</span><br><span class="line-number">1552</span><br><span class="line-number">1553</span><br><span class="line-number">1554</span><br><span class="line-number">1555</span><br><span class="line-number">1556</span><br><span class="line-number">1557</span><br><span class="line-number">1558</span><br><span class="line-number">1559</span><br><span class="line-number">1560</span><br><span class="line-number">1561</span><br><span class="line-number">1562</span><br><span class="line-number">1563</span><br><span class="line-number">1564</span><br><span class="line-number">1565</span><br><span class="line-number">1566</span><br><span class="line-number">1567</span><br><span class="line-number">1568</span><br><span class="line-number">1569</span><br><span class="line-number">1570</span><br><span class="line-number">1571</span><br><span class="line-number">1572</span><br><span class="line-number">1573</span><br><span class="line-number">1574</span><br><span class="line-number">1575</span><br><span class="line-number">1576</span><br><span class="line-number">1577</span><br><span class="line-number">1578</span><br><span class="line-number">1579</span><br><span class="line-number">1580</span><br><span class="line-number">1581</span><br><span class="line-number">1582</span><br><span class="line-number">1583</span><br><span class="line-number">1584</span><br><span class="line-number">1585</span><br><span class="line-number">1586</span><br><span class="line-number">1587</span><br><span class="line-number">1588</span><br><span class="line-number">1589</span><br><span class="line-number">1590</span><br><span class="line-number">1591</span><br><span class="line-number">1592</span><br><span class="line-number">1593</span><br><span class="line-number">1594</span><br><span class="line-number">1595</span><br><span class="line-number">1596</span><br><span class="line-number">1597</span><br><span class="line-number">1598</span><br><span class="line-number">1599</span><br><span class="line-number">1600</span><br><span class="line-number">1601</span><br><span class="line-number">1602</span><br><span class="line-number">1603</span><br><span class="line-number">1604</span><br><span class="line-number">1605</span><br><span class="line-number">1606</span><br><span class="line-number">1607</span><br><span class="line-number">1608</span><br><span class="line-number">1609</span><br><span class="line-number">1610</span><br><span class="line-number">1611</span><br><span class="line-number">1612</span><br><span class="line-number">1613</span><br><span class="line-number">1614</span><br><span class="line-number">1615</span><br><span class="line-number">1616</span><br><span class="line-number">1617</span><br><span class="line-number">1618</span><br><span class="line-number">1619</span><br><span class="line-number">1620</span><br><span class="line-number">1621</span><br><span class="line-number">1622</span><br><span class="line-number">1623</span><br><span class="line-number">1624</span><br><span class="line-number">1625</span><br><span class="line-number">1626</span><br><span class="line-number">1627</span><br><span class="line-number">1628</span><br><span class="line-number">1629</span><br><span class="line-number">1630</span><br><span class="line-number">1631</span><br><span class="line-number">1632</span><br><span class="line-number">1633</span><br><span class="line-number">1634</span><br><span class="line-number">1635</span><br><span class="line-number">1636</span><br><span class="line-number">1637</span><br><span class="line-number">1638</span><br><span class="line-number">1639</span><br><span class="line-number">1640</span><br><span class="line-number">1641</span><br><span class="line-number">1642</span><br><span class="line-number">1643</span><br><span class="line-number">1644</span><br><span class="line-number">1645</span><br><span class="line-number">1646</span><br><span class="line-number">1647</span><br><span class="line-number">1648</span><br><span class="line-number">1649</span><br><span class="line-number">1650</span><br><span class="line-number">1651</span><br><span class="line-number">1652</span><br><span class="line-number">1653</span><br><span class="line-number">1654</span><br><span class="line-number">1655</span><br><span class="line-number">1656</span><br><span class="line-number">1657</span><br><span class="line-number">1658</span><br><span class="line-number">1659</span><br><span class="line-number">1660</span><br><span class="line-number">1661</span><br><span class="line-number">1662</span><br><span class="line-number">1663</span><br><span class="line-number">1664</span><br><span class="line-number">1665</span><br><span class="line-number">1666</span><br><span class="line-number">1667</span><br><span class="line-number">1668</span><br><span class="line-number">1669</span><br><span class="line-number">1670</span><br><span class="line-number">1671</span><br><span class="line-number">1672</span><br><span class="line-number">1673</span><br><span class="line-number">1674</span><br><span class="line-number">1675</span><br><span class="line-number">1676</span><br><span class="line-number">1677</span><br><span class="line-number">1678</span><br><span class="line-number">1679</span><br><span class="line-number">1680</span><br><span class="line-number">1681</span><br><span class="line-number">1682</span><br><span class="line-number">1683</span><br><span class="line-number">1684</span><br><span class="line-number">1685</span><br><span class="line-number">1686</span><br><span class="line-number">1687</span><br><span class="line-number">1688</span><br><span class="line-number">1689</span><br><span class="line-number">1690</span><br><span class="line-number">1691</span><br><span class="line-number">1692</span><br><span class="line-number">1693</span><br><span class="line-number">1694</span><br><span class="line-number">1695</span><br><span class="line-number">1696</span><br><span class="line-number">1697</span><br><span class="line-number">1698</span><br><span class="line-number">1699</span><br><span class="line-number">1700</span><br><span class="line-number">1701</span><br><span class="line-number">1702</span><br><span class="line-number">1703</span><br><span class="line-number">1704</span><br><span class="line-number">1705</span><br><span class="line-number">1706</span><br><span class="line-number">1707</span><br><span class="line-number">1708</span><br><span class="line-number">1709</span><br><span class="line-number">1710</span><br><span class="line-number">1711</span><br><span class="line-number">1712</span><br><span class="line-number">1713</span><br><span class="line-number">1714</span><br><span class="line-number">1715</span><br><span class="line-number">1716</span><br><span class="line-number">1717</span><br><span class="line-number">1718</span><br><span class="line-number">1719</span><br><span class="line-number">1720</span><br><span class="line-number">1721</span><br><span class="line-number">1722</span><br><span class="line-number">1723</span><br><span class="line-number">1724</span><br><span class="line-number">1725</span><br><span class="line-number">1726</span><br><span class="line-number">1727</span><br><span class="line-number">1728</span><br><span class="line-number">1729</span><br><span class="line-number">1730</span><br><span class="line-number">1731</span><br><span class="line-number">1732</span><br><span class="line-number">1733</span><br><span class="line-number">1734</span><br><span class="line-number">1735</span><br><span class="line-number">1736</span><br><span class="line-number">1737</span><br><span class="line-number">1738</span><br><span class="line-number">1739</span><br><span class="line-number">1740</span><br><span class="line-number">1741</span><br><span class="line-number">1742</span><br><span class="line-number">1743</span><br><span class="line-number">1744</span><br><span class="line-number">1745</span><br><span class="line-number">1746</span><br><span class="line-number">1747</span><br><span class="line-number">1748</span><br><span class="line-number">1749</span><br><span class="line-number">1750</span><br><span class="line-number">1751</span><br><span class="line-number">1752</span><br><span class="line-number">1753</span><br><span class="line-number">1754</span><br><span class="line-number">1755</span><br><span class="line-number">1756</span><br><span class="line-number">1757</span><br><span class="line-number">1758</span><br><span class="line-number">1759</span><br><span class="line-number">1760</span><br><span class="line-number">1761</span><br><span class="line-number">1762</span><br><span class="line-number">1763</span><br><span class="line-number">1764</span><br><span class="line-number">1765</span><br><span class="line-number">1766</span><br><span class="line-number">1767</span><br><span class="line-number">1768</span><br><span class="line-number">1769</span><br><span class="line-number">1770</span><br><span class="line-number">1771</span><br><span class="line-number">1772</span><br><span class="line-number">1773</span><br><span class="line-number">1774</span><br><span class="line-number">1775</span><br><span class="line-number">1776</span><br><span class="line-number">1777</span><br><span class="line-number">1778</span><br><span class="line-number">1779</span><br><span class="line-number">1780</span><br><span class="line-number">1781</span><br><span class="line-number">1782</span><br><span class="line-number">1783</span><br><span class="line-number">1784</span><br><span class="line-number">1785</span><br><span class="line-number">1786</span><br><span class="line-number">1787</span><br><span class="line-number">1788</span><br><span class="line-number">1789</span><br><span class="line-number">1790</span><br><span class="line-number">1791</span><br><span class="line-number">1792</span><br><span class="line-number">1793</span><br><span class="line-number">1794</span><br><span class="line-number">1795</span><br><span class="line-number">1796</span><br><span class="line-number">1797</span><br><span class="line-number">1798</span><br><span class="line-number">1799</span><br><span class="line-number">1800</span><br><span class="line-number">1801</span><br><span class="line-number">1802</span><br><span class="line-number">1803</span><br><span class="line-number">1804</span><br><span class="line-number">1805</span><br><span class="line-number">1806</span><br><span class="line-number">1807</span><br><span class="line-number">1808</span><br><span class="line-number">1809</span><br><span class="line-number">1810</span><br><span class="line-number">1811</span><br><span class="line-number">1812</span><br><span class="line-number">1813</span><br><span class="line-number">1814</span><br><span class="line-number">1815</span><br><span class="line-number">1816</span><br><span class="line-number">1817</span><br><span class="line-number">1818</span><br><span class="line-number">1819</span><br><span class="line-number">1820</span><br><span class="line-number">1821</span><br><span class="line-number">1822</span><br><span class="line-number">1823</span><br><span class="line-number">1824</span><br><span class="line-number">1825</span><br><span class="line-number">1826</span><br><span class="line-number">1827</span><br><span class="line-number">1828</span><br><span class="line-number">1829</span><br><span class="line-number">1830</span><br><span class="line-number">1831</span><br><span class="line-number">1832</span><br><span class="line-number">1833</span><br><span class="line-number">1834</span><br><span class="line-number">1835</span><br><span class="line-number">1836</span><br><span class="line-number">1837</span><br><span class="line-number">1838</span><br><span class="line-number">1839</span><br><span class="line-number">1840</span><br><span class="line-number">1841</span><br><span class="line-number">1842</span><br><span class="line-number">1843</span><br><span class="line-number">1844</span><br><span class="line-number">1845</span><br><span class="line-number">1846</span><br><span class="line-number">1847</span><br><span class="line-number">1848</span><br><span class="line-number">1849</span><br><span class="line-number">1850</span><br><span class="line-number">1851</span><br><span class="line-number">1852</span><br><span class="line-number">1853</span><br><span class="line-number">1854</span><br><span class="line-number">1855</span><br><span class="line-number">1856</span><br><span class="line-number">1857</span><br><span class="line-number">1858</span><br><span class="line-number">1859</span><br><span class="line-number">1860</span><br><span class="line-number">1861</span><br><span class="line-number">1862</span><br><span class="line-number">1863</span><br><span class="line-number">1864</span><br><span class="line-number">1865</span><br><span class="line-number">1866</span><br><span class="line-number">1867</span><br><span class="line-number">1868</span><br><span class="line-number">1869</span><br><span class="line-number">1870</span><br><span class="line-number">1871</span><br><span class="line-number">1872</span><br><span class="line-number">1873</span><br><span class="line-number">1874</span><br><span class="line-number">1875</span><br><span class="line-number">1876</span><br><span class="line-number">1877</span><br><span class="line-number">1878</span><br><span class="line-number">1879</span><br><span class="line-number">1880</span><br><span class="line-number">1881</span><br><span class="line-number">1882</span><br><span class="line-number">1883</span><br><span class="line-number">1884</span><br><span class="line-number">1885</span><br><span class="line-number">1886</span><br><span class="line-number">1887</span><br><span class="line-number">1888</span><br><span class="line-number">1889</span><br><span class="line-number">1890</span><br><span class="line-number">1891</span><br><span class="line-number">1892</span><br><span class="line-number">1893</span><br><span class="line-number">1894</span><br><span class="line-number">1895</span><br><span class="line-number">1896</span><br><span class="line-number">1897</span><br><span class="line-number">1898</span><br><span class="line-number">1899</span><br><span class="line-number">1900</span><br><span class="line-number">1901</span><br><span class="line-number">1902</span><br><span class="line-number">1903</span><br><span class="line-number">1904</span><br><span class="line-number">1905</span><br><span class="line-number">1906</span><br><span class="line-number">1907</span><br><span class="line-number">1908</span><br><span class="line-number">1909</span><br><span class="line-number">1910</span><br><span class="line-number">1911</span><br><span class="line-number">1912</span><br><span class="line-number">1913</span><br><span class="line-number">1914</span><br><span class="line-number">1915</span><br><span class="line-number">1916</span><br><span class="line-number">1917</span><br><span class="line-number">1918</span><br><span class="line-number">1919</span><br><span class="line-number">1920</span><br><span class="line-number">1921</span><br><span class="line-number">1922</span><br><span class="line-number">1923</span><br><span class="line-number">1924</span><br><span class="line-number">1925</span><br><span class="line-number">1926</span><br><span class="line-number">1927</span><br><span class="line-number">1928</span><br><span class="line-number">1929</span><br><span class="line-number">1930</span><br><span class="line-number">1931</span><br><span class="line-number">1932</span><br><span class="line-number">1933</span><br><span class="line-number">1934</span><br><span class="line-number">1935</span><br><span class="line-number">1936</span><br><span class="line-number">1937</span><br><span class="line-number">1938</span><br><span class="line-number">1939</span><br><span class="line-number">1940</span><br><span class="line-number">1941</span><br><span class="line-number">1942</span><br><span class="line-number">1943</span><br><span class="line-number">1944</span><br><span class="line-number">1945</span><br><span class="line-number">1946</span><br><span class="line-number">1947</span><br><span class="line-number">1948</span><br><span class="line-number">1949</span><br><span class="line-number">1950</span><br><span class="line-number">1951</span><br><span class="line-number">1952</span><br><span class="line-number">1953</span><br><span class="line-number">1954</span><br><span class="line-number">1955</span><br><span class="line-number">1956</span><br><span class="line-number">1957</span><br><span class="line-number">1958</span><br><span class="line-number">1959</span><br><span class="line-number">1960</span><br><span class="line-number">1961</span><br><span class="line-number">1962</span><br><span class="line-number">1963</span><br><span class="line-number">1964</span><br><span class="line-number">1965</span><br><span class="line-number">1966</span><br><span class="line-number">1967</span><br><span class="line-number">1968</span><br><span class="line-number">1969</span><br><span class="line-number">1970</span><br><span class="line-number">1971</span><br><span class="line-number">1972</span><br><span class="line-number">1973</span><br><span class="line-number">1974</span><br><span class="line-number">1975</span><br><span class="line-number">1976</span><br><span class="line-number">1977</span><br><span class="line-number">1978</span><br><span class="line-number">1979</span><br><span class="line-number">1980</span><br><span class="line-number">1981</span><br><span class="line-number">1982</span><br><span class="line-number">1983</span><br><span class="line-number">1984</span><br><span class="line-number">1985</span><br><span class="line-number">1986</span><br><span class="line-number">1987</span><br><span class="line-number">1988</span><br><span class="line-number">1989</span><br><span class="line-number">1990</span><br><span class="line-number">1991</span><br><span class="line-number">1992</span><br><span class="line-number">1993</span><br><span class="line-number">1994</span><br><span class="line-number">1995</span><br><span class="line-number">1996</span><br><span class="line-number">1997</span><br><span class="line-number">1998</span><br><span class="line-number">1999</span><br><span class="line-number">2000</span><br><span class="line-number">2001</span><br><span class="line-number">2002</span><br><span class="line-number">2003</span><br><span class="line-number">2004</span><br><span class="line-number">2005</span><br><span class="line-number">2006</span><br><span class="line-number">2007</span><br><span class="line-number">2008</span><br><span class="line-number">2009</span><br><span class="line-number">2010</span><br><span class="line-number">2011</span><br><span class="line-number">2012</span><br><span class="line-number">2013</span><br><span class="line-number">2014</span><br><span class="line-number">2015</span><br><span class="line-number">2016</span><br><span class="line-number">2017</span><br><span class="line-number">2018</span><br><span class="line-number">2019</span><br><span class="line-number">2020</span><br><span class="line-number">2021</span><br><span class="line-number">2022</span><br><span class="line-number">2023</span><br><span class="line-number">2024</span><br><span class="line-number">2025</span><br><span class="line-number">2026</span><br><span class="line-number">2027</span><br><span class="line-number">2028</span><br><span class="line-number">2029</span><br><span class="line-number">2030</span><br><span class="line-number">2031</span><br><span class="line-number">2032</span><br><span class="line-number">2033</span><br><span class="line-number">2034</span><br><span class="line-number">2035</span><br><span class="line-number">2036</span><br><span class="line-number">2037</span><br><span class="line-number">2038</span><br><span class="line-number">2039</span><br><span class="line-number">2040</span><br><span class="line-number">2041</span><br><span class="line-number">2042</span><br><span class="line-number">2043</span><br><span class="line-number">2044</span><br><span class="line-number">2045</span><br><span class="line-number">2046</span><br><span class="line-number">2047</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/_backEnd/_py(1).md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.11f8e218.js" defer></script><script src="/assets/js/2.fbdcd9f4.js" defer></script><script src="/assets/js/147.8809e00c.js" defer></script>
+  </body>
+</html>
