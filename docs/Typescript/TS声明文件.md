@@ -18,9 +18,9 @@
 
 - `declare var/let/const`  声明全局变量/常量
 - `declare function` 声明全局函数
-- `declare class` 声明全局类
-- `declare enum` 声明全局枚举类型
-- `declare namespace` 声明全局对象
+- `declare class` 声明全局 class
+- `declare enum` 声明全局枚举变量
+- `declare namespace` 声明命名空间(全局对象，必须有属性才生效)
 
 声明类型：
 
@@ -41,11 +41,15 @@
 - `declare module` 扩展模块
 - `/// <reference />` 三斜线指令
 
-## 声明变量
+## 声明各种变量
+
+### 声明普通变量
 
 声明变量可以使用 `declare var`, `declare let` `declare const` 三种，前两者效果一样，声明普通变量，`const` 用于声明只读的常量。通常全局变量都应该是只读的，所以应该尽量使用 `const` 。
 
 注：以下声明文件中，只要没有出现 `import` 或 `export`，都表示声明全局变量，否则都是局部变量。
+
+实际上，基本上也只有全局变量才需要在声明文件中声明，局部变量是基本没有这个需求的。
 
 在声明文件中，声明一个全局变量，比如：
 
@@ -56,7 +60,7 @@ declare const string1: string
 declare const number1: number
 ```
 
-上面声明就是告诉 TS, 将来在运行的时候，我将会有一个全局变量叫做 `globalVar`, 它是 `string` 类型的，所以在编译代码并检查的时候，如果我直接使用了这个变量，你不要以为这个变量是不存在的就给我抛出错误了，你直接编译通过吧，有问题我自己负责。
+上面声明就是告诉 TS, 将来在运行的时候，我将会有一个全局变量叫做 `string1`, 它是 `string` 类型的，所以在编译代码并检查的时候，如果我直接使用了这个变量，你不要以为这个变量是不存在的就给我抛出错误了，你直接编译通过吧，有问题我自己负责。
 
 然后，就可以在业务代码中直接使用这个变量：
 
@@ -72,7 +76,7 @@ console.log(number1.toFixed(2)) // TS 已经知道这个变量是 number 类型�
 
 上面代码中，`string1` 和 `number1` 没有先声明再使用，而是直接使用的，但 TS 做代码检查的时候，并没有抛出错误，这是因为我们在声明文件中已经告诉了 TS 这个全局变量在运行时会存在，不用认为是没有声明就使用的变量。
 
-要注意的是，这只是在编译阶段，我们告诉 TS 将来代码运行时会有这个全局变量，所以 TS 在编译阶段不报错了，但是将来在代码运行的时候，如果这个全局变量不存在，那么运行时就会抛出错误 `Uncaught ReferenceError: globalVar is not defined` 。
+要注意的是，这只是在编译阶段，我们告诉 TS 将来代码运行时会有这个全局变量，所以 TS 在编译阶段不报错了，但是将来在代码运行的时候，如果这个全局变量不存在，那么运行时就会抛出错误 `Uncaught ReferenceError: string1 is not defined` 。
 
 所以要记住，我们既然告诉了 TS 在将来运行时会有这个全局变量，那么就一定要保证在运行时这个全局变量是存在的。
 
@@ -152,9 +156,9 @@ declare enum Status {
 
 上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用变量 `Status` 时，不要报错，因为在运行时，将会有一个全局变量叫做 `Status` 可用，它是枚举类型，它的结构是这样的。」
 
-### 声明一个对象 `declare namespace`
+### 声明命名空间(全局对象) `declare namespace`
 
-声明对象实际上也是在声明一个变量，需要注意的是， `namespace` 的成员属性均需要独立声明，但不需要使用 `declare` 来声明：
+声明对象实际上也是在声明一个变量，需要注意的是， `namespace` 必须有成员属性才能声明成功，且每一个成员属性均需要独立声明，但不需要使用 `declare` 来声明：
 ：
 
 ```ts
@@ -213,13 +217,14 @@ type NumAndString = number | string
 
 上例还告诉 TS : 「嘿，在编译时如果看到未定义而直接使用类型 `NumAndString` 时，不要报错，因为有一个全局类型叫做 `NumAndString` 可用，它的结构是这样的。」
 
-需要注意的是，一个项目中需要定义非常多的 `interface` 和 `type` ，如果像上面这样，所有的 `interface` 和 `type` 都暴露在最外层作为全局类型，很有可能会出现命名冲突。
+需要注意的是，一个项目中，通常需要定义非常多的 `interface` 和 `type` ，如果像上面这样，所有的 `interface` 和 `type` 都暴露在最外层作为全局类型，很有可能会出现命名冲突。
 
 实际上，应该尽可能的减少全局变量或全局类型的数量。
 
 所以，最好将他们放在 `namespace` 命名空间下，这样只有命名空间暴露在全局：
 
 ```ts
+// 声明一个全局命名空间
 declare namespace mySpace {
 
   // 声明变量
@@ -243,18 +248,70 @@ declare namespace mySpace {
 使用全局命名空间下的变量和类型：
 
 ```ts
+// 使用全局命名空间下的变量
 console.log(mySpace.name.toUpperCase())
 console.log(mySpace.fn('hello'))
 
+// 使用全局命名空间下的 interface
 const tom: mySpace.IPeople = {
   name: 'tom',
 }
 
+// 使用全局命名空间下的 type
 const var1: mySpace.NumAndString = 1
 const var2: mySpace.NumAndString = 'hello'
 
-console.log(tom)
-console.log(var1)
-console.log(var2)
+```
+
+## 声明合并
+
+声明合并指的是，如果声明了两个以上的同名函数、同名接口或同名 class ，那么它们会合并成一个类型。
+
+如果声明的同名变量不是函数，接口或 class，那么只以第一次声明的类型为准。
+
+### 函数的声明合并（函数重载）
+
+```ts
+declare function fn(x: number): string
+declare function fn(x: string): number
+declare function fn(x: boolean): number
+```
+
+### `interface` 的声明合并
+
+```ts
+interface User {
+  name: string
+  fn(number): string
+}
+
+interface User {
+  name: string
+  age: number
+}
+
+interface User {
+  age: number
+  gender: number
+  fn(string): number
+}
+```
+
+相当于：
+
+```ts
+interface User {
+  name: string
+  age: number
+  gender: number
+  fn(number): string
+  fn(string): number
+}
 
 ```
+
+可以看到上例中，多次声明同名 `interface`, 实际上它们会合并为一个声明，其成员可以重复，但类型必须一致，否则会报错，其中的同名方法也会发生合并，和函数的声明合并一致。
+
+### class 类的合并
+
+`class` 的合并实际上与 `interface` 的合并完全一致。
