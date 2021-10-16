@@ -6,6 +6,14 @@
 
 - [《TypeScript 入门教程》 - 声明文件(作者：xcatliu)](https://ts.xcatliu.com/basics/declaration-files.html)
 
+声明文件的使用场景通常是，你在 ts 代码中使用一个 npm 包，但这个包完全没有声明文件，这时候就只能自己来书写一份声明文件，以免 TS 因为不知道这个包的结构，成员属性以及它们的类型而报错。
+
+先来看下 TS 是怎么查找一个 npm 包的声明文件的：
+
+1. 先查找 npm 包的 `package.json` 中的根属性 `types` 或 `typings` 字段指定的声明文件，有则使用，否则继续查找。
+2. 查找 npm 包的根目录是否有一个 `index.d.ts` 声明文件，有则使用，否则继续查找。
+3. 查看 npm 包的 `package.json` 中的根属性 `main` 字段（入口文件），查找和入口文件同级目录下是否有同名的 `.d.ts` 文件，有则使用，否则认为此 npm 包完全没有声明文件。
+
 声明文件只在开发阶段有用，用于声明一些变量或者类型，以免 TS 在做检查的时候抛出变量或类型不存在的错误，从而导致编译失败。同时，还能获得对应的代码补全、接口提示等。
 
 默认情况下，TS 会解析项目内所有 `.d.ts` 文件，当声明文件中不出现 `import` 或 `export` 时， 文件内声明的都是全局变量或全局类型。也就是说，这些全局变量或全局类型都是可以在全局任何地方直接使用的，而不需要导入后再使用。
@@ -14,18 +22,20 @@
 
 ## 声明文件语法列表
 
-声明变量：
+声明全局或局部变量：
 
-- `declare var/let/const`  声明全局变量/常量
-- `declare function` 声明全局函数
-- `declare class` 声明全局 class
-- `declare enum` 声明全局枚举变量
-- `declare namespace` 声明命名空间(全局对象，必须有属性才生效)
+- `declare var/let/const`  声明变量/常量
+- `declare function` 声明函数
+- `declare class` 声明 class
+- `declare enum` 声明枚举变量
+- `declare namespace` 声明命名空间(空间下必须有属性才生效)
 
-声明类型：
+声明全局或局部类型：
 
-- `interface` 声明全局接口
-- `type` 声明全局类型别名
+- `interface` 声明接口
+- `type` 声明类型别名
+
+以上声明语句，如果文件内有 export/import , 则文件内全部都是局部声明，如果文件内没有 export/import , 那么所有声明都是全局声明，任意地方均可直接使用。
 
 变量或类型的导入导出：
 
@@ -37,9 +47,9 @@
 
 扩展变量或模块：
 
-- `declare global` 扩展全局变量
-- `declare module` 扩展模块
-- `/// <reference />` 三斜线指令
+- `declare global` 在模块中声明全局变量或全局类型
+- `declare module` 声明模块或扩展模块
+- `/// <reference />` 三斜线指令引用声明文件
 
 ## 声明各种变量
 
@@ -315,3 +325,165 @@ interface User {
 ### class 类的合并
 
 `class` 的合并实际上与 `interface` 的合并完全一致。
+
+### 利用声明合并扩展全局 interface
+
+比如，如果要告诉 TS ，我们将在 `window` 对象上添加一个函数：
+
+直接通过 `interface` 声明 `Window` 即可，会通过声明合并与原有 `Window` 类型合并。
+
+```ts
+// src/index.d.ts
+
+interface Window {
+  sum(a: number, b: number): number
+}
+```
+
+在项目中即可直接使用：
+
+```ts
+// 正常通过 TS 检查
+console.log(window.sum(3, 2))
+```
+
+同理，还可以对 `String`, `Array` 等类型进行扩展：
+
+```ts
+interface String {
+  isString(): boolean
+}
+```
+
+## 模块(局部)声明文件
+
+只要在声明文件中，出现了 `import` 或 `export`, 那么这个声明文件就是**模块声明文件**，而不再是全局声明文件。
+
+在模块声明文件中，所有声明都属于局部声明，都只能在文件内部使用，或者通过 `export` 供外部使用。
+
+如果必须要在模块声明文件中，声明一些全局变量或全局类型，可以在 `declare global` 块中完成：
+
+比如，在一个叫做 `myModule` 的模块声明文件中声明全局变量和全局类型：
+
+```ts
+// src/myModule.d.ts
+
+// declare global 必须在模块声明文件中使用，
+// 如果实在没有东西需要导出，导出一个空对象也行
+// 这样本文件才能成为一个模块声明文件
+export {}
+
+// 在模块声明文件中，声明全局变量，或者全局类型
+declare global {
+  // 声明全局变量
+  const globalString: string
+  // 声明全局函数
+  function globalFn<T>(x: T): T
+
+  // 声明全局 interface
+  interface IPeople {
+    name: string
+    age?: number
+  }
+  // 声明已存在的 String 类型，会发生声明合并
+  interface String {
+    isString(): boolean
+  }
+}
+
+```
+
+需要注意的是，`declare global` 块必须出现在模块声明文件中，才能有效声明全局变量或全局类型。
+
+在全局任意地方直接使用：
+
+```ts
+// src/**/*.js
+
+// 使用全局变量
+console.log(globalString)
+// 使用全局方法
+console.log(globalFn('hello'))
+
+// 使用全局 interface
+const tom: IPeople = {
+  name: 'tom',
+  age: 20,
+}
+
+// 通过 声明合并 扩展的 String 实例方法 isString
+console.log(tom.name.isString())
+
+```
+
+### `declare module` 声明模块或扩展模块
+
+`declare module` 可以用来为一个没有类型声明的模块声明类型，也可以用来扩展一个模块的类型声明。
+
+#### 为一个模块编写声明文件
+
+假设，现在有一个模块叫做 `foo` ，直接使用时会报错：
+
+```ts
+// TS 报错
+// Cannot find module 'foo' or its corresponding type declarations.
+import sayHi, { name, sayHello } from 'foo'
+```
+
+由于上例报错，所以需要我们来写声明文件告诉 TS 这个模块的信息：
+
+```ts
+declare module 'foo' {
+  const name: string
+  function sayHello (name: string): string
+  export default function sayHi(): string
+}
+```
+
+使用模块 `foo`：
+
+```ts
+import sayHi, { name, sayHello } from 'foo'
+
+sayHi()
+sayHello(name)
+
+```
+
+### `/// <reference />` 三斜线指令引用声明文件
+
+当我们在编写一个全局声明文件但又依赖其他声明文件时，文件内不能出现 `import` 去导入其他声明文件的声明，此时就需要通过三斜线指令来引用其他的声明文件。
+
+可以看出来，三斜线其实也是一种注释语句，只不过在原有注释两条斜线 `//` 的基础上多写一条变成了三斜线 `///` , 之后通过 `<reference />` 来引用另一个声明文件。TS 解析代码时看到这样的注释就知道我们是要引用其他声明文件了。
+
+`<reference />` 可以通过 `types` 属性或 `path` 属性来引用其他声明文件。
+
+`types` 用于引用另一个库的声明，而 `path` 用于引用另一个文件的声明：
+
+```ts
+/// <reference types="foo" />
+/// <reference path="bar.d.ts" />
+```
+
+三斜线指令必须放在文件的最顶端，三斜线指令的前面只允许出现行注释。
+
+在声明了模块 `foo` 之后，就可以正常使用了，而不会收到 TS 编译时的报错信息。
+
+## 打包时自动生成声明文件
+
+在打包 TS 代码时，通过配置 `tsconfig.json` 可以自动生成相应的 `*.d.ts` 声明文件：
+
+```json
+{
+  "compilerOptions": {
+    // 是否自动生成声明文件
+    "declaration": true,
+    // 设置生成的声明文件存放目录
+    "declarationDir": ".",
+    // 对每个 .d.ts 文件，都生成对应的 .d.ts.map（sourcemap）文件
+    "declarationMap": true,
+    // 仅生成 .d.ts 文件，不生成 .js 文件
+    "emitDeclarationOnly": true,
+  }
+}
+```
