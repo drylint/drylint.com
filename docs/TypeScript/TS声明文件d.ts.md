@@ -271,6 +271,18 @@ const var2: mySpace.NumAndString = 'hello'
 
 声明合并指的是，如果声明了两个以上的同名函数、同名接口或同名 class ，那么它们会合并成一个类型。
 
+声明合并可以在以下情况下发生：
+
+```txt
+interface + interface
+namespace + namespace
+class + interface
+class + namespace
+class + interface + namespace
+function + namespace
+enum + namespace
+```
+
 如果声明的同名变量不是函数，接口或 class，那么只以第一次声明的类型为准。
 
 ### 函数的声明合并（函数重载）
