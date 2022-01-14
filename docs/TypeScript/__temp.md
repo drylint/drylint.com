@@ -1,8 +1,6 @@
-# TS 配置之编译选项
+# temp
 
-[toc]
-
-## 编译选项
+## option
 
 ### `charset` 输入文件的字符集编码，默认 'utf8'
 
@@ -360,11 +358,6 @@ TypeScript 2.0 版本以上生效
 
 决定如何处理模块。设置为 `"Node"` 对于 `Node.js/io.js`风格的处理。
 
-### `allowUnusedLabels` 是否允许未使用标签存在，不报告未使用标签的错误
-
-`type: boolean`
-
-`default: false`
 
 ### `noImplicitReturns` 是否禁止函数的隐式返回值，若没有返回值时报错
 
@@ -381,14 +374,6 @@ TypeScript 2.0 版本以上生效
 `default: false`
 
 在 switch 语句中出现 case 语句贯穿时报错
-
-### `allowUnreachableCode` 是否允许出现死区代码（永远无法执行到达的代码）
-
-`type: boolean`
-
-`default: false`
-
-默认 `false` 表示出现死区代码时报错，设为 true 则不报错。
 
 ### `forceConsistentCasingInFileNames` 是否强制对同一文件使用一致的大小写引用
 
@@ -496,17 +481,7 @@ TypeScript 2.0 版本以上生效
 
 `default: 见下方`
 
-```cmd
-
-'ES5', 'ES6', 'ES2015', 'ES7', 'ES2016', 'ES2017', 'ES2018', 'ESNext',
-'DOM', 'DOM.Iterable', 'WebWorker', 'ScriptHost', 'ES2015.Core', 'ES2015.Collection',
-'ES2015.Generator', 'ES2015.Iterable', 'ES2015.Promise', 'ES2015.Proxy',
-'ES2015.Reflect', 'ES2015.Symbol','ES2015.Symbol.WellKnown', 'ES2016.Array.Include',
-'ES2017.object', 'ES2017.Intl', 'ES2017.SharedMemory', 'ES2017.String',
-'ES2017.TypedArrays', 'ES2018.Intl', 'ES2018.Promise', 'ES2018.RegExp',
-'ESNext.AsyncIterable', 'ESNext.Array', 'ESNext.Intl', 'ESNext.Symbol'
-
-```
+`'ES5', 'ES6', 'ES2015', 'ES7', 'ES2016', 'ES2017', 'ES2018', 'ESNext', 'DOM', 'DOM.Iterable', 'WebWorker', 'ScriptHost', 'ES2015.Core', 'ES2015.Collection', 'ES2015.Generator', 'ES2015.Iterable', 'ES2015.Promise', 'ES2015.Proxy', 'ES2015.Reflect', 'ES2015.Symbol', 'ES2015.Symbol.WellKnown', 'ES2016.Array.Include', 'ES2017.object', 'ES2017.Intl', 'ES2017.SharedMemory', 'ES2017.String', 'ES2017.TypedArrays', 'ES2018.Intl', 'ES2018.Promise', 'ES2018.RegExp', 'ESNext.AsyncIterable', 'ESNext.Array', 'ESNext.Intl', 'ESNext.Symbol'`
 
 如果 `lib` 没有指定默认注入的库的列表。默认注入的库为：
 

@@ -1,4 +1,4 @@
-# tsconfig.json 配置项
+# tsconfig.json
 
 [toc]
 
@@ -10,738 +10,25 @@
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
     "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
-    "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    // "lib": [],                             /* Specify library files to be included in the compilation. */
-    // "allowJs": true,                       /* Allow javascript files to be compiled. */
-    // "checkJs": true,                       /* Report errors in .js files. */
-    // "jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    // "declaration": true,                   /* Generates corresponding '.d.ts' file. */
-    // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
-    // "sourceMap": true,                     /* Generates corresponding '.map' file. */
-    // "outFile": "./",                       /* Concatenate and emit output to single file. */
-    // "outDir": "./",                        /* Redirect output structure to the directory. */
-    // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
-    // "composite": true,                     /* Enable project compilation */
-    // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
-    // "removeComments": true,                /* Do not emit comments to output. */
-    // "noEmit": true,                        /* Do not emit outputs. */
-    // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
-    // "downlevelIteration": true,            /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
-    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
-
-    /* Strict Type-Checking Options */
-    "strict": true,                           /* Enable all strict type-checking options. */
-    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
-    // "strictNullChecks": true,              /* Enable strict null checks. */
-    // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
-    // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
-    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
-    // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
-    // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
-
-    /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
-    // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
-
-    /* Module Resolution Options */
-    // "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
-    // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-    // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
-    // "typeRoots": [],                       /* List of folders to include type definitions from. */
-    // "types": [],                           /* Type declaration files to be included in compilation. */
-    // "allowSyntheticDefaultImports": true,  /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-    // "preserveSymlinks": true,              /* Do not resolve the real path of symlinks. */
-    // "allowUmdGlobalAccess": true,          /* Allow accessing UMD globals from modules. */
-
-    /* Source Map Options */
-    // "sourceRoot": "",                      /* Specify the location where debugger should locate TypeScript files instead of source locations. */
-    // "mapRoot": "",                         /* Specify the location where debugger should locate map files instead of generated locations. */
-    // "inlineSourceMap": true,               /* Emit a single file with source maps instead of having a separate file. */
-    // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
-
-    /* Experimental Options */
-    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
-    // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
-
-    /* Advanced Options */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "module": "commonjs"
   }
 }
 
 ```
 
-# tsconfig.json
-
-## `extends` 值是一个字符串，指向另一个要继承文件的路径
+## `extends` 指定要继承的另一个配置文件的路径
 
 `type: String`
 
 `default: -`
 
+`version: 2.1`
+
 指定要继承的一个基础配置文件的路径，ts 2.1 版本以上生效。
 
-## `compilerOptions` 编译器配置选项
+首先加载要继承的配置文件，然后当前配置文件同名选项会覆盖。
 
-### `charset` 输入文件的字符集编码，默认 'utf8'
-
-`type: string`
-
-`default: 'utf8'`
-
-### `composite` 是否开启对项目引用的编译
-
-`type: boolean`
-
-`default: true`
-
-开启以确保TypeScript可以确定在哪里找到要编译项目的引用项目的输出。
-
-### `declaration` 是否生成相应的 `d.ts` 文件
-
-`type: boolean`
-
-`default: false`
-
-### `declarationDir` 指定 `.d.ts` 声明文件的输出目录
-
-`type: string`
-
-`default: -`
-
-TypeScript 2.0 版本以上生效
-
-### `diagnostics` 是否显示诊断信息
-
-`type: boolean`
-
-`default: false`
-
-### `emitBOM` 是否在输出文件开头生成 Byte Order Mark 头信息
-
-`type: boolean`
-
-`default: false`
-
-在输出文件的开头发出一个UTF-8字节顺序标记 Byte Order Mark(BOM)。
-
-### `emitDeclarationOnly` 是否只生成 `.d.ts` 声明文件
-
-`type: boolean`
-
-`default: false`
-
-### `incremental` 是否启用增量编译
-
-`type: boolean`
-
-`default: 跟随 composite 属性的值`
-
-通过 读/写 磁盘上保存的先前的编译信息文件来启用增量编译。这个文件由 `tsBuildInfoFile` 配置项控制。
-
-### `tsBuildInfoFile` 指定一个文件名来保存增量编译信息
-
-`type: string`
-
-`default: '.tsbuildinfo'`
-
-### `inlineSourceMap` 是否将 sourcemaps 生成在同一个文件中
-
-`type: boolean`
-
-`default: false`
-
-将所有 sourcemaps 生成在一个文件中，而不是将每段 sourcemaps 都生成独立的文件
-
-### `inlineSources` 是否将 sourcemap 生成在独立文件中
-
-`type: boolean`
-
-`default: false`
-
-将 sourcemaps 与代码生成在同一个独立文件中，要求设置了 `inlineSourceMap` 或 `sourceMap` 选项。
-
-### `jsx` 指定 jsx 代码生成，在 tsx 中支持 jsx
-
-`type: string`
-
-`default: 'preserve'`
-
-可选值：`'preserve' | 'react' | 'react-native'`
-
-### `reactNamespace` 已弃用，由 `jsxFactory` 选项代替
-
-`type: string`
-
-`default: 'React'`
-
-当目标为生成 `react` JSX时，指定 `createElement` 和 `__spread` 的调用对象
-
-### `listFiles` 是否在编译过程中列出文件列表
-
-`type: boolean`
-
-`default: false`
-
-### `mapRoot` 为 debugger 指定 sourcemap 文件的路径
-
-`type: string`
-
-`default: -`
-
-为调试器指定指定sourcemap文件的路径，而不是使用生成时的路径。当 `.map` 文件是在运行时指定的，并不同于 js 文件的地址时使用这个标记。指定的路径会嵌入到 sourceMap 里告诉调试器到哪里去找它们。
-
-### `module` 指定生成哪个模块系统代码
-
-`type: string`
-
-`default: target === 'ES6' ? 'ES6' : 'commonjs'`
-
-可选值 `'None' | 'CommonJS' | 'AMD' | 'System' | 'UMD' | 'ES6' | 'ES2015' | 'ES2020' | 'ESNext'`
-
-只有 `'AMD'`  和 `'System'` 能够和 `outFile` 选项一起使用。
-
-值 `"ES6"` 和 `"ES2015"` 可使用在目标输出为 `"ES5"` 或更低的情况下。
-
-### `newLine` 指定行结束符是 `'crlf' | 'lf'`
-
-当生成文件时指定行结束符： "crlf"（windows）或 "lf"（unix）。
-
-`type: string`
-
-`default: 根据平台指定`
-
-可选值 `'crlf' | 'lf'`
-
-### `noEmit` 是否不生成输出文件
-
-`type: boolean`
-
-`default: false`
-
-### `noEmitHelpers` 是否不在输出文件中生成用户自定义的帮助函数代码
-
-`type: boolean`
-
-`default: false`
-
-不在输出文件中生成用户自定义的帮助函数代码，如 `__extends`
-
-### `noEmitOnError` 是否在报错时不生成输出文件
-
-  'description': 'Do not emit outputs if any type checking errors were reported.',
-
-`type: boolean`
-
-`default: false`
-
-### `noImplicitAny` 是否禁止使用隐式 `any` 类型
-
-`type: boolean`
-
-`default: false`
-
-在表达式和声明上有隐含的 `any` 类型时报错
-
-### `noImplicitThis` 是否在 `this` 表达式的值为隐式 `any` 类型的时候报错
-
-`type: boolean`
-
-`default: false`
-
-当 `this` 表达式的值为隐式 `any` 类型的时候报错
-
-### `noUnusedLocals` 是否在有未使用的局部变量时抛错
-
-`type: boolean`
-
-`default: false`
-
-### `noUnusedParameters` 是否在有未使用的参数时报错
-
-`type: boolean`
-
-`default: false`
-
-### `noLib` 是否不包含默认的库文件 `lib.d.ts`
-
-`type: boolean`
-
-`default: false`
-
-### `noResolve` 是否不把 `/// <reference>` 或 模块导入的目标 加到已编译的文件列表中
-
-`type: boolean`
-
-`default: false`
-
-如果设为 `true`，三斜线引用会被忽略；它们不会增加新文件，也不会改变给定文件的顺序。
-
-### `noStrictGenericChecks` 是否禁用在函数类型里对泛型签名进行严格检查
-
-`type: boolean`
-
-`default: false`
-
-### `skipDefaultLibCheck` 已弃用，是否忽略库的默认声明文件的类型检查
-
-`type: boolean`
-
-`default: false`
-
-### `skipLibCheck` 是否忽略所有的声明文件（ `*.d.ts`）的类型检查
-
-`type: boolean`
-
-`default: false`
-
-### `outFile` 指定将输出文件合并为一个文件
-
-`type: string`
-
-`default: -`
-
-将输出文件合并为一个文件。合并的顺序是根据传入编译器的文件顺序和 `///<reference``>` 和 `import` 的文件顺序决定的。
-
-### `outDir` 重定向输出结构目录
-
-`type: string`
-
-`default: -`
-
-### `preserveConstEnums` 是否在生成的代码中保留 const enum 声明
-
-`type: boolean`
-
-`default: false`
-
-### `preserveSymlinks` 是否保留符号链接将其视为文件，不将它视为真实路径
-
-`type: boolean`
-
-`default: false`
-
-不把符号链接解析为其真实路径；将符号链接文件视为真正的文件
-
-### `preserveWatchOutput` 是否保留 watch 模式下过时的控制台输出而不清屏
-
-`type: boolean`
-
-`default: false`
-
-### `pretty` 是否给错误和消息设置样式，使用颜色和上下文
-
-`type: boolean`
-
-`default: false`
-
-### `removeComments` 是否删除所有注释，除了以 `/!*` 开头的版权信息
-
-`type: boolean`
-
-`default: false`
-
-### `rootDir` 指定输入文件的根目录来控制 `outDir` 选项的输出目录结构
-
-`type: string`
-
-`default: 通常默认以输入文件为准`
-
-指定输入文件的根目录，仅用来控制 `outDir` 选项的输出目录结构
-
-### `isolatedModules` 是否无条件的为未解析的文件生成 imports
-
-`type: boolean`
-
-`default: false`
-
-将每个文件作为单独的模块（与 `ts.transpileModule` 类似），执行额外的检查以确保单独的编译(例如使用 `transpileModule` 或 `@babel/plugin-transform-typescript` )是安全的。
-
-### `sourceMap` 是否生成相应的 .map文件
-
-`type: boolean`
-
-`default: false`
-
-### `sourceRoot`
-
-  'description': 'Specifies the location where debugger should locate TypeScript files instead of source locations.',
-
-`type: string`
-
-`default: -`
-
-指定 debugger 应该定位的 TypeScript文件而不是 源路径 的位置。
-
-如果源将在运行时位于与设计时不同的位置，请使用此标志。
-
-指定的位置将嵌入到sourceMap中，以指导 debugger 找到源文件所在的位置。
-
-### `suppressExcessPropertyErrors` 是否禁止对对象字面量进行过多（额外）的属性检查
-
-`type: boolean`
-
-`default: false`
-
-### `suppressImplicitAnyIndexErrors` 是否阻止索引对象缺乏索引签名时的 `noImplicitAny` 错误
-
-`type: boolean`
-
-`default: false`
-
-阻止 `noImplicitAny` 对缺少索引签名的索引对象报错。查看 issue #1232了解详情。
-
-### `stripInternal` 是否不对 `/** @internal */` JSDoc注解的代码生成声明
-
-`type: boolean`
-
-`default: false`
-
-不对具有 `/** @internal */` JSDoc注解的代码生成声明
-
-### `target` 指定ECMAScript目标版本
-
-`type: string`
-
-`default: 'ES3'`
-
-可选值 `'ES3', 'ES5', 'ES6'/'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ESNext'`
-
-### `watch` 是否监听输入文件的改变，在它们改变时重新编译
-
-`type: boolean`
-
-`default: -`
-
-在监视模式下运行编译器。会监视输出文件，在它们改变时重新编译。监视文件和目录的具体实现可以通过环境变量进行配置。详情请看配置 Watch。
-
-### `experimentalDecorators` 是否启用对实验性的ES7装饰器的支持
-
-`type: boolean`
-
-`default: false`
-
-### `emitDecoratorMetadata` 是否给源码里的装饰器声明生成设计类型元数据
-
-`type: boolean`
-
-`default: false`
-
-### `moduleResolution`
-
-  'description': 'Specifies module resolution strategy: 'node' (Node) or 'classic' (TypeScript pre 1.6) .',
-
-`type: string`
-
-`default: module === "AMD" or "System" or "ES6" ? "Classic" : "Node"`
-
-可选值 `'Classic' | 'Node'`
-
-决定如何处理模块。设置为 `"Node"` 对于 `Node.js/io.js`风格的处理。
-
-### `allowUnusedLabels` 是否允许未使用标签存在，不报告未使用标签的错误
-
-`type: boolean`
-
-`default: false`
-
-### `noImplicitReturns` 是否禁止函数的隐式返回值，若没有返回值时报错
-
-`type: boolean`
-
-`default: false`
-
-不是函数的所有返回路径都有返回值时报错。
-
-### `noFallthroughCasesInSwitch` 是否禁止在 switch 语句中出现 fallthrough case（没有 break）
-
-`type: boolean`
-
-`default: false`
-
-在 switch 语句中出现 case 语句贯穿时报错
-
-### `allowUnreachableCode` 是否允许出现死区代码（永远无法执行到达的代码）
-
-`type: boolean`
-
-`default: false`
-
-默认 `false` 表示出现死区代码时报错，设为 true 则不报错。
-
-### `forceConsistentCasingInFileNames` 是否强制对同一文件使用一致的大小写引用
-
-`type: boolean`
-
-`default: false`
-
-是否不允许对同一文件使用大小写不一致的引用。
-
-### `baseUrl` 指定解析非相对模块名的基准目录
-
-`type: string`
-
-`default: -`
-
-设置 `baseUrl` 来告诉编译器到哪里去查找模块。 所有非相对模块导入都会被当做相对于 `baseUrl`。
-
-如果给定的路径是相对的，那么将相对于 `tsconfig.json` 路径进行计算。
-
-相对模块的导入不会被设置的baseUrl所影响，因为它们总是相对于导入它们的文件。
-
-### `paths` 指定要计算的相对于 `baseUrl` 的路径映射
-
-`type: object`
-
-`default: -`
-
-对象的属性值类型为 `Array<string>`，路径字符串组成的数组。
-
-### `plugins` 列出要加载的TypeScript语言服务器插件列表
-
-`type: array`
-
-`default: -`
-
-数组元素为对象，对象 key 为插件名，value 为插件描述对象
-
-### `rootDirs` 指定解析模块时使用的根目录列表
-
-`type: Array<string>`
-
-`default: -`
-
-根文件夹列表，其组合内容表示运行时项目的结构。
-
-### `typeRoots` 指定要包含的类型声明文件的目录列表
-
-`type: Array<string>`
-
-`default: -`
-
-### `types` 指定编译中包含的类型声明文件
-
-`type: Array<string>`
-
-`default: -`
-
-### `traceResolution` 是否启用名称解析过程的跟踪，报告模块解析日志消息
-
-`type: boolean`
-
-`default: false`
-
-### `allowJs` 是否允许编译 javascript 文件
-
-`type: boolean`
-
-`default: false`
-
-### `noErrorTruncation` 是否不截断错误消息
-
-`type: boolean`
-
-`default: false`
-
-### `allowSyntheticDefaultImports` 是否允许从没有设置默认导出的模块中默认导入
-
-`type: boolean`
-
-`default: module === "system" 或 esModuleInterop 选项值`
-
-允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
-
-### `noImplicitUseStrict` 是否在模块输出中不输出 `"use strict"` 指令
-
-`type: boolean`
-
-`default: false`
-
-### `listEmittedFiles` 是否列出所有编译生成的文件名
-
-`type: boolean`
-
-`default: false`
-
-### `disableSizeLimit` 是否禁用 JavaScript 项目的大小限制
-
-`type: boolean`
-
-`default: false`
-
-### `lib` 指定编译过程中需要包含的库文件的列表
-
-`type: Array<string>`
-
-`default: 见下方`
-
-`'ES5', 'ES6', 'ES2015', 'ES7', 'ES2016', 'ES2017', 'ES2018', 'ESNext', 'DOM', 'DOM.Iterable', 'WebWorker', 'ScriptHost', 'ES2015.Core', 'ES2015.Collection', 'ES2015.Generator', 'ES2015.Iterable', 'ES2015.Promise', 'ES2015.Proxy', 'ES2015.Reflect', 'ES2015.Symbol', 'ES2015.Symbol.WellKnown', 'ES2016.Array.Include', 'ES2017.object', 'ES2017.Intl', 'ES2017.SharedMemory', 'ES2017.String', 'ES2017.TypedArrays', 'ES2018.Intl', 'ES2018.Promise', 'ES2018.RegExp', 'ESNext.AsyncIterable', 'ESNext.Array', 'ESNext.Intl', 'ESNext.Symbol'`
-
-如果 `lib` 没有指定默认注入的库的列表。默认注入的库为：
-
-- 针对于 `target` 选项值为 `'ES5'`：`['DOM'，'ES5'，'ScriptHost']`
-- 针对于 `target`选项值为 `'ES6'`：`['DOM'，'ES6'，'DOM.Iterable'，'ScriptHost']`
-
-### `strictNullChecks` 是否开启严格的 `null` 检查模式
-
-`type: boolean`
-
-`default: false`
-
-在严格的 `null` 检查模式下， `null` 和 `undefined` 值不包含在任何类型里，只允许用它们自己和 `any` 来赋值（有个例外， `undefined` 可以赋值到 `void` ）。
-
-### `maxNodeModuleJsDepth`
-
-`type: number`
-
-`default: 0`
-
-在 `node_modules` 目录下搜索和加载 JavaScript 文件的最大依赖深度。仅适用于 `allowJs` 选项值为 `true` 时。
-
-### `importHelpers`
-
-`type: boolean`
-
-`default: false`
-
-从 `tslib` 导入辅助工具函数（比如 `__extends` ， `__rest` 等）
-
-### `importsNotUsedAsValues` 指定 仅用于类型的导入（`import`）的 emit/checking 行为
-
-`type: string`
-
-`default: 'remove'`
-
-可选值 `'remove' | 'preserve' | 'error'`
-
-### `jsxFactory` 指定生成 react jsx 时使用的 jsx 工厂函数
-
-`type: string`
-
-`default: 'React.createElement'`
-
-指定生成目标为react JSX时，使用的JSX工厂函数，比如 `React.createElement` 或 `h` 。
-
-### `alwaysStrict` 是否总是在严格模式下解析，并为每个源文件生成 `'use strict'`
-
-`type: boolean`
-
-`default: false`
-
-### `strict` 是否开启所有 严格类型检查 配置选项
-
-`type: boolean`
-
-`default: false`
-
-若启用此选项，则相当于会自动启用：
-
-- noImplicitAny
-- noImplicitThis
-- alwaysStrict
-- strictBindCallApply
-- strictNullChecks
-- strictFunctionTypes
-- strictPropertyInitialization
-
-### `strictBindCallApply` 是否在对函数使用 `bind`, `call`, `apply` 时使用更严格的检查
-
-`type: boolean`
-
-`default: false`
-
-### `downlevelIteration` 是否为低版本编译目标提供迭代器的完整支持
-
-`type: boolean`
-
-`default: false`
-
-当编译目标为 `ES5` 或 `ES3` 时，为 `for...of`、展开运算符(`...`)、解构赋值提供完整的支持。
-
-### `checkJs` 是否在 `.js` 文件中报告错误，需与 `allowJs` 选项配合使用
-
-`type: boolean`
-
-`default: false`
-
-### `strictFunctionTypes` 严格的函数参数类型检查
-
-`type: boolean`
-
-`default: false`
-
-该规则将检查并限制函数类型参数是抗变（contravariantly）而非双变（bivariantly，即协变或抗变）的。
-
-双变（协变或抗变）：子类型可以隐性的转换为父类型。
-
-### `strictPropertyInitialization` 是否要求 class 的属性必须在构造函数初始化
-
-`type: boolean`
-
-`default: false`
-
-确保 类(class) 的 非 `undefined` 属性已经在构造函数里初始化。
-
-若要令此选项生效，需要同时启用 `strictNullChecks` 配置项。
-
-### `esModuleInterop` 是否生成 babel runtime helper 并启用 `allowSyntheticDefaultImports`
-
-`type: boolean`
-
-`default: false`
-
-若设置为 `true`， 会为 运行时的 babel 生态系统兼容性 生成 `'__importStar'` 和 `'__importDefault'` 帮助程序，同时会为类型兼容系统启用 `allowSyntheticDefaultImports` 配置项。
-
-### `allowUmdGlobalAccess` 是否允许从模块访问 UMD 全局变量
-
-`type: boolean`
-
-`default: false`
-
-### `keyofStringsOnly` 是否仅将 `keyof` 解析为字符串值的属性名
-
-`type: boolean`
-
-`default: false`
-
-仅将 `keyof` 解析为字符串值的属性名(没有 number 或 symbols)。
-
-### `useDefineForClassFields` 是否使用 ECMAScript 标准语义生成 class 字段
-
-`type: boolean`
-
-`default: false`
-
-使用 ECMAScript 标准语义生成 class 字段，TypeScript 3.7 版本以上生效。
-
-### `declarationMap` 是否为每个 `.d.ts` 声明文件 生成 sourcemap
-
-`type: boolean`
-
-`default: false`
-
-为每个对应的 `.d.ts` 文件生成一个 sourcemap，TypeScript 2.9 版本以上生效。
-
-### `resolveJsonModule` 是否解析导入的 `.json` 扩展名的模块
-
-`type: boolean`
-
-`default: false`
-
-包含使用.json扩展名导入的模块，TypeScript 2.9 版本以上生效。
-
-### `assumeChangesOnlyAffectDirectDependencies` 是否假设文件中改变只会直接影响和它相关的文件
-
-`type: boolean`
-
-`default: false`
-
-在 `incremental`和 `watch` 配置项开启之中进行重新编译时，假设一个文件中的更改只会直接影响和它相关的文件。
-
-## `files` 指定一个包含相对或绝对文件路径的数组
+## `files` 指定程序中的文件列表，指定的每一个文件必须存在
 
 `type: Array<string>`
 
@@ -751,31 +38,559 @@ TypeScript 2.0 版本以上生效
 
 当指定了 `files` 后，则就只有被 `files` 指定的文件和 `include` 指定的文件会被编译器包含。
 
-## `include` 指定编译器包含的 glob 匹配模式的数组
+`files` 用于指定一些特定的文件路径，适用于指定少量文件的情况，指定的列表中只要有任何一个文件找不到都会报错。
+
+`include` 用于匹配大量文件，可使用 glob 模式进行指定。
+
+## `include` 匹配程序中包括的文件列表，未匹配到也不会报错
 
 `type: Array<string>`
 
 `default: -`
 
-指定要被编译器包含的文件列表，ts 2.0 版本以上生效。
+`version: 2.0`
 
-## `exclude` 指定编译器不包含的 glob 匹配模式的数组
+匹配程序中包含的文件，支持 glob 模式匹配大量文件，未匹配到也不会报错。
+
+如果 glob 模式不包含文件扩展名，则默认只匹配支持的扩展名文件 `.ts`, `.tsx` 和 `.d.ts`，如果 `compilerOptions.allowJs` 设置为 `true`，则还包含 `.js` 和 `.jsx` 。
+
+glob 匹配：
+
+- `*` 匹配 0 个或任意个字符，不包含路径分隔符 `/`
+- `?` 匹配 1 个字符，不包含路径分隔符 `/`
+- `**/` 匹配任意嵌套深度的目录
+
+## `exclude` 要排除的被 include 匹配到的文件列表
 
 `type: Array<string>`
 
-`default: -`
+`default: ["node_modules", "bower_components", "jspm_packages", <outDir>]`
+
+`version: 2.0`
 
 指定要被编译器排除的文件列表，仅对 `include` 包含但 `files` 不包含的那些文件生效。
 
 `files` 指定的文件无法被 `exclude` 排除。
 
-ts 2.0 版本以上生效。
+`exclude` 只排除 `include` 匹配的到文件，不会有其他影响。
+
+## `references` 项目引用
+
+`type: Array<{ path: string, prepend: false }>`
+
+`default: -`
+
+项目引用是一种将 TypeScript 程序结构成更小块的方法。使用项目引用可以大大提高构建和编辑器的交互时间，强制组件之间的逻辑分离，并以新的和改进的方式来组织代码。
 
 ## `compileOnSave` 是否在保存文件的时候根据 tsconfig.json 重新生成文件
 
 `type: Boolean`
 
 `default: -`
+
+## `compilerOptions` 编译器配置选项
+
+这些选项构成了 TypeScript 配置的主要部分，它涵盖了该语言应该如何工作。
+
+### 类型检查配置项 (Type Checking)
+
+#### ``allowUnreachableCode``是否允许出现死区代码（永远无法执行到达的代码）
+
+`type: boolean | undefined`
+
+`default: undefined`
+
+`Recommended Value: false`
+
+- `undefined` 只警告不报错
+- `true` 允许
+- `false` 不允许，会报错
+
+#### ``allowUnusedLabels``是否允许未使用标签存在
+
+`type: boolean | undefined`
+
+`default: undefined`
+
+`Recommended Value: false`
+
+- `undefined` 只警告不报错
+- `true` 允许
+- `false` 不允许，会报错
+
+#### `alwaysStrict`是否在ECMAScript严格模式下解析，并生成 'use strict'
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+#### `exactOptionalPropertyTypes`是否严格校验可选属性的类型
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+可选属性默认情况下允许被赋值为 `undefined` ，此选项设为 `true` 后，可选属性必须严格匹配指定的类型，不能被赋值为 `undefined` 。
+
+#### `noFallthroughCasesInSwitch`是否禁止 switch 中出现 fallthrough 的 case 语句
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+`switch` 语句中，如果一个 `case` 语句没有 `break`，那这就是 fallthrough case 语句。
+
+#### `noImplicitAny`是否禁止出现隐式的 any 类型
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+本规则只禁用隐式的 `any` 类型，显式指定为 `any` 类型将不会报错。
+
+#### `noImplicitOverride`是否禁止子类隐式覆盖父类的成员
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+要求子类覆盖父类成员时，显式标记 `override`，这样，以免父类修改了成员名称，而子类忘记修改，开启此规则后，子类隐式覆盖父类成员时会收到报错。
+
+```ts
+class Album {
+  setup() {}
+}
+
+class MLAlbum extends Album {
+  // 显式标记 override
+  override setup() {}
+}
+
+class SharedAlbum extends Album {
+  // 覆盖父类成员，必须显式标记 override
+  setup() {}
+}
+```
+
+#### `noImplicitReturns`是否禁止隐式的函数返回值
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+#### `noImplicitThis`是否禁止隐式的 this
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+#### `noPropertyAccessFromIndexSignature`是否禁止从索引签名中用点操作符访问未知属性
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+对于索引签名中未知属性的访问，用点操作符 `obj.key` 访问可能会是无意识的一个错误，应该使用 `obj[key]` 来告诉编译器，这是你确定要访问此未知属性。
+
+```ts
+interface GameSettings {
+  [key: string]: string
+  speed: 'fast' | 'medium' | 'slow'
+  quality: 'high' | 'low'
+}
+
+const settings: GameSettings = {
+  speed: 'fast',
+  quality: 'high',
+}
+
+// OK
+console.log(settings.speed)
+
+// OK
+console.log(settings.quality)
+
+// OK
+// 注意，如果开启了 @typescript-eslint/dot-notation 规则，该规则的 allowIndexSignaturePropertyAccess 需设为 true
+console.log(settings['username'])
+
+// 报错：Property 'username' comes from an index signature, so it must be accessed with ['username'].ts(4111)
+console.log(settings.username)
+
+```
+
+注意，如果开启了 `@typescript-eslint/dot-notation` 规则，该规则的 `allowIndexSignaturePropertyAccess` 需设为 `true`，否则会有冲突。
+
+#### `noUncheckedIndexedAccess`是否禁用未知的索引签名属性
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+访问一个符合索引签名的未知属性，默认情况下此属性就是索引签名指定的类型，但实际上它有可能是不存在的，也就是 `undefined` 类型。
+
+开启此规则后，未知属性除了索引签名指定的类型，还会包括 `undefined` 类型。
+
+```ts
+interface GameSettings {
+  [key: string]: string
+  speed: 'fast' | 'medium' | 'slow'
+  quality: 'high' | 'low'
+}
+
+const settings: GameSettings = {
+  speed: 'fast',
+  quality: 'high',
+}
+// 未开启 noUncheckedIndexedAccess 时，username 为 string 类型’
+// 开启 noUncheckedIndexedAccess 时，username 为 string | undefined 类型
+const { username } = settings
+
+```
+
+#### `noUnusedLocals`禁止未使用的局部变量
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+定义了未使用的局部变量时，将会抛出错误。
+
+#### `noUnusedParameters`禁止未使用的函数参数
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+定义了未使用的函数参数时，将会抛出错误。
+
+#### `strict`是否开启 TS 严格模式
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+开启此规则后，将默认开启以下所有严格相关的编译选项：
+
+- alwaysStrict
+- strictNullChecks
+- strictBindCallApply
+- strictFunctionTypes
+- strictPropertyInitialization
+- noImplicitAny
+- noImplicitThis
+- useUnknownInCatchVariable
+
+#### `strictBindCallApply`是否开启严格的 `.bind`, `.call`, `.apply` 函数调用
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+```ts
+function fn(x: string) {
+  return parseInt(x);
+}
+
+// 未开启 strictBindCallApply 时，第二个参数类型不正确，但不报错
+// 开启 strictBindCallApply 后，第二个参数类型不正确而报错
+const n = fn.call(undefined, false);
+```
+
+#### `strictFunctionTypes`是否开启严格的函数类型检查
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+注意，该检查仅适用于函数，不适用于对象的方法。
+
+```ts
+const fn = (x: string): void => {
+  console.log(`Hello, ${x.toLowerCase()}`)
+}
+
+type StringOrNumberFunc = (numStr: string | number) => void
+
+// 未开启 strictFunctionTypes 时，不会报错
+// 开启 strictFunctionTypes 时，会报错，因为函数参数不匹配
+const func: StringOrNumberFunc = fn
+
+func('tom')
+```
+
+#### `strictNullChecks`是否开启严格的 null 和 undefined 检查
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+#### `strictPropertyInitialization`是否强制类属性必须初始化
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+比如在 `class` 中声明了一个属性，但是没有进行初始化。
+
+#### `useUnknownInCatchVariables`是否默认将 catch 语句的变量上做为 `unknown` 而不是 `any` 类型
+
+`type: boolean`
+
+`default: 同 strict 配置项的值`
+
+`Recommended Value: true`
+
+### 模块相关配置项 (Modules)
+
+
+#### `allowUmdGlobalAccess`
+
+#### `baseUrl`
+
+#### `module`
+
+#### `moduleResolution`
+
+#### `noResolve`
+
+#### `paths`
+
+#### `resolveJsonModule`
+
+#### `rootDir`
+
+#### `rootDirs`
+
+#### `typeRoots`
+
+#### `types`
+
+### Emit
+
+#### `declaration`
+
+#### `declarationDir`
+
+#### `declarationMap`
+
+#### `downlevelIteration`
+
+#### `emitBOM`
+
+#### `emitDeclarationOnly`
+
+#### `importHelpers`
+
+#### `importsNotUsedAsValues`
+
+#### `inlineSourceMap`
+
+#### `inlineSources`
+
+#### `mapRoot`
+
+#### `newLine`
+
+#### `noEmit`
+
+#### `noEmitHelpers`
+
+#### `noEmitOnError`
+
+#### `outDir`
+
+#### `outFile`
+
+#### `preserveConstEnums`
+
+#### `preserveValueImports`
+
+#### `removeComments`
+
+#### `sourceMap`
+
+#### `sourceRoot`
+
+#### `stripInternal`
+
+### JavaScript Support
+
+#### `allowJs`
+
+#### `checkJs`
+
+#### `maxNodeModuleJsDepth`
+
+### Editor Support
+
+#### `disableSizeLimit`
+
+#### `plugins`
+
+### Interop Constraints
+
+
+#### `allowSyntheticDefaultImports`
+
+#### `esModuleInterop`
+
+#### `forceConsistentCasingInFileNames`
+
+#### `isolatedModules`
+
+#### `preserveSymlinks`
+
+### Backwards Compatibility
+
+#### `charset`
+
+#### `keyofStringsOnly`
+
+#### `noImplicitUseStrict`
+
+#### `noStrictGenericChecks`
+
+#### `out`
+
+#### `suppressExcessPropertyErrors`
+
+#### `suppressImplicitAnyIndexErrors`
+
+### Language and Environment
+
+
+#### `emitDecoratorMetadata`
+
+#### `experimentalDecorators`
+
+#### `jsx`
+
+#### `jsxFactory`
+
+#### `jsxFragmentFactory`
+
+#### `jsxImportSource`
+
+#### `lib`
+
+#### `noLib`
+
+#### `reactNamespace`
+
+#### `target`
+
+#### `useDefineForClassFields`
+
+### Compiler Diagnostics
+
+#### `diagnostics`
+
+#### `explainFiles`
+
+#### `extendedDiagnostics`
+
+#### `generateCpuProfile`
+
+#### `listEmittedFiles`
+
+#### `listFiles`
+
+#### `traceResolution`
+
+### Projects
+
+
+#### `composite`
+
+#### `disableReferencedProjectLoad`
+
+#### `disableSolutionSearching`
+
+#### `disableSourceOfProjectReferenceRedirect`
+
+#### `incremental`
+
+#### `tsBuildInfoFile`
+
+### Output Formatting
+
+
+#### `noErrorTruncation`
+
+#### `preserveWatchOutput`
+
+#### `pretty`
+
+### Completeness
+
+
+#### `skipDefaultLibCheck`
+
+#### `skipLibCheck`
+
+### Command Line
+
+### Watch Options
+
+#### assumeChangesOnlyAffectDirectDependencies
+
+#### watchOptions
+
+
+##### `watchFile`
+
+##### `watchDirectory`
+
+##### `fallbackPolling`
+
+##### `synchronousWatchDirectory`
+
+##### `excludeDirectories`
+
+##### `excludeFiles`
+
+### typeAcquisition
+
+#### `enable`
+
+#### `include`
+
+#### `exclude`
+
+#### `disableFilenameBasedTypeAcquisition`
 
 ## 注意事项
 
