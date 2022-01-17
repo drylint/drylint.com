@@ -7,11 +7,13 @@
 ```js
 {
   "compilerOptions": {
-    /* Basic Options */
-    // "incremental": true,                   /* Enable incremental compilation */
-    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+    "target": "es5",
     "module": "commonjs"
-  }
+    // ...
+  },
+  "include": [
+    // ...
+  ]
 }
 
 ```
@@ -375,84 +377,546 @@ func('tom')
 
 ### 模块相关配置项 (Modules)
 
+#### `allowUmdGlobalAccess` 是否允许访问 UMD 全局变量
 
-#### `allowUmdGlobalAccess`
+`type: boolean`
 
-#### `baseUrl`
+`default: false`
 
-#### `module`
+`Recommended Value: -`
 
-#### `moduleResolution`
+默认没有开启，使用来自 UMD 模块的 `export` 时，需要一个 `import` 声明。
 
-#### `noResolve`
+当设置为 `true` 时，TS 将许您从模块文件中访问UMD导出作为全局变量。模块文件是具有导入和/或导出的文件。
 
-#### `paths`
+#### `baseUrl` 设置模块查找的基础路径
 
-#### `resolveJsonModule`
+`type: string`
 
-#### `rootDir`
+`default: -`
 
-#### `rootDirs`
+`Recommended Value: "./"(当配置文件位于根目录时)`
 
-#### `typeRoots`
+设置 TS 解析模块的基础路径，比如
 
-#### `types`
+```ts
+import main from 'src/main'
+```
+
+默认情况下，TS 在解析这个模块时，会去按照绝对路径解析 `src/main` 这个路径，然后就会因为找不到而报错。
+
+将 `baseUrl` 设置为项目的根路径后，TS 就知道 `src/main` 是从设置的根路径位置开始查找，进而就能找到 `src` 目录。
+
+#### `module` 设置程序使用的模块规范
+
+`type: none | commonjs | amd | umd | system | es6/es2015 | es2020 | es2022 | esnext | node12 | nodenext`
+
+`default: "CommonJS"(当 target 设置为 "ES3" 或 "ES5" 时)，其他均为 "ES6"("ES2015")`
+
+`Recommended Value: 无需设置`
+
+CommonJS if target is ES3 or ES5,
+ES6/ES2015 otherwise
+
+#### `moduleResolution` 指定模块解析策略
+
+`type: classic | node12(nodenext) | node`
+
+`default: "classic"(当 module 设置为 AMD, UMD, System 或 ES6/ES2015 时)； 当 module 是 node12 或 nodenext 时，默认值相同；否则均为 node`
+
+`Recommended Value: 无需设置`
+
+- `'node'` Node.js 的 CommonJS 规范的实现
+- `'node12'` | `'nodenext'` Node.js 的 ECMAScript Module 规范的支持
+- `'classic'` TypeScript 1.6 开始使用的模式
+
+#### `noResolve` 是否不在编译之前解析模块
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+#### `paths` 设置 TS 系统的路径别名(基于 baseUrl)
+
+`type: Record<string, string[]>`
+
+`default: -`
+
+`Recommended Value: 按需设置`
+
+此设置用于避免在导入模块时使用太长的路径。
+
+比如：
+
+```ts
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@": ["src"]
+    }
+  }
+}
+```
+
+如上设置就是告诉 TS 在模块导入时遇到 `@` 就表示 `src` 目录，比如：
+
+```ts
+import App from 'src/App'
+
+// 可以写为
+import App from '@/App'
+```
+
+#### `resolveJsonModule` 是否允许解析 json 文件作为模块
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+如果项目需要，可以设置为 `true`。
+
+#### `rootDir` 指定输入文件的根目录来控制 `outDir` 选项的输出目录结构
+
+`type: string`
+
+`default: 根据输入文件列表自动计算`
+
+`Recommended Value: 无需设置`
+
+控制输出文件的目录结构，`rootDir` 指定的目录不会出现在输出结构中(相当于被输出目录替代)，它的所有子文件和子目录会按原有结构输出。
+
+此选项不会影响 include, exclude, 或 files 的设置，也就是不会影响哪些文件会被 TS 编译。
+
+指定的路径应该是包含所有被 TS 编译的文件的，这样编译后才能按结构输出，如果指定的路径没有包含所有被解析的文件，那么不被包含的这些文件就无法按正常目录结构输出。
+
+#### `rootDirs` 指定根路径列表
+
+`type: string[]`
+
+`default: 根据输入文件列表自动计算`
+
+`Recommended Value: 按需设置`
+
+#### `typeRoots` 指定全局声明文件，支持声明文件包或自定义目录
+
+`type: string[]`
+
+`default: 从当前路径往系统根目录查找 node_modules/@types/**`
+
+`Recommended Value: 按需设置`
+
+默认会包含所有层级的 `node_modules` 下的 `@types` 目录中的声明文件包，但如果一旦指定值之后，就只包含指定的包了，不会再包含所有 `@types` 包。
+
+比如：
+
+```json
+{
+  "compilerOptions": {
+    "typeRoots": ["./typings", "./vendor/types"]
+  }
+}
+```
+
+#### `types` 指定全局声明文件包列表，只能是已安装的 `@types/*` 声明文件包
+
+`type: string[]`
+
+`default: 从当前路径往系统根目录查找 node_modules/@types/**`
+
+`Recommended Value: 按需设置`
+
+不支持指定自定义目录路径，只支持指定明确的 npm 安装的声明文件包， 比如 `@types/node` 则指定 `node` 即可。
+
+如果指定的包不存在，则会报错。
+
+默认会包含所有层级的 `node_modules` 下的 `@types` 目录中的声明文件包，但如果一旦指定值之后，就只包含指定的包了，不会再包含所有 `@types` 包。
+
+例如：
+
+```json
+{
+  "compilerOptions": {
+    "types": ["node", "jest", "express"]
+  }
+}
+```
+
+指定后，则只会包含 `node_modules/@types/` 目录下的 `node`, `jest`, `express` 声明文件包，其他包会被忽略。
 
 ### Emit
 
-#### `declaration`
+#### `declaration` 是否生成源码对应的声明文件
 
-#### `declarationDir`
+`type: boolean`
 
-#### `declarationMap`
+`default: true(当 composite 为 true 时), 否则为 false`
 
-#### `downlevelIteration`
+`Recommended Value: 按需设置`
 
-#### `emitBOM`
+当和 JavaScript 一起使用 `.d.ts` 文件时，可能还需要设置`emitDeclarationOnly` 或 `outDir` 来确保 JavaScript 文件不会不给覆盖。
 
-#### `emitDeclarationOnly`
+#### `declarationDir` 指定源码的哇声明文件的输出目录
 
-#### `importHelpers`
+`type: string`
 
-#### `importsNotUsedAsValues`
+`default: -`
 
-#### `inlineSourceMap`
+`Recommended Value: 按需设置`
 
-#### `inlineSources`
+#### `declarationMap` 是否开启声明文件源码映射(source map)
 
-#### `mapRoot`
+`type: boolean`
 
-#### `newLine`
+`default: false`
 
-#### `noEmit`
+`Recommended Value: 按需设置`
 
-#### `noEmitHelpers`
+如果在使用项目引用(project references) 的话，你可能需要启用此功能。
 
-#### `noEmitOnError`
+#### `downlevelIteration` 是否开启降级的迭代语法
 
-#### `outDir`
+`type: boolean`
 
-#### `outFile`
+`default: false`
 
-#### `preserveConstEnums`
+`Recommended Value: 按需设置`
 
-#### `preserveValueImports`
+针对 ES6 增加的一些迭代语法，比如 `[a, ...b]`, `fn(...args)` 等，是否开启更精确的降级实现。
 
-#### `removeComments`
+#### `emitBOM` 是否生成 BOM(byte order mark)
 
-#### `sourceMap`
+`type: boolean`
 
-#### `sourceRoot`
+`default: false`
 
-#### `stripInternal`
+`Recommended Value: 通常为 false 即可`
+
+一些运行时环境需要 BOM 来正确解释 JavaScript 文件，另一些则要求它不存在。
+
+#### `emitDeclarationOnly` 是否只生成 `.d.ts` 声明文件
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+只生成 `.d.ts` 声明文件，而不生成 `.js` 文件。
+
+以下情况会需要开启此配置：
+
+- 你正在使用 TypeScript 之外的一个编译器来生成你的 JavaScript 。
+- 你使用 TypeScript 只为了生成 `.d.ts` 声明文件。
+
+#### `importHelpers` 是否导入辅助函数
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+对于某些底层操作，TypeScript 会使用一些辅助函数来进行一些操作，比如扩展运算符以及异步操作等。默认情况下，这些辅助函数代码被插入到使用它们的文件中。如果在许多不同的模块中使用相同的辅助函数，这可能会导致代码重复。
+
+开启此选项后，辅助函数将会替换为使用 `tslib` 模块，需要确保在运行时 `tslib` 模块是可用的。
+
+```ts
+//  downlevelIteration 为 true, importHelpers 为 false 时：
+
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+export function fn(arr) {
+    var arr2 = __spreadArray([1], __read(arr), false);
+}
+```
+
+```ts
+//  downlevelIteration 和 importHelpers 均为 true 时：
+
+import { __read, __spreadArray } from "tslib";
+export function fn(arr) {
+    var arr2 = __spreadArray([1], __read(arr), false);
+}
+```
+
+如果要使用自己实现的辅助函数，可以设置 `noEmitHelpers`  选项为 `true`。
+
+#### `importsNotUsedAsValues` 控制类型导入不能被当成值来使用
+
+`type: remove | preserve | error`
+
+`default: "remove"`
+
+`Recommended Value: "error"`
+
+- `remove` 默认值，丢弃只引用了类型的 import 语句
+
+- `preserve` 保留所有 import 语句，即使引用的值或类型未被使用，这可能会导致 import 或 副作用被保留。
+
+- `error`: 保留所有 import 语句 (和 `preserve` 一样), 但当一个导入的值仅仅被用作类型时会报错，如果想要确保没有值被意外的导入时这很有用，但
+
+这个选项之所以存在，是因为 TS 其实支持使用 `import type` 来显式地创建一个永远不应该被生成到 JavaScript 中的 import 语句。
+
+#### `inlineSourceMap` 是否开启内联的源码映射(SourceMap)
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+开启此选项后，会将源码映射直接生成到 js 文件中，而不再是生成 `.js.map` 的文件。
+
+源码映射将会在文件底部作为注释存在。
+
+这在某些场景是合适的，比如，想在一个不允许提供 `.map` 文件的 web 服务器上调试 JS 文件时。
+
+#### `inlineSources` 内联源码映射中是否包括源代码
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+和 `inlineSourceMap` 的不同之处在于，源码映射的注释中，还多了源代码的内容。
+
+#### `mapRoot` 指定源码映射的路径位置
+
+`type: string`
+
+`default: -`
+
+`Recommended Value: 按需设置`
+
+比如：
+
+```json
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "mapRoot": "https://my-website.com/debug/sourcemaps/"
+  }
+}
+```
+
+#### `newLine` 指定换新行时使用的换行符类型
+
+`type: LF | CRLF`
+
+`default: 跟随系统设定`
+
+`Recommended Value: 无需设置`
+
+指定生成文件时，使用的行结束为 `CRLF`(dos) 或 `LF` (unix)。
+
+#### `noEmit` 是否不生成任何文件和代码
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+是否不生成 JS，源码映射，声明文件等。开启此选项，为 Babel 这样的工具腾出空间，让它们来将 TS 代码转换成 JavaScript 。
+
+这样，你就可以只使用  TypeScript 来作为编辑器集成工具，以及源代码的类型检查工具。
+
+#### `noEmitHelpers` 是否不生成运行时辅助函数
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+当自己在全局实现了这些辅助函数时，可以设为 true 。
+
+#### `noEmitOnError` 是否在编译遇到错误时不要退出编译
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+控制在编译遇到错误时，是继续编译还是立即退出。
+
+#### `outDir` 编译输出目录
+
+`type: string`
+
+`default: -`
+
+`Recommended Value: -`
+
+设置 TS 编译后生成的 `.js`, `.d.ts`, `.js.map` 等文件的输出目录。
+
+#### `outFile` 指定一个名称，并将所有非模块文件输出到这个文件中
+
+`type: string`
+
+`default: -`
+
+`Recommended Value: -`
+
+如果指定，所有全局(非模块)文件将被连接输出到这个指定的单个文件中。
+
+如果 `module` 选项设置为 `"system"` 或 `"amd"` ，所有的模块文件也会在所有全局内容之后连接输出到这个文件中。
+
+注意: `outFile` 只能在 `module` 选项设置为 `"none"`, `"system"` 或 `"amd"` 时才能使用，当 `module` 选项设置为 `CommonJS` 或 `ES6` 时不能使用。
+
+#### `preserveConstEnums` 是否保留常量枚举
+
+`type: boolean`
+
+`default: 跟随 isolatedModules 选项的值`
+
+`Recommended Value: false`
+
+是否在生成的代码中保留 `const enum` 声明。
+
+在 TS 中，`const enum` 提供了一种方法，生成代码时直接将 `enum` 的值替换掉引用 enum 的地方，来减少应用程序在运行时的总体内存占用。
+
+#### `preserveValueImports` 是否保留 import 但未使用的值
+
+`type: boolean`
+
+`default: -`
+
+`Recommended Value: false`
+
+在有些情况下， TS 无法检测到导入的值是否被引用到，比如：
+
+```ts
+import { Animal } from "./animal.js"
+eval("console.log(new Animal().isDangerous())")
+```
+
+当与 `isolatedModules` 选项结合使用时，导入的如果是类型必须标记为 type-only (仅可作为类型使用)，因为编译器在面对有些 import 语句时，无法知道导入的是未使用的值，还是可以放心删除的类型，以避免运行时崩溃。
+
+比如：
+
+```ts
+import { TitleComponent, TitleComponentProps } from "./TitleComponent.js";
+
+import { TitleComponent, type TitleComponentProps } from "./TitleComponent.js";
+```
+
+#### `removeComments` 是否在编译时移除注释(忽略注释)
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: true`
+
+编译过后的代码，通常不需要注释，所以可以设置为 `true` 。
+
+#### `sourceMap` 是否生成源码映射(source map)
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+开启后， TS 编译为 JS 后，同时会生成一个源码映射文件，源码映射文件通常紧挨着对应的 JS 文件，在 JS 文件的底部同时会有一个注释用来说明源码映射文件的名称及位置。
+
+#### `sourceRoot` 指定源码的位置供 debugger 定位源码使用
+
+`type: string`
+
+`default: -`
+
+`Recommended Value: 按需设置`
+
+例如：
+
+```json
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "sourceRoot": "https://my-website.com/debug/source/"
+  }
+}
+```
+
+上述配置指明了 `index.js` 的源码文件位置时 `https://my-website.com/debug/source/index.ts` .
+
+#### `stripInternal` 移除 JSDoc 中的 @internal 注释
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: false`
+
+不要为 JSDoc 注释中有 `@internal` 注释的代码发出声明。
+
+这是一个内部编译器选项，使用的风险由您自己承担，因为编译器不会检查结果是否有效。
+
+如果您正在寻找一种工具来处理 `d.ts` 文件中的额外级别的可见性，请查看 [api-extractor](https://api-extractor.com/)。
 
 ### JavaScript Support
 
-#### `allowJs`
+#### `allowJs` 是否允许在 TS 中导入 JS 文件
 
-#### `checkJs`
+`type: boolean`
 
-#### `maxNodeModuleJsDepth`
+`default: false`
+
+`Recommended Value: 按需设置`
+
+启用后，可以用来将 TS 文件增量地添加到原 JS 项目中，允许 `.ts` 和 `.tsx` 文件与现有的 `.js` 文件共存。
+
+#### `checkJs` 是否允许 TS 检查 JS 文件
+
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+和 `allowJs` 选项一起工作，开启后，相当于在所有 JS 文件顶部添加了 `// @ts-check` 注释，用来要求 TS 检查这个 JS 文件。
+
+#### `maxNodeModuleJsDepth`  在 `node_modules` 下搜索和加载 JS 文件的最大依赖深度
+
+`type: number`
+
+`default: 0`
+
+`Recommended Value: 按需设置`
+
+这个选项只能在 `allowJs` 选项被启用的情况下使用，如果你想在你的 `node_modules` 中让所有的 JavaScript 拥有 TypeScript 推断类型，这个选项就可以开启。
 
 ### Editor Support
 
