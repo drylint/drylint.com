@@ -920,14 +920,31 @@ import { TitleComponent, type TitleComponentProps } from "./TitleComponent.js";
 
 ### Editor Support
 
-#### `disableSizeLimit`
+#### `disableSizeLimit` 是否禁用 TS 占用内存上限控制
 
-#### `plugins`
+`type: boolean`
+
+`default: false`
+
+`Recommended Value: 按需设置`
+
+在处理非常大的 JavaScript 项目时，为了避免可能的内存膨胀问题，TypeScript 会分配一个上限的内存。打开此标志将移除这个限制。
+
+#### `plugins` 编辑器中要运行的语言服务插件列表
+
+`type: string[]`
+
+`default: -`
 
 ### Interop Constraints
 
+#### `allowSyntheticDefaultImports` 是否允许合并默认导出
 
-#### `allowSyntheticDefaultImports`
+`type: boolean`
+
+`default: true(当module 为 true，或)`
+
+`Recommended Value: 按需设置`
 
 #### `esModuleInterop`
 
