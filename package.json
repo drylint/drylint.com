@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/drylint/drylint.com#readme",
   "devDependencies": {
+    "@vue/eslint-config-typescript": "^10.0.0",
     "eslint": "^7.23.0",
     "eslint-config-better": "0.0.9",
     "glob": "^7.1.6",
@@ -32,6 +33,6 @@
     "stylelint": "^13.12.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.19.0",
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.9.5"
   }
 }
