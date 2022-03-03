@@ -1,9 +1,25 @@
-node_modules/
-.DS_Store
+# Custom
+node_modules
+dist
+dist-ssr
+dist.*
+*__*
+*.local
 
-/output.js
-/package-lock.json
-.env.local
-.env.*.local
-pages/CNAME
-gh-pages/CNAME
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
