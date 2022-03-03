@@ -4,7 +4,7 @@
 
 npm
 
-```cmd
+```bash
 npm install axios
 ```
 

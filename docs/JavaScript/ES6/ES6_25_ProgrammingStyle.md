@@ -147,7 +147,7 @@ greet();
 
 使用 ESLint 检查这个文件，就会报出错误。
 
-```cmd
+```bash
 $ eslint index.js
 index.js
   1:1  error  Unexpected var, use let or const instead          no-var

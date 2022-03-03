@@ -51,7 +51,7 @@ module.exports = {
 
 以下是 `url()` 的各种写法以及他们的处理结果：
 
-```no
+```bash
 url(image.png) => require('./image.png')
 url('image.png') => require('./image.png')
 url(./image.png) => require('./image.png')
@@ -62,7 +62,7 @@ image-set(url('image2x.png') 1x, url('image1x.png') 2x) => require('./image1x.pn
 
 如果 `url()` 要从 `node_modules`(包括 resolve.modules) 或 alias 路径引入图片文件，需要添加前缀符号 `~`：
 
-```no
+```bash
 url(~module/image.png) => require('module/image.png')
 url('~module/image.png') => require('module/image.png')
 url(~aliasDirectory/image.png) => require('otherDirectory/image.png')
@@ -104,7 +104,7 @@ url(~aliasDirectory/image.png) => require('otherDirectory/image.png')
 
 以下是一些 `@import` 的写法，以及他们的处理结果
 
-```no
+```bash
 @import 'style.css' => require('./style.css')
 @import url(style.css) => require('./style.css')
 @import url('style.css') => require('./style.css')
@@ -117,7 +117,7 @@ url(~aliasDirectory/image.png) => require('otherDirectory/image.png')
 
 如果 `@import` 要从 `node_modules`(包括 resolve.modules) 或 alias 路径引入图片文件，需要添加前缀符号 `~`
 
-```no
+```bash
 @import url(~module/style.css) => require('module/style.css')
 @import url('~module/style.css') => require('module/style.css')
 @import url(~aliasDirectory/style.css) => require('otherDirectory/style.css')

@@ -20,7 +20,7 @@
 
 传递相应参数来启动 Chrome，以 `http://example.com` 为例，
 
-```no
+```bash
  --unsafely-treat-insecure-origin-as-secure="http://example.com"
 ```
 

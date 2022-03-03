@@ -20,7 +20,7 @@ Number.prototype // 表示 Number 构造函数的原型
 
 ### 2. 实例属性
 
-```nothing
+```bash
 无
 ```
 

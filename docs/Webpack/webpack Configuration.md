@@ -20,7 +20,7 @@ module.exports = {
 
 或是从命令行（CLI）的参数中传递
 
-```cmd
+```bash
 webpack --mode=production
 ```
 
@@ -471,7 +471,7 @@ import Utils from '@/utils/common.js'
 
   - 在命令行中指定使用的 loader 。不推荐。
 
-    ```cmd
+    ```bash
     webpack --module-bind jade-loader --module-bind 'css=style-loader!css-loader'
     ```
 
