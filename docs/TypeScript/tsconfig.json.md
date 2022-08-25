@@ -4,7 +4,7 @@
 
 运行 `tsc --init` 命令后自动生成的默认配置文件：
 
-```js
+```json
 {
   "compilerOptions": {
     "target": "es5",
