@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>存储过程存储函数游标 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.c4ac4f66.css" as="style"><link rel="preload" href="/assets/js/app.17619901.js" as="script"><link rel="preload" href="/assets/js/2.f210fd71.js" as="script"><link rel="preload" href="/assets/js/190.46fb9bc5.js" as="script"><link rel="prefetch" href="/assets/js/10.e9efe93d.js"><link rel="prefetch" href="/assets/js/100.22c29af4.js"><link rel="prefetch" href="/assets/js/101.2e402eae.js"><link rel="prefetch" href="/assets/js/102.656c2950.js"><link rel="prefetch" href="/assets/js/103.9ff3bd22.js"><link rel="prefetch" href="/assets/js/104.20b6d4c1.js"><link rel="prefetch" href="/assets/js/105.61ee9d67.js"><link rel="prefetch" href="/assets/js/106.c5e4a2df.js"><link rel="prefetch" href="/assets/js/107.f9319198.js"><link rel="prefetch" href="/assets/js/108.e37006c7.js"><link rel="prefetch" href="/assets/js/109.5d7b724b.js"><link rel="prefetch" href="/assets/js/11.ac37ef8b.js"><link rel="prefetch" href="/assets/js/110.e6adbef3.js"><link rel="prefetch" href="/assets/js/111.7aaf2b1b.js"><link rel="prefetch" href="/assets/js/112.062b35d8.js"><link rel="prefetch" href="/assets/js/113.e1b003c6.js"><link rel="prefetch" href="/assets/js/114.8d4ab14a.js"><link rel="prefetch" href="/assets/js/115.0a34e6a6.js"><link rel="prefetch" href="/assets/js/116.db882154.js"><link rel="prefetch" href="/assets/js/117.10f92ed1.js"><link rel="prefetch" href="/assets/js/118.796fc3fd.js"><link rel="prefetch" href="/assets/js/119.f00b6075.js"><link rel="prefetch" href="/assets/js/12.c2e2ddaa.js"><link rel="prefetch" href="/assets/js/120.0a2071c1.js"><link rel="prefetch" href="/assets/js/121.d0cf1fa2.js"><link rel="prefetch" href="/assets/js/122.3c1d509a.js"><link rel="prefetch" href="/assets/js/123.65a3230c.js"><link rel="prefetch" href="/assets/js/124.a22fd0bd.js"><link rel="prefetch" href="/assets/js/125.43f915d7.js"><link rel="prefetch" href="/assets/js/126.b1a8be83.js"><link rel="prefetch" href="/assets/js/127.5dab55fc.js"><link rel="prefetch" href="/assets/js/128.ee7cd06c.js"><link rel="prefetch" href="/assets/js/129.b6e979be.js"><link rel="prefetch" href="/assets/js/13.b9a3a38b.js"><link rel="prefetch" href="/assets/js/130.0abf2022.js"><link rel="prefetch" href="/assets/js/131.fb1b682d.js"><link rel="prefetch" href="/assets/js/132.0cb0970d.js"><link rel="prefetch" href="/assets/js/133.03bd617c.js"><link rel="prefetch" href="/assets/js/134.633de822.js"><link rel="prefetch" href="/assets/js/135.fba3ecdf.js"><link rel="prefetch" href="/assets/js/136.9f05e70c.js"><link rel="prefetch" href="/assets/js/137.969d3d15.js"><link rel="prefetch" href="/assets/js/138.95567faf.js"><link rel="prefetch" href="/assets/js/139.d2e60233.js"><link rel="prefetch" href="/assets/js/14.9cf1d0f0.js"><link rel="prefetch" href="/assets/js/140.5a1f57fc.js"><link rel="prefetch" href="/assets/js/141.17a0263a.js"><link rel="prefetch" href="/assets/js/142.28f3a05c.js"><link rel="prefetch" href="/assets/js/143.9d096c0e.js"><link rel="prefetch" href="/assets/js/144.34961553.js"><link rel="prefetch" href="/assets/js/145.f166b076.js"><link rel="prefetch" href="/assets/js/146.b92baa91.js"><link rel="prefetch" href="/assets/js/147.8497ce2a.js"><link rel="prefetch" href="/assets/js/148.36fcaf1a.js"><link rel="prefetch" href="/assets/js/149.771c1047.js"><link rel="prefetch" href="/assets/js/15.1feb902a.js"><link rel="prefetch" href="/assets/js/150.19ac3bde.js"><link rel="prefetch" href="/assets/js/151.d2db43bd.js"><link rel="prefetch" href="/assets/js/152.c209fe35.js"><link rel="prefetch" href="/assets/js/153.9d0fb7fe.js"><link rel="prefetch" href="/assets/js/154.588f371f.js"><link rel="prefetch" href="/assets/js/155.e1424804.js"><link rel="prefetch" href="/assets/js/156.f6cae282.js"><link rel="prefetch" href="/assets/js/157.9d3be992.js"><link rel="prefetch" href="/assets/js/158.8787185d.js"><link rel="prefetch" href="/assets/js/159.99bb41dc.js"><link rel="prefetch" href="/assets/js/16.b10a7cca.js"><link rel="prefetch" href="/assets/js/160.d7b50fb2.js"><link rel="prefetch" href="/assets/js/161.61927cc0.js"><link rel="prefetch" href="/assets/js/162.8cb8cc83.js"><link rel="prefetch" href="/assets/js/163.a403d163.js"><link rel="prefetch" href="/assets/js/164.c68a2712.js"><link rel="prefetch" href="/assets/js/165.1ca71660.js"><link rel="prefetch" href="/assets/js/166.585aefb0.js"><link rel="prefetch" href="/assets/js/167.c33cab3b.js"><link rel="prefetch" href="/assets/js/168.3cbb38f9.js"><link rel="prefetch" href="/assets/js/169.360ba468.js"><link rel="prefetch" href="/assets/js/17.8e3ecdfa.js"><link rel="prefetch" href="/assets/js/170.da6c94e2.js"><link rel="prefetch" href="/assets/js/171.7fd9c3c4.js"><link rel="prefetch" href="/assets/js/172.3efe7a61.js"><link rel="prefetch" href="/assets/js/173.1b595b97.js"><link rel="prefetch" href="/assets/js/174.ac2e6d38.js"><link rel="prefetch" href="/assets/js/175.f9c9073e.js"><link rel="prefetch" href="/assets/js/176.939d9eb1.js"><link rel="prefetch" href="/assets/js/177.d4f90a79.js"><link rel="prefetch" href="/assets/js/178.ca53082f.js"><link rel="prefetch" href="/assets/js/179.fa84ada9.js"><link rel="prefetch" href="/assets/js/18.a2e4af66.js"><link rel="prefetch" href="/assets/js/180.ccbf3a15.js"><link rel="prefetch" href="/assets/js/181.7ac3bba0.js"><link rel="prefetch" href="/assets/js/182.b3d352b3.js"><link rel="prefetch" href="/assets/js/183.492ef987.js"><link rel="prefetch" href="/assets/js/184.caf653d1.js"><link rel="prefetch" href="/assets/js/185.791b1bc6.js"><link rel="prefetch" href="/assets/js/186.8ea17bf1.js"><link rel="prefetch" href="/assets/js/187.78f71c3a.js"><link rel="prefetch" href="/assets/js/188.49ae436d.js"><link rel="prefetch" href="/assets/js/189.ccd54cfa.js"><link rel="prefetch" href="/assets/js/19.cd9237a5.js"><link rel="prefetch" href="/assets/js/191.969d3ec3.js"><link rel="prefetch" href="/assets/js/192.73b5e1e2.js"><link rel="prefetch" href="/assets/js/193.b3ed0aee.js"><link rel="prefetch" href="/assets/js/194.829a9fd4.js"><link rel="prefetch" href="/assets/js/195.29465395.js"><link rel="prefetch" href="/assets/js/196.adecfd7a.js"><link rel="prefetch" href="/assets/js/197.c7122eb4.js"><link rel="prefetch" href="/assets/js/198.886028b5.js"><link rel="prefetch" href="/assets/js/199.049091a3.js"><link rel="prefetch" href="/assets/js/20.18f3c6c5.js"><link rel="prefetch" href="/assets/js/200.1775d499.js"><link rel="prefetch" href="/assets/js/201.22d30b3a.js"><link rel="prefetch" href="/assets/js/202.016b5043.js"><link rel="prefetch" href="/assets/js/203.f5b07ec3.js"><link rel="prefetch" href="/assets/js/21.3f6a146f.js"><link rel="prefetch" href="/assets/js/22.e51d90f6.js"><link rel="prefetch" href="/assets/js/23.60ad4b93.js"><link rel="prefetch" href="/assets/js/24.7208540f.js"><link rel="prefetch" href="/assets/js/25.1ced8418.js"><link rel="prefetch" href="/assets/js/26.90d9908c.js"><link rel="prefetch" href="/assets/js/27.a354f31e.js"><link rel="prefetch" href="/assets/js/28.bb24eaaf.js"><link rel="prefetch" href="/assets/js/29.ceddedbe.js"><link rel="prefetch" href="/assets/js/3.552c098b.js"><link rel="prefetch" href="/assets/js/30.6f77aaf9.js"><link rel="prefetch" href="/assets/js/31.2f13fffe.js"><link rel="prefetch" href="/assets/js/32.33d855f1.js"><link rel="prefetch" href="/assets/js/33.0ac0d92f.js"><link rel="prefetch" href="/assets/js/34.6b0fb595.js"><link rel="prefetch" href="/assets/js/35.a9bed3e0.js"><link rel="prefetch" href="/assets/js/36.77b50822.js"><link rel="prefetch" href="/assets/js/37.ec8e634f.js"><link rel="prefetch" href="/assets/js/38.77c43a70.js"><link rel="prefetch" href="/assets/js/39.e8664054.js"><link rel="prefetch" href="/assets/js/4.fc90a7cb.js"><link rel="prefetch" href="/assets/js/40.08d2423a.js"><link rel="prefetch" href="/assets/js/41.be758f07.js"><link rel="prefetch" href="/assets/js/42.43031b7c.js"><link rel="prefetch" href="/assets/js/43.6efbb674.js"><link rel="prefetch" href="/assets/js/44.9851c7f9.js"><link rel="prefetch" href="/assets/js/45.dce0204f.js"><link rel="prefetch" href="/assets/js/46.d2f4411d.js"><link rel="prefetch" href="/assets/js/47.6f3c8b27.js"><link rel="prefetch" href="/assets/js/48.642c042f.js"><link rel="prefetch" href="/assets/js/49.d4574481.js"><link rel="prefetch" href="/assets/js/5.cfcc41a3.js"><link rel="prefetch" href="/assets/js/50.b6d5b827.js"><link rel="prefetch" href="/assets/js/51.8fd044f8.js"><link rel="prefetch" href="/assets/js/52.c8f879ba.js"><link rel="prefetch" href="/assets/js/53.24508bcf.js"><link rel="prefetch" href="/assets/js/54.fb7d10a5.js"><link rel="prefetch" href="/assets/js/55.522f12dd.js"><link rel="prefetch" href="/assets/js/56.939a1d1a.js"><link rel="prefetch" href="/assets/js/57.5a46b9fe.js"><link rel="prefetch" href="/assets/js/58.29e60f64.js"><link rel="prefetch" href="/assets/js/59.13867476.js"><link rel="prefetch" href="/assets/js/6.2ba75a72.js"><link rel="prefetch" href="/assets/js/60.f24f8967.js"><link rel="prefetch" href="/assets/js/61.947d7657.js"><link rel="prefetch" href="/assets/js/62.c5c50508.js"><link rel="prefetch" href="/assets/js/63.449ed24d.js"><link rel="prefetch" href="/assets/js/64.31fd8afe.js"><link rel="prefetch" href="/assets/js/65.91daf55c.js"><link rel="prefetch" href="/assets/js/66.e4a5be73.js"><link rel="prefetch" href="/assets/js/67.f09f3e12.js"><link rel="prefetch" href="/assets/js/68.df12273a.js"><link rel="prefetch" href="/assets/js/69.3a908ad8.js"><link rel="prefetch" href="/assets/js/7.9efbea97.js"><link rel="prefetch" href="/assets/js/70.c140615d.js"><link rel="prefetch" href="/assets/js/71.3a6d705e.js"><link rel="prefetch" href="/assets/js/72.81d83b29.js"><link rel="prefetch" href="/assets/js/73.f1bf08d4.js"><link rel="prefetch" href="/assets/js/74.23515132.js"><link rel="prefetch" href="/assets/js/75.ed977055.js"><link rel="prefetch" href="/assets/js/76.cf1976bc.js"><link rel="prefetch" href="/assets/js/77.e472e706.js"><link rel="prefetch" href="/assets/js/78.960218f8.js"><link rel="prefetch" href="/assets/js/79.0ea6a1af.js"><link rel="prefetch" href="/assets/js/8.c0233b02.js"><link rel="prefetch" href="/assets/js/80.82b99ef1.js"><link rel="prefetch" href="/assets/js/81.d679002c.js"><link rel="prefetch" href="/assets/js/82.abb5f3cc.js"><link rel="prefetch" href="/assets/js/83.3ae8a14d.js"><link rel="prefetch" href="/assets/js/84.82865625.js"><link rel="prefetch" href="/assets/js/85.1d36847f.js"><link rel="prefetch" href="/assets/js/86.c264cc4e.js"><link rel="prefetch" href="/assets/js/87.102d5379.js"><link rel="prefetch" href="/assets/js/88.1b1cf170.js"><link rel="prefetch" href="/assets/js/89.2f7e1aa2.js"><link rel="prefetch" href="/assets/js/9.77310d9d.js"><link rel="prefetch" href="/assets/js/90.3ce5658f.js"><link rel="prefetch" href="/assets/js/91.c1fcaeaa.js"><link rel="prefetch" href="/assets/js/92.ed4d65e9.js"><link rel="prefetch" href="/assets/js/93.9337ee3c.js"><link rel="prefetch" href="/assets/js/94.bfae2512.js"><link rel="prefetch" href="/assets/js/95.207f6751.js"><link rel="prefetch" href="/assets/js/96.833a8d4d.js"><link rel="prefetch" href="/assets/js/97.9cbdf7c9.js"><link rel="prefetch" href="/assets/js/98.0eeb8866.js"><link rel="prefetch" href="/assets/js/99.8f45738b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c4ac4f66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>后端</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%90%8E%E7%AB%AF/" aria-current="page" class="sidebar-link">后端相关</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="存储过程-存储函数-游标"><a href="#存储过程-存储函数-游标" class="header-anchor">#</a> 存储过程_存储函数_游标</h1> <p></p><div class="table-of-contents"><ul><li><a href="#存储过程-procedure">存储过程 PROCEDURE</a><ul><li><a href="#创建存储过程-create-procedure">创建存储过程 CREATE PROCEDURE</a><ul><li><a href="#带参数的存储过程">带参数的存储过程</a></li><li><a href="#存储过程特性">存储过程特性</a></li></ul></li><li><a href="#显示创建一个存储过程的语句">显示创建一个存储过程的语句</a></li><li><a href="#删除存储过程">删除存储过程</a></li></ul></li><li><a href="#存储函数">存储函数</a><ul><li><a href="#创建存储函数-create-function">创建存储函数 CREATE FUNCTION</a></li></ul></li><li><a href="#游标-cursor">游标 cursor</a><ul><li><a href="#使用游标">使用游标</a></li></ul></li></ul></div><p></p> <p>存储程序可以分为存储过程和函数。在 MySQL 中，创建存储过程和函数使用的语句分别是 <code>CREATE PROCEDURE</code> 和 <code>CREATE FUNCTION</code> ，使用 <code>CALL</code> 语句来调用存储过程，只能用输出变量返回值。函数可以从语句外调用(引用函数名)，也能返回标量值。存储过程也可以调用其他存储过程。</p> <h2 id="存储过程-procedure"><a href="#存储过程-procedure" class="header-anchor">#</a> 存储过程 PROCEDURE</h2> <p>什么是存储过程，简单来说，就是为以后的使用而保存的一条或多条 MySQL 语句的集合。可将其视为批处理文件，虽然它们的作用不仅限于批处理。</p> <p>使用存储过程的好处：</p> <ul><li>拆分复杂的操作，封装成更小的单元，简化操作。</li> <li>团队成员复用，保持一致的团队操作，降低出错。</li> <li>解耦，如果表名，列名或业务逻辑变化，只需要修改封装好的存储过程即可，不用修改业务代码。</li> <li>提高性能。因为使用存储过程比使用单独的SQL语句要快。</li> <li>一些只能用在单个请求中的 MySQL 元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码。</li></ul> <p>存储过程的好处总结：简单、安全、高性能。</p> <p>一般来说，存储过程的编写比基本 SQL 语句复杂，编写存储过程需要更高的技能，更丰富的经验。</p> <p>你可能没有创建存储过程的安全访问权限。许多数据库管理员限制存储过程的创建权限，只允许用户使用存储过程，但不允许他们创建存储过程。</p> <h3 id="创建存储过程-create-procedure"><a href="#创建存储过程-create-procedure" class="header-anchor">#</a> 创建存储过程 <code>CREATE PROCEDURE</code></h3> <p>语法：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 存储过程其实也是一种函数，所以名称后有一对圆括号</span>
+<span class="token comment"># 如果存储过程接受参数，它们将在 () 中列举出来。</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span>参数列表<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>存储过程特性<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+<span class="token keyword">BEGIN</span> <span class="token operator">&lt;</span>封装的语句<span class="token operator">&gt;</span> <span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>示例：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 创建一个存储过程，用于获得用户表中所有用户的平均年龄</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> avg_user_age<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">AS</span> avg_age <span class="token keyword">from</span> users<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>上例中，<code>CREATE PROCEDURE avg_user_age()</code> 创建一个名为 <code>avg_user_age</code> 且不需要参数的存储过程， <code>BEGIN</code> 和 <code>END</code> 语句用来限定存储过程体，指示开始和结束。</p> <p>上例中，<code>BEGIN</code> 和 <code>END</code> 中间的语句结束使用了分号 <code>;</code> ，创建存储过程的整个语句末尾也有分号 <code>;</code> ，这在命令行程序中使用时会出现句法错误，解决办法是临时更改命令行实用程序的语句分隔符。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DELIMITER</span> <span class="token comment">//</span>
+
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> avg_user_age<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">SELECT</span> <span class="token function">Avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">AS</span> avg_age <span class="token keyword">from</span> users<span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token comment">//</span>
+
+<span class="token keyword">DELIMITER</span> <span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>开头的 <code>DELIMITER //</code> 表示临时指定语句分隔符为 <code>//</code> ， 所以创建语句的末尾使用了 <code>END //</code> 作为语句结束分隔符。最后 <code>DELIMITER ;</code> 将分隔符恢复成分号。</p> <p>除了 <code>\</code> 符号外，其他的字符都可以用来指定为临时分隔符。</p> <p>调用存储过程使用 <code>CALL</code> 关键字：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CALL</span> avg_user_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="带参数的存储过程"><a href="#带参数的存储过程" class="header-anchor">#</a> 带参数的存储过程</h4> <p>创建带参数的存储过程，每个参数都有三部分组成，分别是 <code>&lt;参数类型&gt; &lt;参数名称&gt; &lt;参数数据类型&gt;</code> 。</p> <p>参数类型取值为以下之一：</p> <ul><li><code>IN</code> 接收参数</li> <li><code>OUT</code> 输出参数</li> <li><code>INOUT</code> 即可接收参数，也可输出参数</li></ul> <p>参数名任意定义，参数数据类型就是 MySQL 支持的数据类型。</p> <p>语法：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>参数类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数名称<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数数据类型<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>参数类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数名称<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数数据类型<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token operator">&lt;</span>参数类型<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数名称<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>参数数据类型<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">)</span> <span class="token keyword">BEGIN</span> <span class="token operator">&lt;</span>封装的语句<span class="token operator">&gt;</span> <span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>在 <code>BEGIN &lt;封装的语句&gt; END</code> 封装的语句中，通过 <code>INTO</code> 关键字将值传给 <code>OUT</code> 类型的参数，比如 <code>SELECT &lt;列名&gt; INTO &lt;参数名称&gt; ...</code></p> <p>示例：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">DELIMITER</span> <span class="token comment">//</span>
+<span class="token comment"># 创建一个存储过程，可获取用户表中最大年龄，最小年龄，平均年龄</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> user_age<span class="token punctuation">(</span>
+  <span class="token keyword">OUT</span> maxa <span class="token keyword">INT</span><span class="token punctuation">,</span>
+  <span class="token keyword">OUT</span> mina <span class="token keyword">INT</span><span class="token punctuation">,</span>
+  <span class="token keyword">OUT</span> avga <span class="token keyword">INT</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+<span class="token keyword">SELECT</span> <span class="token function">Max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">INTO</span> maxa <span class="token keyword">from</span> users<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">min</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">INTO</span> mina <span class="token keyword">from</span> users<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">INTO</span> avga <span class="token keyword">from</span> users<span class="token punctuation">;</span>
+<span class="token keyword">END</span> <span class="token comment">//</span>
+
+<span class="token keyword">DELIMITER</span> <span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>上例中，创建了一个存储过程叫做 <code>user_age</code> , 它接收三个参数，分别是 <code>maxa</code>, <code>mina</code>, <code>avga</code>, 每个参数必须具有指定的类型。</p> <p>关键字 <code>OUT</code> 指出相应的参数用来从存储过程传出一个值（返回给调用者）。</p> <p>封装的语句中，通过 INTO 关键字将查询出的值赋值给了 <code>maxa</code>, <code>mina</code>, <code>avga</code> 这三个参数。</p> <p>调用带参数的存储过程：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 所有 MySQL 变量命名都必须以 @ 开始</span>
+<span class="token comment"># 变量名不需要和存储过程的参数名相同，但顺序和数量必须一致。</span>
+<span class="token keyword">CALL</span> user_age<span class="token punctuation">(</span><span class="token variable">@max_age</span><span class="token punctuation">,</span> <span class="token variable">@min_age</span><span class="token punctuation">,</span> <span class="token variable">@avg_age</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>在调用语句执行之后，这条语句并不显示任何数据。它仅仅返回了这三个变量，可以在之后使用这三个变量。</p> <p>访问 <strong>调用存储过程返回的变量</strong>：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 直接访问变量，这条语句查询出三列，分别是这三个变量，以及他们的值</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@max_age</span><span class="token punctuation">,</span> <span class="token variable">@min_age</span><span class="token punctuation">,</span> <span class="token variable">@avg_age</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="存储过程特性"><a href="#存储过程特性" class="header-anchor">#</a> 存储过程特性</h4> <p>存储过程特性有以下取值：</p> <ul><li>LANGUAGE SQL: 说明routine_ _body 部分是由SQL语句组成的，当前系统支持的语言为
+SQL。SQL是LANGUAGE特性的唯一值。</li> <li>[NOT] DETERMINISTIC: 指明存储过程执行的结果是否正确。DETERMINISTIC表示结.
+果是确定的。每次执行存储过程时,相同的输入会得到相同的输出。NOT DETERMINISTIC
+表示结果是不确定的，相同的输入可能得到不同的输出。如果没有指定任意一个值，默认
+为NOT DETERMINISTIC.</li> <li>{ CONTAINS SQL | NO SQL| READS SQL DATA | MODIFIES SQL DATA}:指明子程序使
+用SQL语句的限制。CONTAINS SQL表明子程序包含SQL语句，但是不包含读写数据的
+语句; NOSQL表明子程序不包含SQL语句; READS SQL DATA说明子程序包含读数据
+的语句; MODIFIES SQL DATA表明子程序包含写数据的语句。默认情况下，系统会指定
+为CONTAINS SQL。</li> <li>SQL SECURITY { DEFINER |INVOKER }:指明谁有权限来执行。DEFINER 表示只有定
+义者才能执行。INVOKER 表示拥有权限的调用者可以执行。默认情况下，系统指定为
+DEFINER。</li> <li>COMMENT 'string': 注释信息，可以用来描述存储过程或函数。</li></ul> <h3 id="显示创建一个存储过程的语句"><a href="#显示创建一个存储过程的语句" class="header-anchor">#</a> 显示创建一个存储过程的语句</h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 查看创建存储过程的语句</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 查看何时、由谁创建等详细信息，列出所有存储过程</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">STATUS</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 为限制其输出，可使用 LIKE 指定一个过滤模式</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">STATUS</span> <span class="token operator">LIKE</span> <span class="token string">'&lt;过滤模式&gt;'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="删除存储过程"><a href="#删除存储过程" class="header-anchor">#</a> 删除存储过程</h3> <p>存储过程在创建之后，被保存在服务器上以供使用，直至被删除。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 如果指定的过程不存在，将产生一个错误</span>
+<span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 判断当指定的存储过程存在时，才将它删除</span>
+<span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="存储函数"><a href="#存储函数" class="header-anchor">#</a> 存储函数</h2> <h3 id="创建存储函数-create-function"><a href="#创建存储函数-create-function" class="header-anchor">#</a> 创建存储函数 <code>CREATE FUNCTION</code></h3> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> <span class="token operator">&lt;</span>函数名<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span>参数列表<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">RETURNS</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span>
+<span class="token keyword">RETURN</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span>封装的语句<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li><code>CREATE FUNCTION &lt;函数名&gt;([参数列表])</code> 创建函数</li> <li>参数列表格式为 <code>IN &lt;参数&gt; &lt;数据类型&gt;</code> ，不同于存储过程，参数类型只有 <code>IN</code> 接收参数类型</li> <li><code>RETURNS &lt;数据类型&gt;</code> 指定函数返回的数据类型，返回值不符合时，将会被强制改为恰当的返回值的类型。</li> <li><code>RETURN (&lt;封装的语句&gt;)</code> 返回实际的结果</li></ul> <h2 id="游标-cursor"><a href="#游标-cursor" class="header-anchor">#</a> 游标 cursor</h2> <p>有时，需要在检索出来的行中前进或后退一行或多行。这就是使用游标的原因。游标（cursor）是一个存储在MySQL服务器上的数据库查询，它不是一条 SELECT 语句，而是被该语句检索出来的结果集。在存储了游标之后，应用程序可以根据需要滚动或浏览其中的数据。</p> <p>游标主要用于交互式应用，其中用户需要滚动屏幕上的数据，并对数据进行浏览或做出更改。</p> <p>不像多数 DBMS，MySQL 游标只能用于存储过程（和函数）。</p> <h3 id="使用游标"><a href="#使用游标" class="header-anchor">#</a> 使用游标</h3> <p>游标用 DECLARE 语句创建：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> <span class="token operator">&lt;</span>存储过程名称<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+  <span class="token keyword">DECLARE</span> <span class="token operator">&lt;</span>游标名<span class="token operator">&gt;</span> <span class="token keyword">CURSOR</span>
+  <span class="token keyword">FOR</span>
+  <span class="token operator">&lt;</span>查询语句<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>创建游标后，使用 <code>OPEN &lt;游标名&gt;</code> 打开游标：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token comment"># 在处理 OPEN 语句时执行查询，存储检索出的数据以供浏览和滚动</span>
+<span class="token keyword">OPEN</span> <span class="token operator">&lt;</span>游标名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>游标处理完成后，应当使用如下语句关闭游标：</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">CLOSE</span> <span class="token operator">&lt;</span>游标名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>CLOSE 释放游标使用的所有内部内存和资源，因此在每个游标不再需要时都应该关闭。</p> <p>在一个游标关闭后，如果没有重新打开，则不能使用它。</p> <p>如果你不明确关闭游标，MySQL将会在到达 END 语句时自动关闭它。</p> <p>待完善...</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/后端/sql/MySQL/存储过程_存储函数_游标.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.17619901.js" defer></script><script src="/assets/js/2.f210fd71.js" defer></script><script src="/assets/js/190.46fb9bc5.js" defer></script>
+  </body>
+</html>

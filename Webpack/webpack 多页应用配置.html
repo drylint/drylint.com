@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack 多页应用配置 | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.c4ac4f66.css" as="style"><link rel="preload" href="/assets/js/app.17619901.js" as="script"><link rel="preload" href="/assets/js/2.f210fd71.js" as="script"><link rel="preload" href="/assets/js/143.9d096c0e.js" as="script"><link rel="prefetch" href="/assets/js/10.e9efe93d.js"><link rel="prefetch" href="/assets/js/100.22c29af4.js"><link rel="prefetch" href="/assets/js/101.2e402eae.js"><link rel="prefetch" href="/assets/js/102.656c2950.js"><link rel="prefetch" href="/assets/js/103.9ff3bd22.js"><link rel="prefetch" href="/assets/js/104.20b6d4c1.js"><link rel="prefetch" href="/assets/js/105.61ee9d67.js"><link rel="prefetch" href="/assets/js/106.c5e4a2df.js"><link rel="prefetch" href="/assets/js/107.f9319198.js"><link rel="prefetch" href="/assets/js/108.e37006c7.js"><link rel="prefetch" href="/assets/js/109.5d7b724b.js"><link rel="prefetch" href="/assets/js/11.ac37ef8b.js"><link rel="prefetch" href="/assets/js/110.e6adbef3.js"><link rel="prefetch" href="/assets/js/111.7aaf2b1b.js"><link rel="prefetch" href="/assets/js/112.062b35d8.js"><link rel="prefetch" href="/assets/js/113.e1b003c6.js"><link rel="prefetch" href="/assets/js/114.8d4ab14a.js"><link rel="prefetch" href="/assets/js/115.0a34e6a6.js"><link rel="prefetch" href="/assets/js/116.db882154.js"><link rel="prefetch" href="/assets/js/117.10f92ed1.js"><link rel="prefetch" href="/assets/js/118.796fc3fd.js"><link rel="prefetch" href="/assets/js/119.f00b6075.js"><link rel="prefetch" href="/assets/js/12.c2e2ddaa.js"><link rel="prefetch" href="/assets/js/120.0a2071c1.js"><link rel="prefetch" href="/assets/js/121.d0cf1fa2.js"><link rel="prefetch" href="/assets/js/122.3c1d509a.js"><link rel="prefetch" href="/assets/js/123.65a3230c.js"><link rel="prefetch" href="/assets/js/124.a22fd0bd.js"><link rel="prefetch" href="/assets/js/125.43f915d7.js"><link rel="prefetch" href="/assets/js/126.b1a8be83.js"><link rel="prefetch" href="/assets/js/127.5dab55fc.js"><link rel="prefetch" href="/assets/js/128.ee7cd06c.js"><link rel="prefetch" href="/assets/js/129.b6e979be.js"><link rel="prefetch" href="/assets/js/13.b9a3a38b.js"><link rel="prefetch" href="/assets/js/130.0abf2022.js"><link rel="prefetch" href="/assets/js/131.fb1b682d.js"><link rel="prefetch" href="/assets/js/132.0cb0970d.js"><link rel="prefetch" href="/assets/js/133.03bd617c.js"><link rel="prefetch" href="/assets/js/134.633de822.js"><link rel="prefetch" href="/assets/js/135.fba3ecdf.js"><link rel="prefetch" href="/assets/js/136.9f05e70c.js"><link rel="prefetch" href="/assets/js/137.969d3d15.js"><link rel="prefetch" href="/assets/js/138.95567faf.js"><link rel="prefetch" href="/assets/js/139.d2e60233.js"><link rel="prefetch" href="/assets/js/14.9cf1d0f0.js"><link rel="prefetch" href="/assets/js/140.5a1f57fc.js"><link rel="prefetch" href="/assets/js/141.17a0263a.js"><link rel="prefetch" href="/assets/js/142.28f3a05c.js"><link rel="prefetch" href="/assets/js/144.34961553.js"><link rel="prefetch" href="/assets/js/145.f166b076.js"><link rel="prefetch" href="/assets/js/146.b92baa91.js"><link rel="prefetch" href="/assets/js/147.8497ce2a.js"><link rel="prefetch" href="/assets/js/148.36fcaf1a.js"><link rel="prefetch" href="/assets/js/149.771c1047.js"><link rel="prefetch" href="/assets/js/15.1feb902a.js"><link rel="prefetch" href="/assets/js/150.19ac3bde.js"><link rel="prefetch" href="/assets/js/151.d2db43bd.js"><link rel="prefetch" href="/assets/js/152.c209fe35.js"><link rel="prefetch" href="/assets/js/153.9d0fb7fe.js"><link rel="prefetch" href="/assets/js/154.588f371f.js"><link rel="prefetch" href="/assets/js/155.e1424804.js"><link rel="prefetch" href="/assets/js/156.f6cae282.js"><link rel="prefetch" href="/assets/js/157.9d3be992.js"><link rel="prefetch" href="/assets/js/158.8787185d.js"><link rel="prefetch" href="/assets/js/159.99bb41dc.js"><link rel="prefetch" href="/assets/js/16.b10a7cca.js"><link rel="prefetch" href="/assets/js/160.d7b50fb2.js"><link rel="prefetch" href="/assets/js/161.61927cc0.js"><link rel="prefetch" href="/assets/js/162.8cb8cc83.js"><link rel="prefetch" href="/assets/js/163.a403d163.js"><link rel="prefetch" href="/assets/js/164.c68a2712.js"><link rel="prefetch" href="/assets/js/165.1ca71660.js"><link rel="prefetch" href="/assets/js/166.585aefb0.js"><link rel="prefetch" href="/assets/js/167.c33cab3b.js"><link rel="prefetch" href="/assets/js/168.3cbb38f9.js"><link rel="prefetch" href="/assets/js/169.360ba468.js"><link rel="prefetch" href="/assets/js/17.8e3ecdfa.js"><link rel="prefetch" href="/assets/js/170.da6c94e2.js"><link rel="prefetch" href="/assets/js/171.7fd9c3c4.js"><link rel="prefetch" href="/assets/js/172.3efe7a61.js"><link rel="prefetch" href="/assets/js/173.1b595b97.js"><link rel="prefetch" href="/assets/js/174.ac2e6d38.js"><link rel="prefetch" href="/assets/js/175.f9c9073e.js"><link rel="prefetch" href="/assets/js/176.939d9eb1.js"><link rel="prefetch" href="/assets/js/177.d4f90a79.js"><link rel="prefetch" href="/assets/js/178.ca53082f.js"><link rel="prefetch" href="/assets/js/179.fa84ada9.js"><link rel="prefetch" href="/assets/js/18.a2e4af66.js"><link rel="prefetch" href="/assets/js/180.ccbf3a15.js"><link rel="prefetch" href="/assets/js/181.7ac3bba0.js"><link rel="prefetch" href="/assets/js/182.b3d352b3.js"><link rel="prefetch" href="/assets/js/183.492ef987.js"><link rel="prefetch" href="/assets/js/184.caf653d1.js"><link rel="prefetch" href="/assets/js/185.791b1bc6.js"><link rel="prefetch" href="/assets/js/186.8ea17bf1.js"><link rel="prefetch" href="/assets/js/187.78f71c3a.js"><link rel="prefetch" href="/assets/js/188.49ae436d.js"><link rel="prefetch" href="/assets/js/189.ccd54cfa.js"><link rel="prefetch" href="/assets/js/19.cd9237a5.js"><link rel="prefetch" href="/assets/js/190.46fb9bc5.js"><link rel="prefetch" href="/assets/js/191.969d3ec3.js"><link rel="prefetch" href="/assets/js/192.73b5e1e2.js"><link rel="prefetch" href="/assets/js/193.b3ed0aee.js"><link rel="prefetch" href="/assets/js/194.829a9fd4.js"><link rel="prefetch" href="/assets/js/195.29465395.js"><link rel="prefetch" href="/assets/js/196.adecfd7a.js"><link rel="prefetch" href="/assets/js/197.c7122eb4.js"><link rel="prefetch" href="/assets/js/198.886028b5.js"><link rel="prefetch" href="/assets/js/199.049091a3.js"><link rel="prefetch" href="/assets/js/20.18f3c6c5.js"><link rel="prefetch" href="/assets/js/200.1775d499.js"><link rel="prefetch" href="/assets/js/201.22d30b3a.js"><link rel="prefetch" href="/assets/js/202.016b5043.js"><link rel="prefetch" href="/assets/js/203.f5b07ec3.js"><link rel="prefetch" href="/assets/js/21.3f6a146f.js"><link rel="prefetch" href="/assets/js/22.e51d90f6.js"><link rel="prefetch" href="/assets/js/23.60ad4b93.js"><link rel="prefetch" href="/assets/js/24.7208540f.js"><link rel="prefetch" href="/assets/js/25.1ced8418.js"><link rel="prefetch" href="/assets/js/26.90d9908c.js"><link rel="prefetch" href="/assets/js/27.a354f31e.js"><link rel="prefetch" href="/assets/js/28.bb24eaaf.js"><link rel="prefetch" href="/assets/js/29.ceddedbe.js"><link rel="prefetch" href="/assets/js/3.552c098b.js"><link rel="prefetch" href="/assets/js/30.6f77aaf9.js"><link rel="prefetch" href="/assets/js/31.2f13fffe.js"><link rel="prefetch" href="/assets/js/32.33d855f1.js"><link rel="prefetch" href="/assets/js/33.0ac0d92f.js"><link rel="prefetch" href="/assets/js/34.6b0fb595.js"><link rel="prefetch" href="/assets/js/35.a9bed3e0.js"><link rel="prefetch" href="/assets/js/36.77b50822.js"><link rel="prefetch" href="/assets/js/37.ec8e634f.js"><link rel="prefetch" href="/assets/js/38.77c43a70.js"><link rel="prefetch" href="/assets/js/39.e8664054.js"><link rel="prefetch" href="/assets/js/4.fc90a7cb.js"><link rel="prefetch" href="/assets/js/40.08d2423a.js"><link rel="prefetch" href="/assets/js/41.be758f07.js"><link rel="prefetch" href="/assets/js/42.43031b7c.js"><link rel="prefetch" href="/assets/js/43.6efbb674.js"><link rel="prefetch" href="/assets/js/44.9851c7f9.js"><link rel="prefetch" href="/assets/js/45.dce0204f.js"><link rel="prefetch" href="/assets/js/46.d2f4411d.js"><link rel="prefetch" href="/assets/js/47.6f3c8b27.js"><link rel="prefetch" href="/assets/js/48.642c042f.js"><link rel="prefetch" href="/assets/js/49.d4574481.js"><link rel="prefetch" href="/assets/js/5.cfcc41a3.js"><link rel="prefetch" href="/assets/js/50.b6d5b827.js"><link rel="prefetch" href="/assets/js/51.8fd044f8.js"><link rel="prefetch" href="/assets/js/52.c8f879ba.js"><link rel="prefetch" href="/assets/js/53.24508bcf.js"><link rel="prefetch" href="/assets/js/54.fb7d10a5.js"><link rel="prefetch" href="/assets/js/55.522f12dd.js"><link rel="prefetch" href="/assets/js/56.939a1d1a.js"><link rel="prefetch" href="/assets/js/57.5a46b9fe.js"><link rel="prefetch" href="/assets/js/58.29e60f64.js"><link rel="prefetch" href="/assets/js/59.13867476.js"><link rel="prefetch" href="/assets/js/6.2ba75a72.js"><link rel="prefetch" href="/assets/js/60.f24f8967.js"><link rel="prefetch" href="/assets/js/61.947d7657.js"><link rel="prefetch" href="/assets/js/62.c5c50508.js"><link rel="prefetch" href="/assets/js/63.449ed24d.js"><link rel="prefetch" href="/assets/js/64.31fd8afe.js"><link rel="prefetch" href="/assets/js/65.91daf55c.js"><link rel="prefetch" href="/assets/js/66.e4a5be73.js"><link rel="prefetch" href="/assets/js/67.f09f3e12.js"><link rel="prefetch" href="/assets/js/68.df12273a.js"><link rel="prefetch" href="/assets/js/69.3a908ad8.js"><link rel="prefetch" href="/assets/js/7.9efbea97.js"><link rel="prefetch" href="/assets/js/70.c140615d.js"><link rel="prefetch" href="/assets/js/71.3a6d705e.js"><link rel="prefetch" href="/assets/js/72.81d83b29.js"><link rel="prefetch" href="/assets/js/73.f1bf08d4.js"><link rel="prefetch" href="/assets/js/74.23515132.js"><link rel="prefetch" href="/assets/js/75.ed977055.js"><link rel="prefetch" href="/assets/js/76.cf1976bc.js"><link rel="prefetch" href="/assets/js/77.e472e706.js"><link rel="prefetch" href="/assets/js/78.960218f8.js"><link rel="prefetch" href="/assets/js/79.0ea6a1af.js"><link rel="prefetch" href="/assets/js/8.c0233b02.js"><link rel="prefetch" href="/assets/js/80.82b99ef1.js"><link rel="prefetch" href="/assets/js/81.d679002c.js"><link rel="prefetch" href="/assets/js/82.abb5f3cc.js"><link rel="prefetch" href="/assets/js/83.3ae8a14d.js"><link rel="prefetch" href="/assets/js/84.82865625.js"><link rel="prefetch" href="/assets/js/85.1d36847f.js"><link rel="prefetch" href="/assets/js/86.c264cc4e.js"><link rel="prefetch" href="/assets/js/87.102d5379.js"><link rel="prefetch" href="/assets/js/88.1b1cf170.js"><link rel="prefetch" href="/assets/js/89.2f7e1aa2.js"><link rel="prefetch" href="/assets/js/9.77310d9d.js"><link rel="prefetch" href="/assets/js/90.3ce5658f.js"><link rel="prefetch" href="/assets/js/91.c1fcaeaa.js"><link rel="prefetch" href="/assets/js/92.ed4d65e9.js"><link rel="prefetch" href="/assets/js/93.9337ee3c.js"><link rel="prefetch" href="/assets/js/94.bfae2512.js"><link rel="prefetch" href="/assets/js/95.207f6751.js"><link rel="prefetch" href="/assets/js/96.833a8d4d.js"><link rel="prefetch" href="/assets/js/97.9cbdf7c9.js"><link rel="prefetch" href="/assets/js/98.0eeb8866.js"><link rel="prefetch" href="/assets/js/99.8f45738b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c4ac4f66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>webpack 多页应用配置</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="webpack-多页应用配置"><a href="#webpack-多页应用配置" class="header-anchor">#</a> webpack 多页应用配置</h1> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> CleanWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'clean-webpack-plugin'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+ <span class="token comment">// 多入口，分别为每页应用指定入口文件</span>
+ <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">home</span><span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span> <span class="token comment">// 为首页指定入口文件，并命名为 home</span>
+  <span class="token literal-property property">about</span><span class="token operator">:</span> <span class="token string">'./src/about.js'</span> <span class="token comment">// 为about页面指定入口文件，并命名为 about</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+ <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'[name].js'</span><span class="token punctuation">,</span> <span class="token comment">// [name]会使用入口文件指定的名字替换： home.js &amp;&amp;  about.js</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+ <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 自动清理配置文件的 output 目录</span>
+  <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   <span class="token literal-property property">template</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'src/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+   <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span> <span class="token comment">// 生成输出的文件名</span>
+   <span class="token literal-property property">chunks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'home'</span><span class="token punctuation">]</span> <span class="token comment">// 指定使用输出哪一个js模块，若不指定会将 output 输出的js全部加载</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+   <span class="token literal-property property">template</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'src/about.html'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 要使用的模板文件，不指定则使用默认</span>
+   <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'about.html'</span><span class="token punctuation">,</span> <span class="token comment">// 生成输出的文件名</span>
+   <span class="token literal-property property">chunks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'about'</span><span class="token punctuation">]</span> <span class="token comment">// 指定使用输出哪一个js模块，若不指定会将 output 输出的js全部加载</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+ <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/Webpack/webpack 多页应用配置.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.17619901.js" defer></script><script src="/assets/js/2.f210fd71.js" defer></script><script src="/assets/js/143.9d096c0e.js" defer></script>
+  </body>
+</html>

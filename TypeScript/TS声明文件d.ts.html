@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TS 声明文件 .d.ts | 代码干燥计划</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="分享前端工程化、模块化、组件化开发经验；包括 Webpack, Vue, React, TypeScript, Node, 微信小程序, Taro, Uni-app 等。">
+    
+    <link rel="preload" href="/assets/css/0.styles.c4ac4f66.css" as="style"><link rel="preload" href="/assets/js/app.17619901.js" as="script"><link rel="preload" href="/assets/js/2.f210fd71.js" as="script"><link rel="preload" href="/assets/js/121.d0cf1fa2.js" as="script"><link rel="prefetch" href="/assets/js/10.e9efe93d.js"><link rel="prefetch" href="/assets/js/100.22c29af4.js"><link rel="prefetch" href="/assets/js/101.2e402eae.js"><link rel="prefetch" href="/assets/js/102.656c2950.js"><link rel="prefetch" href="/assets/js/103.9ff3bd22.js"><link rel="prefetch" href="/assets/js/104.20b6d4c1.js"><link rel="prefetch" href="/assets/js/105.61ee9d67.js"><link rel="prefetch" href="/assets/js/106.c5e4a2df.js"><link rel="prefetch" href="/assets/js/107.f9319198.js"><link rel="prefetch" href="/assets/js/108.e37006c7.js"><link rel="prefetch" href="/assets/js/109.5d7b724b.js"><link rel="prefetch" href="/assets/js/11.ac37ef8b.js"><link rel="prefetch" href="/assets/js/110.e6adbef3.js"><link rel="prefetch" href="/assets/js/111.7aaf2b1b.js"><link rel="prefetch" href="/assets/js/112.062b35d8.js"><link rel="prefetch" href="/assets/js/113.e1b003c6.js"><link rel="prefetch" href="/assets/js/114.8d4ab14a.js"><link rel="prefetch" href="/assets/js/115.0a34e6a6.js"><link rel="prefetch" href="/assets/js/116.db882154.js"><link rel="prefetch" href="/assets/js/117.10f92ed1.js"><link rel="prefetch" href="/assets/js/118.796fc3fd.js"><link rel="prefetch" href="/assets/js/119.f00b6075.js"><link rel="prefetch" href="/assets/js/12.c2e2ddaa.js"><link rel="prefetch" href="/assets/js/120.0a2071c1.js"><link rel="prefetch" href="/assets/js/122.3c1d509a.js"><link rel="prefetch" href="/assets/js/123.65a3230c.js"><link rel="prefetch" href="/assets/js/124.a22fd0bd.js"><link rel="prefetch" href="/assets/js/125.43f915d7.js"><link rel="prefetch" href="/assets/js/126.b1a8be83.js"><link rel="prefetch" href="/assets/js/127.5dab55fc.js"><link rel="prefetch" href="/assets/js/128.ee7cd06c.js"><link rel="prefetch" href="/assets/js/129.b6e979be.js"><link rel="prefetch" href="/assets/js/13.b9a3a38b.js"><link rel="prefetch" href="/assets/js/130.0abf2022.js"><link rel="prefetch" href="/assets/js/131.fb1b682d.js"><link rel="prefetch" href="/assets/js/132.0cb0970d.js"><link rel="prefetch" href="/assets/js/133.03bd617c.js"><link rel="prefetch" href="/assets/js/134.633de822.js"><link rel="prefetch" href="/assets/js/135.fba3ecdf.js"><link rel="prefetch" href="/assets/js/136.9f05e70c.js"><link rel="prefetch" href="/assets/js/137.969d3d15.js"><link rel="prefetch" href="/assets/js/138.95567faf.js"><link rel="prefetch" href="/assets/js/139.d2e60233.js"><link rel="prefetch" href="/assets/js/14.9cf1d0f0.js"><link rel="prefetch" href="/assets/js/140.5a1f57fc.js"><link rel="prefetch" href="/assets/js/141.17a0263a.js"><link rel="prefetch" href="/assets/js/142.28f3a05c.js"><link rel="prefetch" href="/assets/js/143.9d096c0e.js"><link rel="prefetch" href="/assets/js/144.34961553.js"><link rel="prefetch" href="/assets/js/145.f166b076.js"><link rel="prefetch" href="/assets/js/146.b92baa91.js"><link rel="prefetch" href="/assets/js/147.8497ce2a.js"><link rel="prefetch" href="/assets/js/148.36fcaf1a.js"><link rel="prefetch" href="/assets/js/149.771c1047.js"><link rel="prefetch" href="/assets/js/15.1feb902a.js"><link rel="prefetch" href="/assets/js/150.19ac3bde.js"><link rel="prefetch" href="/assets/js/151.d2db43bd.js"><link rel="prefetch" href="/assets/js/152.c209fe35.js"><link rel="prefetch" href="/assets/js/153.9d0fb7fe.js"><link rel="prefetch" href="/assets/js/154.588f371f.js"><link rel="prefetch" href="/assets/js/155.e1424804.js"><link rel="prefetch" href="/assets/js/156.f6cae282.js"><link rel="prefetch" href="/assets/js/157.9d3be992.js"><link rel="prefetch" href="/assets/js/158.8787185d.js"><link rel="prefetch" href="/assets/js/159.99bb41dc.js"><link rel="prefetch" href="/assets/js/16.b10a7cca.js"><link rel="prefetch" href="/assets/js/160.d7b50fb2.js"><link rel="prefetch" href="/assets/js/161.61927cc0.js"><link rel="prefetch" href="/assets/js/162.8cb8cc83.js"><link rel="prefetch" href="/assets/js/163.a403d163.js"><link rel="prefetch" href="/assets/js/164.c68a2712.js"><link rel="prefetch" href="/assets/js/165.1ca71660.js"><link rel="prefetch" href="/assets/js/166.585aefb0.js"><link rel="prefetch" href="/assets/js/167.c33cab3b.js"><link rel="prefetch" href="/assets/js/168.3cbb38f9.js"><link rel="prefetch" href="/assets/js/169.360ba468.js"><link rel="prefetch" href="/assets/js/17.8e3ecdfa.js"><link rel="prefetch" href="/assets/js/170.da6c94e2.js"><link rel="prefetch" href="/assets/js/171.7fd9c3c4.js"><link rel="prefetch" href="/assets/js/172.3efe7a61.js"><link rel="prefetch" href="/assets/js/173.1b595b97.js"><link rel="prefetch" href="/assets/js/174.ac2e6d38.js"><link rel="prefetch" href="/assets/js/175.f9c9073e.js"><link rel="prefetch" href="/assets/js/176.939d9eb1.js"><link rel="prefetch" href="/assets/js/177.d4f90a79.js"><link rel="prefetch" href="/assets/js/178.ca53082f.js"><link rel="prefetch" href="/assets/js/179.fa84ada9.js"><link rel="prefetch" href="/assets/js/18.a2e4af66.js"><link rel="prefetch" href="/assets/js/180.ccbf3a15.js"><link rel="prefetch" href="/assets/js/181.7ac3bba0.js"><link rel="prefetch" href="/assets/js/182.b3d352b3.js"><link rel="prefetch" href="/assets/js/183.492ef987.js"><link rel="prefetch" href="/assets/js/184.caf653d1.js"><link rel="prefetch" href="/assets/js/185.791b1bc6.js"><link rel="prefetch" href="/assets/js/186.8ea17bf1.js"><link rel="prefetch" href="/assets/js/187.78f71c3a.js"><link rel="prefetch" href="/assets/js/188.49ae436d.js"><link rel="prefetch" href="/assets/js/189.ccd54cfa.js"><link rel="prefetch" href="/assets/js/19.cd9237a5.js"><link rel="prefetch" href="/assets/js/190.46fb9bc5.js"><link rel="prefetch" href="/assets/js/191.969d3ec3.js"><link rel="prefetch" href="/assets/js/192.73b5e1e2.js"><link rel="prefetch" href="/assets/js/193.b3ed0aee.js"><link rel="prefetch" href="/assets/js/194.829a9fd4.js"><link rel="prefetch" href="/assets/js/195.29465395.js"><link rel="prefetch" href="/assets/js/196.adecfd7a.js"><link rel="prefetch" href="/assets/js/197.c7122eb4.js"><link rel="prefetch" href="/assets/js/198.886028b5.js"><link rel="prefetch" href="/assets/js/199.049091a3.js"><link rel="prefetch" href="/assets/js/20.18f3c6c5.js"><link rel="prefetch" href="/assets/js/200.1775d499.js"><link rel="prefetch" href="/assets/js/201.22d30b3a.js"><link rel="prefetch" href="/assets/js/202.016b5043.js"><link rel="prefetch" href="/assets/js/203.f5b07ec3.js"><link rel="prefetch" href="/assets/js/21.3f6a146f.js"><link rel="prefetch" href="/assets/js/22.e51d90f6.js"><link rel="prefetch" href="/assets/js/23.60ad4b93.js"><link rel="prefetch" href="/assets/js/24.7208540f.js"><link rel="prefetch" href="/assets/js/25.1ced8418.js"><link rel="prefetch" href="/assets/js/26.90d9908c.js"><link rel="prefetch" href="/assets/js/27.a354f31e.js"><link rel="prefetch" href="/assets/js/28.bb24eaaf.js"><link rel="prefetch" href="/assets/js/29.ceddedbe.js"><link rel="prefetch" href="/assets/js/3.552c098b.js"><link rel="prefetch" href="/assets/js/30.6f77aaf9.js"><link rel="prefetch" href="/assets/js/31.2f13fffe.js"><link rel="prefetch" href="/assets/js/32.33d855f1.js"><link rel="prefetch" href="/assets/js/33.0ac0d92f.js"><link rel="prefetch" href="/assets/js/34.6b0fb595.js"><link rel="prefetch" href="/assets/js/35.a9bed3e0.js"><link rel="prefetch" href="/assets/js/36.77b50822.js"><link rel="prefetch" href="/assets/js/37.ec8e634f.js"><link rel="prefetch" href="/assets/js/38.77c43a70.js"><link rel="prefetch" href="/assets/js/39.e8664054.js"><link rel="prefetch" href="/assets/js/4.fc90a7cb.js"><link rel="prefetch" href="/assets/js/40.08d2423a.js"><link rel="prefetch" href="/assets/js/41.be758f07.js"><link rel="prefetch" href="/assets/js/42.43031b7c.js"><link rel="prefetch" href="/assets/js/43.6efbb674.js"><link rel="prefetch" href="/assets/js/44.9851c7f9.js"><link rel="prefetch" href="/assets/js/45.dce0204f.js"><link rel="prefetch" href="/assets/js/46.d2f4411d.js"><link rel="prefetch" href="/assets/js/47.6f3c8b27.js"><link rel="prefetch" href="/assets/js/48.642c042f.js"><link rel="prefetch" href="/assets/js/49.d4574481.js"><link rel="prefetch" href="/assets/js/5.cfcc41a3.js"><link rel="prefetch" href="/assets/js/50.b6d5b827.js"><link rel="prefetch" href="/assets/js/51.8fd044f8.js"><link rel="prefetch" href="/assets/js/52.c8f879ba.js"><link rel="prefetch" href="/assets/js/53.24508bcf.js"><link rel="prefetch" href="/assets/js/54.fb7d10a5.js"><link rel="prefetch" href="/assets/js/55.522f12dd.js"><link rel="prefetch" href="/assets/js/56.939a1d1a.js"><link rel="prefetch" href="/assets/js/57.5a46b9fe.js"><link rel="prefetch" href="/assets/js/58.29e60f64.js"><link rel="prefetch" href="/assets/js/59.13867476.js"><link rel="prefetch" href="/assets/js/6.2ba75a72.js"><link rel="prefetch" href="/assets/js/60.f24f8967.js"><link rel="prefetch" href="/assets/js/61.947d7657.js"><link rel="prefetch" href="/assets/js/62.c5c50508.js"><link rel="prefetch" href="/assets/js/63.449ed24d.js"><link rel="prefetch" href="/assets/js/64.31fd8afe.js"><link rel="prefetch" href="/assets/js/65.91daf55c.js"><link rel="prefetch" href="/assets/js/66.e4a5be73.js"><link rel="prefetch" href="/assets/js/67.f09f3e12.js"><link rel="prefetch" href="/assets/js/68.df12273a.js"><link rel="prefetch" href="/assets/js/69.3a908ad8.js"><link rel="prefetch" href="/assets/js/7.9efbea97.js"><link rel="prefetch" href="/assets/js/70.c140615d.js"><link rel="prefetch" href="/assets/js/71.3a6d705e.js"><link rel="prefetch" href="/assets/js/72.81d83b29.js"><link rel="prefetch" href="/assets/js/73.f1bf08d4.js"><link rel="prefetch" href="/assets/js/74.23515132.js"><link rel="prefetch" href="/assets/js/75.ed977055.js"><link rel="prefetch" href="/assets/js/76.cf1976bc.js"><link rel="prefetch" href="/assets/js/77.e472e706.js"><link rel="prefetch" href="/assets/js/78.960218f8.js"><link rel="prefetch" href="/assets/js/79.0ea6a1af.js"><link rel="prefetch" href="/assets/js/8.c0233b02.js"><link rel="prefetch" href="/assets/js/80.82b99ef1.js"><link rel="prefetch" href="/assets/js/81.d679002c.js"><link rel="prefetch" href="/assets/js/82.abb5f3cc.js"><link rel="prefetch" href="/assets/js/83.3ae8a14d.js"><link rel="prefetch" href="/assets/js/84.82865625.js"><link rel="prefetch" href="/assets/js/85.1d36847f.js"><link rel="prefetch" href="/assets/js/86.c264cc4e.js"><link rel="prefetch" href="/assets/js/87.102d5379.js"><link rel="prefetch" href="/assets/js/88.1b1cf170.js"><link rel="prefetch" href="/assets/js/89.2f7e1aa2.js"><link rel="prefetch" href="/assets/js/9.77310d9d.js"><link rel="prefetch" href="/assets/js/90.3ce5658f.js"><link rel="prefetch" href="/assets/js/91.c1fcaeaa.js"><link rel="prefetch" href="/assets/js/92.ed4d65e9.js"><link rel="prefetch" href="/assets/js/93.9337ee3c.js"><link rel="prefetch" href="/assets/js/94.bfae2512.js"><link rel="prefetch" href="/assets/js/95.207f6751.js"><link rel="prefetch" href="/assets/js/96.833a8d4d.js"><link rel="prefetch" href="/assets/js/97.9cbdf7c9.js"><link rel="prefetch" href="/assets/js/98.0eeb8866.js"><link rel="prefetch" href="/assets/js/99.8f45738b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c4ac4f66.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">代码干燥计划</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CSS" class="dropdown-title"><span class="title">CSS</span> <span class="arrow down"></span></button> <button type="button" aria-label="CSS" class="mobile-dropdown-title"><span class="title">CSS</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/CSS/CSS使用中文字体.html" class="nav-link">
+  CSS使用中文字体
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS文本溢出省略号.html" class="nav-link">
+  CSS文本溢出省略号
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/animation.html" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/background.html" class="nav-link">
+  background
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/flex.html" class="nav-link">
+  flex
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/CSS/CSS权威指南/" class="nav-link">
+  CSS权威指南
+</a></li><li class="dropdown-item"><h4>
+          CSS通用化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/CSS/CSS通用化/通用变量.html" class="nav-link">
+  通用变量
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/CSS/Sass-SCSS/" class="nav-link">
+  Sass-SCSS
+</a></li></ul></div></div><div class="nav-item"><a href="/Git/" class="nav-link">
+  Git
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML" class="dropdown-title"><span class="title">HTML</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML" class="mobile-dropdown-title"><span class="title">HTML</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTML/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/canvas.html" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/iframe子页面与父页面通信.html" class="nav-link">
+  iframe子页面与父页面通信
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/video.html" class="nav-link">
+  video
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/前端下载.html" class="nav-link">
+  前端下载
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTML/移动端屏幕适配.html" class="nav-link">
+  移动端屏幕适配
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTTP" class="dropdown-title"><span class="title">HTTP</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTTP" class="mobile-dropdown-title"><span class="title">HTTP</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/HTTP/http 文章.html" class="nav-link">
+  http 文章
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/数据安全.html" class="nav-link">
+  数据安全
+</a></li><li class="dropdown-item"><!----> <a href="/HTTP/缓存实践.html" class="nav-link">
+  缓存实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="JavaScript" class="dropdown-title"><span class="title">JavaScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="JavaScript" class="mobile-dropdown-title"><span class="title">JavaScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaScript/JS文件上传原生写法.html" class="nav-link">
+  JS文件上传原生写法
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/axios 使用教程.html" class="nav-link">
+  axios 使用教程
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/polyfill 解决方案.html" class="nav-link">
+  polyfill 解决方案
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/前端文件处理API.html" class="nav-link">
+  前端文件处理API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li><li class="dropdown-item"><h4>
+          BOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/BOM/Geolocation.html" class="nav-link">
+  Geolocation
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/IntersectionObserver.html" class="nav-link">
+  IntersectionObserver
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/MediaRecorder.html" class="nav-link">
+  MediaRecorder
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/file api.html" class="nav-link">
+  file api
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/BOM/navigator.mediaDevices.getUserMedia.html" class="nav-link">
+  navigator.mediaDevices.getUserMedia
+</a></li></ul></li><li class="dropdown-item"><h4>
+          DOM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/JavaScript/DOM/一系列DOM方法.html" class="nav-link">
+  一系列DOM方法
+</a></li><li class="dropdown-subitem"><a href="/JavaScript/DOM/宽高和滚动.html" class="nav-link">
+  宽高和滚动
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/JavaScript/ES6/" class="nav-link">
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JS_API/" class="nav-link">
+  JS_API
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/JavaScript 高级程序设计/" class="nav-link">
+  JavaScript 高级程序设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/jsdoc/" class="nav-link">
+  jsdoc
+</a></li><li class="dropdown-item"><!----> <a href="/JavaScript/questions/" class="nav-link">
+  questions
+</a></li></ul></div></div><div class="nav-item"><a href="/Node/" class="nav-link">
+  Node
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/React/React 教程.html" class="nav-link">
+  React 教程
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-Router.html" class="nav-link">
+  React-Router
+</a></li><li class="dropdown-item"><!----> <a href="/React/React-hooks.html" class="nav-link">
+  React-hooks
+</a></li><li class="dropdown-item"><!----> <a href="/React/create-react-app.html" class="nav-link">
+  create-react-app
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="TypeScript" class="dropdown-title"><span class="title">TypeScript</span> <span class="arrow down"></span></button> <button type="button" aria-label="TypeScript" class="mobile-dropdown-title"><span class="title">TypeScript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/TypeScript/TS_类型.html" class="nav-link">
+  TS_类型
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/TS声明文件d.ts.html" class="nav-link">
+  TS声明文件d.ts
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_function.html" class="nav-link">
+  ts_function
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_interface.html" class="nav-link">
+  ts_interface
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_内置对象.html" class="nav-link">
+  ts_内置对象
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_泛型（Generics）.html" class="nav-link">
+  ts_泛型（Generics）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_符号、关键字和类型工具.html" class="nav-link">
+  ts_符号、关键字和类型工具
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/ts_类（class）.html" class="nav-link">
+  ts_类（class）
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.json.html" class="nav-link">
+  tsconfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/tsconfig.html" class="nav-link">
+  tsconfig
+</a></li><li class="dropdown-item"><!----> <a href="/TypeScript/相关文章.html" class="nav-link">
+  相关文章
+</a></li></ul></div></div><div class="nav-item"><a href="/Vue/" class="nav-link">
+  Vue
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Webpack" class="dropdown-title"><span class="title">Webpack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Webpack" class="mobile-dropdown-title"><span class="title">Webpack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Webpack/SplitChunksPlugin.html" class="nav-link">
+  SplitChunksPlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/compression-webpack-plugin.html" class="nav-link">
+  compression-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/css-loader-plugins.html" class="nav-link">
+  css-loader-plugins
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/html-webpack-plugin.html" class="nav-link">
+  html-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/image-webpack-loader.html" class="nav-link">
+  image-webpack-loader
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/require.context.html" class="nav-link">
+  require.context
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/stylelint.html" class="nav-link">
+  stylelint
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/terser-webpack-plugin.html" class="nav-link">
+  terser-webpack-plugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack Configuration.html" class="nav-link">
+  webpack Configuration
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack 多页应用配置.html" class="nav-link">
+  webpack 多页应用配置
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-bundle-analyzer.html" class="nav-link">
+  webpack-bundle-analyzer
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-chain.html" class="nav-link">
+  webpack-chain
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack-dev-server.html" class="nav-link">
+  webpack-dev-server
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack.IgnorePlugin.html" class="nav-link">
+  webpack.IgnorePlugin
+</a></li><li class="dropdown-item"><!----> <a href="/Webpack/webpack_plugins.html" class="nav-link">
+  webpack_plugins
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="projectConfig" class="dropdown-title"><span class="title">projectConfig</span> <span class="arrow down"></span></button> <button type="button" aria-label="projectConfig" class="mobile-dropdown-title"><span class="title">projectConfig</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projectConfig/ENV文件高亮配置.html" class="nav-link">
+  ENV文件高亮配置
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code Keyboard Shotcuts.html" class="nav-link">
+  VS Code Keyboard Shotcuts
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code plugins.html" class="nav-link">
+  VS Code plugins
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置文件变量(setting.json).html" class="nav-link">
+  VS Code 配置文件变量(setting.json)
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VS Code 配置自动补全路径别名 @.html" class="nav-link">
+  VS Code 配置自动补全路径别名 @
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/VSCode 使用 Volar 接管模式代替 TS Plugin.html" class="nav-link">
+  VSCode 使用 Volar 接管模式代替 TS Plugin
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/glob 模式.html" class="nav-link">
+  glob 模式
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/vscode push with publickey.html" class="nav-link">
+  vscode push with publickey
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/关于 jsonfig.json.html" class="nav-link">
+  关于 jsonfig.json
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/移动端项目增加屏幕适配.html" class="nav-link">
+  移动端项目增加屏幕适配
+</a></li><li class="dropdown-item"><h4>
+          babel
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-7.html" class="nav-link">
+  babel-7
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel-plugin-transform-remove-console.html" class="nav-link">
+  babel-plugin-transform-remove-console
+</a></li><li class="dropdown-subitem"><a href="/projectConfig/babel/babel.html" class="nav-link">
+  babel
+</a></li></ul></li><li class="dropdown-item"><h4>
+          browserslist
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/projectConfig/browserslist/README.html" class="nav-link">
+  README.md
+</a></li></ul></li><li class="dropdown-item"><!----> <a href="/projectConfig/editorConfig/" class="nav-link">
+  editorConfig
+</a></li><li class="dropdown-item"><!----> <a href="/projectConfig/eslint/" class="nav-link">
+  eslint
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/其他/debugger.html" class="nav-link">
+  debugger
+</a></li><li class="dropdown-item"><!----> <a href="/其他/业余网站.html" class="nav-link">
+  业余网站
+</a></li><li class="dropdown-item"><!----> <a href="/其他/好文收集.html" class="nav-link">
+  好文收集
+</a></li><li class="dropdown-item"><!----> <a href="/其他/markdown/" class="nav-link">
+  markdown
+</a></li><li class="dropdown-item"><!----> <a href="/其他/前后端对接/" class="nav-link">
+  前后端对接
+</a></li></ul></div></div><div class="nav-item"><a href="/后端/" class="nav-link">
+  后端
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序和公众号" class="dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序和公众号" class="mobile-dropdown-title"><span class="title">小程序和公众号</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/小程序和公众号/本地开发时通过 fiddler 4 调试微信 jssdk.html" class="nav-link">
+  本地开发时通过 fiddler 4 调试微信 jssdk
+</a></li><li class="dropdown-item"><!----> <a href="/小程序和公众号/组件样式穿透和隔离问题.html" class="nav-link">
+  组件样式穿透和隔离问题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="操作系统" class="dropdown-title"><span class="title">操作系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="操作系统" class="mobile-dropdown-title"><span class="title">操作系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/操作系统/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><h4>
+          windows
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/操作系统/windows/windows 10 开机自启动管理.html" class="nav-link">
+  windows 10 开机自启动管理
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 好用的快捷键.html" class="nav-link">
+  windows 好用的快捷键
+</a></li><li class="dropdown-subitem"><a href="/操作系统/windows/windows 良心软件.html" class="nav-link">
+  windows 良心软件
+</a></li></ul></li></ul></div></div> <a href="https://github.com/drylint/vuepress-template" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>TS 声明文件 .d.ts</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明文件语法列表" class="sidebar-link">声明文件语法列表</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明各种变量" class="sidebar-link">声明各种变量</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明普通变量" class="sidebar-link">声明普通变量</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明函数" class="sidebar-link">声明函数</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明-class-类" class="sidebar-link">声明 class (类)</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明-enum-枚举" class="sidebar-link">声明 enum (枚举)</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明命名空间-全局对象-declare-namespace" class="sidebar-link">声明命名空间(全局对象) declare namespace</a></li></ul></li><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明类型" class="sidebar-link">声明类型</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#声明合并" class="sidebar-link">声明合并</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#函数的声明合并-函数重载" class="sidebar-link">函数的声明合并（函数重载）</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#interface-的声明合并" class="sidebar-link">interface 的声明合并</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#class-类的合并" class="sidebar-link">class 类的合并</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#利用声明合并扩展全局-interface" class="sidebar-link">利用声明合并扩展全局 interface</a></li></ul></li><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#模块-局部-声明文件" class="sidebar-link">模块(局部)声明文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#declare-module-声明模块或扩展模块" class="sidebar-link">declare module 声明模块或扩展模块</a></li><li class="sidebar-sub-header"><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#reference-三斜线指令引用声明文件" class="sidebar-link">/// &lt;reference /&gt; 三斜线指令引用声明文件</a></li></ul></li><li><a href="/TypeScript/TS%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6d.ts.html#打包时自动生成声明文件" class="sidebar-link">打包时自动生成声明文件</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ts-声明文件-d-ts"><a href="#ts-声明文件-d-ts" class="header-anchor">#</a> TS 声明文件 <code>.d.ts</code></h1> <p></p><div class="table-of-contents"><ul><li><a href="#声明文件语法列表">声明文件语法列表</a></li><li><a href="#声明各种变量">声明各种变量</a><ul><li><a href="#声明普通变量">声明普通变量</a></li><li><a href="#声明函数">声明函数</a></li><li><a href="#声明-class-类">声明 class (类)</a></li><li><a href="#声明-enum-枚举">声明 enum (枚举)</a></li><li><a href="#声明命名空间-全局对象-declare-namespace">声明命名空间(全局对象) declare namespace</a></li></ul></li><li><a href="#声明类型">声明类型</a></li><li><a href="#声明合并">声明合并</a><ul><li><a href="#函数的声明合并-函数重载">函数的声明合并（函数重载）</a></li><li><a href="#interface-的声明合并">interface 的声明合并</a></li><li><a href="#class-类的合并">class 类的合并</a></li><li><a href="#利用声明合并扩展全局-interface">利用声明合并扩展全局 interface</a></li></ul></li><li><a href="#模块-局部-声明文件">模块(局部)声明文件</a><ul><li><a href="#declare-module-声明模块或扩展模块">declare module 声明模块或扩展模块</a><ul><li><a href="#为一个模块编写声明文件">为一个模块编写声明文件</a></li></ul></li><li><a href="#reference-三斜线指令引用声明文件">/// <reference></reference> 三斜线指令引用声明文件</a></li></ul></li><li><a href="#打包时自动生成声明文件">打包时自动生成声明文件</a></li></ul></div><p></p> <p>参考：</p> <ul><li><a href="https://ts.xcatliu.com/basics/declaration-files.html" target="_blank" rel="noopener noreferrer">《TypeScript 入门教程》 - 声明文件(作者：xcatliu)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <p>声明文件的使用场景通常是，你在 ts 代码中使用一个 npm 包，但这个包完全没有声明文件，这时候就只能自己来书写一份声明文件，以免 TS 因为不知道这个包的结构，成员属性以及它们的类型而报错。</p> <p>先来看下 TS 是怎么查找一个 npm 包的声明文件的：</p> <ol><li>先查找 npm 包的 <code>package.json</code> 中的根属性 <code>types</code> 或 <code>typings</code> 字段指定的声明文件，有则使用，否则继续查找。</li> <li>查找 npm 包的根目录是否有一个 <code>index.d.ts</code> 声明文件，有则使用，否则继续查找。</li> <li>查看 npm 包的 <code>package.json</code> 中的根属性 <code>main</code> 字段（入口文件），查找和入口文件同级目录下是否有同名的 <code>.d.ts</code> 文件，有则使用，否则认为此 npm 包完全没有声明文件。</li></ol> <p>声明文件只在开发阶段有用，用于声明一些变量或者类型，以免 TS 在做检查的时候抛出变量或类型不存在的错误，从而导致编译失败。同时，还能获得对应的代码补全、接口提示等。</p> <p>默认情况下，TS 会解析项目内所有 <code>.d.ts</code> 文件，当声明文件中不出现顶层 <code>import</code> 或 <code>export</code> 时， 文件内声明的都是全局变量或全局类型。也就是说，这些全局变量或全局类型都是可以在全局任何地方直接使用的，而不需要导入后再使用。</p> <p>但是只要声明文件中出现顶层的 <code>import</code> 或 <code>export</code>，那么这个声明文件就会被当做模块，模块中所有的声明都是局部变量或局部类型，必须 <code>export</code> 导出后，才能在其他文件中 <code>import</code> 导入使用。</p> <h2 id="声明文件语法列表"><a href="#声明文件语法列表" class="header-anchor">#</a> 声明文件语法列表</h2> <p>声明全局或局部变量：</p> <ul><li><code>declare var/let/const</code>  声明变量/常量</li> <li><code>declare function</code> 声明函数</li> <li><code>declare class</code> 声明 class</li> <li><code>declare enum</code> 声明枚举变量</li> <li><code>declare namespace</code> 声明命名空间(空间下必须有属性才生效)</li></ul> <p>声明全局或局部类型：</p> <ul><li><code>interface</code> 声明接口</li> <li><code>type</code> 声明类型别名</li></ul> <p>变量或类型的导入导出：</p> <ul><li><code>export</code> 导出变量</li> <li><code>export namespace</code> 导出（含有子属性的）对象</li> <li><code>export default</code> ES6 默认导出</li> <li><code>export =</code> commonjs 导出模块</li> <li><code>export as namespace</code> UMD 库声明全局变量</li></ul> <p>扩展变量或模块：</p> <ul><li><code>declare global</code> 在模块中声明全局变量或全局类型</li> <li><code>declare module</code> 声明模块或扩展模块</li> <li><code>/// &lt;reference /&gt;</code> 三斜线指令引用声明文件</li></ul> <h2 id="声明各种变量"><a href="#声明各种变量" class="header-anchor">#</a> 声明各种变量</h2> <h3 id="声明普通变量"><a href="#声明普通变量" class="header-anchor">#</a> 声明普通变量</h3> <p>声明变量可以使用 <code>declare var</code>, <code>declare let</code> <code>declare const</code> 三种，前两者效果一样，声明普通变量，<code>const</code> 用于声明只读的常量。通常全局变量都应该是只读的，所以应该尽量使用 <code>const</code> 。</p> <p>实际上，基本上也只有全局变量才需要在声明文件中声明，局部变量是基本没有这个需求的。</p> <p>在声明文件中，声明一个全局变量，比如：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/typings/index.d.ts</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">const</span> string1<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> number1<span class="token operator">:</span> <span class="token builtin">number</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>上面声明就是告诉 TS, 将来在运行的时候，我将会有一个全局变量叫做 <code>string1</code>, 它是 <code>string</code> 类型的，所以在编译代码并检查的时候，如果我直接使用了这个变量，你不要以为这个变量是不存在的就给我抛出错误了，你直接编译通过吧，有问题我自己负责。</p> <p>然后，就可以在业务代码中直接使用这个变量：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/utils/index.ts</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>string1<span class="token punctuation">)</span> <span class="token comment">// TS 已经知道这是全局变量，不会抛出变量未定义的错误</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number1<span class="token punctuation">)</span> <span class="token comment">// TS 已经知道这是全局变量，不会抛出变量未定义的错误</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>string1<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// TS 已经知道这个变量是 string 类型，所以检查通过</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number1<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// TS 已经知道这个变量是 number 类型，所以检查通过</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>上面代码中，<code>string1</code> 和 <code>number1</code> 没有先声明再使用，而是直接使用的，但 TS 做代码检查的时候，并没有抛出错误，这是因为我们在声明文件中已经告诉了 TS 这个全局变量在运行时会存在，不用认为是没有声明就使用的变量。</p> <p>要注意的是，这只是在编译阶段，我们告诉 TS 将来代码运行时会有这个全局变量，所以 TS 在编译阶段不报错了，但是将来在代码运行的时候，如果这个全局变量不存在，那么运行时就会抛出错误 <code>Uncaught ReferenceError: string1 is not defined</code> 。</p> <p>所以要记住，我们既然告诉了 TS 在将来运行时会有这个全局变量，那么就一定要保证在运行时这个全局变量是存在的。</p> <p>下面来修改一下声明文件：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/typings/index.d.ts</span>
+
+<span class="token keyword">declare</span> <span class="token keyword">const</span> string1<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token keyword">export</span> <span class="token keyword">declare</span> <span class="token keyword">const</span> number1<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token comment">// export 导出变量</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>在上面声明文件中，其中一个声明加入了顶层 <code>export</code> 将其导出，另一个没有使用 <code>export</code> 导出。</p> <p>再看下原来的使用变量的文件：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/utils/index.ts</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>string1<span class="token punctuation">)</span> <span class="token comment">// TS 编译阶段抛错: Cannot find name 'string1'.</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number1<span class="token punctuation">)</span> <span class="token comment">// TS 编译阶段抛错: Cannot find name 'number1'.</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>string1<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// TS 编译阶段抛错: Cannot find name 'string1'.</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>number1<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// TS 编译阶段抛错: Cannot find name 'number1'.</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>可以看到上面代码都在报错，因为声明文件中出现了顶层 <code>export</code> ，所以声明文件被当做模块，而不再是全局声明文件了，所以其中的变量都成为了局部变量，而不再是全局可用的全局变量了。</p> <h3 id="声明函数"><a href="#声明函数" class="header-anchor">#</a> 声明函数</h3> <p>声明函数实际上也是在声明一个变量，只不过变量是函数类型的。</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 声明一个全局函数</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">myFn</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+
+<span class="token comment">// 再次声明一个同名函数，即表示 函数重载</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">myFn</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span>
+
+<span class="token comment">// 也可以通过声明变量的方式来声明一个函数</span>
+<span class="token keyword">declare</span> <span class="token keyword">const</span> <span class="token function-variable function">myFn2</span><span class="token operator">:</span> <span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> <span class="token builtin">string</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用变量 <code>myFn</code> 时，不要报错，因为在运行时，将会有一个全局变量叫做 <code>myFn</code> 可用，它是一个函数，当传入 <code>string</code> 类型的参数时，将返回一个 <code>string</code> 类型的值，当传入一个 <code>number</code> 类型的参数时，将返回一个 <code>boolean</code> 类型的值。」</p> <h3 id="声明-class-类"><a href="#声明-class-类" class="header-anchor">#</a> 声明 class (类)</h3> <p>声明 class (类) 实际上也是在声明一个变量：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">class</span> <span class="token class-name">People</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+
+  <span class="token function">constructor</span> <span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+
+  <span class="token function">sayHi</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用变量 <code>People</code> 时，不要报错，因为在运行时，将会有一个全局变量叫做 <code>People</code> 可用，它是一个 class ，它的结构是这样的。」</p> <h3 id="声明-enum-枚举"><a href="#声明-enum-枚举" class="header-anchor">#</a> 声明 enum (枚举)</h3> <p>声明 enum (枚举) 实际上也是在声明一个变量：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">enum</span> Status <span class="token punctuation">{</span>
+  normal<span class="token punctuation">,</span>
+  disabled<span class="token punctuation">,</span>
+  pending<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用变量 <code>Status</code> 时，不要报错，因为在运行时，将会有一个全局变量叫做 <code>Status</code> 可用，它是枚举类型，它的结构是这样的。」</p> <h3 id="声明命名空间-全局对象-declare-namespace"><a href="#声明命名空间-全局对象-declare-namespace" class="header-anchor">#</a> 声明命名空间(全局对象) <code>declare namespace</code></h3> <p>声明对象实际上也是在声明一个变量，需要注意的是， <code>namespace</code> 必须有成员属性才能声明成功，且每一个成员属性均需要独立声明，但不需要使用 <code>declare</code> 来声明：
+：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 声明一个全局对象</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> myObject <span class="token punctuation">{</span>
+  <span class="token comment">// 对象属性 name 是一个字符串</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token comment">// 对象属性 sayHi 是一个函数</span>
+  <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token comment">// 对象属性 People 是一个 class</span>
+  <span class="token class-name"><span class="token keyword">class</span></span> People <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span>
+
+    <span class="token function">constructor</span> <span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span>
+
+    <span class="token function">sayHi</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 嵌套的对象</span>
+  <span class="token keyword">namespace</span> subObject <span class="token punctuation">{</span>
+    <span class="token comment">// 对象属性 sayHello 是一个函数</span>
+    <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用变量 <code>myObject</code> 时，不要报错，因为在运行时，将会有一个全局变量叫做 <code>myObject</code> 可用，它是一个对象，它的结构是这样的。」</p> <p>使用示例：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/utils/index.ts</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span><span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">myObject</span><span class="token punctuation">.</span><span class="token function">People</span><span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>subObject<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="声明类型"><a href="#声明类型" class="header-anchor">#</a> 声明类型</h2> <p>声明类型主要使用 <code>interface</code> 和 <code>type</code></p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">IPeople</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> <span class="token class-name">NumAndString</span> <span class="token operator">=</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token builtin">string</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>上例告诉 TS : 「嘿，在编译时如果看到未定义而直接使用类型 <code>IPeople</code> 时，不要报错，因为有一个全局类型叫做 <code>IPeople</code> 可用，它的结构是这样的。」</p> <p>上例还告诉 TS : 「嘿，在编译时如果看到未定义而直接使用类型 <code>NumAndString</code> 时，不要报错，因为有一个全局类型叫做 <code>NumAndString</code> 可用，它的结构是这样的。」</p> <p>需要注意的是，一个项目中，通常需要定义非常多的 <code>interface</code> 和 <code>type</code> ，如果像上面这样，所有的 <code>interface</code> 和 <code>type</code> 都暴露在最外层作为全局类型，很有可能会出现命名冲突。</p> <p>实际上，应该尽可能的减少全局变量或全局类型的数量。</p> <p>所以，最好将他们放在 <code>namespace</code> 命名空间下，这样只有命名空间暴露在全局：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 声明一个全局命名空间</span>
+<span class="token keyword">declare</span> <span class="token keyword">namespace</span> mySpace <span class="token punctuation">{</span>
+
+  <span class="token comment">// 声明变量</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+
+  <span class="token comment">// 声明函数</span>
+  <span class="token keyword">function</span> <span class="token generic-function"><span class="token function">fn</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span>
+
+  <span class="token comment">// 声明 interface</span>
+  <span class="token class-name"><span class="token keyword">interface</span></span> IPeople <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 声明 type</span>
+  <span class="token class-name"><span class="token keyword">type</span></span> NumAndString <span class="token operator">=</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>使用全局命名空间下的变量和类型：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 使用全局命名空间下的变量</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mySpace<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mySpace<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 使用全局命名空间下的 interface</span>
+<span class="token class-name"><span class="token keyword">const</span></span> tom<span class="token operator">:</span> mySpace<span class="token punctuation">.</span>IPeople <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用全局命名空间下的 type</span>
+<span class="token class-name"><span class="token keyword">const</span></span> var1<span class="token operator">:</span> mySpace<span class="token punctuation">.</span>NumAndString <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">const</span> var2<span class="token operator">:</span> mySpace<span class="token punctuation">.</span>NumAndString <span class="token operator">=</span> <span class="token string">'hello'</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h2 id="声明合并"><a href="#声明合并" class="header-anchor">#</a> 声明合并</h2> <p>声明合并指的是，如果声明了两个以上的同名函数、同名接口或同名 class ，那么它们会合并成一个类型。</p> <p>声明合并可以在以下情况下发生：</p> <div class="language-txt line-numbers-mode"><pre class="language-txt"><code>interface + interface
+namespace + namespace
+class + interface
+class + namespace
+class + interface + namespace
+function + namespace
+enum + namespace
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>如果声明的同名变量不是函数，接口或 class，那么只以第一次声明的类型为准。</p> <h3 id="函数的声明合并-函数重载"><a href="#函数的声明合并-函数重载" class="header-anchor">#</a> 函数的声明合并（函数重载）</h3> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token keyword">declare</span> <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="interface-的声明合并"><a href="#interface-的声明合并" class="header-anchor">#</a> <code>interface</code> 的声明合并</h3> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token function">fn</span><span class="token punctuation">(</span><span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+  gender<span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token function">fn</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>相当于：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span>
+  age<span class="token operator">:</span> <span class="token builtin">number</span>
+  gender<span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token function">fn</span><span class="token punctuation">(</span><span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token function">fn</span><span class="token punctuation">(</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>可以看到上例中，多次声明同名 <code>interface</code>, 实际上它们会合并为一个声明，其成员可以重复，但类型必须一致，否则会报错，其中的同名方法也会发生合并，和函数的声明合并一致。</p> <h3 id="class-类的合并"><a href="#class-类的合并" class="header-anchor">#</a> class 类的合并</h3> <p><code>class</code> 的合并实际上与 <code>interface</code> 的合并完全一致。</p> <h3 id="利用声明合并扩展全局-interface"><a href="#利用声明合并扩展全局-interface" class="header-anchor">#</a> 利用声明合并扩展全局 interface</h3> <p>比如，如果要告诉 TS ，我们将在 <code>window</code> 对象上添加一个函数：</p> <p>直接通过 <code>interface</code> 声明 <code>Window</code> 即可，会通过声明合并与原有 <code>Window</code> 类型合并。</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/index.d.ts</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+  <span class="token function">sum</span><span class="token punctuation">(</span>a<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>在项目中即可直接使用：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// 正常通过 TS 检查</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>同理，还可以对 <code>String</code>, <code>Array</code> 等类型进行扩展：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">interface</span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+  <span class="token function">isString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="模块-局部-声明文件"><a href="#模块-局部-声明文件" class="header-anchor">#</a> 模块(局部)声明文件</h2> <p>只要在声明文件中，出现了 <code>import</code> 或 <code>export</code>, 那么这个声明文件就是<strong>模块声明文件</strong>，而不再是全局声明文件。</p> <p>在模块声明文件中，所有声明都属于局部声明，都只能在文件内部使用，或者通过 <code>export</code> 供外部使用。</p> <p>如果必须要在模块声明文件中，声明一些全局变量或全局类型，可以在 <code>declare global</code> 块中完成：</p> <p>比如，在一个叫做 <code>myModule</code> 的模块声明文件中声明全局变量和全局类型：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/myModule.d.ts</span>
+
+<span class="token comment">// declare global 必须在模块声明文件中使用，</span>
+<span class="token comment">// 如果实在没有东西需要导出，导出一个空对象也行</span>
+<span class="token comment">// 这样本文件才能成为一个模块声明文件</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 在模块声明文件中，声明全局变量，或者全局类型</span>
+<span class="token keyword">declare</span> global <span class="token punctuation">{</span>
+  <span class="token comment">// 声明全局变量</span>
+  <span class="token keyword">const</span> globalString<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token comment">// 声明全局函数</span>
+  <span class="token keyword">function</span> <span class="token generic-function"><span class="token function">globalFn</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token constant">T</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant">T</span>
+
+  <span class="token comment">// 声明全局 interface</span>
+  <span class="token class-name"><span class="token keyword">interface</span></span> IPeople <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span>
+    age<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 声明已存在的 String 类型，会发生声明合并</span>
+  <span class="token keyword">interface</span> <span class="token class-name">String</span> <span class="token punctuation">{</span>
+    <span class="token function">isString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>需要注意的是，<code>declare global</code> 块必须出现在模块声明文件中，才能有效声明全局变量或全局类型。</p> <p>在全局任意地方直接使用：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// src/**/*.js</span>
+
+<span class="token comment">// 使用全局变量</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>globalString<span class="token punctuation">)</span>
+<span class="token comment">// 使用全局方法</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">globalFn</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 使用全局 interface</span>
+<span class="token class-name"><span class="token keyword">const</span></span> tom<span class="token operator">:</span> IPeople <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token string">'tom'</span><span class="token punctuation">,</span>
+  age<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 通过 声明合并 扩展的 String 实例方法 isString</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tom<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">isString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="declare-module-声明模块或扩展模块"><a href="#declare-module-声明模块或扩展模块" class="header-anchor">#</a> <code>declare module</code> 声明模块或扩展模块</h3> <p><code>declare module</code> 可以用来为一个没有类型声明的模块声明类型，也可以用来扩展一个模块的类型声明。</p> <h4 id="为一个模块编写声明文件"><a href="#为一个模块编写声明文件" class="header-anchor">#</a> 为一个模块编写声明文件</h4> <p>假设，现在有一个模块叫做 <code>foo</code> ，直接使用时会报错：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">// TS 报错</span>
+<span class="token comment">// Cannot find module 'foo' or its corresponding type declarations.</span>
+<span class="token keyword">import</span> sayHi<span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> sayHello <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'foo'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>由于上例报错，所以需要我们来写声明文件告诉 TS 这个模块的信息：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">declare</span> <span class="token keyword">module</span> <span class="token string">'foo'</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> name<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">function</span> <span class="token function">sayHello</span> <span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>使用模块 <code>foo</code>：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token keyword">import</span> sayHi<span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> sayHello <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'foo'</span>
+
+<span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">sayHello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="reference-三斜线指令引用声明文件"><a href="#reference-三斜线指令引用声明文件" class="header-anchor">#</a> <code>/// &lt;reference /&gt;</code> 三斜线指令引用声明文件</h3> <p>当我们在编写一个全局声明文件但又依赖其他声明文件时，文件内不能出现 <code>import</code> 去导入其他声明文件的声明，此时就需要通过三斜线指令来引用其他的声明文件。</p> <p>可以看出来，三斜线其实也是一种注释语句，只不过在原有注释两条斜线 <code>//</code> 的基础上多写一条变成了三斜线 <code>///</code> , 之后通过 <code>&lt;reference /&gt;</code> 来引用另一个声明文件。TS 解析代码时看到这样的注释就知道我们是要引用其他声明文件了。</p> <p><code>&lt;reference /&gt;</code> 可以通过 <code>types</code> 属性或 <code>path</code> 属性来引用其他声明文件。</p> <p><code>types</code> 用于引用另一个库的声明，而 <code>path</code> 用于引用另一个文件的声明：</p> <div class="language-ts line-numbers-mode"><pre class="language-ts"><code><span class="token comment">/// &lt;reference types=&quot;foo&quot; /&gt;</span>
+<span class="token comment">/// &lt;reference path=&quot;bar.d.ts&quot; /&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>三斜线指令必须放在文件的最顶端，三斜线指令的前面只允许出现行注释。</p> <p>在声明了模块 <code>foo</code> 之后，就可以正常使用了，而不会收到 TS 编译时的报错信息。</p> <h2 id="打包时自动生成声明文件"><a href="#打包时自动生成声明文件" class="header-anchor">#</a> 打包时自动生成声明文件</h2> <p>在打包 TS 代码时，通过配置 <code>tsconfig.json</code> 可以自动生成相应的 <code>*.d.ts</code> 声明文件：</p> <div class="language-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;compilerOptions&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 是否自动生成声明文件</span>
+    <span class="token property">&quot;declaration&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 设置生成的声明文件存放目录</span>
+    <span class="token property">&quot;declarationDir&quot;</span><span class="token operator">:</span> <span class="token string">&quot;.&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 对每个 .d.ts 文件，都生成对应的 .d.ts.map（sourcemap）文件</span>
+    <span class="token property">&quot;declarationMap&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 仅生成 .d.ts 文件，不生成 .js 文件</span>
+    <span class="token property">&quot;emitDeclarationOnly&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/drylint/vuepress-template/edit/master/TypeScript/TS声明文件d.ts.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.17619901.js" defer></script><script src="/assets/js/2.f210fd71.js" defer></script><script src="/assets/js/121.d0cf1fa2.js" defer></script>
+  </body>
+</html>
