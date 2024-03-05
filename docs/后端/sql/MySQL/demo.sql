@@ -13,9 +13,9 @@ create table user
     `intro`         varchar(150) comment '简介',
     `register_ip`   int NOT NULL comment '用户注册时的源 IP',
     `status`        tinyint NOT NULL default 0 comment '帐号状态，0-未知，1-正常，2-禁用',
-    `create_at`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP comment '创建时间', # 默认插入时自动插入当前时间
-    `update_at`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间', # 默认更新时自动修改为当前时间
-    `delete_at`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP comment '删除时间', # 软删除时， 默认插入时自动插入当前时间
+    `create_time`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP comment '创建时间', # 默认插入时自动插入当前时间
+    `update_time`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间', # 默认更新时自动修改为当前时间
+    `delete_time`     timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP comment '删除时间', # 软删除时， 默认插入时自动插入当前时间
 
     primary key (`id`),
     unique key `idx_id` (`id`),
